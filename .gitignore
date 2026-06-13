@@ -216,3 +216,19 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Database files
+*.db
+
+# Output files
+output/
+
+# Server logs
+server_err.txt
+server_out.txt
+
+# Injury log
+injury_log.txt
+
+# IDEs and editors
+opencode.json

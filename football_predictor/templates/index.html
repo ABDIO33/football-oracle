@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Score Exact 100 - AI Football Predictor</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --neon-blue: #00d4ff;
+  --neon-green: #00ff88;
+  --neon-white: #ffffff;
+  --neon-gray: #a0a0a0;
+  --neon-purple: #8b5cf6;
+  --neon-gold: #ffc800;
+  --dark-bg: #0a0a0f;
+  --card-bg: rgba(15, 15, 25, 0.95);
+  --glow-blue: 0 0 20px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 212, 255, 0.3);
+  --glow-green: 0 0 20px rgba(0, 255, 136, 0.5), 0 0 40px rgba(0, 255, 136, 0.3);
+  --glow-purple: 0 0 30px rgba(139, 92, 246, 0.4), 0 0 60px rgba(139, 92, 246, 0.2);
+  --glow-gold: 0 0 20px rgba(255, 200, 0, 0.5), 0 0 40px rgba(255, 200, 0, 0.3);
+}
+body {
+  font-family: 'Tajawal', sans-serif;
+  background: var(--dark-bg);
+  min-height: 100vh;
+  color: var(--neon-white);
+  overflow-x: hidden;
+  position: relative;
+}
+.bg-animation {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(0, 255, 136, 0.03) 0%, transparent 70%);
+}
+.grid-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+}
+@keyframes gridMove {
+  0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+  100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+}
+.particles {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden;
+}
+.particle {
+  position: absolute; width: 2px; height: 2px; background: var(--neon-blue);
+  border-radius: 50%; opacity: 0.6; animation: float 15s infinite;
+  box-shadow: 0 0 10px var(--neon-blue);
+}
+@keyframes float {
+  0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+.header { text-align: center; margin-bottom: 30px; padding-top: 20px; }
+.logo {
+  font-family: 'Orbitron', monospace; font-size: 4.5rem; font-weight: 900;
+  background: linear-gradient(135deg, var(--neon-white) 0%, var(--neon-blue) 50%, var(--neon-green) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  text-shadow: var(--glow-blue); letter-spacing: 2px; animation: logoPulse 3s ease-in-out infinite;
+}
+.logo-sub {
+  font-family: 'Orbitron', monospace; font-size: 1.3rem; color: var(--neon-blue);
+  text-shadow: var(--glow-blue); margin-top: -8px; letter-spacing: 6px;
+}
+@keyframes logoPulse { 0%,100% { filter: brightness(1); } 50% { filter: brightness(1.3); } }
+
+.main-card {
+  background: var(--card-bg); border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 24px; padding: 35px; width: 100%; max-width: 820px;
+  box-shadow: 0 0 60px rgba(0, 212, 255, 0.1), inset 0 0 60px rgba(0, 212, 255, 0.02);
+  backdrop-filter: blur(20px); position: relative; overflow: hidden;
+}
+.main-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--neon-blue), var(--neon-green), transparent);
+  animation: borderGlow 3s linear infinite; background-size: 200% 100%;
+}
+@keyframes borderGlow {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.url-section { margin-bottom: 25px; }
+.section-title {
+  font-size: 0.85rem; color: var(--neon-gray); text-transform: uppercase;
+  letter-spacing: 3px; margin-bottom: 15px; text-align: center;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.section-title::before, .section-title::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+}
+.source-tags {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 20px;
+}
+.source-tag {
+  padding: 8px 16px; background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 20px;
+  font-size: 0.8rem; color: var(--neon-blue); transition: all 0.3s ease;
+}
+.source-tag:hover { background: rgba(0, 212, 255, 0.2); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3); }
+.url-input {
+  width: 100%; padding: 16px 20px; background: rgba(0, 212, 255, 0.05);
+  border: 2px solid rgba(0, 212, 255, 0.2); border-radius: 16px; color: var(--neon-white);
+  font-size: 1rem; font-family: 'Tajawal', sans-serif; text-align: center;
+  transition: all 0.3s ease; outline: none;
+}
+.url-input::placeholder { color: rgba(255,255,255,0.3); }
+.url-input:focus { border-color: var(--neon-blue); box-shadow: var(--glow-blue); background: rgba(0,212,255,0.1); }
+
+.start-btn {
+  width: 100%; padding: 20px 40px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.2) 0%, rgba(0,255,136,0.2) 100%);
+  border: 2px solid var(--neon-blue); border-radius: 16px; color: var(--neon-white);
+  font-family: 'Orbitron', monospace; font-size: 1.3rem; font-weight: 700;
+  cursor: pointer; position: relative; overflow: hidden;
+  transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 4px;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+}
+.start-btn::before {
+  content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+.start-btn:hover::before { left: 100%; }
+.start-btn:hover { box-shadow: var(--glow-blue); transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(0,212,255,0.3) 0%, rgba(0,255,136,0.3) 100%); }
+.start-btn:active { transform: translateY(0); }
+.start-btn .emoji { font-size: 1.5rem; animation: cloverSpin 3s linear infinite; }
+@keyframes cloverSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.ticket-section { width: 100%; max-width: 820px; margin-top: 30px; }
+.ticket-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 20px; padding: 0 5px;
+}
+.ticket-header h2 {
+  font-family: 'Orbitron', monospace; font-size: 1.2rem; color: var(--neon-blue);
+  display: flex; align-items: center; gap: 10px; text-shadow: var(--glow-blue);
+}
+.ticket-header .badge {
+  background: rgba(255,200,0,0.15); border: 1px solid rgba(255,200,0,0.3);
+  color: var(--neon-gold); padding: 5px 14px; border-radius: 20px;
+  font-size: 0.7rem; font-weight: 700;
+}
+.ticket-header .btn-refresh {
+  padding: 8px 16px; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3);
+  border-radius: 10px; color: var(--neon-blue); cursor: pointer;
+  font-family: 'Tajawal', sans-serif; font-size: 0.8rem; font-weight: 600;
+  transition: all 0.3s;
+}
+.ticket-header .btn-refresh:hover { background: rgba(0,212,255,0.2); box-shadow: var(--glow-blue); }
+
+.ticket-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 14px; }
+.ticket-card {
+  background: rgba(0,212,255,0.03); border: 1px solid rgba(0,212,255,0.15);
+  border-radius: 16px; padding: 18px; cursor: pointer;
+  transition: all 0.3s; position: relative; overflow: hidden;
+}
+.ticket-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.ticket-card:hover::before { opacity: 1; }
+.ticket-card:hover { border-color: var(--neon-blue); box-shadow: var(--glow-blue); transform: translateY(-3px); }
+.ticket-card .comp {
+  font-size: 0.65rem; color: var(--neon-gray); text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 8px;
+}
+.ticket-card .teams {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 1rem; font-weight: 700; margin-bottom: 10px;
+}
+.ticket-card .teams .vs-s { color: var(--neon-gray); font-weight: 400; font-size: 0.8rem; }
+.ticket-card .bar {
+  display: flex; height: 4px; border-radius: 4px; overflow: hidden;
+  background: rgba(255,255,255,0.05); margin-bottom: 10px;
+}
+.ticket-card .bar .s { height: 100%; }
+.ticket-card .bar .s.h { background: var(--neon-green); }
+.ticket-card .bar .s.d { background: var(--neon-gold); }
+.ticket-card .bar .s.a { background: #ff4444; }
+.ticket-card .tags {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.ticket-card .tags .t {
+  font-size: 0.7rem; padding: 3px 10px; border-radius: 8px; font-weight: 600;
+}
+.ticket-card .tags .t.prob { background: rgba(255,255,255,0.05); color: var(--neon-gray); }
+.ticket-card .tags .t.sc { color: var(--neon-blue); background: rgba(0,212,255,0.1); }
+.ticket-card .tags .t.cnf { text-transform: uppercase; font-size: 0.6rem; }
+.ticket-card .tags .t.cnf.h { background: rgba(0,255,136,0.15); color: var(--neon-green); }
+.ticket-card .tags .t.cnf.m { background: rgba(255,200,0,0.15); color: var(--neon-gold); }
+.ticket-card .tags .t.cnf.l { background: rgba(255,68,68,0.15); color: #ff4444; }
+.ticket-card .tags .t.bt { background: rgba(0,255,136,0.1); color: var(--neon-green); border: 1px solid rgba(0,255,136,0.2); }
+.ticket-card .rating-flag {
+  position: absolute; top: 12px; left: 12px;
+  background: linear-gradient(135deg, var(--neon-gold), #ff9e00);
+  color: #0a0a0f; font-weight: 800; font-size: 0.7rem;
+  padding: 2px 10px; border-radius: 8px;
+}
+
+.countdown-section { display: none; text-align: center; padding: 30px 10px; }
+.countdown-section.active { display: block; }
+.countdown-number {
+  font-family: 'Orbitron', monospace; font-size: 7rem; font-weight: 900;
+  color: var(--neon-white); text-shadow: var(--glow-blue); line-height: 1;
+  margin-bottom: 15px; animation: numberPulse 1s ease-in-out infinite;
+}
+@keyframes numberPulse {
+  0%,100% { transform: scale(1); text-shadow: var(--glow-blue); }
+  50% { transform: scale(1.05); text-shadow: 0 0 40px rgba(0,212,255,0.8), 0 0 80px rgba(0,212,255,0.5); }
+}
+.countdown-text { font-size: 1.2rem; color: var(--neon-blue); text-shadow: var(--glow-blue); margin-bottom: 25px; letter-spacing: 2px; }
+.progress-bar {
+  width: 100%; max-width: 400px; height: 8px; background: rgba(255,255,255,0.1);
+  border-radius: 4px; margin: 0 auto 25px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-green), var(--neon-blue));
+  background-size: 200% 100%; border-radius: 4px; width: 0%;
+  animation: progressShine 2s linear infinite; box-shadow: 0 0 20px var(--neon-blue);
+}
+@keyframes progressShine {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.loading-steps { display: flex; flex-direction: column; gap: 10px; max-width: 500px; margin: 0 auto; }
+.loading-step {
+  display: flex; align-items: center; gap: 12px; padding: 10px 18px;
+  background: rgba(0,212,255,0.03); border-radius: 10px;
+  border: 1px solid rgba(0,212,255,0.08); font-size: 0.9rem;
+  color: var(--neon-gray); transition: all 0.3s ease;
+}
+.loading-step.active { border-color: var(--neon-blue); background: rgba(0,212,255,0.08); color: var(--neon-white); box-shadow: 0 0 15px rgba(0,212,255,0.15); }
+.loading-step.completed { color: var(--neon-green); border-color: rgba(0,255,136,0.3); }
+.step-icon { width: 24px; display: flex; align-items: center; justify-content: center; }
+
+.footer { margin-top: auto; padding: 30px 20px; text-align: center; }
+.footer-text { font-size: 0.8rem; color: var(--neon-gray); margin-bottom: 8px; }
+.footer-powered { font-family: 'Orbitron', monospace; font-size: 0.7rem; color: var(--neon-blue); letter-spacing: 2px; }
+.empty-state { text-align: center; padding: 50px 20px; color: var(--neon-gray); }
+.empty-state i { font-size: 3rem; opacity: 0.2; margin-bottom: 12px; display: block; }
+.empty-state h3 { font-size: 1.1rem; margin-bottom: 6px; }
+.empty-state p { font-size: 0.85rem; opacity: 0.7; margin-bottom: 18px; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--dark-bg); }
+::-webkit-scrollbar-thumb { background: var(--neon-blue); border-radius: 4px; }
+
+@media (max-width: 768px) {
+  .logo { font-size: 2.5rem; }
+  .main-card { padding: 20px; }
+  .countdown-number { font-size: 5rem; }
+  .ticket-grid { grid-template-columns: 1fr; }
+}
+@keyframes vsPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+@keyframes fireFlicker { from { transform: scale(1); } to { transform: scale(1.2); } }
+</style>
+</head>
+<body>
+<div class="bg-animation"></div>
+<div class="grid-overlay"></div>
+<div class="particles" id="particles"></div>
+
+<div class="container">
+  <header class="header">
+    <h1 class="logo">SCORE EXACT 100</h1>
+    <p class="logo-sub">AI Predictor</p>
+  </header>
+
+  <div class="main-card">
+    <div id="inputForm">
+      <div class="url-section">
+        <div class="section-title">رابط المباراة</div>
+        <div class="source-tags">
+          <span class="source-tag">sofascore.com</span>
+          <span class="source-tag">flashscore.com</span>
+        </div>
+        <input type="url" id="matchUrl" class="url-input" placeholder="رابط المباراة من SofaScore, Flashscore...">
+      </div>
+
+      <div class="url-section" style="margin-bottom:25px;">
+        <div class="section-title"><span>أو</span></div>
+        <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:15px;align-items:center;">
+          <input type="text" id="homeTeam" class="url-input" placeholder="الفريق المحلي..." style="text-align:center;">
+          <span style="font-family:'Orbitron',monospace;font-size:2rem;font-weight:900;color:var(--neon-blue);text-shadow:var(--glow-blue);animation:vsPulse 2s ease-in-out infinite;">VS</span>
+          <input type="text" id="awayTeam" class="url-input" placeholder="الفريق الزائر..." style="text-align:center;">
+        </div>
+      </div>
+
+      <label style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px;cursor:pointer;font-size:0.9rem;color:var(--neon-gray);">
+        <input type="checkbox" id="neutralVenue" style="width:18px;height:18px;accent-color:var(--neon-blue);cursor:pointer;">
+        <span>🏟️</span>
+        <span>ملعب محايد (مثل كأس العالم، نهائي دوري أبطال أوروبا)</span>
+      </label>
+
+      <button class="start-btn" onclick="startAnalysis()">
+        <span class="emoji">🍀</span>
+        <span>تحليل المباراة</span>
+      </button>
+    </div>
+
+    <div id="countdownSection" class="countdown-section">
+      <div class="countdown-number" id="countdownNumber">60</div>
+      <div class="countdown-text">جاري تحليل البيانات بالذكاء الاصطناعي...</div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="loading-steps">
+        <div class="loading-step" id="step1"><span class="step-icon">⏳</span><span>جاري الاتصال بمصادر البيانات...</span></div>
+        <div class="loading-step" id="step2"><span class="step-icon">⏳</span><span>جاري جلب الإحصائيات من مصادر البيانات...</span></div>
+        <div class="loading-step" id="step3"><span class="step-icon">⏳</span><span>جاري تحليل بيانات xG والمباريات السابقة...</span></div>
+        <div class="loading-step" id="step4"><span class="step-icon">⏳</span><span>جاري معالجة إحصائيات المواجهات المباشرة...</span></div>
+        <div class="loading-step" id="step5"><span class="step-icon">⏳</span><span>جاري تشغيل نموذج Poisson-Dixon-Coles...</span></div>
+        <div class="loading-step" id="step6"><span class="step-icon">⏳</span><span>جاري حساب النتائج المتوقعة والتوصيات...</span></div>
+        <div class="loading-step" id="step7"><span class="step-icon">⏳</span><span>جاري دمج النتائج النهائية...</span></div>
+      </div>
+    </div>
+
+    <div id="resultsSection" style="display:none;animation:fadeIn 0.8s ease;" class="results-section">
+      <div style="text-align:center;margin-bottom:25px;padding-bottom:20px;border-bottom:1px solid rgba(0,212,255,0.2);">
+        <div style="font-family:'Orbitron',monospace;font-size:1.5rem;color:var(--neon-white);text-shadow:var(--glow-blue);margin-bottom:8px;">نتيجة التحليل</div>
+        <div id="matchTeams" style="font-size:1.2rem;color:var(--neon-blue);">Real Madrid vs Barcelona</div>
+      </div>
+
+      <div style="text-align:center;">
+        <div id="confidenceBadge" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.3);border-radius:20px;margin-bottom:20px;">
+          <span style="font-size:0.8rem;color:var(--neon-gray);">نسبة الثقة:</span>
+          <span id="confidenceValue" style="font-family:'Orbitron',monospace;font-size:1.2rem;font-weight:700;color:var(--neon-green);">85%</span>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:22px;">
+        <div class="result-card" style="background:rgba(0,212,255,0.05);border:1px solid rgba(0,212,255,0.2);border-radius:16px;padding:22px 12px;text-align:center;position:relative;overflow:hidden;">
+          <div style="font-size:0.75rem;color:var(--neon-gray);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">نتيجة الشوط الأول</div>
+          <div id="firstHalfResult" style="font-family:'Orbitron',monospace;font-size:1.6rem;font-weight:700;color:var(--neon-white);text-shadow:var(--glow-blue);">1-0</div>
+        </div>
+        <div class="result-card" style="background:rgba(0,212,255,0.05);border:1px solid rgba(0,212,255,0.2);border-radius:16px;padding:22px 12px;text-align:center;position:relative;overflow:hidden;">
+          <div style="font-size:0.75rem;color:var(--neon-gray);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">نتيجة الشوط الثاني</div>
+          <div id="secondHalfResult" style="font-family:'Orbitron',monospace;font-size:1.6rem;font-weight:700;color:var(--neon-white);text-shadow:var(--glow-blue);">1-1</div>
+        </div>
+        <div class="result-card highlight" style="background:rgba(0,212,255,0.1);border:1px solid var(--neon-blue);border-radius:16px;padding:22px 12px;text-align:center;box-shadow:var(--glow-blue);position:relative;overflow:hidden;">
+          <div style="font-size:0.75rem;color:var(--neon-gray);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">📊 النتيجة النهائية</div>
+          <div id="finalScore" style="font-family:'Orbitron',monospace;font-size:2.2rem;font-weight:700;color:var(--neon-green);text-shadow:var(--glow-green);">2-1</div>
+        </div>
+      </div>
+
+      <div class="top-scores" style="background:rgba(0,212,255,0.03);border:1px solid rgba(0,212,255,0.15);border-radius:12px;padding:15px;margin-bottom:20px;">
+        <div style="font-size:0.8rem;color:var(--neon-gray);margin-bottom:10px;text-align:center;">أفضل 3 توقعات للنتيجة</div>
+        <div id="topScoresList" style="display:flex;justify-content:center;gap:15px;flex-wrap:wrap;"></div>
+      </div>
+
+      <div class="ai-analysis" style="background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.25);border-radius:16px;padding:18px;margin-bottom:20px;">
+        <div style="font-size:0.85rem;color:var(--neon-purple);margin-bottom:8px;display:flex;align-items:center;gap:8px;">🤖 تحليل الذكاء الاصطناعي</div>
+        <div id="aiAnalysis" style="font-size:0.9rem;color:var(--neon-white);line-height:1.6;"></div>
+      </div>
+
+      <div class="betting-section" style="background:linear-gradient(135deg,rgba(255,200,0,0.08) 0%,rgba(255,150,0,0.04) 100%);border:1px solid rgba(255,200,0,0.25);border-radius:16px;padding:22px;margin-bottom:20px;text-align:center;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:10px;font-size:0.95rem;color:var(--neon-gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;">
+          <span>الرهان الآمن</span><span style="animation:fireFlicker 0.5s ease-in-out infinite alternate;">🔥</span>
+        </div>
+        @keyframes fireFlicker { from { transform: scale(1); } to { transform: scale(1.2); } }
+        <div id="safeBet" style="font-family:'Orbitron',monospace;font-size:1.4rem;font-weight:700;color:var(--neon-gold);text-shadow:var(--glow-gold);margin-bottom:12px;">Over 2.5 Goals</div>
+        <div class="risk-meter">
+          <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--neon-gray);margin-bottom:5px;">
+            <span>آمن</span><span>متوسط</span><span>محفوف بالمخاطر</span>
+          </div>
+          <div style="height:10px;background:rgba(255,255,255,0.1);border-radius:5px;overflow:hidden;position:relative;">
+            <div id="riskFill" style="height:100%;background:linear-gradient(90deg,var(--neon-green) 0%,var(--neon-gold) 50%,#ff4444 100%);border-radius:5px;transition:width 1s ease;width:30%;"></div>
+            <div id="riskIndicator" style="position:absolute;top:-5px;width:4px;height:20px;background:var(--neon-white);border-radius:2px;box-shadow:0 0 10px var(--neon-white);transform:translateX(-50%);transition:left 1s ease;left:30%;"></div>
+          </div>
+          <div id="riskText" style="font-size:0.8rem;color:var(--neon-gray);margin-top:8px;">مستوى المخاطرة: منخفض</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px;">
+        <div style="background:rgba(0,212,255,0.03);border:1px solid rgba(0,212,255,0.1);border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:0.7rem;color:var(--neon-gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">الفائز</div>
+          <div id="winner" style="font-family:'Orbitron',monospace;font-size:1.1rem;color:var(--neon-blue);"></div>
+        </div>
+        <div style="background:rgba(0,212,255,0.03);border:1px solid rgba(0,212,255,0.1);border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:0.7rem;color:var(--neon-gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">BTTS</div>
+          <div id="btts" style="font-family:'Orbitron',monospace;font-size:1.1rem;color:var(--neon-blue);"></div>
+        </div>
+        <div style="background:rgba(0,212,255,0.03);border:1px solid rgba(0,212,255,0.1);border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:0.7rem;color:var(--neon-gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">إجمالي الأهداف</div>
+          <div id="totalGoals" style="font-family:'Orbitron',monospace;font-size:1.1rem;color:var(--neon-blue);"></div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:16px;">
+        <button class="start-btn" style="font-size:1rem;padding:16px;letter-spacing:2px;flex:1;" onclick="resetForm()">
+          <span>🔄</span><span>تحليل مباراة جديدة</span>
+        </button>
+        <button class="start-btn" style="font-size:1rem;padding:16px;letter-spacing:2px;flex:1;background:linear-gradient(135deg,rgba(255,200,0,0.2) 0%,rgba(255,150,0,0.2) 100%);border-color:var(--neon-gold);" onclick="addToTicket()" id="addTicketBtn">
+          <span>🎫</span><span>إضافة إلى Ticket</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticket-section">
+    <div class="ticket-header">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <h2><span>🎫</span> Ticket Today</h2>
+        <span class="badge">TOP {{ best_matches|length if best_matches else 0 }}/6</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        {% if last_updated %}
+        <span style="font-size:0.65rem;color:var(--neon-gray);">{{ last_updated[:10] }}</span>
+        {% endif %}
+        <button class="btn-refresh" onclick="updateTicket()"><span>⟳</span> Refresh</button>
+      </div>
+    </div>
+    <div class="ticket-grid" id="ticketGrid">
+      {% if best_matches %}
+      {% for item in best_matches %}
+      <div class="ticket-card" onclick="analyzeTicket('{{ item.match.home_team }}','{{ item.match.away_team }}')">
+        <div class="rating-flag">{{ item.rating_score }}%</div>
+        <div class="comp">{{ item.match.competition }}</div>
+        <div class="teams">
+          <span>{{ item.match.home_team }}</span>
+          <span class="vs-s">vs</span>
+          <span>{{ item.match.away_team }}</span>
+        </div>
+        {% set hw = item.prediction.home_win_prob %}
+        {% set dw = item.prediction.draw_prob %}
+        {% set aw = item.prediction.away_win_prob %}
+        {% set total = hw + dw + aw %}
+        <div class="bar">
+          <div class="s h" style="width:{{ (hw/total*100)|round }}%"></div>
+          <div class="s d" style="width:{{ (dw/total*100)|round }}%"></div>
+          <div class="s a" style="width:{{ (aw/total*100)|round }}%"></div>
+        </div>
+        <div class="tags">
+          <span class="t prob">{{ hw }}% / {{ dw }}% / {{ aw }}%</span>
+          <span class="t sc">🎯 {{ item.prediction.most_likely_score }}</span>
+          <span class="t cnf {{ item.prediction.analysis.confidence.lower()[:1] }}">{{ item.prediction.analysis.confidence }}</span>
+          <span class="t bt">✅ {{ item.prediction.analysis.best_bet_type }}</span>
+        </div>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+    <div id="emptyTicketMsg" style="text-align:center;padding:50px 20px;background:rgba(0,212,255,0.02);border:1px dashed rgba(0,212,255,0.15);border-radius:16px;{% if best_matches %}display:none{% endif %}">
+      <div style="font-size:3rem;color:var(--neon-gray);opacity:0.2;margin-bottom:12px;">📅</div>
+      <h3 style="color:var(--neon-gray);font-size:1.1rem;margin-bottom:6px;">No matches loaded yet</h3>
+      <p style="color:var(--neon-gray);font-size:0.85rem;opacity:0.7;margin-bottom:18px;">Best matches of the day will appear here</p>
+      <button class="btn-refresh" style="padding:12px 28px;" onclick="updateTicket()"><span>⟳</span> Load Today's Matches</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p class="footer-text">Score Exact 100 — AI Football Prediction</p>
+    <p class="footer-powered">Powered by Multi-Agent AI System</p>
+  </footer>
+</div>
+
+<form id="selectedForm" action="/predict" method="POST" style="display:none;">
+  <input type="hidden" name="home_team" id="selectedHome">
+  <input type="hidden" name="away_team" id="selectedAway">
+</form>
+
+<script>
+let currentResult = null;
+let customTickets = JSON.parse(localStorage.getItem('scoreExactTickets') || '[]');
+
+function saveTickets() {
+  localStorage.setItem('scoreExactTickets', JSON.stringify(customTickets));
+  renderCustomTickets();
+}
+
+function renderCustomTickets() {
+  const grid = document.getElementById('ticketGrid');
+  if (!grid) return;
+  document.querySelectorAll('.ticket-card.custom-ticket').forEach(function(el) { el.remove(); });
+  const emptyMsg = document.getElementById('emptyTicketMsg');
+  if (customTickets.length > 0 && emptyMsg) { emptyMsg.style.display = 'none'; }
+  customTickets.forEach(function(t, idx) {
+    const d = document.createElement('div');
+    d.className = 'ticket-card custom-ticket';
+    d.style.borderColor = 'rgba(255,200,0,0.3)';
+    d.style.borderStyle = 'dashed';
+    d.innerHTML = '<div class="rating-flag" style="background:linear-gradient(135deg,var(--neon-gold),#ff9e00);">USER</div>' +
+      '<div class="comp">My Pick</div>' +
+      '<div class="teams"><span>' + t.home + '</span><span class="vs-s">vs</span><span>' + t.away + '</span></div>' +
+      '<div class="bar"><div class="s h" style="width:' + Math.round(t.hw/(t.hw+t.dw+t.aw)*100) + '%"></div><div class="s d" style="width:' + Math.round(t.dw/(t.hw+t.dw+t.aw)*100) + '%"></div><div class="s a" style="width:' + Math.round(t.aw/(t.hw+t.dw+t.aw)*100) + '%"></div></div>' +
+      '<div class="tags"><span class="t prob">' + t.hw + '% / ' + t.dw + '% / ' + t.aw + '%</span><span class="t sc">🎯 ' + t.score + '</span></div>';
+    d.onclick = function() { analyzeTicket(t.home, t.away); };
+    grid.appendChild(d);
+  });
+}
+
+function createParticles() {
+  const c = document.getElementById('particles');
+  for (let i = 0; i < 50; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDelay = Math.random() * 15 + 's';
+    p.style.animationDuration = (10 + Math.random() * 10) + 's';
+    c.appendChild(p);
+  }
+}
+createParticles();
+renderCustomTickets();
+
+async function startAnalysis() {
+  const homeTeam = document.getElementById('homeTeam').value.trim();
+  const awayTeam = document.getElementById('awayTeam').value.trim();
+  const matchUrl = document.getElementById('matchUrl').value.trim();
+  if (!matchUrl && (!homeTeam || !awayTeam)) {
+    alert('الرجاء إدخال رابط المباراة أو اسمي الفريقين');
+    return;
+  }
+  document.getElementById('inputForm').style.display = 'none';
+  document.getElementById('countdownSection').classList.add('active');
+  let timeLeft = 60;
+  const cn = document.getElementById('countdownNumber');
+  const pf = document.getElementById('progressFill');
+  const steps = document.querySelectorAll('.loading-step');
+  let currentStep = 0;
+  const stepInt = setInterval(() => {
+    if (currentStep < steps.length) {
+      steps[currentStep].classList.add('active');
+      if (currentStep > 0) { steps[currentStep-1].classList.remove('active'); steps[currentStep-1].classList.add('completed'); steps[currentStep-1].querySelector('.step-icon').textContent = '✓'; }
+      currentStep++;
+    }
+  }, 8000);
+  const timerInt = setInterval(() => {
+    timeLeft--; cn.textContent = timeLeft;
+    pf.style.width = ((60 - timeLeft) / 60 * 100) + '%';
+    if (timeLeft <= 0) { clearInterval(timerInt); clearInterval(stepInt); }
+  }, 1000);
+  try {
+    const resp = await fetch('/api/analyze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ homeTeam, awayTeam, matchUrl, neutralVenue: document.getElementById('neutralVenue').checked })
+    });
+    const data = await resp.json();
+    const checkInt = setInterval(() => {
+      if (timeLeft <= 0) { clearInterval(checkInt); showResults(data); }
+    }, 100);
+  } catch(e) {
+    console.error(e);
+    alert('حدث خطأ. الرجاء المحاولة مرة أخرى.');
+    resetForm();
+  }
+}
+
+function showResults(data) {
+  currentResult = data;
+  document.getElementById('addTicketBtn').disabled = false;
+  document.getElementById('addTicketBtn').style.opacity = '1';
+  document.getElementById('countdownSection').classList.remove('active');
+  document.getElementById('resultsSection').style.display = 'block';
+  document.getElementById('resultsSection').style.animation = 'fadeIn 0.8s ease';
+  document.getElementById('matchTeams').textContent = data.home_team + ' vs ' + data.away_team;
+  document.getElementById('firstHalfResult').textContent = data.first_half;
+  document.getElementById('secondHalfResult').textContent = data.second_half;
+  document.getElementById('finalScore').textContent = data.final_score;
+  const cb = document.getElementById('confidenceBadge');
+  const cv = document.getElementById('confidenceValue');
+  cv.textContent = data.confidence + '%';
+  if (data.confidence >= 75) { cb.style.background = 'rgba(0,255,136,0.1)'; cb.style.borderColor = 'rgba(0,255,136,0.3)'; cv.style.color = 'var(--neon-green)'; }
+  else if (data.confidence >= 55) { cb.style.background = 'rgba(255,200,0,0.1)'; cb.style.borderColor = 'rgba(255,200,0,0.3)'; cv.style.color = 'var(--neon-gold)'; }
+  else { cb.style.background = 'rgba(255,68,68,0.1)'; cb.style.borderColor = 'rgba(255,68,68,0.3)'; cv.style.color = '#ff4444'; }
+  const tsl = document.getElementById('topScoresList');
+  tsl.innerHTML = '';
+  data.top_3_scores.forEach(function(s) {
+    const d = document.createElement('div');
+    d.style.cssText = 'background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.2);border-radius:8px;padding:8px 15px;font-family:\'Orbitron\',monospace;font-size:0.85rem;color:var(--neon-blue);';
+    d.textContent = s.score + ' (' + s.prob + '%)';
+    tsl.appendChild(d);
+  });
+  document.getElementById('aiAnalysis').textContent = data.ai_analysis;
+  document.getElementById('safeBet').textContent = data.safe_bet;
+  document.getElementById('riskFill').style.width = data.risk_percent + '%';
+  document.getElementById('riskIndicator').style.left = data.risk_percent + '%';
+  document.getElementById('riskText').textContent = 'مستوى المخاطرة: ' + data.risk_level;
+  const wp = data.win_probability;
+  let winner = 'تعادل';
+  if (wp.home > wp.draw && wp.home > wp.away) winner = data.home_team;
+  else if (wp.away > wp.draw && wp.away > wp.home) winner = data.away_team;
+  document.getElementById('winner').textContent = winner;
+  document.getElementById('btts').textContent = data.btts ? 'Yes (' + data.btts_probability + '%)' : 'No (' + (100 - parseInt(data.btts_probability)) + '%)';
+  document.getElementById('totalGoals').textContent = data.over_2_5 ? 'Over 2.5 (' + data.over_2_5_prob + '%)' : 'Under 2.5 (' + (100 - parseInt(data.over_2_5_prob)) + '%)';
+}
+
+function resetForm() {
+  document.getElementById('resultsSection').style.display = 'none';
+  document.getElementById('inputForm').style.display = 'block';
+  document.getElementById('countdownNumber').textContent = '60';
+  document.getElementById('progressFill').style.width = '0%';
+  document.querySelectorAll('.loading-step').forEach(function(s) { s.classList.remove('active','completed'); s.querySelector('.step-icon').textContent = '⏳'; });
+  document.getElementById('homeTeam').value = '';
+  document.getElementById('awayTeam').value = '';
+  document.getElementById('matchUrl').value = '';
+  currentResult = null;
+}
+
+function addToTicket() {
+  if (!currentResult) { alert('No result to add'); return; }
+  const wp = currentResult.win_probability;
+  customTickets.push({
+    home: currentResult.home_team,
+    away: currentResult.away_team,
+    hw: Math.round(wp.home),
+    dw: Math.round(wp.draw),
+    aw: Math.round(wp.away),
+    score: currentResult.final_score,
+    confidence: Math.round(currentResult.confidence),
+    bet: currentResult.safe_bet
+  });
+  saveTickets();
+  const btn = document.getElementById('addTicketBtn');
+  btn.innerHTML = '<span>✅</span><span>تمت الإضافة!</span>';
+  setTimeout(function() {
+    btn.innerHTML = '<span>🎫</span><span>إضافة إلى Ticket</span>';
+  }, 2000);
+}
+
+function analyzeTicket(home, away) {
+  document.getElementById('homeTeam').value = home;
+  document.getElementById('awayTeam').value = away;
+  document.getElementById('matchUrl').value = '';
+  startAnalysis();
+}
+
+function updateTicket() {
+  const btn = event.target.closest('button') || event.target;
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<span>⟳</span> Loading...';
+  btn.disabled = true;
+  fetch('/update_ticket', { method: 'POST' })
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      btn.innerHTML = '<span>✓</span> Updated!';
+      setTimeout(function() { location.reload(); }, 1200);
+    })
+    .catch(function() { btn.innerHTML = orig; btn.disabled = false; });
+}
+
+document.getElementById('homeTeam').addEventListener('keypress', function(e) { if (e.key === 'Enter') document.getElementById('awayTeam').focus(); });
+document.getElementById('awayTeam').addEventListener('keypress', function(e) { if (e.key === 'Enter') document.getElementById('matchUrl').focus(); });
+document.getElementById('matchUrl').addEventListener('keypress', function(e) { if (e.key === 'Enter') startAnalysis(); });
+</script>
+</body>
+</html>
