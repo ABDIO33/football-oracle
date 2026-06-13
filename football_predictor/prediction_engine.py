@@ -1440,7 +1440,9 @@ def analyze_match_deep(home_team, away_team, competition=None, neutral_venue=Fal
     has_agent = bool(os.environ.get('AGENTROUTER_KEY', ''))
     has_groq = bool(os.environ.get('GROQ_KEY', ''))
     prediction = dixon_coles_predict(hg, ag, rho=-0.07)
-    if has_agent or has_groq:
+    _AI_CALLS = getattr(analyze_match_deep, '_ai_calls', 0)
+    if (has_agent or has_groq) and _AI_CALLS < 12:
+        analyze_match_deep._ai_calls = _AI_CALLS + 1
         prediction = ai_ensemble(features, prediction, home_team=home_resolved, away_team=away_resolved)
         prediction['analysis'] = {}
         prediction['analysis']['best_bet_type'] = 'ai_ensemble'
