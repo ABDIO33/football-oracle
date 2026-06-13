@@ -12,9 +12,9 @@
       "away_crest": ""
     },
     "prediction": {
-      "home_win_prob": 68.94,
-      "draw_prob": 20.57,
-      "away_win_prob": 10.49,
+      "home_win_prob": 64.8,
+      "draw_prob": 22.38,
+      "away_win_prob": 12.82,
       "most_likely_score": "2-0",
       "exact_score_prob": 13.8,
       "under_0_5": 0.07210090457224257,
@@ -44,9 +44,9 @@
         "away_form_rating": 72,
         "confidence": "HIGH",
         "recommendation": "Strong recommendation: Brazil win",
-        "best_bet": "Brazil Win",
+        "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.29,
+        "analysis_time": 9.77,
         "home_elo": 1920,
         "away_elo": 1780,
         "home_stats": {
@@ -65,9 +65,9 @@
         ],
         "all_bets": [
           {
-            "bet": "Brazil Win",
-            "confidence": 68.94,
-            "type": "home_win"
+            "bet": "Over 1.5 Goals",
+            "confidence": 70,
+            "type": "over15"
           }
         ],
         "sources": {
@@ -94,7 +94,10 @@
         "losses": 0,
         "played": 0
       },
-      "market_data_used": false,
+      "market_data_used": true,
+      "market_implied_home": 57.11,
+      "market_implied_draw": 25.76,
+      "market_implied_away": 17.13,
       "top_scores": [
         {
           "score": "2-0",
@@ -178,17 +181,17 @@
         "last_meetings": []
       },
       "kelly_home_win": 0.0,
-      "kelly_draw": 0.0,
+      "kelly_draw": 0.0001,
       "kelly_away_win": 0.0,
       "best_bet_info": {
-        "primary": "Brazil Win",
-        "primary_confidence": 68.9,
+        "primary": "Over 1.5 Goals",
+        "primary_confidence": 70,
         "secondary": "",
         "all_bets": [
           {
-            "bet": "Brazil Win",
-            "confidence": 68.94,
-            "type": "home_win"
+            "bet": "Over 1.5 Goals",
+            "confidence": 70,
+            "type": "over15"
           }
         ]
       },
@@ -200,11 +203,11 @@
       "lambda_home": 2.0486,
       "lambda_away": 0.6734
     },
-    "rating_score": 76.7,
+    "rating_score": 75.4,
     "predicted_score": "2-0",
     "confidence": "HIGH",
-    "home_win_prob": 68.94,
-    "away_win_prob": 10.49
+    "home_win_prob": 64.8,
+    "away_win_prob": 12.82
   },
   {
     "match": {
@@ -219,9 +222,9 @@
       "away_crest": ""
     },
     "prediction": {
-      "home_win_prob": 25.15,
-      "draw_prob": 29.57,
-      "away_win_prob": 45.29,
+      "home_win_prob": 18.67,
+      "draw_prob": 24.06,
+      "away_win_prob": 57.28,
       "most_likely_score": "1-1",
       "exact_score_prob": 13.77,
       "under_0_5": 0.11149898761498085,
@@ -249,11 +252,11 @@
       "analysis": {
         "home_form_rating": 45,
         "away_form_rating": 62,
-        "confidence": "MEDIUM",
-        "recommendation": "Moderate recommendation: Switzerland win or draw",
+        "confidence": "HIGH",
+        "recommendation": "Strong recommendation: Switzerland win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.96,
+        "analysis_time": 10.22,
         "home_elo": 1660,
         "away_elo": 1760,
         "home_stats": {
@@ -299,7 +302,10 @@
         "losses": 0,
         "played": 0
       },
-      "market_data_used": false,
+      "market_data_used": true,
+      "market_implied_home": 6.63,
+      "market_implied_draw": 13.83,
+      "market_implied_away": 79.54,
       "top_scores": [
         {
           "score": "1-1",
@@ -382,9 +388,9 @@
         "draws_pct": 33.3,
         "last_meetings": []
       },
-      "kelly_home_win": 0.0003,
-      "kelly_draw": 0.0,
-      "kelly_away_win": 0.0008,
+      "kelly_home_win": 0.0002,
+      "kelly_draw": 0.0003,
+      "kelly_away_win": 0.0032,
       "best_bet_info": {
         "primary": "Over 1.5 Goals",
         "primary_confidence": 70,
@@ -405,10 +411,10 @@
       "lambda_home": 0.9344,
       "lambda_away": 1.3436
     },
-    "rating_score": 29.0,
+    "rating_score": 47.7,
     "predicted_score": "1-1",
-    "confidence": "MEDIUM",
-    "home_win_prob": 25.15,
-    "away_win_prob": 45.29
+    "confidence": "HIGH",
+    "home_win_prob": 18.67,
+    "away_win_prob": 57.28
   }
 ]
