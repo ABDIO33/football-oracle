@@ -1233,8 +1233,9 @@ def _ai_chat_completion(url, headers, model, messages, temperature=0.1, max_toke
             timeout=timeout)
         if resp.status_code == 200:
             return resp.json()['choices'][0]['message']['content']
-    except:
-        pass
+        print(f"[AI] ⚠️ {model} returned {resp.status_code}")
+    except Exception as e:
+        print(f"[AI] ⚠️ {model} failed: {e}")
     return None
 
 def _pick_ai_provider():
@@ -1669,8 +1670,8 @@ def analyze_match_deep(home_team, away_team, competition=None, neutral_venue=Fal
     # Log to evaluation database
     try:
         evaluation.log_prediction(home_resolved, away_resolved, prediction)
-    except:
-        pass
+    except Exception as e:
+        print(f"[DB] log_prediction failed for {home_resolved} vs {away_resolved}: {e}")
     return prediction
 
 # ═══════════════════════════════════════════════════════════════
@@ -1834,8 +1835,8 @@ def rate_matches(matches):
                 'home_win_prob': pred['home_win_prob'],
                 'away_win_prob': pred['away_win_prob']
             })
-        except:
-            pass
+        except Exception as e:
+            print(f"[SKIP] {match.get('home_team','?')} vs {match.get('away_team','?')}: {e}")
     rated.sort(key=lambda x: x['rating_score'], reverse=True)
     return rated[:20]
 
