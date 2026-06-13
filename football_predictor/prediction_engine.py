@@ -277,6 +277,169 @@ TEAM_DB = {
     'United Arab Emirates':   (1650, 1.1, 1.4, 0.45),
     # ── OFC Nation (1) ──
     'New Zealand':            (1650, 1.2, 1.4, 0.48),
+    # ── English Championship (24) ──
+    'Leeds United':           (1710, 1.6, 1.3, 0.62),
+    'Burnley':                (1720, 1.5, 1.2, 0.60),
+    'Sheffield United':       (1700, 1.4, 1.4, 0.55),
+    'West Bromwich Albion':   (1690, 1.3, 1.4, 0.52),
+    'Middlesbrough':          (1680, 1.3, 1.4, 0.52),
+    'Coventry City':          (1680, 1.3, 1.4, 0.50),
+    'Sunderland':             (1670, 1.3, 1.5, 0.50),
+    'Norwich City':           (1670, 1.3, 1.5, 0.50),
+    'Watford':                (1660, 1.2, 1.5, 0.48),
+    'Bristol City':           (1660, 1.2, 1.5, 0.48),
+    'Cardiff City':           (1650, 1.2, 1.5, 0.48),
+    'Stoke City':             (1650, 1.1, 1.5, 0.45),
+    'Blackburn Rovers':       (1660, 1.2, 1.5, 0.48),
+    'Swansea City':           (1650, 1.2, 1.5, 0.48),
+    'Millwall':               (1640, 1.1, 1.5, 0.45),
+    'Luton Town':             (1640, 1.1, 1.6, 0.42),
+    'Hull City':              (1640, 1.1, 1.6, 0.42),
+    'Preston North End':      (1630, 1.1, 1.6, 0.42),
+    'Sheffield Wednesday':    (1630, 1.1, 1.6, 0.42),
+    'Oxford United':          (1620, 1.0, 1.6, 0.40),
+    'Plymouth Argyle':        (1610, 1.0, 1.7, 0.38),
+    'Derby County':           (1630, 1.1, 1.6, 0.42),
+    'Queens Park Rangers':    (1630, 1.1, 1.6, 0.42),
+    'Portsmouth':             (1620, 1.0, 1.6, 0.40),
+    # ── Brazilian Serie A (20) ──
+    'Flamengo':               (1800, 2.0, 0.9, 0.78),
+    'Palmeiras':              (1790, 1.9, 0.9, 0.78),
+    'Santos':                 (1720, 1.5, 1.2, 0.62),
+    'Sao Paulo':              (1750, 1.6, 1.1, 0.65),
+    'Corinthians':            (1740, 1.5, 1.2, 0.62),
+    'Internacional':          (1710, 1.4, 1.3, 0.58),
+    'Gremio':                 (1720, 1.5, 1.3, 0.58),
+    'Cruzeiro':               (1700, 1.4, 1.3, 0.55),
+    'Atletico Mineiro':       (1720, 1.5, 1.2, 0.60),
+    'Botafogo':               (1710, 1.4, 1.3, 0.58),
+    'Fortaleza':              (1680, 1.3, 1.4, 0.52),
+    'Bahia':                  (1670, 1.3, 1.4, 0.50),
+    'Fluminense':             (1700, 1.4, 1.3, 0.55),
+    'Vasco da Gama':          (1690, 1.3, 1.4, 0.52),
+    'Cuiaba':                 (1640, 1.1, 1.6, 0.45),
+    'Juventude':              (1630, 1.1, 1.6, 0.42),
+    'Vitoria':                (1640, 1.1, 1.6, 0.42),
+    'Atletico Goianiense':    (1630, 1.1, 1.6, 0.42),
+    'Criciuma':               (1620, 1.0, 1.7, 0.40),
+    'Red Bull Bragantino':    (1670, 1.3, 1.4, 0.50),
+    # ── MLS (15) ──
+    'Inter Miami':            (1710, 1.6, 1.3, 0.60),
+    'LA Galaxy':              (1720, 1.7, 1.3, 0.62),
+    'Los Angeles FC':         (1730, 1.7, 1.2, 0.65),
+    'Atlanta United':         (1700, 1.5, 1.4, 0.58),
+    'New York Red Bulls':     (1680, 1.4, 1.4, 0.55),
+    'New York City FC':       (1680, 1.4, 1.4, 0.55),
+    'Seattle Sounders':       (1700, 1.5, 1.3, 0.58),
+    'Philadelphia Union':     (1690, 1.4, 1.4, 0.55),
+    'FC Cincinnati':          (1700, 1.5, 1.3, 0.58),
+    'Columbus Crew':          (1690, 1.5, 1.3, 0.58),
+    'CF Montreal':            (1660, 1.3, 1.5, 0.50),
+    'Toronto FC':             (1650, 1.2, 1.6, 0.48),
+    'Vancouver Whitecaps':    (1660, 1.3, 1.5, 0.50),
+    'Portland Timbers':       (1670, 1.4, 1.5, 0.52),
+    'Sporting Kansas City':   (1660, 1.3, 1.5, 0.50),
+    # ── J-League (10) ──
+    'Yokohama F Marinos':     (1680, 1.5, 1.3, 0.58),
+    'Kawasaki Frontale':      (1690, 1.6, 1.3, 0.60),
+    'Urawa Red Diamonds':     (1670, 1.4, 1.3, 0.55),
+    'Vissel Kobe':            (1680, 1.5, 1.3, 0.58),
+    'Sanfrecce Hiroshima':    (1670, 1.4, 1.3, 0.55),
+    'Nagoya Grampus':         (1660, 1.3, 1.4, 0.52),
+    'Kashima Antlers':        (1670, 1.4, 1.4, 0.55),
+    'Gamba Osaka':            (1650, 1.3, 1.4, 0.50),
+    'FC Tokyo':               (1660, 1.3, 1.4, 0.52),
+    'Cerezo Osaka':           (1650, 1.3, 1.4, 0.50),
+    # ── Belgian Pro League (10) ──
+    'Club Brugge':            (1760, 1.8, 1.1, 0.68),
+    'Anderlecht':             (1730, 1.6, 1.2, 0.62),
+    'Genk':                   (1720, 1.6, 1.3, 0.60),
+    'Royal Antwerp':          (1710, 1.5, 1.3, 0.58),
+    'Union Saint-Gilloise':   (1720, 1.6, 1.2, 0.60),
+    'Gent':                   (1690, 1.4, 1.4, 0.55),
+    'Standard Liege':         (1680, 1.3, 1.4, 0.52),
+    'Cercle Brugge':          (1660, 1.2, 1.5, 0.48),
+    'Mechelen':               (1650, 1.2, 1.5, 0.48),
+    'St Truidense':           (1640, 1.1, 1.5, 0.45),
+    # ── Swiss Super League (6) ──
+    'Young Boys':             (1730, 1.7, 1.2, 0.65),
+    'Basel':                  (1710, 1.5, 1.3, 0.58),
+    'Lugano':                 (1670, 1.3, 1.4, 0.52),
+    'Zurich':                 (1680, 1.4, 1.4, 0.55),
+    'Servette':               (1670, 1.3, 1.4, 0.52),
+    'St Galler':              (1650, 1.2, 1.5, 0.48),
+    # ── Greek Super League (6) ──
+    'Olympiacos':             (1760, 1.8, 1.1, 0.68),
+    'Panathinaikos':          (1730, 1.6, 1.2, 0.62),
+    'PAOK':                   (1740, 1.7, 1.2, 0.65),
+    'AEK Athens':             (1730, 1.6, 1.2, 0.62),
+    'Aris Thessaloniki':      (1670, 1.3, 1.4, 0.52),
+    'OFI Crete':              (1630, 1.1, 1.6, 0.42),
+    # ── Austrian Bundesliga (6) ──
+    'Red Bull Salzburg':      (1760, 1.9, 1.0, 0.72),
+    'Sturm Graz':             (1700, 1.5, 1.3, 0.60),
+    'LASK Linz':              (1680, 1.4, 1.4, 0.55),
+    'Rapid Vienna':           (1670, 1.3, 1.4, 0.52),
+    'Austria Vienna':         (1660, 1.3, 1.5, 0.50),
+    'Wolfsberger AC':         (1640, 1.2, 1.5, 0.48),
+    # ── Czech First League (6) ──
+    'Slavia Prague':          (1750, 1.8, 1.0, 0.70),
+    'Sparta Prague':          (1740, 1.7, 1.1, 0.68),
+    'Viktoria Plzen':         (1700, 1.5, 1.3, 0.58),
+    'Banik Ostrava':          (1640, 1.2, 1.5, 0.45),
+    'Sigma Olomouc':          (1630, 1.1, 1.5, 0.45),
+    'Slovan Liberec':         (1630, 1.1, 1.5, 0.45),
+    # ── Russian Premier League (6) ──
+    'Zenit St Petersburg':    (1770, 1.9, 1.0, 0.72),
+    'CSKA Moscow':            (1730, 1.6, 1.2, 0.62),
+    'Spartak Moscow':         (1730, 1.6, 1.2, 0.62),
+    'Lokomotiv Moscow':       (1710, 1.5, 1.3, 0.58),
+    'Krasnodar':              (1720, 1.5, 1.2, 0.60),
+    'Dynamo Moscow':          (1710, 1.5, 1.3, 0.58),
+    # ── Croatian HNL (4) ──
+    'Dinamo Zagreb':          (1750, 1.8, 1.0, 0.70),
+    'Hajduk Split':           (1700, 1.5, 1.2, 0.60),
+    'Rijeka':                 (1670, 1.3, 1.4, 0.52),
+    'Osijek':                 (1650, 1.2, 1.5, 0.48),
+    # ── Danish Superliga (6) ──
+    'FC Copenhagen':          (1740, 1.7, 1.1, 0.65),
+    'Midtjylland':            (1710, 1.6, 1.2, 0.62),
+    'Brondby':                (1690, 1.4, 1.3, 0.55),
+    'FC Nordsjaelland':       (1680, 1.4, 1.4, 0.55),
+    'AGF Aarhus':             (1660, 1.3, 1.4, 0.50),
+    'Silkeborg':              (1640, 1.1, 1.5, 0.45),
+    # ── Norwegian Eliteserien (6) ──
+    'Bodo Glimt':             (1710, 1.7, 1.1, 0.65),
+    'Molde':                  (1690, 1.5, 1.3, 0.58),
+    'Rosenborg':              (1680, 1.4, 1.4, 0.55),
+    'Viking':                 (1650, 1.3, 1.5, 0.50),
+    'Brann':                  (1650, 1.3, 1.5, 0.50),
+    'Lillestrom':             (1630, 1.2, 1.5, 0.48),
+    # ── Swedish Allsvenskan (6) ──
+    'Malmo FF':               (1720, 1.6, 1.2, 0.62),
+    'Djurgardens':            (1680, 1.4, 1.4, 0.55),
+    'Hammarby':               (1670, 1.4, 1.4, 0.52),
+    'AIK':                    (1670, 1.3, 1.4, 0.52),
+    'IFK Goteborg':           (1660, 1.3, 1.5, 0.50),
+    'Elfsborg':               (1660, 1.3, 1.4, 0.52),
+    # ── More CONMEBOL (4) ──
+    'Venezuela':              (1650, 1.1, 1.5, 0.42),
+    'Peru':                   (1680, 1.2, 1.4, 0.48),
+    'Bolivia':                (1640, 1.0, 1.6, 0.38),
+    # ── More CAF (6) ──
+    'DR Congo':               (1660, 1.1, 1.3, 0.45),
+    'Mali':                   (1660, 1.1, 1.3, 0.45),
+    'Guinea':                 (1640, 1.0, 1.4, 0.42),
+    'Zambia':                 (1630, 1.0, 1.4, 0.40),
+    'Cape Verde':             (1640, 1.0, 1.4, 0.42),
+    'Equatorial Guinea':      (1620, 0.9, 1.5, 0.38),
+    # ── AFC Asia Cup (6) ──
+    'Uzbekistan':             (1650, 1.2, 1.3, 0.50),
+    'Jordan':                 (1640, 1.1, 1.3, 0.48),
+    'Bahrain':                (1630, 1.1, 1.4, 0.45),
+    'Oman':                   (1620, 1.0, 1.4, 0.42),
+    'China':                  (1630, 1.1, 1.4, 0.45),
+    'Thailand':               (1620, 1.0, 1.4, 0.42),
 }
 
 # ═══════════════════════════════════════════════════════════════
@@ -286,8 +449,10 @@ FOOTBALL_DATA_API_KEY = os.environ.get('FOOTBALL_DATA_API_KEY', '')
 API_SPORT_KEY = os.environ.get('API_SPORT_KEY', '')
 AGENTROUTER_KEY = os.environ.get('AGENTROUTER_KEY', '')
 AGENTROUTER_BASE = 'https://agentrouter.org/v1'
-GROQ_API_KEY = os.environ.get('GROQ_API_KEY', '')
+GROQ_KEY = os.environ.get('GROQ_KEY', '')
 GROQ_BASE = 'https://api.groq.com/openai/v1'
+OPENROUTER_KEY = os.environ.get('OPENROUTER_KEY', '')
+OPENROUTER_BASE = 'https://openrouter.ai/api/v1'
 
 # Compat keys for old env vars
 BSD_API_KEY = os.environ.get('BSD_API_KEY', '')
@@ -401,6 +566,7 @@ def _sportsdb_team_info(name):
 headers_api_football = lambda: {'x-apisports-key': os.environ.get('API_SPORT_KEY', '')}
 headers_agentrouter = lambda: {'Authorization': f'Bearer {os.environ.get("AGENTROUTER_KEY", "")}', 'Content-Type': 'application/json'}
 headers_groq = lambda: {'Authorization': f'Bearer {os.environ.get("GROQ_KEY", "")}', 'Content-Type': 'application/json'}
+headers_openrouter = lambda: {'Authorization': f'Bearer {os.environ.get("OPENROUTER_KEY", "")}', 'Content-Type': 'application/json'}
 headers_football_data = lambda: {'X-Auth-Token': os.environ.get('FOOTBALL_DATA_API_KEY', '')}
 headers_bsd = lambda: {'Authorization': f"Token {os.environ.get('BSD_API_KEY', '')}"}
 
@@ -1050,10 +1216,33 @@ def dixon_coles_predict(home_goals_avg, away_goals_avg, rho=-0.07, monte_carlo=F
 # ═══════════════════════════════════════════════════════════════
 # AI ENSEMBLE (AgentRouter or Groq)
 # ═══════════════════════════════════════════════════════════════
+def _ai_chat_completion(url, headers, model, messages, temperature=0.1, max_tokens=200, timeout=15):
+    try:
+        resp = requests.post(url, headers=headers,
+            json={"model": model, "messages": messages, "temperature": temperature, "max_tokens": max_tokens},
+            timeout=timeout)
+        if resp.status_code == 200:
+            return resp.json()['choices'][0]['message']['content']
+    except:
+        pass
+    return None
+
+def _pick_ai_provider():
+    providers = []
+    if os.environ.get('AGENTROUTER_KEY', ''):
+        providers.append(('agentrouter', AGENTROUTER_BASE, headers_agentrouter(), 'deepseek-v4-flash'))
+        providers.append(('agentrouter', AGENTROUTER_BASE, headers_agentrouter(), 'claude-opus-4-6'))
+    if os.environ.get('GROQ_KEY', ''):
+        providers.append(('groq', GROQ_BASE, headers_groq(), 'llama-3.3-70b-versatile'))
+    if os.environ.get('OPENROUTER_KEY', ''):
+        providers.append(('openrouter', OPENROUTER_BASE, headers_openrouter(), 'mistralai/mistral-7b-instruct'))
+        providers.append(('openrouter', OPENROUTER_BASE, headers_openrouter(), 'cognitivecomputations/dolphin-mixtral-8x7b'))
+        providers.append(('openrouter', OPENROUTER_BASE, headers_openrouter(), 'google/gemini-2.0-flash-exp:free'))
+    return providers
+
 def ai_ensemble(features, prediction, home_team='', away_team=''):
-    agent_key = os.environ.get('AGENTROUTER_KEY', '')
-    groq_key = os.environ.get('GROQ_KEY', '')
-    if not agent_key and not groq_key:
+    providers = _pick_ai_provider()
+    if not providers:
         return prediction
     # ── مرحلـة 1: Devil's Advocate ──
     da_system = ("You are a strict Devil's Advocate for football predictions. "
@@ -1072,23 +1261,15 @@ def ai_ensemble(features, prediction, home_team='', away_team=''):
         {"role": "user", "content": da_user}
     ]
     da_result = None
-    try:
-        if agent_key:
-            resp = requests.post(f"{AGENTROUTER_BASE}/chat/completions",
-                headers=headers_agentrouter(),
-                json={"model": "deepseek-v4-flash", "messages": da_messages, "temperature": 0.1, "max_tokens": 250},
-                timeout=15)
-            if resp.status_code == 200:
-                da_result = json.loads(resp.json()['choices'][0]['message']['content'])
-        elif groq_key:
-            resp = requests.post(f"{GROQ_BASE}/chat/completions",
-                headers=headers_groq(),
-                json={"model": "llama-3.3-70b-versatile", "messages": da_messages, "temperature": 0.1, "max_tokens": 250},
-                timeout=15)
-            if resp.status_code == 200:
-                da_result = json.loads(resp.json()['choices'][0]['message']['content'])
-    except:
-        pass
+    for prov_name, base_url, headers, model in providers:
+        content = _ai_chat_completion(f"{base_url}/chat/completions", headers, model, da_messages, 0.1, 250)
+        if content:
+            try:
+                da_result = json.loads(content)
+                if isinstance(da_result, dict):
+                    break
+            except:
+                continue
     if da_result and isinstance(da_result, dict):
         prediction['devils_advocate'] = {
             'risk_factors': da_result.get('risk_factors', []),
@@ -1116,43 +1297,15 @@ def ai_ensemble(features, prediction, home_team='', away_team=''):
         {"role": "system", "content": "You are a football prediction expert. Return JSON only."},
         {"role": "user", "content": prompt}
     ]
-    try:
-        if agent_key:
-            payload = {
-                "model": "deepseek-v4-flash",
-                "messages": messages,
-                "temperature": 0.1,
-                "max_tokens": 200
-            }
-            resp = requests.post(
-                f"{AGENTROUTER_BASE}/chat/completions",
-                headers=headers_agentrouter(),
-                json=payload,
-                timeout=15
-            )
-            if resp.status_code == 200:
-                content = resp.json()['choices'][0]['message']['content']
+    for prov_name, base_url, headers, model in providers:
+        content = _ai_chat_completion(f"{base_url}/chat/completions", headers, model, messages, 0.1, 200)
+        if content:
+            try:
                 adjustment = json.loads(content)
-                return _apply_ai_adjustment(prediction, adjustment)
-        elif groq_key:
-            payload = {
-                "model": "llama-3.3-70b-versatile",
-                "messages": messages,
-                "temperature": 0.1,
-                "max_tokens": 200
-            }
-            resp = requests.post(
-                f"{GROQ_BASE}/chat/completions",
-                headers=headers_groq(),
-                json=payload,
-                timeout=15
-            )
-            if resp.status_code == 200:
-                content = resp.json()['choices'][0]['message']['content']
-                adjustment = json.loads(content)
-                return _apply_ai_adjustment(prediction, adjustment)
-    except:
-        pass
+                if isinstance(adjustment, dict):
+                    return _apply_ai_adjustment(prediction, adjustment)
+            except:
+                continue
     return prediction
 
 def _apply_ai_adjustment(prediction, adjustment):
@@ -1566,7 +1719,18 @@ def get_daily_matches(date=None):
         {'id': '2013', 'name': 'World Cup'},
         {'id': '2000', 'name': 'FIFA World Cup'},
         {'id': '2003', 'name': 'Eredivisie'},
-        {'id': '2018', 'name': 'European Championship'}
+        {'id': '2018', 'name': 'European Championship'},
+        {'id': '2016', 'name': 'English Championship'},
+        {'id': '2024', 'name': 'Primeira Liga'},
+        {'id': '2006', 'name': 'Scottish Premiership'},
+        {'id': '2004', 'name': 'UEFA Europa League'},
+        {'id': '2008', 'name': 'UEFA Europa Conference'},
+        {'id': '2022', 'name': 'Super Lig'},
+        {'id': '2017', 'name': 'Serie B'},
+        {'id': '2010', 'name': 'Brasileirão'},
+        {'id': '2009', 'name': 'Jupiler Pro League'},
+        {'id': '2007', 'name': 'MLS'},
+        {'id': '2011', 'name': 'Liga MX'},
     ]
     if os.environ.get('FOOTBALL_DATA_API_KEY', ''):
         for comp in competitions:
