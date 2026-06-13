@@ -15,6 +15,10 @@ except ImportError:
 import evaluation
 import venues as venue_module
 try:
+    import calibration
+except ImportError:
+    calibration = None
+try:
     import lineups  # Injury adjustment, expected lineups
 except ImportError:
     lineups = None
@@ -1510,9 +1514,18 @@ def analyze_match_deep(home_team, away_team, competition=None, neutral_venue=Fal
     # Normalize probabilities to percentages
     total_prob = prediction['home_win_prob'] + prediction['draw_prob'] + prediction['away_win_prob']
     if total_prob > 0:
-        prediction['home_win_prob'] = round(prediction['home_win_prob'] / total_prob * 100, 2)
-        prediction['draw_prob'] = round(prediction['draw_prob'] / total_prob * 100, 2)
-        prediction['away_win_prob'] = round(prediction['away_win_prob'] / total_prob * 100, 2)
+        hw = round(prediction['home_win_prob'] / total_prob * 100, 2)
+        dw = round(prediction['draw_prob'] / total_prob * 100, 2)
+        aw = round(prediction['away_win_prob'] / total_prob * 100, 2)
+    # Calibration adjustment (after 10+ resolved predictions)
+    if calibration is not None:
+        try:
+            hw, dw, aw = calibration.calibrate_probabilities(hw, dw, aw)
+        except:
+            pass
+    prediction['home_win_prob'] = hw
+    prediction['draw_prob'] = dw
+    prediction['away_win_prob'] = aw
     under = prediction['under_2_5']
     over = prediction['over_2_5']
     prediction['under_2_5'] = round(under * 100, 2)

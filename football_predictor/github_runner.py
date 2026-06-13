@@ -6,6 +6,10 @@ os.chdir(os.path.dirname(__file__))
 sys.path.insert(0, '.')
 
 import evaluation
+try:
+    import calibration
+except ImportError:
+    calibration = None
 from prediction_engine import get_daily_matches, analyze_match_deep, rate_matches
 
 os.makedirs('output', exist_ok=True)
@@ -266,6 +270,12 @@ def main():
         print(f"[📊] Last {metrics['total_resolved']} resolved | 1X2={metrics['1x2_accuracy']}% | Brier={metrics['brier_score']} | Exact Top1={metrics['exact_score_top1_hit_rate']}%")
     else:
         print("[📊] Not enough resolved predictions yet (<5)")
+    # Calibration report
+    if calibration is not None:
+        try:
+            print(calibration.calibration_report())
+        except:
+            pass
 
 if __name__ == '__main__':
     main()
