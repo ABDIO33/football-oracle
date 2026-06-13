@@ -8,10 +8,16 @@ import time
 import difflib
 import sqlite3
 from collections import defaultdict
-import edge_scraper  # Flashscore via Edge WebDriver (unlimited)
+try:
+    import edge_scraper  # Flashscore via Edge WebDriver (unlimited)
+except ImportError:
+    edge_scraper = None  # No browser in CI (GitHub Actions)
 import evaluation
 import venues as venue_module
-import lineups  # Injury adjustment, expected lineups
+try:
+    import lineups  # Injury adjustment, expected lineups
+except ImportError:
+    lineups = None
 
 # ═══════════════════════════════════════════════════════════════
 # TEAM DATABASE — ~260 teams (clubs + World Cup 2026 nations)
