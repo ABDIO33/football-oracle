@@ -46,7 +46,7 @@
         "recommendation": "Strong recommendation: Brazil win",
         "best_bet": "Brazil Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.97,
+        "analysis_time": 9.1,
         "home_elo": 1920,
         "away_elo": 1780,
         "home_stats": {
@@ -253,7 +253,7 @@
         "recommendation": "Moderate recommendation: Switzerland win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.51,
+        "analysis_time": 10.31,
         "home_elo": 1660,
         "away_elo": 1760,
         "home_stats": {
