@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: Netherlands win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 15.74,
+        "analysis_time": 10.99,
         "home_elo": 1840,
         "away_elo": 1750,
         "home_stats": {
@@ -212,7 +212,7 @@
       "competition": "FIFA World Cup",
       "date": "2026-06-14",
       "time": "2026-06-14T23:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home_crest": "",
       "away_crest": ""
     },
@@ -321,7 +321,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.7,
+        "analysis_time": 8.37,
         "home_elo": 1730,
         "away_elo": 1760,
         "home_stats": {
