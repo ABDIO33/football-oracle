@@ -24,3 +24,6 @@ football_predictor/team_page_data.json
 football_predictor/fotmob_match.json
 football_predictor/fotmob_match_detail.json
 football_predictor/homepage_data.json
+football_predictor/backfill.log
+football_predictor/models/lambda_home.pkl
+football_predictor/models/lambda_away.pkl
