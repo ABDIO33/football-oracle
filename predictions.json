@@ -1,222 +1,6 @@
 [
   {
     "match": {
-      "fixture_id": 537351,
-      "home_team": "Germany",
-      "away_team": "Curaçao",
-      "competition": "FIFA World Cup",
-      "date": "2026-06-14",
-      "time": "2026-06-14T17:00:00Z",
-      "status": "TIMED",
-      "home_crest": "",
-      "away_crest": ""
-    },
-    "prediction": {
-      "home_win_prob": 85.13,
-      "draw_prob": 10.99,
-      "away_win_prob": 3.89,
-      "most_likely_score": "2-0",
-      "exact_score_prob": 13.42,
-      "under_0_5": 0.03462039686309025,
-      "under_1_5": 0.13596647876260579,
-      "under_2_5": 32.7,
-      "under_3_5": 0.5439667036438827,
-      "under_4_5": 0.7320747281669977,
-      "under_5_5": 0.8625629767952514,
-      "over_2_5": 67.3,
-      "over_3_5": 0.45603329635611733,
-      "over_4_5": 0.2679252718330023,
-      "btts_yes": 39.55,
-      "btts_no": 60.45,
-      "asian_handicap": {
-        "ah_0": 0.8513,
-        "ah_m025": 0.9062,
-        "ah_05": 0.8513,
-        "ah_m075": 0.7606,
-        "ah_10": 0.7606
-      },
-      "probs": "[[3.46203969e-02 1.32553967e-02 4.45996573e-03 7.94968482e-04\n  1.06274621e-04 1.13657789e-05 1.01294904e-06 7.73800848e-08\n  5.17224227e-09 3.07309505e-10]\n [8.80906852e-02 5.23626699e-02 1.30842144e-02 2.33220135e-03\n  3.11778164e-04 3.33438187e-05 2.97169155e-06 2.27010180e-07\n  1.51738222e-08 9.01554791e-10]\n [1.34240789e-01 7.17834192e-02 1.91925990e-02 3.42099295e-03\n  4.57332254e-04 4.89104290e-05 4.35903008e-06 3.32990213e-07\n  2.22577432e-08 1.32244696e-09]\n [1.31274198e-01 7.01970753e-02 1.87684612e-02 3.34539232e-03\n  4.47225655e-04 4.78295560e-05 4.26269974e-06 3.25631453e-07\n  2.17658687e-08 1.29322216e-09]\n [9.62798743e-02 5.14843411e-02 1.37652723e-02 2.45359680e-03\n  3.28006802e-04 3.50794269e-05 3.12637366e-06 2.38826485e-07\n  1.59636481e-08 9.48482407e-10]\n [5.64913095e-02 3.02079523e-02 8.07664389e-03 1.43962482e-03\n  1.92454902e-04 2.05825234e-05 1.83437030e-06 1.40129191e-07\n  9.36652016e-09 5.56513120e-10]\n [2.76214532e-02 1.47701929e-02 3.94907895e-03 7.03905252e-04\n  9.41009177e-05 1.00638348e-05 8.96916250e-07 6.85162360e-08\n  4.57976458e-09 2.72107360e-10]\n [1.15761625e-02 6.19019400e-03 1.65506063e-03 2.95006984e-04\n  3.94377337e-05 4.21775735e-06 3.75897974e-07 2.87151830e-08\n  1.91938124e-09 1.14040308e-10]\n [4.24512771e-03 2.27002377e-03 6.06932024e-04 1.08182856e-04\n  1.44623243e-05 1.54670588e-06 1.37846622e-07 1.05302270e-08\n  7.03861792e-10 4.18200479e-11]\n [1.38377150e-03 7.39952816e-04 1.97839805e-04 3.52640400e-05\n  4.71424032e-06 5.04175059e-07 4.49334486e-08 3.43250640e-09\n  2.29435710e-10 1.36319551e-11]]",
-      "expected_goals_home": 2.93,
-      "expected_goals_away": 0.53,
-      "auto_rejected": false,
-      "analysis": {
-        "home_form_rating": 78,
-        "away_form_rating": 45,
-        "confidence": "HIGH",
-        "recommendation": "Strong recommendation: Germany win",
-        "best_bet": "Germany Win",
-        "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.94,
-        "home_elo": 1850,
-        "away_elo": 1640,
-        "home_stats": {
-          "attack": 2.1,
-          "defense": 0.9
-        },
-        "away_stats": {
-          "attack": 1.1,
-          "defense": 1.6
-        },
-        "data_source": "database",
-        "key_factors": [
-          "Germany in excellent form",
-          "Germany significantly higher rated"
-        ],
-        "all_bets": [
-          {
-            "bet": "Germany Win",
-            "confidence": 85.13,
-            "type": "home_win"
-          },
-          {
-            "bet": "Over 2.5 Goals",
-            "confidence": 67.3,
-            "type": "over25"
-          }
-        ],
-        "sources": {
-          "stats_home": "database",
-          "stats_away": "database",
-          "h2h": "api"
-        }
-      },
-      "wc_home_stats": {
-        "matches": [],
-        "goals_scored": 0,
-        "goals_conceded": 0,
-        "wins": 0,
-        "draws": 0,
-        "losses": 0,
-        "played": 0
-      },
-      "wc_away_stats": {
-        "matches": [],
-        "goals_scored": 0,
-        "goals_conceded": 0,
-        "wins": 0,
-        "draws": 0,
-        "losses": 0,
-        "played": 0
-      },
-      "market_data_used": false,
-      "top_scores": [
-        {
-          "score": "2-0",
-          "prob": 13.42,
-          "rank": 1,
-          "type": "home_win"
-        },
-        {
-          "score": "3-0",
-          "prob": 13.13,
-          "rank": 2,
-          "type": "home_win"
-        },
-        {
-          "score": "4-0",
-          "prob": 9.63,
-          "rank": 3,
-          "type": "home_win"
-        },
-        {
-          "score": "1-0",
-          "prob": 8.81,
-          "rank": 4,
-          "type": "home_win"
-        },
-        {
-          "score": "2-1",
-          "prob": 7.18,
-          "rank": 5,
-          "type": "home_win"
-        },
-        {
-          "score": "3-1",
-          "prob": 7.02,
-          "rank": 6,
-          "type": "home_win"
-        },
-        {
-          "score": "5-0",
-          "prob": 5.65,
-          "rank": 7,
-          "type": "home_win"
-        },
-        {
-          "score": "1-1",
-          "prob": 5.24,
-          "rank": 8,
-          "type": "draw"
-        }
-      ],
-      "top_3": [
-        {
-          "score": "2-0",
-          "prob": 13.42,
-          "rank": 1,
-          "type": "home_win"
-        },
-        {
-          "score": "3-0",
-          "prob": 13.13,
-          "rank": 2,
-          "type": "home_win"
-        },
-        {
-          "score": "4-0",
-          "prob": 9.63,
-          "rank": 3,
-          "type": "home_win"
-        }
-      ],
-      "h2h": {
-        "matches_played": 0,
-        "home_wins": 0,
-        "away_wins": 0,
-        "draws": 0,
-        "home_goals": 0,
-        "away_goals": 0,
-        "home_wins_pct": 33.3,
-        "away_wins_pct": 33.3,
-        "draws_pct": 33.3,
-        "last_meetings": []
-      },
-      "kelly_home_win": 0.0,
-      "kelly_draw": 0.0,
-      "kelly_away_win": 0.0,
-      "best_bet_info": {
-        "primary": "Germany Win",
-        "primary_confidence": 85.1,
-        "secondary": "Over 2.5 Goals",
-        "all_bets": [
-          {
-            "bet": "Germany Win",
-            "confidence": 85.13,
-            "type": "home_win"
-          },
-          {
-            "bet": "Over 2.5 Goals",
-            "confidence": 67.3,
-            "type": "over25"
-          }
-        ]
-      },
-      "home_trend": "ascending",
-      "away_trend": "stable",
-      "friendly_warning": false,
-      "competition_type": "FIFA World Cup",
-      "match_extra": {},
-      "lambda_home": 2.9337,
-      "lambda_away": 0.5347
-    },
-    "rating_score": 96.2,
-    "predicted_score": "2-0",
-    "confidence": "HIGH",
-    "home_win_prob": 85.13,
-    "away_win_prob": 3.89
-  },
-  {
-    "match": {
       "fixture_id": 537357,
       "home_team": "Netherlands",
       "away_team": "Japan",
@@ -228,20 +12,20 @@
       "away_crest": ""
     },
     "prediction": {
-      "home_win_prob": 52.49,
-      "draw_prob": 26.47,
-      "away_win_prob": 21.04,
+      "home_win_prob": 55.69,
+      "draw_prob": 25.8,
+      "away_win_prob": 18.5,
       "most_likely_score": "1-0",
       "exact_score_prob": 12.41,
       "under_0_5": 0.08695930054220892,
-      "under_1_5": 0.2714076985583667,
+      "under_1_5": 0.27140769855836666,
       "under_2_5": 53.39,
       "under_3_5": 0.7492391624307387,
-      "under_4_5": 0.8859311813257101,
-      "under_5_5": 0.9553404048592613,
+      "under_4_5": 0.8859311813257102,
+      "under_5_5": 0.9553404048592614,
       "over_2_5": 46.61,
       "over_3_5": 0.25076083756926126,
-      "over_4_5": 0.11406881867428986,
+      "over_4_5": 0.11406881867428975,
       "btts_yes": 47.85,
       "btts_no": 52.15,
       "asian_handicap": {
@@ -254,64 +38,6 @@
       "probs": "[[8.69593005e-02 6.03295191e-02 2.95710190e-02 8.53108055e-03\n  1.84587828e-03 3.19515597e-04 4.60892690e-05 5.69850308e-06\n  6.16495354e-07 5.92852024e-08]\n [1.24118879e-01 1.22355253e-01 4.94843481e-02 1.42759693e-02\n  3.08890551e-03 5.34679615e-04 7.71261023e-05 9.53591457e-06\n  1.03164760e-06 9.92082687e-08]\n [1.10548130e-01 9.56776302e-02 4.14037256e-02 1.19447530e-02\n  2.58449795e-03 4.47368287e-04 6.45316771e-05 7.97873278e-06\n  8.63183124e-07 8.30079023e-08]\n [6.16640026e-02 5.33692033e-02 2.30950938e-02 6.66281085e-03\n  1.44163893e-03 2.49543065e-04 3.59959186e-05 4.45055558e-06\n  4.81485541e-07 4.63019998e-08]\n [2.57972424e-02 2.23270987e-02 9.66187254e-03 2.78739847e-03\n  6.03112144e-04 1.04396774e-04 1.50589550e-05 1.86189764e-06\n  2.01430311e-07 1.93705219e-08]\n [8.63385685e-03 7.47246435e-03 3.23364890e-03 9.32890385e-04\n  2.01850409e-04 3.49396570e-05 5.03995193e-06 6.23142485e-07\n  6.74149757e-08 6.48295311e-09]\n [2.40799265e-03 2.08407894e-03 9.01868415e-04 2.60184206e-04\n  5.62963123e-05 9.74471070e-06 1.40564842e-06 1.73795159e-07\n  1.88021146e-08 1.80810312e-09]\n [5.75650229e-04 4.98216022e-04 2.15598980e-04 6.21991507e-05\n  1.34580913e-05 2.32955235e-06 3.36031687e-07 4.15471463e-08\n  4.49479843e-09 4.32241756e-10]\n [1.20412136e-04 1.04214768e-04 4.50981035e-05 1.30105612e-05\n  2.81510792e-06 4.87286132e-07 7.02897193e-08 8.69066034e-09\n  9.40203356e-10 9.04145438e-11]\n [2.23887225e-05 1.93770795e-05 8.38527544e-06 2.41910704e-06\n  5.23424567e-07 9.06031101e-08 1.30692559e-08 1.61589014e-09\n  1.74815868e-10 1.68111472e-11]]",
       "expected_goals_home": 1.67,
       "expected_goals_away": 0.87,
-      "auto_rejected": false,
-      "analysis": {
-        "home_form_rating": 78,
-        "away_form_rating": 65,
-        "confidence": "MEDIUM",
-        "recommendation": "Moderate recommendation: Netherlands win or draw",
-        "best_bet": "Over 1.5 Goals",
-        "best_bet_type": "ai_ensemble",
-        "analysis_time": 7.82,
-        "home_elo": 1840,
-        "away_elo": 1750,
-        "home_stats": {
-          "attack": 2.0,
-          "defense": 0.9
-        },
-        "away_stats": {
-          "attack": 1.6,
-          "defense": 1.0
-        },
-        "data_source": "database",
-        "key_factors": [
-          "Netherlands in excellent form"
-        ],
-        "all_bets": [
-          {
-            "bet": "Over 1.5 Goals",
-            "confidence": 70,
-            "type": "over15"
-          }
-        ],
-        "sources": {
-          "stats_home": "database",
-          "stats_away": "database",
-          "h2h": "api"
-        }
-      },
-      "wc_home_stats": {
-        "matches": [],
-        "goals_scored": 0,
-        "goals_conceded": 0,
-        "wins": 0,
-        "draws": 0,
-        "losses": 0,
-        "played": 0
-      },
-      "wc_away_stats": {
-        "matches": [],
-        "goals_scored": 0,
-        "goals_conceded": 0,
-        "wins": 0,
-        "draws": 0,
-        "losses": 0,
-        "played": 0
-      },
-      "market_data_used": true,
-      "market_implied_home": 46.53,
-      "market_implied_draw": 27.71,
-      "market_implied_away": 25.76,
       "top_scores": [
         {
           "score": "1-0",
@@ -382,108 +108,28 @@
           "type": "home_win"
         }
       ],
-      "h2h": {
-        "matches_played": 0,
-        "home_wins": 0,
-        "away_wins": 0,
-        "draws": 0,
-        "home_goals": 0,
-        "away_goals": 0,
-        "home_wins_pct": 33.3,
-        "away_wins_pct": 33.3,
-        "draws_pct": 33.3,
-        "last_meetings": []
-      },
-      "kelly_home_win": 0.0028,
-      "kelly_draw": 0.0002,
-      "kelly_away_win": 0.0,
-      "best_bet_info": {
-        "primary": "Over 1.5 Goals",
-        "primary_confidence": 70,
-        "secondary": "",
-        "all_bets": [
-          {
-            "bet": "Over 1.5 Goals",
-            "confidence": 70,
-            "type": "over15"
-          }
-        ]
-      },
-      "home_trend": "ascending",
-      "away_trend": "stable",
-      "friendly_warning": false,
-      "competition_type": "FIFA World Cup",
-      "match_extra": {},
-      "lambda_home": 1.6734,
-      "lambda_away": 0.8655
-    },
-    "rating_score": 31.3,
-    "predicted_score": "1-0",
-    "confidence": "MEDIUM",
-    "home_win_prob": 52.49,
-    "away_win_prob": 21.04
-  },
-  {
-    "match": {
-      "fixture_id": 537352,
-      "home_team": "Ivory Coast",
-      "away_team": "Ecuador",
-      "competition": "FIFA World Cup",
-      "date": "2026-06-14",
-      "time": "2026-06-14T23:00:00Z",
-      "status": "TIMED",
-      "home_crest": "",
-      "away_crest": ""
-    },
-    "prediction": {
-      "home_win_prob": 38.77,
-      "draw_prob": 29.66,
-      "away_win_prob": 31.57,
-      "most_likely_score": "1-1",
-      "exact_score_prob": 14.01,
-      "under_0_5": 0.10341863641923148,
-      "under_1_5": 0.3076952958701307,
-      "under_2_5": 57.97,
-      "under_3_5": 0.7866769572383401,
-      "under_4_5": 0.9088663828609347,
-      "under_5_5": 0.9665828556141114,
-      "over_2_5": 42.03,
-      "over_3_5": 0.21332304276165992,
-      "over_4_5": 0.09113361713906531,
-      "btts_yes": 48.77,
-      "btts_no": 51.23,
-      "asian_handicap": {
-        "ah_0": 0.3877,
-        "ah_m025": 0.536,
-        "ah_05": 0.3877,
-        "ah_m075": 0.2814,
-        "ah_10": 0.2814
-      },
-      "probs": "[[1.03418636e-01 9.51820844e-02 5.77599275e-02 2.13149145e-02\n  5.89931811e-03 1.30620103e-03 2.41011066e-04 3.81168633e-05\n  5.27479248e-06 6.48845176e-07]\n [1.09094575e-01 1.40086612e-01 7.24704684e-02 2.67434865e-02\n  7.40178123e-03 1.63886980e-03 3.02392776e-04 4.78246261e-05\n  6.61819879e-06 8.14095791e-07]\n [7.41889245e-02 8.21329244e-02 4.54637759e-02 1.67773150e-02\n  4.64344898e-03 1.02813202e-03 1.89703719e-04 3.00024014e-05\n  4.15187472e-06 5.10716563e-07]\n [3.10278905e-02 3.43502942e-02 1.90142271e-02 7.01674401e-03\n  1.94202069e-03 4.29993667e-04 7.93394198e-05 1.25478463e-05\n  1.73643054e-06 2.13596001e-07]\n [9.73255098e-03 1.07746928e-02 5.96421257e-03 2.20094946e-03\n  6.09155669e-04 1.34876565e-04 2.48864791e-05 3.93589613e-06\n  5.44667990e-07 6.69988818e-08]\n [2.44225559e-03 2.70376737e-03 1.49664066e-03 5.52299303e-04\n  1.52859599e-04 3.38454990e-05 6.24493443e-06 9.87661338e-07\n  1.36677264e-07 1.68124877e-08]\n [5.10709916e-04 5.65395701e-04 3.12968564e-04 1.15493535e-04\n  3.19650872e-05 7.07756881e-06 1.30590343e-06 2.06533846e-07\n  2.85811340e-08 3.51572711e-09]\n [9.15399518e-05 1.01341865e-04 5.60966732e-05 2.07011305e-05\n  5.72944141e-06 1.26858768e-06 2.34070914e-07 3.70192505e-08\n  5.12289961e-09 6.30161037e-10]\n [1.43567164e-05 1.58940045e-05 8.79795119e-06 3.24667267e-06\n  8.98579951e-07 1.98959615e-07 3.67106346e-08 5.80593358e-09\n  8.03452650e-10 9.88316371e-11]\n [2.00146058e-06 2.21577293e-06 1.22651671e-06 4.52616544e-07\n  1.25270452e-07 2.77368317e-08 5.11780591e-09 8.09401459e-10\n  1.12008816e-10 1.37780548e-11]]",
-      "expected_goals_home": 1.25,
-      "expected_goals_away": 1.11,
       "auto_rejected": false,
       "analysis": {
-        "home_form_rating": 60,
+        "home_form_rating": 78,
         "away_form_rating": 65,
-        "confidence": "LOW",
-        "recommendation": "Uncertain match, avoid heavy betting",
+        "confidence": "HIGH",
+        "recommendation": "Strong recommendation: Netherlands win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 6.24,
-        "home_elo": 1730,
-        "away_elo": 1760,
+        "analysis_time": 15.74,
+        "home_elo": 1840,
+        "away_elo": 1750,
         "home_stats": {
-          "attack": 1.5,
-          "defense": 1.1
+          "attack": 2.0,
+          "defense": 0.9
         },
         "away_stats": {
           "attack": 1.6,
-          "defense": 1.1
+          "defense": 1.0
         },
         "data_source": "database",
         "key_factors": [
-          "Evenly matched teams"
+          "Netherlands in excellent form"
         ],
         "all_bets": [
           {
@@ -517,6 +163,86 @@
         "played": 0
       },
       "market_data_used": false,
+      "h2h": {
+        "matches_played": 0,
+        "home_wins": 0,
+        "away_wins": 0,
+        "draws": 0,
+        "home_goals": 0,
+        "away_goals": 0,
+        "home_wins_pct": 33.3,
+        "away_wins_pct": 33.3,
+        "draws_pct": 33.3,
+        "last_meetings": []
+      },
+      "kelly_home_win": 0.003,
+      "kelly_draw": 0.0004,
+      "kelly_away_win": 0.0002,
+      "best_bet_info": {
+        "primary": "Over 1.5 Goals",
+        "primary_confidence": 70,
+        "secondary": "",
+        "all_bets": [
+          {
+            "bet": "Over 1.5 Goals",
+            "confidence": 70,
+            "type": "over15"
+          }
+        ]
+      },
+      "home_trend": "ascending",
+      "away_trend": "stable",
+      "friendly_warning": false,
+      "competition_type": "FIFA World Cup",
+      "match_extra": {},
+      "lambda_home": 1.6734,
+      "lambda_away": 0.8655
+    },
+    "rating_score": 47.4,
+    "predicted_score": "1-0",
+    "confidence": "HIGH",
+    "home_win_prob": 55.69,
+    "away_win_prob": 18.5
+  },
+  {
+    "match": {
+      "fixture_id": 537352,
+      "home_team": "Ivory Coast",
+      "away_team": "Ecuador",
+      "competition": "FIFA World Cup",
+      "date": "2026-06-14",
+      "time": "2026-06-14T23:00:00Z",
+      "status": "SCHEDULED",
+      "home_crest": "",
+      "away_crest": ""
+    },
+    "prediction": {
+      "home_win_prob": 38.77,
+      "draw_prob": 29.66,
+      "away_win_prob": 31.57,
+      "most_likely_score": "1-1",
+      "exact_score_prob": 14.01,
+      "under_0_5": 0.10341863641923148,
+      "under_1_5": 0.3076952958701307,
+      "under_2_5": 57.97,
+      "under_3_5": 0.7866769572383401,
+      "under_4_5": 0.9088663828609347,
+      "under_5_5": 0.9665828556141114,
+      "over_2_5": 42.03,
+      "over_3_5": 0.21332304276165992,
+      "over_4_5": 0.09113361713906531,
+      "btts_yes": 48.77,
+      "btts_no": 51.23,
+      "asian_handicap": {
+        "ah_0": 0.3877,
+        "ah_m025": 0.536,
+        "ah_05": 0.3877,
+        "ah_m075": 0.2814,
+        "ah_10": 0.2814
+      },
+      "probs": "[[1.03418636e-01 9.51820844e-02 5.77599275e-02 2.13149145e-02\n  5.89931811e-03 1.30620103e-03 2.41011066e-04 3.81168633e-05\n  5.27479248e-06 6.48845176e-07]\n [1.09094575e-01 1.40086612e-01 7.24704684e-02 2.67434865e-02\n  7.40178123e-03 1.63886980e-03 3.02392776e-04 4.78246261e-05\n  6.61819879e-06 8.14095791e-07]\n [7.41889245e-02 8.21329244e-02 4.54637759e-02 1.67773150e-02\n  4.64344898e-03 1.02813202e-03 1.89703719e-04 3.00024014e-05\n  4.15187472e-06 5.10716563e-07]\n [3.10278905e-02 3.43502942e-02 1.90142271e-02 7.01674401e-03\n  1.94202069e-03 4.29993667e-04 7.93394198e-05 1.25478463e-05\n  1.73643054e-06 2.13596001e-07]\n [9.73255098e-03 1.07746928e-02 5.96421257e-03 2.20094946e-03\n  6.09155669e-04 1.34876565e-04 2.48864791e-05 3.93589613e-06\n  5.44667990e-07 6.69988818e-08]\n [2.44225559e-03 2.70376737e-03 1.49664066e-03 5.52299303e-04\n  1.52859599e-04 3.38454990e-05 6.24493443e-06 9.87661338e-07\n  1.36677264e-07 1.68124877e-08]\n [5.10709916e-04 5.65395701e-04 3.12968564e-04 1.15493535e-04\n  3.19650872e-05 7.07756881e-06 1.30590343e-06 2.06533846e-07\n  2.85811340e-08 3.51572711e-09]\n [9.15399518e-05 1.01341865e-04 5.60966732e-05 2.07011305e-05\n  5.72944141e-06 1.26858768e-06 2.34070914e-07 3.70192505e-08\n  5.12289961e-09 6.30161037e-10]\n [1.43567164e-05 1.58940045e-05 8.79795119e-06 3.24667267e-06\n  8.98579951e-07 1.98959615e-07 3.67106346e-08 5.80593358e-09\n  8.03452650e-10 9.88316371e-11]\n [2.00146058e-06 2.21577293e-06 1.22651671e-06 4.52616544e-07\n  1.25270452e-07 2.77368317e-08 5.11780591e-09 8.09401459e-10\n  1.12008816e-10 1.37780548e-11]]",
+      "expected_goals_home": 1.25,
+      "expected_goals_away": 1.11,
       "top_scores": [
         {
           "score": "1-1",
@@ -587,6 +313,61 @@
           "type": "draw"
         }
       ],
+      "auto_rejected": false,
+      "analysis": {
+        "home_form_rating": 60,
+        "away_form_rating": 65,
+        "confidence": "LOW",
+        "recommendation": "Uncertain match, avoid heavy betting",
+        "best_bet": "Over 1.5 Goals",
+        "best_bet_type": "ai_ensemble",
+        "analysis_time": 8.7,
+        "home_elo": 1730,
+        "away_elo": 1760,
+        "home_stats": {
+          "attack": 1.5,
+          "defense": 1.1
+        },
+        "away_stats": {
+          "attack": 1.6,
+          "defense": 1.1
+        },
+        "data_source": "database",
+        "key_factors": [
+          "Evenly matched teams"
+        ],
+        "all_bets": [
+          {
+            "bet": "Over 1.5 Goals",
+            "confidence": 70,
+            "type": "over15"
+          }
+        ],
+        "sources": {
+          "stats_home": "database",
+          "stats_away": "database",
+          "h2h": "api"
+        }
+      },
+      "wc_home_stats": {
+        "matches": [],
+        "goals_scored": 0,
+        "goals_conceded": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "played": 0
+      },
+      "wc_away_stats": {
+        "matches": [],
+        "goals_scored": 0,
+        "goals_conceded": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "played": 0
+      },
+      "market_data_used": false,
       "h2h": {
         "matches_played": 0,
         "home_wins": 0,
