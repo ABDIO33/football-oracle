@@ -1,9 +1,9 @@
 """Sofascore API client — unlimited, no API key, replaces api-football"""
-import requests, json, time, os, re, sqlite3
+from curl_cffi import requests
+import json, time, os, sqlite3
 from datetime import datetime, timedelta
-import edge_scraper
 
-BASE = 'https://api.sofascore.com/api/v1'
+BASE = 'https://www.sofascore.com/api/v1'
 SOFA_HEADERS = {
     'User-Agent': (
         'Mozilla/5.0 (Linux; Android 14; Pixel 9 Pro) '
@@ -14,21 +14,21 @@ SOFA_HEADERS = {
     'Accept-Language': 'en-US,en;q=0.9',
     'Origin': 'https://www.sofascore.com',
     'Referer': 'https://www.sofascore.com/',
+    'x-requested-with': '721637',
 }
-SOFA_DB = os.path.join(os.path.dirname(__file__), 'sofascore.db')
+SOFA_DB = os.path.join(os.path.dirname(__file__), 'scrape_cache.db')
 _cache = {}
 _last_req = 0
 
 def _db():
     conn = sqlite3.connect(SOFA_DB)
-    conn.execute('CREATE TABLE IF NOT EXISTS team_map (name TEXT PRIMARY KEY, sofa_id INTEGER, slug TEXT)')
-    conn.execute('CREATE TABLE IF NOT EXISTS team_cache (sofa_id INTEGER PRIMARY KEY, data TEXT, updated REAL)')
-    conn.execute('CREATE TABLE IF NOT EXISTS match_cache (match_id INTEGER PRIMARY KEY, data TEXT, updated REAL)')
-    conn.execute('CREATE TABLE IF NOT EXISTS edge_cache (path TEXT PRIMARY KEY, data TEXT, updated REAL)')
+    conn.execute('CREATE TABLE IF NOT EXISTS sofa_team_map (name TEXT PRIMARY KEY, sofa_id INTEGER, slug TEXT)')
+    conn.execute('CREATE TABLE IF NOT EXISTS sofa_team_cache (sofa_id INTEGER PRIMARY KEY, data TEXT, updated REAL)')
+    conn.execute('CREATE TABLE IF NOT EXISTS sofa_match_cache (match_id INTEGER PRIMARY KEY, data TEXT, updated REAL)')
     conn.commit()
     return conn
 
-def _get(path, params=None, cache_minutes=1440, allow_edge=True):
+def _get(path, params=None, cache_minutes=1440):
     global _last_req
     url = f'{BASE}{path}'
     if params:
@@ -42,83 +42,13 @@ def _get(path, params=None, cache_minutes=1440, allow_edge=True):
     if now - _last_req < 0.3:
         time.sleep(0.3 - (now - _last_req))
     try:
-        r = requests.get(url, headers=SOFA_HEADERS, timeout=15)
+        r = requests.get(url, headers=SOFA_HEADERS, impersonate="chrome120", timeout=15)
         _last_req = time.time()
         if r.status_code == 200:
             data = r.json()
             _cache[url] = {'data': data, 'time': time.time()}
             return data
     except Exception:
-        pass
-    # Fallback via Edge WebDriver when direct fails (bypasses Cloudflare)
-    if allow_edge:
-        try:
-            html = _edge_page(path)
-            if html:
-                data = json.loads(html)
-                _cache[url] = {'data': data, 'time': time.time()}
-                return data
-        except:
-            pass
-    return None
-
-def _edge_page(path):
-    """Fetch Sofascore API endpoint via Edge WebDriver bypassing Cloudflare"""
-    api_url = f'{BASE}{path}'
-    safe_path = path.replace('/', '_').replace('?', '_')
-    try:
-        conn = sqlite3.connect(SOFA_DB)
-        cur = conn.execute('SELECT data FROM edge_cache WHERE path = ? AND updated > ?', (safe_path, time.time() - 3600))
-        row = cur.fetchone()
-        conn.close()
-        if row:
-            return row[0]
-    except:
-        pass
-    driver = edge_scraper._driver_get()
-    try:
-        # Navigate to the Sofascore website page that loads this API data
-        if '/team/' in path and '/events/' in path:
-            parts = path.split('/')
-            team_id = parts[2]
-            driver.get(f'https://www.sofascore.com/team/{team_id}')
-        else:
-            driver.get(f'https://www.sofascore.com/')
-        time.sleep(5)
-        # Extract JSON from page source (Sofascore embeds data in <script> tags)
-        import re
-        html = driver.page_source
-        scripts = re.findall(r'<script[^>]*id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, re.DOTALL)
-        if scripts:
-            import json
-            data = json.loads(scripts[0])
-            # Try to extract API response from the embedded data
-            result = _extract_from_next_data(data, path)
-            if result:
-                try:
-                    conn = sqlite3.connect(SOFA_DB)
-                    conn.execute('INSERT OR REPLACE INTO edge_cache VALUES (?, ?, ?)', (safe_path, json.dumps(result, default=str), time.time()))
-                    conn.commit(); conn.close()
-                except: pass
-                return json.dumps(result)
-        # If __NEXT_DATA__ not found, try __INITIAL_STATE__
-        state = re.search(r'window\.__INITIAL_STATE__\s*=\s*({.*?});', html, re.DOTALL)
-        if state:
-            return state.group(1)
-    except:
-        pass
-    return None
-
-def _extract_from_next_data(data, path):
-    try:
-        if 'props' in data and 'pageProps' in data['props']:
-            pp = data['props']['pageProps']
-            if '/team/' in path:
-                return pp.get('team', pp)
-            if '/match/' in path:
-                return pp.get('match', pp)
-            return pp
-    except:
         pass
     return None
 
@@ -142,7 +72,7 @@ def search_team(query):
 
 def resolve_team_id(team_name):
     conn = _db()
-    cur = conn.execute('SELECT sofa_id FROM team_map WHERE name = ?', (team_name.lower(),))
+    cur = conn.execute('SELECT sofa_id FROM sofa_team_map WHERE name = ?', (team_name.lower(),))
     row = cur.fetchone()
     if row:
         conn.close()
@@ -150,7 +80,7 @@ def resolve_team_id(team_name):
     results = search_team(team_name)
     if results:
         team = results[0]
-        conn.execute('INSERT OR REPLACE INTO team_map VALUES (?, ?, ?)',
+        conn.execute('INSERT OR REPLACE INTO sofa_team_map VALUES (?, ?, ?)',
                      (team_name.lower(), team['id'], team.get('slug', '')))
         conn.commit()
         conn.close()
@@ -293,14 +223,14 @@ def warmup_all_teams(team_names):
     conn = _db()
     found = 0
     for name in team_names:
-        cur = conn.execute('SELECT sofa_id FROM team_map WHERE name = ?', (name.lower(),))
+        cur = conn.execute('SELECT sofa_id FROM sofa_team_map WHERE name = ?', (name.lower(),))
         if cur.fetchone():
             found += 1
             continue
         results = search_team(name)
         if results:
             team = results[0]
-            conn.execute('INSERT OR REPLACE INTO team_map VALUES (?, ?, ?)',
+            conn.execute('INSERT OR REPLACE INTO sofa_team_map VALUES (?, ?, ?)',
                          (name.lower(), team['id'], team.get('slug', '')))
             found += 1
         time.sleep(0.35)

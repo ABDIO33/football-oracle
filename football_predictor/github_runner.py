@@ -10,6 +10,10 @@ try:
     import calibration
 except ImportError:
     calibration = None
+try:
+    import model_trainer as mt
+except ImportError:
+    mt = None
 from prediction_engine import get_daily_matches, analyze_match_deep, rate_matches
 
 os.makedirs('output', exist_ok=True)
@@ -209,6 +213,22 @@ def main():
     today = now.strftime('%Y-%m-%d')
     ts = now.strftime('%Y-%m-%d %H:%M:%S')
     print(f"[{ts}] Football Oracle Runner starting...")
+    odds_remaining = 0
+    try:
+        import odds_api_scraper as oas
+        odds_remaining = oas.get_remaining_requests()
+        print(f"[ODDS] API: {odds_remaining} requests remaining this month")
+    except Exception as e:
+        print(f"[ODDS] Not available: {e}")
+
+    # Step 0: Retrain model params weekly
+    try:
+        if mt and now.weekday() == 0 and now.hour < 6:
+            print("[...] Retraining model on Understat data...")
+            mt.train_and_save()
+            print("[✓] Model retrained")
+    except Exception as e:
+        print(f"[!] Retrain error: {e}")
 
     # Step 1: Resolve pending predictions
     try:

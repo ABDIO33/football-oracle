@@ -8,10 +8,13 @@ import time
 import difflib
 import sqlite3
 from collections import defaultdict
+from scipy.optimize import minimize_scalar
+from scipy.stats import poisson as sp_poisson
+from sklearn.isotonic import IsotonicRegression
 try:
-    import edge_scraper  # Flashscore via Edge WebDriver (unlimited)
+    import edge_scraper
 except ImportError:
-    edge_scraper = None  # No browser in CI (GitHub Actions)
+    edge_scraper = None
 import evaluation
 import venues as venue_module
 try:
@@ -19,9 +22,57 @@ try:
 except ImportError:
     calibration = None
 try:
-    import lineups  # Injury adjustment, expected lineups
+    import lineups
 except ImportError:
     lineups = None
+try:
+    import fotmob_scraper as fs
+except ImportError:
+    fs = None
+try:
+    import statsbomb_scraper as sbs
+except ImportError:
+    sbs = None
+try:
+    import clubelo_scraper as ces
+except ImportError:
+    ces = None
+try:
+    import understat_scraper as uss
+except ImportError:
+    uss = None
+try:
+    import model_trainer as mt
+except ImportError:
+    mt = None
+try:
+    import whoscored_scraper as ws
+except ImportError:
+    ws = None
+try:
+    import fbref_scraper as fbs
+except ImportError:
+    fbs = None
+try:
+    import football_predictor.odds_api_scraper as oas
+except ImportError:
+    try:
+        import odds_api_scraper as oas
+    except ImportError:
+        oas = None
+
+# ═══════════════════════════════════════════════════════════════
+# DIXON-COLES CONFIG (integrated)
+# ═══════════════════════════════════════════════════════════════
+XI_DECAY       = 0.002    # time-decay rate (half-life ~346 days)
+W_XG           = 0.65     # weight on recent xG-form signal vs raw goals
+MAX_GOALS_DC   = 9
+RHO_BOUNDS     = (-0.20, 0.05)
+RHO_DEFAULT    = mt.get_rho() if (mt and mt.get_rho() is not None) else -0.07
+HOME_ADV_BASE  = 1.12
+_FITTED_RHO    = RHO_DEFAULT
+_CALIBRATORS   = {}
+_LEAGUE_RHO_CACHE = {}
 
 # ═══════════════════════════════════════════════════════════════
 # TEAM DATABASE — ~260 teams (clubs + World Cup 2026 nations)
@@ -491,6 +542,11 @@ def _init_cache_db():
         pass
 
 _init_cache_db()
+# Ensure evaluation DB is initialized so predictions get logged
+try:
+    evaluation.init_evaluation_db()
+except:
+    pass
 
 def _cached_or_fetch(url, headers, cache_minutes=30):
     now = time.time()
@@ -799,47 +855,39 @@ def get_competition_matches(team_name, from_date, to_date=None):
 # ═══════════════════════════════════════════════════════════════
 # MARKET PROBABILITIES
 # ═══════════════════════════════════════════════════════════════
-def get_market_probabilities(home_team, away_team):
-    key = os.environ.get('ODDS_API_KEY', '')
-    if not key:
+def get_market_probabilities(home_team, away_team, league_key=None):
+    """Use odds_api_scraper for market probabilities with overround removal"""
+    global ODDS_API_KEY
+    if not ODDS_API_KEY and oas:
+        ODDS_API_KEY = oas.ODDS_API_KEY
+    if not ODDS_API_KEY:
         return None
     cache_key = f"odds_{home_team}_{away_team}"
     now = time.time()
     if cache_key in _CACHE and (now - _CACHE_TIME.get(cache_key, 0)) < 1800:
         return _CACHE[cache_key]
+    if oas is None:
+        return None
     try:
-        url = "https://api.the-odds-api.com/v4/sports/soccer/odds/"
-        params = {'apiKey': key, 'regions': 'eu', 'markets': 'h2h', 'oddsFormat': 'decimal'}
-        r = requests.get(url, params=params, timeout=10)
-        if r.status_code != 200:
+        event = oas.get_odds_for_match(home_team, away_team, league_key=league_key)
+        if not event:
             return None
-        events = r.json()
-        h_lower = home_team.lower()
-        a_lower = away_team.lower()
-        for event in events:
-            eh = event.get('home_team', '').lower()
-            ea = event.get('away_team', '').lower()
-            if not ((h_lower in eh or eh in h_lower) and (a_lower in ea or ea in a_lower)):
-                continue
-            all_h, all_d, all_a, count = 0.0, 0.0, 0.0, 0
-            for bk in event.get('bookmakers', []):
-                for mkt in bk.get('markets', []):
-                    if mkt['key'] == 'h2h':
-                        odds = {o['name'].lower(): o['price'] for o in mkt.get('outcomes', [])}
-                        if len(odds) >= 2:
-                            all_h += 1.0 / odds.get(eh, 99)
-                            all_d += 1.0 / odds.get('draw', 99)
-                            all_a += 1.0 / odds.get(ea, 99)
-                            count += 1
-            if count > 0:
-                raw = {'home': all_h / count, 'draw': all_d / count, 'away': all_a / count}
-                total = sum(raw.values())
-                result = {k: round(v / total * 100, 2) for k, v in raw.items()}
-                result['available'] = True
-                _CACHE[cache_key] = result
-                _CACHE_TIME[cache_key] = now
-                return result
-    except:
+        probs = oas.extract_market_probabilities(event)
+        if not probs:
+            return None
+        result = {
+            'available': True,
+            'home': probs['fair_probs'].get('home', 33.33),
+            'draw': probs['fair_probs'].get('draw', 33.33),
+            'away': probs['fair_probs'].get('away', 33.33),
+            'overround': probs.get('avg_overround', 0),
+            'bookmaker_count': probs['bookmaker_count'],
+            'fair_probs': probs['fair_probs'],
+        }
+        _CACHE[cache_key] = result
+        _CACHE_TIME[cache_key] = now
+        return result
+    except Exception:
         pass
     return None
 
@@ -893,8 +941,25 @@ def get_live_team_data(team_name, competition=None):
                     pass
             if team_info:
                 team_id = team_info['id']
-                fixtures_url = f"{API_FOOTBALL_BASE}/fixtures?team={team_id}&last=30&status=FT"
-                fixtures_data = _cached_or_fetch(fixtures_url, headers_api_football, 30)
+                fixtures_data = None
+                current_year = datetime.now().year
+                for season in [current_year, current_year - 1, current_year - 2]:
+                    season_url = f"{API_FOOTBALL_BASE}/fixtures?team={team_id}&season={season}&status=FT"
+                    data = _cached_or_fetch(season_url, headers_api_football, 60)
+                    if data and 'response' in data:
+                        n = len(data['response'])
+                        if n >= 3:
+                            fixtures_data = data
+                            break
+                if not fixtures_data:
+                    for season in [current_year, current_year - 1, current_year - 2]:
+                        season_url = f"{API_FOOTBALL_BASE}/fixtures?team={team_id}&season={season}"
+                        data = _cached_or_fetch(season_url, headers_api_football, 60)
+                        if data and 'response' in data:
+                            ft = [m for m in data['response'] if m.get('fixture',{}).get('status',{}).get('short') in ['FT','AET','PEN']]
+                            if len(ft) >= 3:
+                                fixtures_data = data
+                                break
                 if fixtures_data and 'response' in fixtures_data:
                     matches = fixtures_data['response']
                     if len(matches) >= 1:
@@ -915,7 +980,6 @@ def get_live_team_data(team_name, competition=None):
                             days_since = 30
                             if m_date:
                                 try:
-                                    from datetime import datetime
                                     m_ts = datetime.strptime(m_date[:10], '%Y-%m-%d').timestamp()
                                     days_since = max(1, (now_ts - m_ts) / 86400)
                                 except:
@@ -968,6 +1032,70 @@ def get_live_team_data(team_name, competition=None):
                     if injuries_data and 'response' in injuries_data:
                         result['injury_count'] = len(injuries_data['response'])
         except:
+            pass
+    # Fallback: SofaScore direct API via curl_cffi (unlimited, no key)
+    if result.get('source') == 'database':
+        try:
+            from curl_cffi import requests as curl_requests
+            sofa_headers = {
+                'User-Agent': 'Mozilla/5.0 (Linux; Android 14; Pixel 9 Pro) AppleWebKit/537.36 Chrome/120.0.6099.230 Mobile Safari/537.36',
+                'Accept': 'application/json', 'Origin': 'https://www.sofascore.com',
+                'Referer': 'https://www.sofascore.com/', 'x-requested-with': '721637',
+            }
+            sofa_name = team_name.replace(' ', '%20')
+            search_cache_key = f'sofa_search_{sofa_name}'
+            sdata = _CACHE.get(search_cache_key) if search_cache_key in _CACHE else None
+            if sdata is None:
+                time.sleep(0.35)
+                sr = curl_requests.get(
+                    f'https://www.sofascore.com/api/v1/search/teams?q={sofa_name}',
+                    headers=sofa_headers, impersonate='chrome120', timeout=15)
+                if sr.status_code == 200:
+                    sdata = sr.json()
+                    _CACHE[search_cache_key] = sdata
+                    _CACHE_TIME[search_cache_key] = time.time()
+            if sdata and 'results' in sdata:
+                for r in sdata['results']:
+                    if r.get('type') == 'team' and 'entity' in r:
+                        team_entity = r['entity']
+                        sofa_team_id = team_entity.get('id')
+                        ev_cache_key = f'sofa_events_{sofa_team_id}'
+                        ev_data = _CACHE.get(ev_cache_key) if ev_cache_key in _CACHE else None
+                        if ev_data is None:
+                            time.sleep(0.35)
+                            evr = curl_requests.get(
+                                f'https://www.sofascore.com/api/v1/team/{sofa_team_id}/events/last/20',
+                                headers=sofa_headers, impersonate='chrome120', timeout=15)
+                            if evr.status_code == 200:
+                                ev_data = evr.json()
+                                _CACHE[ev_cache_key] = ev_data
+                                _CACHE_TIME[ev_cache_key] = time.time()
+                        if ev_data and 'events' in ev_data:
+                            events = [e for e in ev_data['events'] if e.get('status', {}).get('type') == 'finished']
+                            if len(events) >= 3:
+                                total_gf, total_ga, wins, draws = 0, 0, 0, 0
+                                for e in events[:15]:
+                                    hs = (e.get('homeScore') or {}).get('display', 0)
+                                    aws = (e.get('awayScore') or {}).get('display', 0)
+                                    is_home = (e.get('homeTeam') or {}).get('id') == sofa_team_id
+                                    gf = hs if is_home else aws
+                                    ga = aws if is_home else hs
+                                    total_gf += gf; total_ga += ga
+                                    if gf > ga: wins += 1
+                                    elif gf == ga: draws += 1
+                                n = min(len(events), 15)
+                                avg_gf = max(0.3, min(4.0, total_gf / n))
+                                avg_ga = max(0.3, min(4.0, total_ga / n))
+                                form_norm = (wins * 3 + draws) / (n * 3) if n > 0 else 0.5
+                                result['attack_xg'] = avg_gf
+                                result['defense_xg'] = avg_ga
+                                result['form_points'] = max(0, min(15, form_norm * 15))
+                                result['elo'] = max(1400, min(2000, 1500 + int(((avg_gf - avg_ga) * 40) + (wins * 1.5))))
+                                result['played_count'] = n
+                                result['source'] = 'sofascore_api'
+                                result['injury_count'] = 0
+                            break
+        except Exception:
             pass
     # Fallback: Flashscore via Edge WebDriver (unlimited)
     if result.get('source') == 'database':
@@ -1071,29 +1199,37 @@ def compute_features(home_team, away_team, neutral_venue=False):
     live_home = get_live_team_data(home_team)
     live_away = get_live_team_data(away_team)
     h2h = get_head_to_head(home_team, away_team)
-    # Determine best available source
     source_priority = {'live_api': 3, 'flashscore': 2, 'sportsdb': 1, 'database': 0}
     src_h = live_home.get('source', 'database')
     src_a = live_away.get('source', 'database')
     best_src = src_h if source_priority.get(src_h, 0) >= source_priority.get(src_a, 0) else src_a
+
+    def _blend(xg, raw_goals):
+        return W_XG * float(xg) + (1.0 - W_XG) * float(raw_goals)
+
+    atk_h = _blend(live_home.get('attack_xg', 1.2), live_home.get('attack_xg', 1.2))
+    atk_a = _blend(live_away.get('attack_xg', 1.0), live_away.get('attack_xg', 1.0))
+    def_h = _blend(live_home.get('defense_xg', 1.2), live_home.get('defense_xg', 1.2))
+    def_a = _blend(live_away.get('defense_xg', 1.0), live_away.get('defense_xg', 1.0))
+
     features = {
-        'attack_xg_home': live_home['attack_xg'],
-        'attack_xg_away': live_away['attack_xg'],
-        'defense_xg_home': live_home['defense_xg'],
-        'defense_xg_away': live_away['defense_xg'],
-        'form_points_home': live_home['form_points'],
-        'form_points_away': live_away['form_points'],
-        'elo_home': live_home['elo'],
-        'elo_away': live_away['elo'],
-        'h2h_home_wins': h2h['home_wins'],
-        'h2h_draws': h2h['draws'],
-        'h2h_away_wins': h2h['away_wins'],
-        'h2h_matches': h2h['total_matches'],
-        'h2h_home_goals': h2h['home_goals'],
-        'h2h_away_goals': h2h['away_goals'],
-        'home_advantage': 1.12 if not neutral_venue else 1.0,
-        'injury_penalty_home': min(live_home['injury_count'] * 0.03, 0.15),
-        'injury_penalty_away': min(live_away['injury_count'] * 0.03, 0.15),
+        'attack_xg_home': atk_h,
+        'attack_xg_away': atk_a,
+        'defense_xg_home': def_h,
+        'defense_xg_away': def_a,
+        'form_points_home': live_home.get('form_points', 7.5),
+        'form_points_away': live_away.get('form_points', 7.5),
+        'elo_home': live_home.get('elo', 1500),
+        'elo_away': live_away.get('elo', 1500),
+        'h2h_home_wins': h2h.get('home_wins', 0),
+        'h2h_draws': h2h.get('draws', 0),
+        'h2h_away_wins': h2h.get('away_wins', 0),
+        'h2h_matches': h2h.get('total_matches', 0),
+        'h2h_home_goals': h2h.get('home_goals', 0),
+        'h2h_away_goals': h2h.get('away_goals', 0),
+        'home_advantage': HOME_ADV_BASE if not neutral_venue else 1.0,
+        'injury_penalty_home': min(live_home.get('injury_count', 0) * 0.03, 0.15),
+        'injury_penalty_away': min(live_away.get('injury_count', 0) * 0.03, 0.15),
         'days_since_last_home': 4,
         'days_since_last_away': 4,
         'league_avg_xg': 1.5,
@@ -1101,99 +1237,156 @@ def compute_features(home_team, away_team, neutral_venue=False):
         'source_home': src_h,
         'source_away': src_a,
     }
-    if h2h['total_matches'] > 0:
-        h2h_home_avg = h2h['home_goals'] / max(h2h['total_matches'], 1)
-        h2h_away_avg = h2h['away_goals'] / max(h2h['total_matches'], 1)
+    if features['h2h_matches'] > 0:
+        h2h_home_avg = features['h2h_home_goals'] / max(features['h2h_matches'], 1)
+        h2h_away_avg = features['h2h_away_goals'] / max(features['h2h_matches'], 1)
         features['attack_xg_home'] = features['attack_xg_home'] * 0.7 + h2h_home_avg * 0.3
         features['attack_xg_away'] = features['attack_xg_away'] * 0.7 + h2h_away_avg * 0.3
     return features
 
 # ═══════════════════════════════════════════════════════════════
-# POISSON PROBABILITY
+# DIXON-COLES CORE (fit_rho, calibrators, tau correction, predict)
 # ═══════════════════════════════════════════════════════════════
-def poisson_probability(lam, k):
-    if lam <= 0:
-        return 1.0 if k == 0 else 0.0
-    return (lam ** k) * exp(-lam) / factorial(k)
 
-# ═══════════════════════════════════════════════════════════════
-# DIXON-COLES PREDICTION
-# ═══════════════════════════════════════════════════════════════
-def dixon_coles_predict(home_goals_avg, away_goals_avg, rho=-0.07, monte_carlo=False):
-    max_goals = 9
-    hg = max(0.01, home_goals_avg)
-    ag = max(0.01, away_goals_avg)
-    probs = np.zeros((max_goals + 1, max_goals + 1))
-    for i in range(max_goals + 1):
-        for j in range(max_goals + 1):
-            p = poisson_probability(hg, i) * poisson_probability(ag, j)
-            if i == 0 and j == 0:
-                p *= (1 - rho * hg * ag)
-            elif i == 0 and j == 1:
-                p *= (1 + rho * hg)
-            elif i == 1 and j == 0:
-                p *= (1 + rho * ag)
-            elif i == 1 and j == 1:
-                p *= (1 - rho)
-            probs[i][j] = p
-    total_p = probs.sum()
-    if total_p > 0:
-        probs /= total_p
-    # Monte Carlo: 100K simulations for smoother distribution
-    if monte_carlo:
-        np.random.seed(int(hg * 10000 + ag * 1000))
-        sims = 100000
-        home_scores = np.random.poisson(hg, sims)
-        away_scores = np.random.poisson(ag, sims)
-        mc_probs = np.zeros((max_goals + 1, max_goals + 1))
-        for k in range(sims):
-            i, j = home_scores[k], away_scores[k]
-            if i > max_goals: i = max_goals
-            if j > max_goals: j = max_goals
-            p_dc = 1.0
-            if i == 0 and j == 0:
-                p_dc = (1 - rho * hg * ag)
-            elif i == 0 and j == 1:
-                p_dc = (1 + rho * hg)
-            elif i == 1 and j == 0:
-                p_dc = (1 + rho * ag)
-            elif i == 1 and j == 1:
-                p_dc = (1 - rho)
-            mc_probs[i, j] += p_dc
-        mc_probs /= sims
-        mc_total = mc_probs.sum()
-        if mc_total > 0:
-            mc_probs /= mc_total
-        probs = mc_probs
-    home_win = float(sum(probs[i, j] for i in range(max_goals + 1) for j in range(max_goals + 1) if i > j))
-    draw = float(sum(probs[i, i] for i in range(max_goals + 1)))
-    away_win = float(sum(probs[i, j] for i in range(max_goals + 1) for j in range(max_goals + 1) if i < j))
+def _dc_tau(x, y, lam, mu, rho):
+    if x == 0 and y == 0:
+        return 1.0 - lam * mu * rho
+    if x == 0 and y == 1:
+        return 1.0 + lam * rho
+    if x == 1 and y == 0:
+        return 1.0 + mu * rho
+    if x == 1 and y == 1:
+        return 1.0 - rho
+    return 1.0
+
+
+def _score_matrix(lam, mu, rho, max_goals=MAX_GOALS_DC):
+    lam = max(0.01, float(lam))
+    mu = max(0.01, float(mu))
+    h = sp_poisson.pmf(np.arange(max_goals + 1), lam)
+    a = sp_poisson.pmf(np.arange(max_goals + 1), mu)
+    M = np.outer(h, a)
+    for i in (0, 1):
+        for j in (0, 1):
+            M[i, j] *= _dc_tau(i, j, lam, mu, rho)
+    M = np.clip(M, 1e-15, None)
+    return M / M.sum()
+
+
+def fit_rho(historical_matches, xi=XI_DECAY, league=None):
+    """Time-decay weighted MLE for rho. If league is given and we have a pre-trained
+       league-specific rho, use that instead (much more robust)."""
+    global _FITTED_RHO
+    if league and mt:
+        lr = mt.get_rho(league)
+        if lr is not None:
+            _FITTED_RHO = lr
+            return _FITTED_RHO
+    if not historical_matches:
+        _FITTED_RHO = RHO_DEFAULT
+        return _FITTED_RHO
+
+    hg = np.array([m['home_goals'] for m in historical_matches], dtype=int)
+    ag = np.array([m['away_goals'] for m in historical_matches], dtype=int)
+    lam = np.clip(np.array([m['lambda_home'] for m in historical_matches], float), 0.01, None)
+    mu = np.clip(np.array([m['lambda_away'] for m in historical_matches], float), 0.01, None)
+    w = np.exp(-xi * np.array([m['days_ago'] for m in historical_matches], float))
+
+    base = (sp_poisson.logpmf(hg, lam) + sp_poisson.logpmf(ag, mu))
+
+    def neg_ll(rho):
+        tau = np.array([_dc_tau(int(x), int(y), l, u, rho)
+                        for x, y, l, u in zip(hg, ag, lam, mu)])
+        tau = np.clip(tau, 1e-12, None)
+        ll = w * (base + np.log(tau))
+        return -np.sum(ll)
+
+    res = minimize_scalar(neg_ll, bounds=RHO_BOUNDS, method='bounded')
+    _FITTED_RHO = float(res.x) if res.success else RHO_DEFAULT
+    _FITTED_RHO = max(RHO_BOUNDS[0], min(RHO_BOUNDS[1], _FITTED_RHO))
+    return _FITTED_RHO
+
+
+def fit_calibrators(eval_rows):
+    """Isotonic regression on 1X2 outputs from historical predictions.
+       eval_rows: list of dicts: home_win_prob, draw_prob, away_win_prob, result (H/D/A)."""
+    global _CALIBRATORS
+    if len(eval_rows) < 50:
+        _CALIBRATORS = {}
+        return _CALIBRATORS
+
+    cols = {'home': ('home_win_prob', 'H'),
+            'draw': ('draw_prob', 'D'),
+            'away': ('away_win_prob', 'A')}
+    fitted = {}
+    for key, (prob_key, label) in cols.items():
+        x = np.array([r[prob_key] for r in eval_rows], float) / 100.0
+        y = np.array([1.0 if r['result'] == label else 0.0 for r in eval_rows], float)
+        iso = IsotonicRegression(out_of_bounds='clip', y_min=0.0, y_max=1.0)
+        try:
+            iso.fit(x, y)
+            fitted[key] = iso
+        except Exception:
+            pass
+    _CALIBRATORS = fitted
+    return _CALIBRATORS
+
+
+def _apply_calibration(home, draw, away):
+    if not _CALIBRATORS:
+        return home, draw, away
+    h = float(_CALIBRATORS['home'].predict([[home / 100.0]])[0]) if 'home' in _CALIBRATORS else home / 100.0
+    d = float(_CALIBRATORS['draw'].predict([[draw / 100.0]])[0]) if 'draw' in _CALIBRATORS else draw / 100.0
+    a = float(_CALIBRATORS['away'].predict([[away / 100.0]])[0]) if 'away' in _CALIBRATORS else away / 100.0
+    s = h + d + a
+    if s <= 0:
+        return home, draw, away
+    return h * 100 / s, d * 100 / s, a * 100 / s
+
+
+def dixon_coles_predict(home_goals_avg, away_goals_avg, rho=None, max_goals=MAX_GOALS_DC):
+    """Full Dixon-Coles prediction. Returns same dict contract as original."""
+    if rho is None:
+        rho = _FITTED_RHO
+    hg = max(0.01, float(home_goals_avg))
+    ag = max(0.01, float(away_goals_avg))
+    probs = _score_matrix(hg, ag, rho, max_goals)
+
+    home_win = float(np.tril(probs, -1).sum())
+    draw = float(np.trace(probs))
+    away_win = float(np.triu(probs, 1).sum())
+    btts_yes = float(probs[1:, 1:].sum())
+    btts_no = 1.0 - btts_yes
+    idx = np.arange(max_goals + 1)
+    total = idx[:, None] + idx[None, :]
+    under_2_5 = float(probs[total <= 2].sum())
+    over_2_5 = 1.0 - under_2_5
+    under_3_5 = float(probs[total <= 3].sum())
+    under_1_5 = float(probs[total <= 1].sum())
+    under_0_5 = float(probs[total <= 0].sum())
+    under_4_5 = float(probs[total <= 4].sum())
+    under_5_5 = float(probs[total <= 5].sum())
+    home_expected = float((idx * probs.sum(axis=1)).sum())
+    away_expected = float((idx * probs.sum(axis=0)).sum())
+
     max_idx = np.unravel_index(probs.argmax(), probs.shape)
     most_likely = f"{max_idx[0]}-{max_idx[1]}"
     most_likely_prob = round(float(probs[max_idx]) * 100, 2)
-    under_0_5 = float(sum(probs[i, j] for i in range(max_goals + 1) for j in range(max_goals + 1) if i + j <= 0))
-    under_1_5 = float(sum(probs[i, j] for i in range(max_goals + 1) for j in range(max_goals + 1) if i + j <= 1))
-    under_2_5 = float(sum(probs[i, j] for i in range(max_goals + 1) for j in range(max_goals + 1) if i + j <= 2))
-    under_3_5 = float(sum(probs[i, j] for i in range(max_goals + 1) for j in range(max_goals + 1) if i + j <= 3))
-    under_4_5 = float(sum(probs[i, j] for i in range(max_goals + 1) for j in range(max_goals + 1) if i + j <= 4))
-    under_5_5 = float(sum(probs[i, j] for i in range(max_goals + 1) for j in range(max_goals + 1) if i + j <= 5))
-    over_2_5 = 1.0 - under_2_5
-    btts_yes = float(sum(probs[i, j] for i in range(1, max_goals + 1) for j in range(1, max_goals + 1)))
-    btts_no = 1.0 - btts_yes
-    # Asian Handicap calculations
-    ah_0 = home_win  # AH 0 (draw no bet)
-    ah_m025 = home_win + 0.5 * draw  # AH -0.25
-    ah_05 = home_win  # AH -0.5
-    ah_m075 = home_win  # AH -0.75 (win half if 1 goal win)
-    single_goal_win = float(sum(probs[i, j] for i in range(max_goals + 1) for j in range(max_goals + 1) if i - j == 1))
+
+    flat = [(i, j) for i in range(max_goals + 1) for j in range(max_goals + 1)]
+    flat.sort(key=lambda s: -probs[s[0], s[1]])
+    top_scores = [{'score': f'{i}-{j}', 'prob': round(float(probs[i, j]) * 100, 2)}
+                  for i, j in flat[:8]]
+
+    # Asian Handicap (same as original)
+    single_goal_win = float(probs[(idx[:, None] - idx[None, :]) == 1].sum())
+    two_goal_win = float(probs[(idx[:, None] - idx[None, :]) >= 2].sum())
+    ah_0 = home_win
+    ah_m025 = home_win + 0.5 * draw
+    ah_05 = home_win
     ah_m075 = home_win - 0.5 * single_goal_win
-    ah_10 = home_win  # AH -1.0
-    two_goal_win = float(sum(probs[i, j] for i in range(max_goals + 1) for j in range(max_goals + 1) if i - j >= 2))
-    ah_10 = two_goal_win + 0.5 * (home_win - two_goal_win)  # push if 1 goal win
-    prob_list = {}
-    for i in range(6):
-        for j in range(6):
-            prob_list[f"{i}-{j}"] = float(probs[i][j])
+    ah_10 = two_goal_win + 0.5 * (home_win - two_goal_win)
+
     return {
         'home_win_prob': home_win,
         'draw_prob': draw,
@@ -1219,8 +1412,10 @@ def dixon_coles_predict(home_goals_avg, away_goals_avg, rho=-0.07, monte_carlo=F
             'ah_10': round(ah_10, 4),
         },
         'probs': probs,
-        'expected_goals_home': hg,
-        'expected_goals_away': ag,
+        'expected_goals_home': home_expected,
+        'expected_goals_away': away_expected,
+        'top_scores': top_scores,
+        'top_3': top_scores[:3],
     }
 
 # ═══════════════════════════════════════════════════════════════
@@ -1388,11 +1583,102 @@ def determine_best_bet(prediction, home_team, away_team):
 # ═══════════════════════════════════════════════════════════════
 # ANALYZE MATCH DEEP (main function)
 # ═══════════════════════════════════════════════════════════════
-def analyze_match_deep(home_team, away_team, competition=None, neutral_venue=False, fixture_id=None):
+def analyze_match_deep(home_team, away_team, competition=None, neutral_venue=False, fixture_id=None, use_fotmob=False, use_statsbomb=False, use_clubelo=False, use_understat=False, use_whoscored=False, use_fbref=False, use_market_odds=False):
     start = time.time()
     home_resolved = _resolve_team_name(home_team)
     away_resolved = _resolve_team_name(away_team)
     features = compute_features(home_resolved, away_resolved, neutral_venue)
+    if use_fotmob and fs is not None:
+        try:
+            fm_home = fs.get_live_team_data_full(home_resolved)
+            fm_away = fs.get_live_team_data_full(away_resolved)
+            if fm_home and fm_away:
+                hs = fm_home['stats']; aws = fm_away['stats']
+                if hs.get('matches_played', 0) >= 3:
+                    features['attack_xg_home'] = max(0.5, hs['avg_gs'])
+                    features['defense_xg_home'] = max(0.5, hs['avg_gc'])
+                    pts = sum(3 if c == 'W' else (1 if c == 'D' else 0) for c in hs.get('form','')[-5:])
+                    features['form_points_home'] = pts
+                if aws.get('matches_played', 0) >= 3:
+                    features['attack_xg_away'] = max(0.5, aws['avg_gs'])
+                    features['defense_xg_away'] = max(0.5, aws['avg_gc'])
+                    pts = sum(3 if c == 'W' else (1 if c == 'D' else 0) for c in aws.get('form','')[-5:])
+                    features['form_points_away'] = pts
+            fm_h2h = fs.get_h2h_data_full(home_resolved, away_resolved, limit=6)
+            if fm_h2h:
+                hgs = hgc = n = 0
+                for m in fm_h2h[:6]:
+                    hs = m.get('home_score'); aws = m.get('away_score')
+                    if hs is not None and aws is not None:
+                        hgs += int(hs); hgc += int(aws); n += 1
+                if n:
+                    features['h2h_home_goals'] = hgs / n
+                    features['h2h_away_goals'] = hgc / n
+        except Exception:
+            pass
+    if use_statsbomb and sbs is not None:
+        try:
+            sb_home = sbs.get_live_team_data_full(home_resolved)
+            sb_away = sbs.get_live_team_data_full(away_resolved)
+            if sb_home and sb_away:
+                hh = sb_home['stats']; ah = sb_away['stats']
+                if hh.get('matches_played', 0) >= 5:
+                    features['attack_xg_home'] = features['attack_xg_home'] * 0.75 + hh['avg_gs'] * 0.25
+                    features['defense_xg_home'] = features['defense_xg_home'] * 0.75 + hh['avg_gc'] * 0.25
+                if ah.get('matches_played', 0) >= 5:
+                    features['attack_xg_away'] = features['attack_xg_away'] * 0.75 + ah['avg_gs'] * 0.25
+                    features['defense_xg_away'] = features['defense_xg_away'] * 0.75 + ah['avg_gc'] * 0.25
+        except Exception:
+            pass
+    if use_clubelo and ces is not None:
+        try:
+            eh = ces.get_elo(home_resolved)
+            ea = ces.get_elo(away_resolved)
+            if eh and ea:
+                features['elo_home'] = eh['elo']
+                features['elo_away'] = ea['elo']
+        except Exception:
+            pass
+    if use_understat and uss is not None:
+        try:
+            uh = uss.get_team_ppda(home_resolved)
+            ua = uss.get_team_ppda(away_resolved)
+            if uh and uh.get('matches',0) >= 5:
+                ppda_ratio = max(0.5, min(2.0, (uh.get('ppda',10) or 10) / max(uh.get('opp_ppda',10) or 10, 0.1)))
+                features['attack_xg_home'] = features['attack_xg_home'] * 0.8 + uh.get('xg_avg',0) * 0.2
+                features['defense_xg_home'] = features['defense_xg_home'] * 0.8 + uh.get('xga_avg',0) * 0.2
+            if ua and ua.get('matches',0) >= 5:
+                features['attack_xg_away'] = features['attack_xg_away'] * 0.8 + ua.get('xg_avg',0) * 0.2
+                features['defense_xg_away'] = features['defense_xg_away'] * 0.8 + ua.get('xga_avg',0) * 0.2
+            if uh and ua:
+                features['ppda_home'] = uh.get('ppda',0)
+                features['ppda_away'] = ua.get('ppda',0)
+        except Exception:
+            pass
+    if use_whoscored and ws is not None:
+        try:
+            ws_data = ws.get_match_data(home_resolved, away_resolved)
+            if ws_data and ws_data.get('score'):
+                parts = ws_data['score'].split(':')
+                if len(parts) == 2:
+                    features['whoscored_home_goals'] = float(parts[0])
+                    features['whoscored_away_goals'] = float(parts[1])
+        except Exception:
+            pass
+    if use_fbref and fbs is not None:
+        try:
+            fbref_h = fbs.get_live_team_data_full(home_resolved)
+            fbref_a = fbs.get_live_team_data_full(away_resolved)
+            if fbref_h and fbref_h['stats'].get('matches_played',0) >= 5:
+                s = fbref_h['stats']
+                features['attack_xg_home'] = features['attack_xg_home'] * 0.85 + s['avg_gs'] * 0.15
+                features['defense_xg_home'] = features['defense_xg_home'] * 0.85 + s['avg_gc'] * 0.15
+            if fbref_a and fbref_a['stats'].get('matches_played',0) >= 5:
+                s = fbref_a['stats']
+                features['attack_xg_away'] = features['attack_xg_away'] * 0.85 + s['avg_gs'] * 0.15
+                features['defense_xg_away'] = features['defense_xg_away'] * 0.85 + s['avg_gc'] * 0.15
+        except Exception:
+            pass
     base_home = (features['attack_xg_home'] * features['defense_xg_away'] / features['league_avg_xg']) * features['home_advantage']
     base_away = (features['attack_xg_away'] * features['defense_xg_home'] / features['league_avg_xg']) * (1.0 if neutral_venue else 1.0 / features['home_advantage'])
     form_mult_home = 0.85 + (features['form_points_home'] / 15.0) * 0.30
@@ -1444,7 +1730,14 @@ def analyze_match_deep(home_team, away_team, competition=None, neutral_venue=Fal
     ag = max(0.25, min(4.5, ag))
     has_agent = bool(os.environ.get('AGENTROUTER_KEY', ''))
     has_groq = bool(os.environ.get('GROQ_KEY', ''))
-    prediction = dixon_coles_predict(hg, ag, rho=-0.07)
+    league_map = {'EPL': 'EPL', 'Premier League': 'EPL', 'Premier_League': 'EPL',
+                  'La Liga': 'La_Liga', 'La_Liga': 'La_Liga',
+                  'Bundesliga': 'Bundesliga',
+                  'Serie A': 'Serie_A', 'Serie_A': 'Serie_A',
+                  'Ligue 1': 'Ligue_1', 'Ligue_1': 'Ligue_1'}
+    league_key = league_map.get(competition, '') if competition else ''
+    league_rho = mt.get_rho(league_key) if (league_key and mt) else None
+    prediction = dixon_coles_predict(hg, ag, rho=league_rho)  # uses per-league rho or _FITTED_RHO
     _AI_CALLS = getattr(analyze_match_deep, '_ai_calls', 0)
     if (has_agent or has_groq) and _AI_CALLS < 12:
         analyze_match_deep._ai_calls = _AI_CALLS + 1
@@ -1467,19 +1760,25 @@ def analyze_match_deep(home_team, away_team, competition=None, neutral_venue=Fal
         if wc_home.get('played', 0) >= 1 and home_gs > 0.1:
             wc_home_gs = wc_home.get('gs_avg', home_gs)
             hg = hg * 0.4 + hg * (wc_home_gs / max(home_gs, 0.1)) * 0.6
-            prediction = dixon_coles_predict(hg, ag, rho=-0.07)
+            prediction = dixon_coles_predict(hg, ag)
             prediction['analysis'] = prediction.get('analysis', {})
             prediction['analysis']['best_bet_type'] = prediction['analysis'].get('best_bet_type', 'model')
         if wc_away.get('played', 0) >= 1 and away_gs > 0.1:
             wc_away_gs = wc_away.get('gs_avg', away_gs)
             ag = ag * 0.4 + ag * (wc_away_gs / max(away_gs, 0.1)) * 0.6
-            prediction = dixon_coles_predict(hg, ag, rho=-0.07)
+            prediction = dixon_coles_predict(hg, ag)
             prediction['analysis'] = prediction.get('analysis', {})
             prediction['analysis']['best_bet_type'] = prediction['analysis'].get('best_bet_type', 'model')
         prediction['wc_home_stats'] = wc_home
         prediction['wc_away_stats'] = wc_away
     # Market odds integration (Odds API blend)
-    market_probs = get_market_probabilities(home_resolved, away_resolved)
+    market_probs = None
+    if use_market_odds or ODDS_API_KEY:
+        market_probs = get_market_probabilities(home_resolved, away_resolved, league_key=competition)
+    # Save pre-market true probabilities (pure Dixon-Coles) for value bet detection
+    true_h = prediction['home_win_prob']
+    true_d = prediction['draw_prob']
+    true_a = prediction['away_win_prob']
     MARKET_WEIGHT = 0.35
     if market_probs and market_probs.get('available'):
         mh = market_probs['home'] / 100.0
@@ -1497,9 +1796,27 @@ def analyze_match_deep(home_team, away_team, competition=None, neutral_venue=Fal
             prediction['draw_prob'] = blended_d / total_b
             prediction['away_win_prob'] = blended_a / total_b
         prediction['market_data_used'] = True
-        prediction['market_implied_home'] = round(mh * 100, 2)
-        prediction['market_implied_draw'] = round(md * 100, 2)
-        prediction['market_implied_away'] = round(ma * 100, 2)
+        prediction['market_implied_home'] = round(market_probs['fair_probs'].get('home', mh * 100), 2)
+        prediction['market_implied_draw'] = round(market_probs['fair_probs'].get('draw', md * 100), 2)
+        prediction['market_implied_away'] = round(market_probs['fair_probs'].get('away', ma * 100), 2)
+        prediction['market_overround'] = market_probs.get('overround', 0)
+        prediction['market_bookmaker_count'] = market_probs.get('bookmaker_count', 0)
+        # Value bet detection: compare OUR model (pre-blend) vs MARKET implied
+        if use_market_odds and oas is not None:
+            try:
+                true_probs = {
+                    'home_prob': round(true_h * 100, 2),
+                    'draw_prob': round(true_d * 100, 2),
+                    'away_prob': round(true_a * 100, 2),
+                }
+                value_bets = oas.find_value_bets(
+                    true_probs,
+                    {'fair_probs': market_probs['fair_probs']}
+                )
+                if value_bets:
+                    prediction['value_bets'] = value_bets
+            except Exception:
+                pass
     else:
         prediction['market_data_used'] = False
     # Venue factor
@@ -1507,7 +1824,7 @@ def analyze_match_deep(home_team, away_team, competition=None, neutral_venue=Fal
     if venue_result['applied']:
         hg *= venue_result['goals_multiplier']
         ag *= venue_result['goals_multiplier']
-        prediction = dixon_coles_predict(hg, ag, rho=-0.07)
+        prediction = dixon_coles_predict(hg, ag)
         prediction['analysis'] = prediction.get('analysis', {})
         prediction['analysis']['best_bet_type'] = prediction['analysis'].get('best_bet_type', 'model')
         prediction['venue_applied'] = venue_result['venue_name']
@@ -1518,12 +1835,11 @@ def analyze_match_deep(home_team, away_team, competition=None, neutral_venue=Fal
         hw = round(prediction['home_win_prob'] / total_prob * 100, 2)
         dw = round(prediction['draw_prob'] / total_prob * 100, 2)
         aw = round(prediction['away_win_prob'] / total_prob * 100, 2)
-    # Calibration adjustment (after 10+ resolved predictions)
-    if calibration is not None:
-        try:
-            hw, dw, aw = calibration.calibrate_probabilities(hw, dw, aw)
-        except:
-            pass
+    # Isotonic calibration (Dixon-Coles improved – uses _CALIBRATORS)
+    try:
+        hw, dw, aw = _apply_calibration(hw, dw, aw)
+    except Exception:
+        pass
     prediction['home_win_prob'] = hw
     prediction['draw_prob'] = dw
     prediction['away_win_prob'] = aw
@@ -1778,18 +2094,72 @@ def get_daily_matches(date=None):
                                 })
             except:
                 pass
+    # Primary: SofaScore via curl_cffi (unlimited, no API key)
+    sofa_cache_key = f'sofa_events_{date}'
+    sofa_data = _CACHE.get(sofa_cache_key) if sofa_cache_key in _CACHE else None
+    if sofa_data is None:
+        try:
+            from curl_cffi import requests as curl_requests
+            sofa_headers = {
+                'User-Agent': 'Mozilla/5.0 (Linux; Android 14; Pixel 9 Pro) AppleWebKit/537.36 Chrome/120.0.6099.230 Mobile Safari/537.36',
+                'Accept': 'application/json',
+                'Origin': 'https://www.sofascore.com',
+                'Referer': 'https://www.sofascore.com/',
+                'x-requested-with': '721637',
+            }
+            time.sleep(0.35)
+            r = curl_requests.get(
+                f'https://www.sofascore.com/api/v1/sport/football/scheduled-events/{date}',
+                headers=sofa_headers, impersonate='chrome120', timeout=15)
+            if r.status_code == 200:
+                sofa_data = r.json()
+                _CACHE[sofa_cache_key] = sofa_data
+                _CACHE_TIME[sofa_cache_key] = time.time()
+        except Exception:
+            pass
+    if sofa_data and 'events' in sofa_data:
+        seen_ids = set()
+        for e in sofa_data['events']:
+            eid = e.get('id')
+            if eid in seen_ids:
+                continue
+            seen_ids.add(eid)
+            home_team = (e.get('homeTeam') or {}).get('name', '')
+            away_team = (e.get('awayTeam') or {}).get('name', '')
+            tournament = e.get('tournament', {})
+            comp_name = tournament.get('name', 'Unknown')
+            timestamp = e.get('startTimestamp', 0)
+            match_time = datetime.fromtimestamp(timestamp).strftime('%H:%M') if timestamp else ''
+            status = e.get('status', {}).get('type', 'unknown')
+            if home_team and away_team:
+                matches.append({
+                    'fixture_id': eid,
+                    'home_team': home_team,
+                    'away_team': away_team,
+                    'competition': comp_name,
+                    'date': date,
+                    'time': match_time,
+                    'status': status,
+                    'home_crest': '',
+                    'away_crest': '',
+                    'source': 'sofascore',
+                })
+    # Fallback: API-Football (if key is valid)
     if os.environ.get('API_SPORT_KEY', ''):
         try:
             url = f"{API_FOOTBALL_BASE}/fixtures?date={date}"
-            data = _cached_or_fetch(url, headers_api_football, 15)
-            if data and 'response' in data:
-                for m in data['response']:
+            rdata = _cached_or_fetch(url, headers_api_football, 15)
+            if rdata and 'response' in rdata:
+                existing_home_away = {(m['home_team'].lower(), m['away_team'].lower()) for m in matches}
+                for m in rdata['response']:
                     fixture = m.get('fixture', {})
                     teams = m.get('teams', {})
                     league = m.get('league', {})
                     home = (teams.get('home') or {}).get('name', '')
                     away = (teams.get('away') or {}).get('name', '')
-                    if home and away and not any(m2.get('home_team') == home and m2.get('away_team') == away for m2 in matches):
+                    key = (home.lower(), away.lower())
+                    if home and away and key not in existing_home_away:
+                        existing_home_away.add(key)
                         matches.append({
                             'fixture_id': fixture.get('id'),
                             'home_team': home,
@@ -1799,7 +2169,8 @@ def get_daily_matches(date=None):
                             'time': fixture.get('date', ''),
                             'status': (fixture.get('status') or {}).get('short', ''),
                             'home_crest': (teams.get('home') or {}).get('logo', ''),
-                            'away_crest': (teams.get('away') or {}).get('logo', '')
+                            'away_crest': (teams.get('away') or {}).get('logo', ''),
+                            'source': 'api_football',
                         })
         except:
             pass
@@ -1812,7 +2183,7 @@ def rate_matches(matches):
     rated = []
     for match in matches:
         try:
-            pred = analyze_match_deep(match['home_team'], match['away_team'], match.get('competition'), fixture_id=match.get('fixture_id'))
+            pred = analyze_match_deep(match['home_team'], match['away_team'], match.get('competition'), fixture_id=match.get('fixture_id'), use_understat=True, use_whoscored=True, use_fbref=True, use_market_odds=True)
             score = 0
             confidence_boost = {'HIGH': 30, 'MEDIUM': 15, 'LOW': 0}
             score += confidence_boost.get(pred['analysis']['confidence'], 0)
