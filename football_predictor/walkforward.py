@@ -73,11 +73,27 @@ class WalkForwardProcessor:
             return row[0], row[1]
         return self.elo.get(team, INITIAL_ELO), self.matches_played.get(team, 0)
 
+    def _get_days_since_last(self, team, date_str):
+        cur = self.conn.execute('''
+            SELECT date FROM sofa_historical_results
+            WHERE (home_team = ? OR away_team = ?)
+              AND date < ? AND status_type = 'finished'
+            ORDER BY date DESC LIMIT 1
+        ''', (team, team, date_str))
+        row = cur.fetchone()
+        if row:
+            from datetime import datetime as dt
+            d1 = dt.strptime(date_str, '%Y-%m-%d')
+            d0 = dt.strptime(row[0], '%Y-%m-%d')
+            return (d1 - d0).days
+        return 7
+
     def get_rolling(self, team, date, window=10):
         """Get rolling stats for team using only matches before date."""
         result = {'xg_for': 1.2, 'xg_against': 1.2, 'xg_for_last5': 1.2, 'xg_against_last5': 1.2,
                   'shots_for': 10, 'shots_against': 10,
-                  'form': 0.5, 'form_str': '', 'matches_in_window': 0}
+                  'form': 0.5, 'form_str': '', 'matches_in_window': 0,
+                  'goal_diff': 0.0, 'gf_per_game': 1.2, 'ga_per_game': 1.2}
         try:
             cur = self.conn.execute('''
                 SELECT r.home_team, r.away_team, r.home_score, r.away_score,
@@ -95,8 +111,10 @@ class WalkForwardProcessor:
             if not rows:
                 return result
             is_home = [r[0] == team for r in rows]
-            total_gf = sum(r[2] if ih else r[3] for r, ih in zip(rows, is_home))
-            total_ga = sum(r[3] if ih else r[2] for r, ih in zip(rows, is_home))
+            gf = [r[2] if ih else r[3] for r, ih in zip(rows, is_home)]
+            ga = [r[3] if ih else r[2] for r, ih in zip(rows, is_home)]
+            total_gf = sum(gf)
+            total_ga = sum(ga)
             total_xgf = sum((r[4] if r[4] is not None else r[2]) if ih else (r[5] if r[5] is not None else r[3]) for r, ih in zip(rows, is_home))
             total_xga = sum((r[5] if r[5] is not None else r[3]) if ih else (r[4] if r[4] is not None else r[2]) for r, ih in zip(rows, is_home))
             total_shots = sum((r[6] if r[6] is not None else 10) if ih else (r[7] if r[7] is not None else 10) for r, ih in zip(rows, is_home))
@@ -109,8 +127,9 @@ class WalkForwardProcessor:
             result['form'] = (wins * 3 + draws) / (n * 3) if n else 0.5
             result['form_str'] = ''.join('W' if (r[2] > r[3] if ih else r[3] > r[2]) else 'D' if r[2] == r[3] else 'L' for r, ih in zip(rows, is_home))
             result['matches_in_window'] = n
-            result['goals_for'] = total_gf / n
-            result['goals_against'] = total_ga / n
+            result['goal_diff'] = (total_gf - total_ga) / n if n else 0
+            result['gf_per_game'] = total_gf / n if n else 1.2
+            result['ga_per_game'] = total_ga / n if n else 1.2
             # Last 5
             rows5 = rows[:min(5, len(rows))]
             is_home5 = is_home[:min(5, len(rows))]
@@ -129,6 +148,8 @@ class WalkForwardProcessor:
         away_elo, away_mp = self.get_elo(away_team, match_date)
         home_roll = self.get_rolling(home_team, match_date)
         away_roll = self.get_rolling(away_team, match_date)
+        home_roll20 = self.get_rolling(home_team, match_date, 20)
+        away_roll20 = self.get_rolling(away_team, match_date, 20)
         elo_diff = home_elo - away_elo
         home_adv = 0 if neutral else HOME_ELO_ADV
         expected_h = 1.0 / (1.0 + 10.0 ** ((away_elo - home_elo - home_adv) / 400.0))
@@ -145,6 +166,13 @@ class WalkForwardProcessor:
             'home_shots_for': home_roll['shots_for'], 'away_shots_for': away_roll['shots_for'],
             'home_form': home_roll['form'], 'away_form': away_roll['form'],
             'home_form_str': home_roll['form_str'], 'away_form_str': away_roll['form_str'],
+            'home_form_last5': home_roll20['form'], 'away_form_last5': away_roll20['form'],
+            'home_goal_diff': home_roll['goal_diff'], 'away_goal_diff': away_roll['goal_diff'],
+            'home_gf_per_game': home_roll['gf_per_game'], 'away_gf_per_game': away_roll['gf_per_game'],
+            'home_ga_per_game': home_roll['ga_per_game'], 'away_ga_per_game': away_roll['ga_per_game'],
+            'home_goal_diff20': home_roll20['goal_diff'], 'away_goal_diff20': away_roll20['goal_diff'],
+            'home_days_since_last': self._get_days_since_last(home_team, match_date),
+            'away_days_since_last': self._get_days_since_last(away_team, match_date),
             'expected_home': expected_h, 'expected_away': expected_a,
             'neutral': neutral,
         }

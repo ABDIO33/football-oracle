@@ -54,7 +54,6 @@ def _load_training_data(start_date='2024-06-15', end_date='2026-06-14'):
     for row in rows:
         eid, date_str, home, away, hs, aws, h_elo, a_elo, h_xgf, h_xga, a_xgf, a_xga, h_f, a_f, h_mp, a_mp, h_shots, a_shots = row
         elo_diff = h_elo - a_elo
-        # last5 features - approximate from the same row for now
         h_xgf_l5 = h_xgf if h_xgf else 1.2
         h_xga_l5 = h_xga if h_xga else 1.2
         a_xgf_l5 = a_xgf if a_xgf else 1.2
