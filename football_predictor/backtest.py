@@ -135,16 +135,26 @@ class Backtester:
         self._lam_model_a = None
         try:
             import numpy as np
-            from lambda_predictor import _load_training_data, FEATURES
-            HAS_SKLEARN = True
-            X, yh, ya = _load_training_data(start_date='2026-01-01', end_date=test_start)
-            if len(X) >= 100:
-                from sklearn.ensemble import GradientBoostingRegressor
-                self._lam_model_h = GradientBoostingRegressor(n_estimators=200, max_depth=4, learning_rate=0.1, subsample=0.8, random_state=42)
-                self._lam_model_a = GradientBoostingRegressor(n_estimators=200, max_depth=4, learning_rate=0.1, subsample=0.8, random_state=42)
-                self._lam_model_h.fit(X, yh)
-                self._lam_model_a.fit(X, ya)
-                print(f'[Backtest] Lambda model trained on {len(X)} matches (before {test_start})')
+            # Use PRODUCTION lambda model (trained on all data, no leakage for today)
+            from lambda_predictor import load_models
+            self._lam_model_h, self._lam_model_a = load_models()
+            if self._lam_model_h is not None:
+                print('[Backtest] Using production lambda model (trained on all data)')
+            if self._lam_model_h is None:
+                from lambda_predictor import _load_training_data, FEATURES
+                X, yh, ya = _load_training_data(start_date='2024-06-15', end_date=test_start)
+                if len(X) >= 100:
+                    try:
+                        import xgboost as xgb
+                        self._lam_model_h = xgb.XGBRegressor(n_estimators=200, max_depth=4, learning_rate=0.1, subsample=0.8, colsample_bytree=0.8, random_state=42, n_jobs=-1)
+                        self._lam_model_a = xgb.XGBRegressor(n_estimators=200, max_depth=4, learning_rate=0.1, subsample=0.8, colsample_bytree=0.8, random_state=42, n_jobs=-1)
+                    except:
+                        from sklearn.ensemble import GradientBoostingRegressor
+                        self._lam_model_h = GradientBoostingRegressor(n_estimators=200, max_depth=4, learning_rate=0.1, subsample=0.8, random_state=42)
+                        self._lam_model_a = GradientBoostingRegressor(n_estimators=200, max_depth=4, learning_rate=0.1, subsample=0.8, random_state=42)
+                    self._lam_model_h.fit(X, yh)
+                    self._lam_model_a.fit(X, ya)
+                    print(f'[Backtest] Lambda model trained on {len(X)} matches (before {test_start})')
         except Exception as ex:
             print(f'[Backtest] Lambda model not available: {ex}')
             self._lam_model_h = None

@@ -1,7 +1,0 @@
-{
-  "error": {
-    "code": 404
-  },
-  "_sentryTraceData": "a8875b4ce60eead4975f3db3ee2a213e-2a56a4ed24d3cf22",
-  "_sentryBaggage": "sentry-environment=production,sentry-public_key=d693747a6bb242d9bb9cf7069fb57988,sentry-trace_id=a8875b4ce60eead4975f3db3ee2a213e,sentry-org_id=18522"
-}

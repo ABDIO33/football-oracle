@@ -26,7 +26,7 @@ FEATURES = [
     'home_shots_for', 'away_shots_for',
 ]
 
-def _load_training_data(start_date='2026-01-01', end_date='2026-06-14'):
+def _load_training_data(start_date='2024-06-15', end_date='2026-06-14'):
     """Load walkforward features + actual goals for training."""
     conn = sqlite3.connect(DB)
     cur = conn.execute('''

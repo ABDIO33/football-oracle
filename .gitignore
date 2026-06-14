@@ -2,3 +2,25 @@
 *.db
 __pycache__/
 *.pyc
+.agent/
+.minimax/
+.opencode/
+*.zip
+*.pdf
+Score Exact/
+Vip/
+downloaded_files/
+zake_exe/
+zake-v2/
+Zake_AI_Master_Files/
+fbref_blocked.html
+gather_data.ps1
+parse_matches.ps1
+server_*.log
+server_*.txt
+football_predictor/server_*.log
+football_predictor/server_*.txt
+football_predictor/team_page_data.json
+football_predictor/fotmob_match.json
+football_predictor/fotmob_match_detail.json
+football_predictor/homepage_data.json
