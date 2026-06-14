@@ -1,6 +1,6 @@
 """GitHub Actions runner — runs predictions on schedule, outputs HTML + JSON + dashboard"""
 import os, json, sys, traceback
-from datetime import datetime
+from datetime import datetime, timedelta
 
 os.chdir(os.path.dirname(__file__))
 sys.path.insert(0, '.')
@@ -208,6 +208,66 @@ tr.rejected-row {{ opacity: 0.5; background: #1a0a0a; }}
 </body>
 </html>"""
 
+def collect_historical_results(days_back=3):
+    """Collect finished matches from SofaScore for recent days."""
+    import time, sqlite3
+    try:
+        from curl_cffi import requests as curl_requests
+        sofa_headers = {
+            'User-Agent': 'Mozilla/5.0 (Linux; Android 14; Pixel 9 Pro) AppleWebKit/537.36 Chrome/120.0.6099.230 Mobile Safari/537.36',
+            'Accept': 'application/json', 'Origin': 'https://www.sofascore.com',
+            'Referer': 'https://www.sofascore.com/', 'x-requested-with': '721637',
+        }
+        db_path = os.path.join(os.path.dirname(__file__), 'scrape_cache.db')
+        db = sqlite3.connect(db_path)
+        cur = db.cursor()
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS sofa_historical_results (
+                id INTEGER PRIMARY KEY, home_team TEXT, away_team TEXT,
+                home_score INTEGER, away_score INTEGER, tournament TEXT,
+                unique_tournament_id INTEGER, season_id INTEGER,
+                start_timestamp INTEGER, status_type TEXT, date TEXT, UNIQUE(id))
+        """)
+        total = 0
+        for i in range(days_back, 0, -1):
+            dt = (datetime.now() - timedelta(days=i)).strftime('%Y-%m-%d')
+            time.sleep(0.35)
+            r = curl_requests.get(
+                f'https://www.sofascore.com/api/v1/sport/football/scheduled-events/{dt}',
+                headers=sofa_headers, impersonate='chrome120', timeout=15)
+            if r.status_code != 200:
+                continue
+            for e in r.json().get('events', []):
+                if e.get('status', {}).get('type') != 'finished':
+                    continue
+                hs = (e.get('homeScore') or {}).get('display')
+                aws = (e.get('awayScore') or {}).get('display')
+                if hs is None or aws is None:
+                    continue
+                cur.execute("""
+                    INSERT OR IGNORE INTO sofa_historical_results
+                    (id, home_team, away_team, home_score, away_score,
+                     tournament, unique_tournament_id, season_id,
+                     start_timestamp, status_type, date)
+                    VALUES (?,?,?,?,?,?,?,?,?,?,?)
+                """, (e.get('id'),
+                      (e.get('homeTeam') or {}).get('name', ''),
+                      (e.get('awayTeam') or {}).get('name', ''),
+                      int(hs), int(aws),
+                      (e.get('tournament') or {}).get('name', ''),
+                      (e.get('tournament') or {}).get('uniqueTournament', {}).get('id'),
+                      (e.get('season') or {}).get('id'),
+                      e.get('startTimestamp', 0), 'finished', dt))
+                total += 1
+            db.commit()
+        db.close()
+        if total:
+            print(f"[HIST] Collected {total} finished matches (last {days_back} days)")
+        return total
+    except Exception as e:
+        print(f"[HIST] Collect error: {e}")
+        return 0
+
 def main():
     now = datetime.now()
     today = now.strftime('%Y-%m-%d')
@@ -221,7 +281,10 @@ def main():
     except Exception as e:
         print(f"[ODDS] Not available: {e}")
 
-    # Step 0: Retrain model params weekly
+    # Step 0: Collect historical results from SofaScore
+    collect_historical_results(days_back=3)
+
+    # Step 1: Retrain model params weekly (Monday <6 UTC)
     try:
         if mt and now.weekday() == 0 and now.hour < 6:
             print("[...] Retraining model on Understat data...")
@@ -230,7 +293,7 @@ def main():
     except Exception as e:
         print(f"[!] Retrain error: {e}")
 
-    # Step 1: Resolve pending predictions
+    # Step 2: Resolve pending predictions
     try:
         n = evaluation.resolve_predictions()
         if n > 0:
@@ -238,7 +301,7 @@ def main():
     except Exception as e:
         print(f"[!] resolve error: {e}")
 
-    # Step 2: Get daily matches
+    # Step 3: Get daily matches
     try:
         matches = get_daily_matches(today)
     except Exception as e:
@@ -258,7 +321,7 @@ def main():
 
     print(f"[✓] Found {len(matches)} matches for {today}")
 
-    # Step 3: Rate matches
+    # Step 4: Rate matches
     try:
         best = rate_matches(matches)
         print(f"[✓] Analyzed {len(best)} matches")

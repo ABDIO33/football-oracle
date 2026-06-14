@@ -2,6 +2,8 @@ import sqlite3, os, json, time, threading, numpy as np
 from datetime import datetime, timedelta
 from collections import defaultdict
 
+CACHE_DB = os.path.join(os.path.dirname(__file__), 'scrape_cache.db')
+
 _EVAL_DB = os.path.join(os.path.dirname(__file__), 'evaluation.db')
 
 def _get_conn():
@@ -58,7 +60,6 @@ def log_prediction(home_team, away_team, prediction_dict, match_date=None):
         return False
 
 def resolve_predictions():
-    from prediction_engine import API_FOOTBALL_BASE, headers_api_football, _cached_or_fetch
     now = datetime.now()
     cutoff = (now - timedelta(hours=3)).strftime('%Y-%m-%d')
     try:
@@ -79,25 +80,51 @@ def resolve_predictions():
     except:
         return 0
 
+def _norm(t):
+    return t.lower().replace("'", "").replace(".", "").replace("-", " ").strip()
+
 def _fetch_result(home_team, away_team, match_date):
-    from prediction_engine import API_FOOTBALL_BASE, _cached_or_fetch
-    headers = lambda: {'x-apisports-key': os.environ.get('API_SPORT_KEY', '')}
     try:
-        url = f"{API_FOOTBALL_BASE}/fixtures?date={match_date}"
-        data = _cached_or_fetch(url, headers, 60)
-        if data and 'response' in data:
-            for m in data['response']:
-                teams = m.get('teams', {})
-                hn = (teams.get('home') or {}).get('name', '').lower()
-                an = (teams.get('away') or {}).get('name', '').lower()
-                ht = home_team.lower()
-                at = away_team.lower()
-                if (ht in hn or hn in ht) and (at in an or an in at):
-                    g = m.get('goals', {})
-                    hs, aws = g.get('home'), g.get('away')
-                    if hs is not None and aws is not None:
-                        res = 'H' if hs > aws else ('A' if aws > hs else 'D')
-                        return (hs, aws, res)
+        # Step 1: Check local DB cache (sofa_historical_results)
+        if os.path.exists(CACHE_DB):
+            cache_conn = sqlite3.connect(CACHE_DB)
+            cache_cur = cache_conn.cursor()
+            hn, an = _norm(home_team), _norm(away_team)
+            cache_cur.execute(
+                "SELECT home_team, away_team, home_score, away_score FROM sofa_historical_results WHERE date=?",
+                (match_date,))
+            for row in cache_cur.fetchall():
+                db_home, db_away, db_hs, db_aws = row
+                db_hn, db_an = _norm(db_home), _norm(db_away)
+                if (hn == db_hn or hn in db_hn or db_hn in hn) and (an == db_an or an in db_an or db_an in an):
+                    cache_conn.close()
+                    res = 'H' if db_hs > db_aws else ('A' if db_aws > db_hs else 'D')
+                    return (db_hs, db_aws, res)
+            cache_conn.close()
+        # Step 2: Fetch from SofaScore scheduled-events for that date
+        from curl_cffi import requests as curl_requests
+        sofa_headers = {
+            'User-Agent': 'Mozilla/5.0 (Linux; Android 14; Pixel 9 Pro) AppleWebKit/537.36 Chrome/120.0.6099.230 Mobile Safari/537.36',
+            'Accept': 'application/json', 'Origin': 'https://www.sofascore.com',
+            'Referer': 'https://www.sofascore.com/', 'x-requested-with': '721637',
+        }
+        time.sleep(0.35)
+        r = curl_requests.get(
+            f'https://www.sofascore.com/api/v1/sport/football/scheduled-events/{match_date}',
+            headers=sofa_headers, impersonate='chrome120', timeout=15)
+        if r.status_code == 200:
+            for e in r.json().get('events', []):
+                if e.get('status', {}).get('type') != 'finished':
+                    continue
+                hs = (e.get('homeScore') or {}).get('display')
+                aws = (e.get('awayScore') or {}).get('display')
+                if hs is None or aws is None:
+                    continue
+                e_home = _norm((e.get('homeTeam') or {}).get('name', ''))
+                e_away = _norm((e.get('awayTeam') or {}).get('name', ''))
+                if (hn == e_home or hn in e_home or e_home in hn) and (an == e_away or an in e_away or e_away in an):
+                    res = 'H' if hs > aws else ('A' if aws > hs else 'D')
+                    return (int(hs), int(aws), res)
     except:
         pass
     return None
