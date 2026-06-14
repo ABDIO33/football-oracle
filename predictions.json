@@ -46,7 +46,7 @@
         "recommendation": "Strong recommendation: Germany win",
         "best_bet": "Germany Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.4,
+        "analysis_time": 9.94,
         "home_elo": 1850,
         "away_elo": 1640,
         "home_stats": {
@@ -228,9 +228,9 @@
       "away_crest": ""
     },
     "prediction": {
-      "home_win_prob": 55.69,
-      "draw_prob": 25.8,
-      "away_win_prob": 18.5,
+      "home_win_prob": 52.49,
+      "draw_prob": 26.47,
+      "away_win_prob": 21.04,
       "most_likely_score": "1-0",
       "exact_score_prob": 12.41,
       "under_0_5": 0.08695930054220892,
@@ -258,11 +258,11 @@
       "analysis": {
         "home_form_rating": 78,
         "away_form_rating": 65,
-        "confidence": "HIGH",
-        "recommendation": "Strong recommendation: Netherlands win",
+        "confidence": "MEDIUM",
+        "recommendation": "Moderate recommendation: Netherlands win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.54,
+        "analysis_time": 7.82,
         "home_elo": 1840,
         "away_elo": 1750,
         "home_stats": {
@@ -308,7 +308,10 @@
         "losses": 0,
         "played": 0
       },
-      "market_data_used": false,
+      "market_data_used": true,
+      "market_implied_home": 46.53,
+      "market_implied_draw": 27.71,
+      "market_implied_away": 25.76,
       "top_scores": [
         {
           "score": "1-0",
@@ -391,9 +394,9 @@
         "draws_pct": 33.3,
         "last_meetings": []
       },
-      "kelly_home_win": 0.003,
-      "kelly_draw": 0.0004,
-      "kelly_away_win": 0.0002,
+      "kelly_home_win": 0.0028,
+      "kelly_draw": 0.0002,
+      "kelly_away_win": 0.0,
       "best_bet_info": {
         "primary": "Over 1.5 Goals",
         "primary_confidence": 70,
@@ -414,11 +417,11 @@
       "lambda_home": 1.6734,
       "lambda_away": 0.8655
     },
-    "rating_score": 47.4,
+    "rating_score": 31.3,
     "predicted_score": "1-0",
-    "confidence": "HIGH",
-    "home_win_prob": 55.69,
-    "away_win_prob": 18.5
+    "confidence": "MEDIUM",
+    "home_win_prob": 52.49,
+    "away_win_prob": 21.04
   },
   {
     "match": {
@@ -467,7 +470,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 6.58,
+        "analysis_time": 6.24,
         "home_elo": 1730,
         "away_elo": 1760,
         "home_stats": {
