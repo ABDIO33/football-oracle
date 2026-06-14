@@ -1,0 +1,116 @@
+You already gave us the Dixon-Coles math (tau, score_matrix, derive_outputs). Now I need the COMPLETE integration code.
+
+Below are our EXISTING functions. I need you to REWRITE analyze_match_deep(), dixon_coles_predict(), and compute_features() into a single production module with:
+
+1. Time-decay MLE for rho (fit from historical matches, weight = exp(-xi * days_ago), xi ≈ 0.002)
+2. Isotonic calibration on 1X2 outputs (use sklearn.isotonic)
+3. Blend form stats from Sofascore (actual goals) with xG estimate (derived from form) using w_xg=0.65
+4. Feature set: attack_xg, defense_xg, form_points, elo_diff, h2h, injury, fatigue, venue, market_odds, squad_value_ratio
+5. Proper renormalization after DC correction
+6. Output the EXACT same dictionary structure so our pipeline (github_runner.py, evaluation.py, calibration.py) continues working without changes
+
+===== OUR EXISTING FUNCTIONS (THE CODE TO REPLACE) =====
+
+```python
+# prediction_engine.py: lines 1070-1109
+def compute_features(home_team, away_team, neutral_venue=False):
+    live_home = get_live_team_data(home_team)
+    live_away = get_live_team_data(away_team)
+    h2h = get_head_to_head(home_team, away_team)
+    features = {
+        'attack_xg_home': live_home['attack_xg'],
+        'attack_xg_away': live_away['attack_xg'],
+        'defense_xg_home': live_home['defense_xg'],
+        'defense_xg_away': live_away['defense_xg'],
+        'form_points_home': live_home['form_points'],
+        'form_points_away': live_away['form_points'],
+        'elo_home': live_home['elo'],
+        'elo_away': live_away['elo'],
+        'h2h_home_wins': h2h['home_wins'],
+        'h2h_draws': h2h['draws'],
+        'h2h_away_wins': h2h['away_wins'],
+        'h2h_matches': h2h['total_matches'],
+        'h2h_home_goals': h2h['home_goals'],
+        'h2h_away_goals': h2h['away_goals'],
+        'home_advantage': 1.12 if not neutral_venue else 1.0,
+        'injury_penalty_home': min(live_home['injury_count'] * 0.03, 0.15),
+        'injury_penalty_away': min(live_away['injury_count'] * 0.03, 0.15),
+        'days_since_last_home': 4,
+        'days_since_last_away': 4,
+        'league_avg_xg': 1.5,
+        'source': best_src,
+    }
+    if h2h['total_matches'] > 0:
+        h2h_home_avg = h2h['home_goals'] / max(h2h['total_matches'], 1)
+        h2h_away_avg = h2h['away_goals'] / max(h2h['total_matches'], 1)
+        features['attack_xg_home'] = features['attack_xg_home'] * 0.7 + h2h_home_avg * 0.3
+        features['attack_xg_away'] = features['attack_xg_away'] * 0.7 + h2h_away_avg * 0.3
+    return features
+
+# lines 1122-1165
+def dixon_coles_predict(home_goals_avg, away_goals_avg, rho=-0.07, monte_carlo=False):
+    max_goals = 9
+    hg = max(0.01, home_goals_avg); ag = max(0.01, away_goals_avg)
+    probs = np.zeros((max_goals + 1, max_goals + 1))
+    for i in range(max_goals + 1):
+        for j in range(max_goals + 1):
+            p = poisson_probability(hg, i) * poisson_probability(ag, j)
+            if i == 0 and j == 0: p *= (1 - rho * hg * ag)
+            elif i == 0 and j == 1: p *= (1 + rho * hg)
+            elif i == 1 and j == 0: p *= (1 + rho * ag)
+            elif i == 1 and j == 1: p *= (1 - rho)
+            probs[i][j] = p
+    probs /= probs.sum()
+    home_win = sum(probs[i,:].sum() for i in range(1,max_goals+1) for j in range(i))
+    draw = probs.trace()
+    away_win = sum(probs[:,j].sum() for j in range(1,max_goals+1) for i in range(j))
+    btts = probs[1:,1:].sum()
+    over25 = sum(probs[i,j] for i in range(max_goals+1) for j in range(max_goals+1) if i+j > 2)
+    home_expected = np.sum([i * probs[i,:].sum() for i in range(max_goals+1)])
+    away_expected = np.sum([j * probs[:,j].sum() for j in range(max_goals+1)])
+    scores = [(i,j) for i in range(max_goals+1) for j in range(max_goals+1)]
+    sorted_scores = sorted(scores, key=lambda x: -probs[x[0],x[1]])
+    top3 = [{'score': f'{s[0]}-{s[1]}', 'prob': round(float(probs[s[0],s[1]])*100, 2)} for s in sorted_scores[:3]]
+    return {
+        'home_win_prob': home_win, 'draw_prob': draw, 'away_win_prob': away_win,
+        'btts_yes': float(btts), 'btts_no': float(1-btts),
+        'over_2_5': float(over25), 'under_2_5': float(1-over25),
+        'expected_goals_home': float(home_expected),
+        'expected_goals_away': float(away_expected),
+        'most_likely_score': top3[0]['score'] if top3 else '0-0',
+        'top_scores': top3,
+        'probs': probs,
+    }
+
+# lines 1391-1550 (partial, shows the logic):
+def analyze_match_deep(home_team, away_team, competition=None, neutral_venue=False, fixture_id=None):
+    features = compute_features(home_resolved, away_resolved, neutral_venue)
+    base_home = (features['attack_xg_home'] * features['defense_xg_away'] / features['league_avg_xg']) * features['home_advantage']
+    base_away = (features['attack_xg_away'] * features['defense_xg_home'] / features['league_avg_xg'])
+    home_xg = base_home * (0.85 + features['form_points_home']/15*0.30) * (1+max(-0.15,min(0.15,(features['elo_home']-features['elo_away'])/400*0.15))) * (1-features['injury_penalty_home']) * (0.95 if features['days_since_last_home']<3 else 1)
+    away_xg = base_away * (0.85 + features['form_points_away']/15*0.30) * (1+max(-0.15,min(0.15,(features['elo_away']-features['elo_home'])/400*0.15))) * (1-features['injury_penalty_away']) * (0.95 if features['days_since_last_away']<3 else 1)
+    # clamp
+    home_xg = max(0.25, min(4.5, home_xg)); away_xg = max(0.25, min(4.5, away_xg))
+    prediction = dixon_coles_predict(home_xg, away_xg, rho=-0.07)
+    # ... market odds blend, venue, WC adjustment, calibration
+    return prediction
+```
+
+===== WHAT I NEED FROM YOU =====
+
+Write the COMPLETE replacement for these 3 functions + add 2 new functions:
+
+1. `fit_rho()` — fits rho via MLE from historical matches with time-decay weighting
+2. `dixon_coles_predict()` — uses the correct tau(x,y,lam,mu,rho) form, renormalizes, returns same dict structure
+3. `compute_features()` — improved version blending Sofascore actual goals with estimated xG
+4. `analyze_match_deep()` — uses updated compute_features + dixon_coles_predict + isotonic calibration + market blend
+
+CONSTRAINTS:
+- The output dict from analyze_match_deep() must have EXACTLY these keys so our pipeline works: home_win_prob, draw_prob, away_win_prob, btts_yes, btts_no, over_2_5, under_2_5, expected_goals_home, expected_goals_away, most_likely_score, top_scores (list of {score, prob}), probs (numpy matrix), analysis (dict with confidence, home_form_rating, away_form_rating, best_bet_type, etc.)
+- Use only numpy, scipy.optimize, sklearn.isotonic — no heavy deps
+- Time-decay xi = 0.002 (half-life ~346 days)
+- xG blend: w_xg = 0.65 on recent form, 0.35 on raw goals
+- rho typically -0.13 to -0.05
+- Home advantage: 1.12 in base xG, additional multiplier from venue_module
+
+Just give me the complete working Python code. No explanations. No fluff.

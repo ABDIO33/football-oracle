@@ -1,0 +1,15 @@
+قلت لي استخدم TLS-Chameleon وحل AI Cloudscraper. TLS-Chameleon مكتبة غير موجودة في الواقع (هلوسة)، و Cloudscraper أعطاني 403 على FBref.
+
+أحتاج منك حل **واقعي واحد فقط** لتجاوز Cloudflare Enterprise على FBref (fbref.com) باستخدام curl_cffi فقط — بدون Playwright، بدون متصفح، بدون Selenium.
+
+أعطني بالضبط وبالتفصيل:
+1. ما هو **JA3 fingerprint** الصحيح المطلوب لتجاوز FBref؟ (curl_cffi يسمح بتخصيص الـ JA3)
+2. ما هي **الـ headers** الكاملة والدقيقة المطلوبة؟ (بما في ذلك Sec-Fetch-*, Accept-Encoding, Connection, DNT, إلخ)
+3. هل هناك **cookies** أولية مطلوبة (Cloudflare cf_clearance أو __cf_bm)؟
+4. هل الـ **impersonate** الصحيح هو chrome120 أم غيره (chrome110, safari17_0)؟
+5. هل نحتاج **HTTP/2** أو **HTTP/3** (QUIC)؟
+6. هل الـ **TLS extensions** المحددة مطلوبة (supported_groups, signature_algorithms, etc.)؟
+
+إذا كان الحل الوحيد هو Playwright، فقلها مباشرة ولا تعطيني حلولاً مختلقة. أفضّل الصدق على الوعود الفارغة.
+
+أيضاً: FotMob (fotmob.com) API endpoints اللي أعطيتني إياها (matchDetails, getMatches, standings, team, player, league) كلها 404. هل هناك API حقيقي لـ FotMob؟ أعطني endpoints صحيحة إن وجدت.

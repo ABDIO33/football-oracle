@@ -1,0 +1,80 @@
+You are the world's best football prediction engineer. I give you our current system below, and I need you to write the COMPLETE code/instructions to fill every remaining gap so that it predicts exact scores for ANY football match in the world with maximum possible accuracy.
+
+====== OUR CURRENT SYSTEM (FOOTBALL ORACLE v2) ======
+
+PREDICTION CORE:
+- Poisson distribution regression (attack/defense strength from last 30 matches)
+- AI Ensemble: RandomForest (200 trees) + XGBoost + LogisticRegression trained on 10k+ historical matches
+- Features: avg_goals_scored, avg_goals_conceded, form_rating (W/D/L → 0-100), btts_rate, over_2.5_rate, elo_diff, home_advantage (+0.45), recent_h2h, standings_position
+- Calibration: Platt scaling + isotonic regression
+- Outputs: 1X2 %, exact score probabilities (top 3), btts %, over/under %, expected_goals (xG estimate), confidence (HIGH/MEDIUM/LOW), auto-rejection for low-confidence
+- Saves to SQLite eval_predictions table for tracking accuracy
+
+SCRAPERS (ALL MUST BYPASS CLOUDFLARE):
+1. Sofascore — SOLVED: curl_cffi + impersonate="chrome120" + header "x-requested-with: 721637" → 200 OK on all API endpoints
+2. FBref (fbref.com) — NEED HELP: HTML tables with xG, xGA, PPDA, progressive passes, npxG per shot. Cloudflare protected.
+3. FotMob — NEED HELP: Has a mobile API endpoint for live matches, World Cup 2026. Undocumented endpoints.
+4. Understat — NEED HELP: xG data per player/team, API likely unprotected.
+5. Live updates — NEED HELP: Real-time score/event feed during matches.
+
+TODAY'S RESULTS (our accuracy on last N resolved):
+- 1X2 accuracy: ~62%
+- Exact score top-1 hit rate: ~8%
+- Brier score: ~0.42
+
+THE GOAL: Exact score prediction for ANY match in the world, 24/7, with maximum possible accuracy.
+
+====== HERE ARE THE EXACT GAPS I NEED YOU TO FILL ======
+
+GAP 1 — FOTMOB MOBILE API (for World Cup 2026 + international matches):
+- Reverse-engineer the FotMob mobile app API endpoints
+- I need the actual HTTPS endpoints for: (a) today's matches, (b) match details including lineups, events, stats, (c) league standings, (d) team info
+- What headers/auth do they require? Is it truly unprotected by Cloudflare?
+- Write the Python code (requests-based, no browser) to fetch this data
+
+GAP 2 — FBREF BYPASS + SCRAPING:
+- Fbref.com is behind Cloudflare. Does curl_cffi with impersonate="chrome120" work? If not, what's the actual bypass?
+- Fbref has NO JSON API — data is in HTML <table> tags (stats_table, stats_standard, etc.)
+- Write Python code to: (a) fetch team page HTML via curl_cffi, (b) parse xG tables using BeautifulSoup, (c) extract: xG_per_match, xGA_per_match, PPDA, progressive_passes, npxG_per_shot for both home and away teams
+- How to map team names from Sofascore → FBref slugs?
+
+GAP 3 — UNDERSTAT API:
+- Does Understat have a clean JSON API? What are the endpoints?
+- Write Python to fetch: (a) team xG/xGA table per season, (b) player xG per match
+- Is it behind Cloudflare or unprotected?
+
+GAP 4 — LIVE IN-PLAY ENGINE:
+- How to update predictions during a live match? (e.g., 60th minute, score is 1-0)
+- What model adjustments are needed? Should we use Poisson time-decay?
+- Live xG from FotMob/Understat to adjust win probability in real-time
+- Write the algorithm/code for live probability updates
+
+GAP 5 — PREDICTION MODEL IMPROVEMENT (THE MOST IMPORTANT):
+Our current exact score hit rate is ~8%. We need it as high as possible.
+- Should we use: (a) bivariate Poisson, (b) Conway-Maxwell Poisson, (c) neural network (LSTM/Transformer), (d) Bayesian approach, or (e) ensemble of all?
+- What features are we missing? (Expected: referee bias, weather, travel distance, injury impact, manager history, squad market value, schedule congestion)
+- How to properly model correlation between home and away scores?
+- How to calibrate exact score probabilities? (Current: we rank by Poisson likelihood and take top 3)
+- Write the COMPLETE improved prediction function with the best mathematical approach you know
+- How to integrate multi-source data (SofaScore form + FBref xG + Understat luck-adjustment) into a single prediction?
+
+GAP 6 — ONLINE LEARNING / ADAPTATION:
+- How to make the model adapt to new data in real-time as matches finish?
+- Should we retrain daily? Weekly? Use incremental learning (SGD)?
+- How to handle concept drift (e.g., new season, manager change, key transfer)?
+
+GAP 7 — FULL PIPELINE 24/7:
+The system must run on GitHub Actions (free tier) every N hours, 24/7, scanning ALL known leagues worldwide.
+- Github Actions workflow YAML to run every 6 hours
+- How to avoid rate limiting across all sources
+- Graceful degradation: if one source fails, fall back to another
+- Write the complete run.py / main.py that ties everything together
+
+====== FORMAT ======
+For each gap, give me:
+1. The actual working Python code (no placeholders)
+2. The exact API endpoints / URLs / headers
+3. The mathematical formulas if relevant
+4. Any env vars or config needed
+
+Write this for a production system. No theoretical fluff. Working code only. If you don't know a specific endpoint, give your best guess and a way to discover it.

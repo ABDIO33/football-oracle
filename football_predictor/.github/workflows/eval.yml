@@ -1,0 +1,67 @@
+name: Football Oracle
+
+on:
+  schedule:
+    - cron: "30 5,9,13,17,21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: football-oracle
+  cancel-in-progress: false
+
+jobs:
+  predict-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download previous evaluation DB
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: eval-db
+          path: football_predictor/
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install numpy requests pandas scikit-learn beautifulsoup4 lxml python-dotenv 2>&1 || pip install numpy requests pandas scikit-learn beautifulsoup4 lxml 2>&1
+          echo "Dependencies installed"
+
+      - name: Run predictions
+        env:
+          FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
+          API_SPORT_KEY: ${{ secrets.API_SPORT_KEY }}
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          BSD_API_KEY: ${{ secrets.BSD_API_KEY }}
+          SPORTMONKS_KEY: ${{ secrets.SPORTMONKS_KEY }}
+          AGENTROUTER_KEY: ${{ secrets.AGENTROUTER_KEY }}
+          GROQ_KEY: ${{ secrets.GROQ_KEY }}
+        run: |
+          cd football_predictor
+          python github_runner.py 2>&1
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./football_predictor/output
+          keep_files: false
+
+      - name: Save evaluation DB for next run
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-db
+          path: football_predictor/evaluation.db
+          retention-days: 90
+          if-no-files-found: ignore

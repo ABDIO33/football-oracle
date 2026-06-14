@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analysis Result - Score Exact 100</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --neon-blue: #00d4ff; --neon-green: #00ff88; --neon-white: #ffffff;
+  --neon-gray: #a0a0a0; --neon-purple: #8b5cf6; --neon-gold: #ffc800;
+  --dark-bg: #0a0a0f; --card-bg: rgba(15,15,25,0.95);
+  --glow-blue: 0 0 20px rgba(0,212,255,0.5), 0 0 40px rgba(0,212,255,0.3);
+  --glow-green: 0 0 20px rgba(0,255,136,0.5), 0 0 40px rgba(0,255,136,0.3);
+  --glow-gold: 0 0 20px rgba(255,200,0,0.5), 0 0 40px rgba(255,200,0,0.3);
+}
+body {
+  font-family: 'Tajawal', sans-serif; background: var(--dark-bg); min-height: 100vh;
+  color: var(--neon-white); overflow-x: hidden;
+}
+.bg-animation {
+  position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1;
+  background: radial-gradient(ellipse at 20% 20%, rgba(0,212,255,0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 80%, rgba(139,92,246,0.1) 0%, transparent 50%);
+}
+.grid-overlay {
+  position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1;
+  background-image: linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+  background-size: 50px 50px; animation: gridMove 20s linear infinite;
+}
+@keyframes gridMove {
+  0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+  100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.header { text-align: center; margin-bottom: 25px; padding-top: 20px; }
+.logo {
+  font-family: 'Orbitron', monospace; font-size: 2.5rem; font-weight: 900;
+  background: linear-gradient(135deg, var(--neon-white) 0%, var(--neon-blue) 50%, var(--neon-green) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  text-shadow: var(--glow-blue); letter-spacing: 2px;
+}
+.main-card {
+  background: var(--card-bg); border: 1px solid rgba(0,212,255,0.3);
+  border-radius: 24px; padding: 35px; max-width: 800px; margin: 0 auto;
+  box-shadow: 0 0 60px rgba(0,212,255,0.1), inset 0 0 60px rgba(0,212,255,0.02);
+  backdrop-filter: blur(20px); position: relative; overflow: hidden;
+}
+.main-card::before {
+  content: ''; position: absolute; top:0; left:0; right:0; height:3px;
+  background: linear-gradient(90deg, transparent, var(--neon-blue), var(--neon-green), transparent);
+  animation: borderGlow 3s linear infinite; background-size: 200% 100%;
+}
+@keyframes borderGlow { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+.back-link {
+  display: inline-flex; align-items: center; gap: 8px; color: var(--neon-gray);
+  text-decoration: none; margin-bottom: 20px; padding: 10px 18px;
+  background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 12px; font-size: 0.9rem; transition: all 0.3s;
+}
+.back-link:hover { color: var(--neon-blue); border-color: var(--neon-blue); }
+.match-title { text-align: center; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid rgba(0,212,255,0.2); }
+.match-title h2 { font-family: 'Orbitron', monospace; font-size: 1.6rem; text-shadow: var(--glow-blue); margin-bottom: 6px; }
+.match-title .vs { color: var(--neon-blue); font-size: 1.1rem; }
+
+.result-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-bottom: 22px; }
+.result-card { background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.2); border-radius: 16px; padding: 22px 12px; text-align: center; position: relative; overflow: hidden; }
+.result-card::before { content: ''; position: absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, transparent, var(--neon-blue), transparent); opacity: 0.5; }
+.result-card.highlight { background: rgba(0,212,255,0.1); border-color: var(--neon-blue); box-shadow: var(--glow-blue); }
+.result-card .rl { font-size: 0.75rem; color: var(--neon-gray); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+.result-card .rv { font-family: 'Orbitron', monospace; font-size: 1.6rem; font-weight: 700; color: var(--neon-white); text-shadow: var(--glow-blue); }
+.result-card .rv.score { font-size: 2.2rem; color: var(--neon-green); text-shadow: var(--glow-green); }
+
+.conf-badge { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.3); border-radius: 20px; margin-bottom: 20px; }
+.conf-badge .lbl { font-size: 0.8rem; color: var(--neon-gray); }
+.conf-badge .val { font-family: 'Orbitron', monospace; font-size: 1.2rem; font-weight: 700; color: var(--neon-green); }
+
+.top-scores { background: rgba(0,212,255,0.03); border: 1px solid rgba(0,212,255,0.15); border-radius: 12px; padding: 15px; margin-bottom: 20px; }
+.top-scores .ts-title { font-size: 0.8rem; color: var(--neon-gray); margin-bottom: 10px; text-align: center; }
+.ts-list { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.ts-item { background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; padding: 8px 14px; font-family: 'Orbitron', monospace; font-size: 0.85rem; color: var(--neon-blue); }
+.ts-item:first-child { background: rgba(0,255,136,0.1); border-color: rgba(0,255,136,0.3); color: var(--neon-green); }
+
+.ai-box { background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.25); border-radius: 16px; padding: 18px; margin-bottom: 20px; }
+.ai-box .ai-title { font-size: 0.85rem; color: var(--neon-purple); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.ai-box .ai-content { font-size: 0.9rem; color: var(--neon-white); line-height: 1.6; }
+
+.bet-box { background: linear-gradient(135deg, rgba(255,200,0,0.08) 0%, rgba(255,150,0,0.04) 100%); border: 1px solid rgba(255,200,0,0.25); border-radius: 16px; padding: 22px; margin-bottom: 20px; text-align: center; }
+.bet-box .bet-title { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 0.95rem; color: var(--neon-gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+.bet-box .safe-bet { font-family: 'Orbitron', monospace; font-size: 1.4rem; font-weight: 700; color: var(--neon-gold); text-shadow: var(--glow-gold); margin-bottom: 12px; }
+.bet-box .detail-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.bet-box .detail-row .d { padding: 6px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; }
+.bet-box .detail-row .d.g { background: rgba(0,255,136,0.12); color: var(--neon-green); border: 1px solid rgba(0,255,136,0.2); }
+.bet-box .detail-row .d.b { background: rgba(0,212,255,0.12); color: var(--neon-blue); border: 1px solid rgba(0,212,255,0.2); }
+.bet-box .detail-row .d.w { background: rgba(255,255,255,0.05); color: var(--neon-white); }
+
+.stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 22px; }
+.stat-box { background: rgba(0,212,255,0.03); border: 1px solid rgba(0,212,255,0.1); border-radius: 12px; padding: 14px; text-align: center; }
+.stat-box .sl { font-size: 0.7rem; color: var(--neon-gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.stat-box .sv { font-family: 'Orbitron', monospace; font-size: 1.1rem; color: var(--neon-blue); }
+
+.btn-home { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--neon-white); background: linear-gradient(135deg, rgba(0,212,255,0.2) 0%, rgba(0,255,136,0.2) 100%); border: 2px solid var(--neon-blue); border-radius: 12px; padding: 16px 32px; font-family: 'Orbitron', monospace; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; text-transform: uppercase; letter-spacing: 2px; }
+.btn-home:hover { box-shadow: var(--glow-blue); transform: translateY(-2px); }
+
+.footer { text-align: center; padding: 30px 0; color: var(--neon-gray); font-size: 0.8rem; border-top: 1px solid rgba(0,212,255,0.1); margin-top: 30px; }
+
+@media (max-width: 768px) { .result-grid, .stats-grid { grid-template-columns: 1fr; } .main-card { padding: 20px; } }
+</style>
+</head>
+<body>
+<div class="bg-animation"></div>
+<div class="grid-overlay"></div>
+<div class="container">
+  <div class="header"><h1 class="logo">SCORE EXACT 100</h1></div>
+  <div class="main-card">
+    {% if error %}
+    <div style="text-align:center;padding:40px;">
+      <div style="font-size:3rem;margin-bottom:12px;">⚠️</div>
+      <h2 style="margin-bottom:10px;">Analysis Error</h2>
+      <p style="color:var(--neon-gray);">{{ error }}</p>
+      <a href="/" class="btn-home" style="display:inline-flex;margin-top:20px;"><span>←</span> Back to Home</a>
+    </div>
+    {% else %}
+    <a href="/" class="back-link"><span>←</span> Back to Home</a>
+    <div class="match-title">
+      <div style="display:inline-block;background:rgba(0,212,255,0.08);color:var(--neon-blue);padding:4px 12px;border-radius:8px;font-size:0.65rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">
+        {% if source == 'sofascore' %}SofaScore{% else %}URL{% endif %} Analysis
+      </div>
+      <h2>
+        {{ home_team }}
+        {% if prediction.home_trend == "ascending" %}<span style="color:var(--neon-green);font-size:0.8rem;">▲</span>{% elif prediction.home_trend == "declining" %}<span style="color:#ff4444;font-size:0.8rem;">▼</span>{% else %}<span style="color:var(--neon-gray);font-size:0.8rem;">→</span>{% endif %}
+        <span style="color:var(--neon-gray);font-weight:400;">vs</span>
+        {{ away_team }}
+        {% if prediction.away_trend == "ascending" %}<span style="color:var(--neon-green);font-size:0.8rem;">▲</span>{% elif prediction.away_trend == "declining" %}<span style="color:#ff4444;font-size:0.8rem;">▼</span>{% else %}<span style="color:var(--neon-gray);font-size:0.8rem;">→</span>{% endif %}
+      </h2>
+    </div>
+
+    {% if prediction.friendly_warning %}
+    <div style="background:rgba(255,150,0,0.1);border:1px solid rgba(255,150,0,0.4);border-radius:12px;padding:14px;margin-bottom:18px;text-align:center;">
+      <span style="font-size:1.1rem;">⚠️</span>
+      <span style="color:#ffaa00;font-size:0.9rem;margin-right:8px;">
+        مباراة ودية — دقة منخفضة. التوقع غير موثوق.
+      </span>
+    </div>
+    {% endif %}
+
+    <div style="text-align:center;">
+      <div class="conf-badge" style="background:{% if prediction.analysis.confidence == 'HIGH' %}rgba(0,255,136,0.1){% elif prediction.analysis.confidence == 'MEDIUM' %}rgba(255,200,0,0.1){% else %}rgba(255,68,68,0.1){% endif %};border-color:{% if prediction.analysis.confidence == 'HIGH' %}rgba(0,255,136,0.3){% elif prediction.analysis.confidence == 'MEDIUM' %}rgba(255,200,0,0.3){% else %}rgba(255,68,68,0.3){% endif %};">
+        <span class="lbl">نسبة الثقة:</span>
+        <span class="val" style="color:{% if prediction.analysis.confidence == 'HIGH' %}var(--neon-green){% elif prediction.analysis.confidence == 'MEDIUM' %}var(--neon-gold){% else %}#ff4444{% endif %};">{{ prediction.analysis.confidence }}</span>
+      </div>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-card highlight"><div class="rl">🎯 التوقع الأول</div><div class="rv score">{{ prediction.top_3[0].score if prediction.top_3 else prediction.most_likely_score }}</div><div style="font-size:1.1rem;margin-top:6px;color:var(--neon-green);font-family:'Orbitron',monospace;">{{ prediction.top_3[0].prob if prediction.top_3 else prediction.exact_score_prob }}%</div></div>
+      <div class="result-card"><div class="rl">📌 التوقع الثاني</div><div class="rv" style="font-size:1.8rem;">{{ prediction.top_3[1].score if prediction.top_3 and prediction.top_3|length > 1 else '—' }}</div><div style="font-size:1rem;margin-top:6px;color:var(--neon-blue);font-family:'Orbitron',monospace;">{{ prediction.top_3[1].prob if prediction.top_3 and prediction.top_3|length > 1 else '—' }}%</div></div>
+      <div class="result-card"><div class="rl">🔍 التوقع الثالث</div><div class="rv" style="font-size:1.8rem;">{{ prediction.top_3[2].score if prediction.top_3 and prediction.top_3|length > 2 else '—' }}</div><div style="font-size:1rem;margin-top:6px;color:var(--neon-gray);font-family:'Orbitron',monospace;">{{ prediction.top_3[2].prob if prediction.top_3 and prediction.top_3|length > 2 else '—' }}%</div></div>
+    </div>
+
+    <div class="bet-box">
+      <div class="bet-title"><span>🏆 أفضل رهان</span><span>🔥</span></div>
+      <div class="safe-bet">{{ prediction.analysis.best_bet }}</div>
+      <div class="detail-row">
+        <div class="d g">✅ {{ prediction.analysis.recommendation[:40] }}</div>
+        <div class="d b">🎯 {{ prediction.most_likely_score }} ({{ prediction.exact_score_prob }}%)</div>
+        <div class="d w">📊 الثقة: {{ prediction.analysis.confidence }}</div>
+      </div>
+      {% if prediction.analysis.kelly_fraction and prediction.analysis.kelly_fraction > 0 %}
+      <div style="margin-top:12px;padding:10px;background:rgba(0,255,136,0.05);border-radius:8px;border:1px solid rgba(0,255,136,0.15);">
+        <span style="font-size:0.8rem;color:var(--neon-gray);">💵 Kelly Criterion:</span>
+        <span style="font-family:'Orbitron',monospace;color:var(--neon-green);font-size:1rem;margin-right:8px;">{{ prediction.analysis.kelly_recommended }}</span>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-box"><div class="sl">فوز {{ home_team[:12] }}</div><div class="sv" style="color:var(--neon-green);">{{ prediction.home_win_prob }}%</div></div>
+      <div class="stat-box"><div class="sl">تعادل</div><div class="sv" style="color:var(--neon-gold);">{{ prediction.draw_prob }}%</div></div>
+      <div class="stat-box"><div class="sl">فوز {{ away_team[:12] }}</div><div class="sv" style="color:#ff4444;">{{ prediction.away_win_prob }}%</div></div>
+    </div>
+
+    <div class="top-scores" style="margin-bottom:20px;">
+      <div class="ts-title" style="margin-bottom:14px;font-size:0.9rem;color:var(--neon-gray);text-transform:uppercase;letter-spacing:2px;">
+        أفضل 3 نتائج متوقعة
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+        {% for s in prediction.top_3 %}
+        <div style="background:{% if loop.first %}rgba(0,255,136,0.1){% else %}rgba(0,212,255,0.05){% endif %};border:{% if loop.first %}2px solid rgba(0,255,136,0.5){% else %}1px solid rgba(0,212,255,0.2){% endif %};border-radius:16px;padding:16px 10px;text-align:center;position:relative;">
+          {% if loop.first %}
+          <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--neon-green);color:#000;font-size:0.65rem;font-weight:700;padding:2px 10px;border-radius:10px;">الأول</div>
+          {% elif loop.index == 2 %}
+          <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--neon-blue);color:#000;font-size:0.65rem;font-weight:700;padding:2px 10px;border-radius:10px;">الثاني</div>
+          {% else %}
+          <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--neon-gray);color:#000;font-size:0.65rem;font-weight:700;padding:2px 10px;border-radius:10px;">الثالث</div>
+          {% endif %}
+          <div style="font-family:'Orbitron',monospace;font-size:{% if loop.first %}2rem{% else %}1.5rem{% endif %};font-weight:900;color:{% if loop.first %}var(--neon-green){% else %}var(--neon-blue){% endif %};margin:10px 0 6px;text-shadow:{% if loop.first %}var(--glow-green){% else %}var(--glow-blue){% endif %};">
+            {{ s.score }}
+          </div>
+          <div style="font-size:{% if loop.first %}1rem{% else %}0.85rem{% endif %};color:{% if loop.first %}var(--neon-green){% else %}var(--neon-gray){% endif %};">
+            {{ s.prob }}%
+          </div>
+          <div style="font-size:0.65rem;color:var(--neon-gray);margin-top:4px;opacity:0.7;">
+            {{ s.type }}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:20px;">
+      <div class="stat-box"><div class="sl">Over 2.5</div><div class="sv" style="color:var(--neon-gold);">{{ "%.1f"|format(prediction.over_2_5) }}%</div></div>
+      <div class="stat-box"><div class="sl">Over 3.5</div><div class="sv">{{ "%.1f"|format(100 - prediction.under_3_5 if prediction.under_3_5 is defined else 0) }}%</div></div>
+      <div class="stat-box"><div class="sl">BTTS Yes</div><div class="sv" style="color:var(--neon-green);">{{ "%.1f"|format(prediction.btts_yes) }}%</div></div>
+      <div class="stat-box"><div class="sl">Monte Carlo</div><div class="sv" style="font-size:0.75rem;color:var(--neon-purple);">100K</div></div>
+    </div>
+    {% if prediction.asian_handicap is defined %}
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:20px;">
+      <div class="stat-box" style="padding:8px;"><div class="sl" style="font-size:0.65rem;">AH 0</div><div class="sv" style="font-family:'Orbitron',monospace;font-size:0.9rem;">{{ "%.1f"|format(prediction.asian_handicap.ah_0 * 100) }}%</div></div>
+      <div class="stat-box" style="padding:8px;"><div class="sl" style="font-size:0.65rem;">AH -0.25</div><div class="sv" style="font-family:'Orbitron',monospace;font-size:0.9rem;">{{ "%.1f"|format(prediction.asian_handicap.ah_m025 * 100) }}%</div></div>
+      <div class="stat-box" style="padding:8px;"><div class="sl" style="font-size:0.65rem;">AH -0.5</div><div class="sv" style="font-family:'Orbitron',monospace;font-size:0.9rem;">{{ "%.1f"|format(prediction.asian_handicap.ah_05 * 100) }}%</div></div>
+      <div class="stat-box" style="padding:8px;"><div class="sl" style="font-size:0.65rem;">AH -1.0</div><div class="sv" style="font-family:'Orbitron',monospace;font-size:0.9rem;">{{ "%.1f"|format(prediction.asian_handicap.ah_10 * 100) }}%</div></div>
+    </div>
+    {% endif %}
+
+    <div class="ai-box">
+      <div class="ai-title">🤖 تحليل الذكاء الاصطناعي</div>
+      <div class="ai-content">
+        {{ prediction.analysis.recommendation }} 
+        النتيجة المتوقعة {{ prediction.most_likely_score }} بنسبة {{ prediction.exact_score_prob }}%.
+        تصنيف {{ home_team }}: {{ prediction.analysis.home_form_rating }}/100. 
+        تصنيف {{ away_team }}: {{ prediction.analysis.away_form_rating }}/100.
+        {% if prediction.h2h.matches_played > 0 %}
+        المواجهات السابقة: {{ prediction.h2h.home_wins }} فوز, {{ prediction.h2h.draws }} تعادل, {{ prediction.h2h.away_wins }} فوز.
+        {% endif %}
+      </div>
+    </div>
+
+    {% if prediction.match_extra %}
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;">
+      {% if prediction.match_extra.venue and prediction.match_extra.venue.name %}
+      <div class="stat-box"><div class="sl">🏟️ الملعب</div><div class="sv" style="font-size:1rem;font-family:'Tajawal',sans-serif;">{{ prediction.match_extra.venue.name }}{% if prediction.match_extra.venue.city %}, {{ prediction.match_extra.venue.city }}{% endif %}</div></div>
+      {% endif %}
+      {% if prediction.match_extra.weather and prediction.match_extra.weather.temperature_c is not none %}
+      <div class="stat-box"><div class="sl">🌡️ الطقس</div><div class="sv" style="font-size:1rem;font-family:'Tajawal',sans-serif;">{{ prediction.match_extra.weather.temperature_c }}°C{% if prediction.match_extra.weather.description %} - {{ prediction.match_extra.weather.description }}{% endif %}</div></div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div style="text-align:center;margin-top:10px;margin-bottom:20px;font-size:0.7rem;color:var(--neon-gray);">
+      {{ prediction.competition_type|upper }} | {{ prediction.home_trend }} / {{ prediction.away_trend }} | مصادر: {{ prediction.analysis.sources.stats_home }} / {{ prediction.analysis.sources.stats_away }} | H2H: {{ prediction.analysis.sources.h2h }}
+    </div>
+
+    <div style="text-align:center;margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="/" class="btn-home"><span>🔄</span> تحليل مباراة جديدة</a>
+      <button class="btn-home" style="border-color:var(--neon-gold);color:var(--neon-gold);background:linear-gradient(135deg,rgba(255,200,0,0.1),rgba(255,150,0,0.05));" onclick="addThisTicket(this)"><span>🎫</span> إضافة إلى Ticket</button>
+    </div>
+    {% endif %}
+  </div>
+  <footer class="footer">Score Exact 100 — Analysis in {{ prediction.analysis.analysis_time }}s</footer>
+</div>
+<script>
+function addThisTicket(btn) {
+  var tickets = JSON.parse(localStorage.getItem('scoreExactTickets') || '[]');
+  tickets.push({
+    home: '{{ home_team }}',
+    away: '{{ away_team|e }}',
+    hw: {{ prediction.home_win_prob|round|int }},
+    dw: {{ prediction.draw_prob|round|int }},
+    aw: {{ prediction.away_win_prob|round|int }},
+    score: '{{ prediction.most_likely_score }}',
+    confidence: {{ [prediction.home_win_prob, prediction.draw_prob, prediction.away_win_prob]|max|round|int }},
+    bet: '{{ prediction.analysis.best_bet_type }}'
+  });
+  localStorage.setItem('scoreExactTickets', JSON.stringify(tickets));
+  btn.innerHTML = '<span>✅</span><span>تمت الإضافة!</span>';
+  btn.disabled = true;
+  setTimeout(function() { window.location.href = '/'; }, 1500);
+}
+</script>
+</body>
+</html>

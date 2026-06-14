@@ -1,0 +1,12 @@
+{
+  "listType": "eventList",
+  "sport": "football",
+  "seoContent": {
+    "about": "<p>The live football results page on Sofascore delivers real-time football scores for all ongoing matches. Sofascore provides comprehensive coverage of hundreds of football leagues, cups, and tournaments, offering live updated results, statistics, league tables, video highlights, and fixtures.From the most popular football leagues — <a href=\"https://www.sofascore.com/tournament/football/europe/uefa-champions-league/7\" target=\"_self\">UEFA Champions League</a> , <a href=\"https://www.sofascore.com/tournament/football/europe/uefa-europa-league/679\" target=\"_self\">UEFA Europa League</a> , <a href=\"https://www.sofascore.com/tournament/football/england/premier-league/17\" target=\"_self\">Premier League</a> , <a href=\"https://www.sofascore.com/tournament/football/spain/laliga/8\" target=\"_self\">LaLiga</a> , <a href=\"https://www.sofascore.com/tournament/football/germany/bundesliga/35\" target=\"_self\">Bundesliga</a> , <a href=\"https://www.sofascore.com/tournament/football/italy/serie-a/23\" target=\"_self\">Serie A</a> , <a href=\"https://www.sofascore.com/tournament/football/france/ligue-1/34\" target=\"_self\">Ligue 1</a> , and <a href=\"https://www.sofascore.com/tournament/football/brazil/brasileirao-serie-a/325\" target=\"_self\">Brasileirão Série A</a>  — to top player ratings, match statistics, and all football matches played today, our football live score page has everything you need. For even more advanced sports analysis, check out our new <a href=\"https://www.sofascore.com/football/player/compare\" target=\"_self\">player comparison tool</a> to compare your favourite players side-by-side.</p>",
+    "description": "Football live scores on Sofascore live score from 600+ football leagues. Follow live results, detailed statistics, league tables, fixtures and videos from Champions League, Premier League, LaLiga, Serie A, Ligue 1, Bundesliga and many more.",
+    "heading": "Football today - livescore and schedule for Premier League, Champions League",
+    "title": "Football Live Scores, Fixtures &amp; Odds | Sofascore | Championship League, Premier League"
+  },
+  "_sentryTraceData": "93da8abaaebe7e1271316c98c5dcbe34-fa934f943449db5a",
+  "_sentryBaggage": "sentry-environment=production,sentry-public_key=d693747a6bb242d9bb9cf7069fb57988,sentry-trace_id=93da8abaaebe7e1271316c98c5dcbe34,sentry-org_id=18522"
+}

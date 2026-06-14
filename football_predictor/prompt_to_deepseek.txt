@@ -1,0 +1,22 @@
+أحتاج منك حلين تقنيين حقيقيين — ليس كلاماً نظرياً، بل endpoints وكود شغال.
+
+**المشكلة:** أبني نظام توقع كرة قدم يجمع بيانات من multiple sources. Sofascore تجاوزنا حمايته بـ curl_cffi + impersonate + x-requested-with. Understat API مفتوح. باقي مصدران أحتاج اختراقهما:
+
+**المصدر 1: FBref (fbref.com)**
+- يحميه Cloudflare Enterprise WAF (JS challenge + browser fingerprinting)
+- curl_cffi بكل impersonations (chrome120, chrome110, safari17_0) → 403
+- cloudscraper → 403
+- requests عادي → 403
+- الموقع ما عنده API، البيانات في HTML tables (stats_table) نريد xG, xGA, PPDA, progressive passes
+- أحتاج طريقة عملية لتجاوز Cloudflare وجلب HTML. هل هناك توقيع معين (JA3, headers, cookies, tls fingerprint) ينجح؟
+- هل استخدم Playwright بدلاً منه؟ وإذا كان الحل الوحيد، أعطني كود بايثون خفيف لفتح الصفحة، انتظار التحميل، استخراج الـ HTML من الجداول المحددة، ثم إغلاق المتصفح
+- هل توجد واجهة API بديلة لـ FBref نفسها (مثلاً endpoint غير موثق)؟
+
+**المصدر 2: FotMob Mobile API**
+- تطبيق FotMob للهواتف (Android/iOS) يمتلك Mobile API endpoints غير محمية بـ Cloudflare
+- أحتاج endpoints الـ API التي يستخدمها التطبيق لجلب: (أ) مباريات اليوم، (ب) تفاصيل المباراة (التشكيلة، الأحداث، live stats)، (ج) ترتيب الدوري، (د) معلومات الفريق
+- هل endpointsها معروفة في المجتمع؟ مثلاً chat.xx.fotmob.com أو api.fotmob.com/v1/...؟
+- أحتاج الـ headers المطلوبة، الـ device ID أو token authentication إن وجد
+- ما هو بالضبط endpoint جلب المباريات الدولية وكأس العالم 2026؟
+
+**القاعدة:** أعطني الـ endpoints بالضبط، الـ headers، وأي كود Python مطلوب. أعرف أنك تفهم الـ reverse engineering. لا تقل لي "استخدم API-Football المدفوع" — قصدي bypass فعلي مثل الـ curl_cffi + 721637 مع Sofascore.
