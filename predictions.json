@@ -46,7 +46,7 @@
         "recommendation": "Strong recommendation: Germany win",
         "best_bet": "Germany Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.76,
+        "analysis_time": 9.4,
         "home_elo": 1850,
         "away_elo": 1640,
         "home_stats": {
@@ -262,7 +262,7 @@
         "recommendation": "Strong recommendation: Netherlands win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 7.44,
+        "analysis_time": 8.54,
         "home_elo": 1840,
         "away_elo": 1750,
         "home_stats": {
@@ -467,7 +467,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 7.29,
+        "analysis_time": 6.58,
         "home_elo": 1730,
         "away_elo": 1760,
         "home_stats": {
