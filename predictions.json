@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: France win",
         "best_bet": "France Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 12.06,
+        "analysis_time": 11.91,
         "home_elo": 1900,
         "away_elo": 1760,
         "home_stats": {
@@ -324,7 +324,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.0,
+        "analysis_time": 14.29,
         "home_elo": 1650,
         "away_elo": 1600,
         "home_stats": {
