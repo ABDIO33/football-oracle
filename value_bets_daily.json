@@ -1,0 +1,82 @@
+{
+  "date": "2026-06-17",
+  "timestamp": "2026-06-17T10:14:31.549557",
+  "total_matches_with_odds": 2,
+  "value_bets_count": 3,
+  "results": [
+    {
+      "home": "England",
+      "away": "Croatia",
+      "competition": "FIFA World Cup",
+      "date": "2026-06-17",
+      "prediction": {
+        "home_prob": 39.29,
+        "draw_prob": 28.04,
+        "away_prob": 32.67,
+        "predicted_score": "1-1",
+        "confidence": 13.38
+      },
+      "market_odds": {
+        "home_prob": 55.77,
+        "draw_prob": 25.67,
+        "away_prob": 18.56,
+        "bookmaker_count": 48,
+        "overround": 4.93
+      },
+      "value_bets": [
+        {
+          "outcome": "away",
+          "true_prob": 32.67,
+          "market_prob": 18.56,
+          "edge_pct": 76.02,
+          "fair_odds": 5.39,
+          "suggested_odds_cutoff": 3.06,
+          "kelly_fraction": 0.1733,
+          "verdict": "STRONG"
+        },
+        {
+          "outcome": "draw",
+          "true_prob": 28.04,
+          "market_prob": 25.67,
+          "edge_pct": 9.23,
+          "fair_odds": 3.9,
+          "suggested_odds_cutoff": 3.57,
+          "kelly_fraction": 0.0319,
+          "verdict": "WEAK"
+        }
+      ]
+    },
+    {
+      "home": "Ghana",
+      "away": "Panama",
+      "competition": "FIFA World Cup",
+      "date": "2026-06-17",
+      "prediction": {
+        "home_prob": 39.68,
+        "draw_prob": 28.01,
+        "away_prob": 32.3,
+        "predicted_score": "1-1",
+        "confidence": 13.37
+      },
+      "market_odds": {
+        "home_prob": 40.88,
+        "draw_prob": 29.68,
+        "away_prob": 29.44,
+        "bookmaker_count": 48,
+        "overround": 4.89
+      },
+      "value_bets": [
+        {
+          "outcome": "away",
+          "true_prob": 32.3,
+          "market_prob": 29.44,
+          "edge_pct": 9.71,
+          "fair_odds": 3.4,
+          "suggested_odds_cutoff": 3.1,
+          "kelly_fraction": 0.0405,
+          "verdict": "WEAK"
+        }
+      ]
+    }
+  ]
+}
