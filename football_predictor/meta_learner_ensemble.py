@@ -49,10 +49,11 @@ ensemble = joblib.load(blend_path)
 print(f"  Ensemble has {len(ensemble.models)} DeepNN models")
 
 # Get individual DeepNN predictions on validation set
+# Use ensemble's own imp/scaler for consistency
 nn_val_probas = []
 for i, m in enumerate(ensemble.models):
-    X_imp = imp.transform(X_val)
-    X_s = scaler.transform(X_imp)
+    X_imp = ensemble.imp.transform(X_val)
+    X_s = ensemble.scaler.transform(X_imp)
     p = m.predict_proba(X_s)
     nn_val_probas.append(p)
     print(f"  Model {i}: probs shape {p.shape}")

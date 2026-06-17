@@ -1,7 +1,7 @@
 """
-730-day SofaScore historical backfill — collects match results + stats
+730-day SofaScore historical backfill — collects match results + stats + lineups
 Resumable: skips already-collected event IDs
-Rate-limited: ~2 req/sec, runs in ~1 min for results + ~20 min for stats
+Rate-limited: ~2 req/sec, runs in ~1 min for results + ~20 min per feature
 """
 import os, sys, time, json, sqlite3
 from datetime import datetime, timedelta
@@ -55,6 +55,12 @@ def init_db():
             home_fouls INTEGER, away_fouls INTEGER,
             raw_json TEXT
         );
+        CREATE TABLE IF NOT EXISTS sofa_lineups (
+            event_id INTEGER PRIMARY KEY,
+            home_formation TEXT, away_formation TEXT,
+            home_players_json TEXT, away_players_json TEXT,
+            confirmed INTEGER
+        );
         CREATE TABLE IF NOT EXISTS backfill_progress (
             date TEXT PRIMARY KEY,
             status TEXT,
@@ -98,6 +104,13 @@ def collect_results(days_back=730):
             away = (e.get('awayTeam') or {}).get('name', '')
             tournament = e.get('tournament', {})
             try:
+                # Use UTC date from start_timestamp (fixes +1 day bias in date_str)
+                ts = e.get('startTimestamp')
+                if ts:
+                    from datetime import datetime as _dt
+                    utc_date = _dt.utcfromtimestamp(ts).strftime('%Y-%m-%d')
+                else:
+                    utc_date = date_str
                 conn.execute('''
                     INSERT OR IGNORE INTO sofa_historical_results
                     (id, home_team, away_team, home_score, away_score,
@@ -106,8 +119,8 @@ def collect_results(days_back=730):
                     VALUES (?,?,?,?,?,?,?,?,?,?,?)
                 ''', (eid, home, away, int(hs), int(aws),
                       tournament.get('name', ''), tournament.get('uniqueTournament', {}).get('id'),
-                      tournament.get('season', {}).get('id'), e.get('startTimestamp'),
-                      e.get('status', {}).get('type'), date_str))
+                      tournament.get('season', {}).get('id'), ts,
+                      e.get('status', {}).get('type'), utc_date))
                 count += 1
             except:
                 pass
@@ -138,7 +151,7 @@ def collect_stats(limit_events=None):
     print(f"[Stats] Fetching stats for {len(event_ids)} events...")
     fetched = 0
     for eid in event_ids:
-        data = _get(f'/match/{eid}/statistics')
+        data = _get(f'/event/{eid}/statistics')
         if not data:
             continue
         groups = data.get('statistics', []) if 'statistics' in data else (data.get('groups', data) if isinstance(data, dict) else [])
@@ -195,6 +208,70 @@ def collect_stats(limit_events=None):
     total = conn.execute('SELECT COUNT(*) FROM sofa_match_stats').fetchone()[0]
     conn.close()
     print(f"[Stats] Done. {fetched} new, {total} total match stats in DB.")
+    return total
+
+def collect_lineups(limit_events=None):
+    """Fetch /event/{id}/lineups for finished matches that lack lineups.
+    Targets competitions with proven lineup availability first."""
+    conn = sqlite3.connect(DB)
+    init_db()
+    # Get competitions with existing lineups (most productive first)
+    prod_comps = conn.execute('''
+        SELECT sr.tournament FROM sofa_lineups sl
+        JOIN sofa_historical_results sr ON sl.event_id = sr.id
+        GROUP BY sr.tournament ORDER BY COUNT(*) DESC
+    ''').fetchall()
+    prod_comps = [r[0] for r in prod_comps if r[0]]
+
+    if prod_comps:
+        # Prioritize missing matches from productive competitions
+        placeholders = ','.join('?' for _ in prod_comps)
+        query = f'''SELECT r.id FROM sofa_historical_results r
+                   LEFT JOIN sofa_lineups l ON r.id = l.event_id
+                   WHERE l.event_id IS NULL AND r.tournament IN ({placeholders})
+                   ORDER BY r.start_timestamp DESC'''
+        cur = conn.execute(query, prod_comps)
+    else:
+        # Fallback: newest first
+        query = '''SELECT r.id FROM sofa_historical_results r
+                   LEFT JOIN sofa_lineups l ON r.id = l.event_id
+                   WHERE l.event_id IS NULL ORDER BY r.start_timestamp DESC'''
+        cur = conn.execute(query)
+
+    event_ids = [row[0] for row in cur.fetchall()]
+    if limit_events:
+        event_ids = event_ids[:limit_events]
+    print(f"[Lineups] Fetching for {len(event_ids)} events...")
+    fetched = 0
+    for eid in event_ids:
+        data = _get(f'/event/{eid}/lineups')
+        if not data:
+            continue
+        home_f = data.get('home', {}).get('formation', '')
+        away_f = data.get('away', {}).get('formation', '')
+        home_players = data.get('home', {}).get('players', [])
+        away_players = data.get('away', {}).get('players', [])
+        if not home_f and not away_f:
+            continue
+        try:
+            conn.execute('''
+                INSERT OR REPLACE INTO sofa_lineups
+                (event_id, home_formation, away_formation,
+                 home_players_json, away_players_json, confirmed)
+                VALUES (?,?,?,?,?,?)
+            ''', (eid, home_f, away_f,
+                  json.dumps(home_players, default=str) if home_players else '',
+                  json.dumps(away_players, default=str) if away_players else '',
+                  1 if data.get('confirmed') else 0))
+            fetched += 1
+            conn.commit()
+        except:
+            pass
+        if fetched % 200 == 0:
+            print(f"[Lineups] {fetched}/{len(event_ids)}")
+    total = conn.execute('SELECT COUNT(*) FROM sofa_lineups').fetchone()[0]
+    conn.close()
+    print(f"[Lineups] Done. {fetched} new, {total} total lineups in DB.")
     return total
 
 def _parse_num(v):

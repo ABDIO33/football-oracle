@@ -19,11 +19,15 @@ FEATURES = [
     'home_elo', 'away_elo', 'elo_diff',
     'home_xg_for', 'home_xg_against',
     'away_xg_for', 'away_xg_against',
-    'home_xg_for_last5', 'home_xg_against_last5',
-    'away_xg_for_last5', 'away_xg_against_last5',
     'home_form', 'away_form',
     'home_matches_played', 'away_matches_played',
     'home_shots_for', 'away_shots_for',
+    'home_shots_against', 'away_shots_against',
+    'home_xg_diff', 'away_xg_diff',
+    'home_shot_diff', 'away_shot_diff',
+    'home_days_rest', 'away_days_rest',
+    'forebet_prob_h', 'forebet_prob_d', 'forebet_prob_a',
+    'forebet_available',
 ]
 
 def _load_training_data(start_date='2024-06-15', end_date='2026-06-14'):
@@ -31,16 +35,47 @@ def _load_training_data(start_date='2024-06-15', end_date='2026-06-14'):
     conn = sqlite3.connect(DB)
     cur = conn.execute('''
         SELECT r.id, r.date, r.home_team, r.away_team,
-               r.home_score, r.away_score,
+               r.home_score, r.away_score, r.start_timestamp as r_ts,
                wf_h.elo, wf_a.elo,
                wf_h.rolling_xg_for, wf_h.rolling_xg_against,
                wf_a.rolling_xg_for, wf_a.rolling_xg_against,
                wf_h.form_points, wf_a.form_points,
                wf_h.matches_played, wf_a.matches_played,
-               wf_h.rolling_shots_for, wf_a.rolling_shots_for
+               wf_h.rolling_shots_for, wf_a.rolling_shots_for,
+               wf_h.rolling_shots_against, wf_a.rolling_shots_against,
+               COALESCE(fp_h.prob_h, fp_ah.prob_h, 0) AS fp_h,
+               COALESCE(fp_h.prob_d, fp_ah.prob_d, 0) AS fp_d,
+               COALESCE(fp_h.prob_a, fp_ah.prob_a, 0) AS fp_a,
+               CASE WHEN fp_h.match_key IS NOT NULL OR fp_ah.match_key IS NOT NULL THEN 1 ELSE 0 END AS fp_avail,
+               prev_h.start_timestamp AS h_last_ts,
+               prev_a.start_timestamp AS a_last_ts
         FROM sofa_historical_results r
         JOIN walkforward_state wf_h ON r.home_team = wf_h.team_name AND r.date = wf_h.date
         JOIN walkforward_state wf_a ON r.away_team = wf_a.team_name AND r.date = wf_a.date
+        LEFT JOIN forebet_predictions fp_h ON r.date = fp_h.date
+            AND (LOWER(r.home_team) LIKE '%' || LOWER(fp_h.home_team) || '%'
+                 OR LOWER(fp_h.home_team) LIKE '%' || LOWER(r.home_team) || '%')
+            AND (LOWER(r.away_team) LIKE '%' || LOWER(fp_h.away_team) || '%'
+                 OR LOWER(fp_h.away_team) LIKE '%' || LOWER(r.away_team) || '%')
+        LEFT JOIN forebet_predictions fp_ah ON r.date = fp_ah.date
+            AND (LOWER(r.home_team) LIKE '%' || LOWER(fp_ah.away_team) || '%'
+                 OR LOWER(fp_ah.away_team) LIKE '%' || LOWER(r.home_team) || '%')
+            AND (LOWER(r.away_team) LIKE '%' || LOWER(fp_ah.home_team) || '%'
+                 OR LOWER(fp_ah.home_team) LIKE '%' || LOWER(r.away_team) || '%')
+        LEFT JOIN sofa_historical_results prev_h ON prev_h.id = (
+            SELECT r2.id FROM sofa_historical_results r2
+            WHERE (r2.home_team = r.home_team OR r2.away_team = r.home_team)
+              AND r2.start_timestamp < r.start_timestamp
+              AND r2.status_type = 'finished'
+            ORDER BY r2.start_timestamp DESC LIMIT 1
+        )
+        LEFT JOIN sofa_historical_results prev_a ON prev_a.id = (
+            SELECT r3.id FROM sofa_historical_results r3
+            WHERE (r3.home_team = r.away_team OR r3.away_team = r.away_team)
+              AND r3.start_timestamp < r.start_timestamp
+              AND r3.status_type = 'finished'
+            ORDER BY r3.start_timestamp DESC LIMIT 1
+        )
         WHERE r.date >= ? AND r.date <= ?
           AND r.status_type = 'finished'
           AND r.home_score IS NOT NULL AND r.away_score IS NOT NULL
@@ -51,22 +86,29 @@ def _load_training_data(start_date='2024-06-15', end_date='2026-06-14'):
     if not rows:
         return np.array([]), np.array([]), np.array([])
     X_list, y_home, y_away = [], [], []
+    DAY_SEC = 86400
     for row in rows:
-        eid, date_str, home, away, hs, aws, h_elo, a_elo, h_xgf, h_xga, a_xgf, a_xga, h_f, a_f, h_mp, a_mp, h_shots, a_shots = row
+        eid, date_str, home, away, hs, aws, r_ts, h_elo, a_elo, h_xgf, h_xga, a_xgf, a_xga, h_f, a_f, h_mp, a_mp, h_shots, a_shots, h_shots_a, a_shots_a, fp_h, fp_d, fp_a, fp_avail, h_last_ts, a_last_ts = row
         elo_diff = h_elo - a_elo
-        h_xgf_l5 = h_xgf if h_xgf else 1.2
-        h_xga_l5 = h_xga if h_xga else 1.2
-        a_xgf_l5 = a_xgf if a_xgf else 1.2
-        a_xga_l5 = a_xga if a_xga else 1.2
+        h_xg_diff = (h_xgf or 1.2) - (h_xga or 1.2)
+        a_xg_diff = (a_xgf or 1.2) - (a_xga or 1.2)
+        h_shot_diff = (h_shots or 10) - (h_shots_a or 10)
+        a_shot_diff = (a_shots or 10) - (a_shots_a or 10)
+        h_days_rest = max(1, int((r_ts - (h_last_ts or r_ts - 7*DAY_SEC)) / DAY_SEC))
+        a_days_rest = max(1, int((r_ts - (a_last_ts or r_ts - 7*DAY_SEC)) / DAY_SEC))
         features = [
             h_elo or 1600, a_elo or 1600, elo_diff,
             h_xgf or 1.2, h_xga or 1.2,
             a_xgf or 1.2, a_xga or 1.2,
-            h_xgf_l5, h_xga_l5,
-            a_xgf_l5, a_xga_l5,
             h_f or 0.5, a_f or 0.5,
             h_mp or 0, a_mp or 0,
             h_shots or 10, a_shots or 10,
+            h_shots_a or 10, a_shots_a or 10,
+            h_xg_diff, a_xg_diff,
+            h_shot_diff, a_shot_diff,
+            h_days_rest, a_days_rest,
+            fp_h or 0, fp_d or 0, fp_a or 0,
+            fp_avail or 0,
         ]
         X_list.append(features)
         y_home.append(int(hs))
@@ -169,7 +211,8 @@ def predict_lambda(home_team, away_team, match_date):
             return None, None
         cur = conn.execute('''
             SELECT wf.elo, wf.rolling_xg_for, wf.rolling_xg_against,
-                   wf.form_points, wf.matches_played, wf.rolling_shots_for
+                   wf.form_points, wf.matches_played, wf.rolling_shots_for,
+                   wf.rolling_shots_against
             FROM walkforward_state wf
             WHERE wf.team_name = ? AND wf.date <= ?
             ORDER BY wf.date DESC LIMIT 1
@@ -177,7 +220,8 @@ def predict_lambda(home_team, away_team, match_date):
         h = cur.fetchone()
         cur.execute('''
             SELECT wf.elo, wf.rolling_xg_for, wf.rolling_xg_against,
-                   wf.form_points, wf.matches_played, wf.rolling_shots_for
+                   wf.form_points, wf.matches_played, wf.rolling_shots_for,
+                   wf.rolling_shots_against
             FROM walkforward_state wf
             WHERE wf.team_name = ? AND wf.date <= ?
             ORDER BY wf.date DESC LIMIT 1
@@ -189,18 +233,64 @@ def predict_lambda(home_team, away_team, match_date):
     conn.close()
     if not h or not a:
         return None, None
-    h_elo, h_xgf, h_xga, h_f, h_mp, h_shots = h
-    a_elo, a_xgf, a_xga, a_f, a_mp, a_shots = a
+    h_elo, h_xgf, h_xga, h_f, h_mp, h_shots, h_shots_a = h
+    a_elo, a_xgf, a_xga, a_f, a_mp, a_shots, a_shots_a = a
     elo_diff = h_elo - a_elo
+    h_xg_diff = (h_xgf or 1.2) - (h_xga or 1.2)
+    a_xg_diff = (a_xgf or 1.2) - (a_xga or 1.2)
+    h_shot_diff = (h_shots or 10) - (h_shots_a or 10)
+    a_shot_diff = (a_shots or 10) - (a_shots_a or 10)
+    h_days_rest = 7
+    a_days_rest = 7
+    fp_h = fp_d = fp_a = 0.0
+    fp_avail = 0
+    try:
+        import forebet_scraper as forebets
+        fp = forebets.find_prediction_for_match(home_team, away_team, match_date)
+        if fp:
+            fp_h = fp.get('prob_h', 0) / 100.0
+            fp_d = fp.get('prob_d', 0) / 100.0
+            fp_a = fp.get('prob_a', 0) / 100.0
+            fp_avail = 1
+    except:
+        pass
+    DAY_SEC = 86400
+    try:
+        conn2 = sqlite3.connect(DB)
+        cur = conn2.execute('''
+            SELECT start_timestamp FROM sofa_historical_results
+            WHERE (home_team = ? OR away_team = ?)
+              AND start_timestamp < (SELECT COALESCE(MIN(start_timestamp), 0) FROM sofa_historical_results WHERE id = ?)
+            ORDER BY start_timestamp DESC LIMIT 1
+        ''', (home_resolved, home_resolved, 0))
+        h_last = cur.fetchone()
+        cur.execute('''
+            SELECT start_timestamp FROM sofa_historical_results
+            WHERE (home_team = ? OR away_team = ?)
+              AND start_timestamp < (SELECT COALESCE(MIN(start_timestamp), 0) FROM sofa_historical_results WHERE id = ?)
+            ORDER BY start_timestamp DESC LIMIT 1
+        ''', (away_resolved, away_resolved, 0))
+        a_last = cur.fetchone()
+        conn2.close()
+        if h_last and h_last[0]:
+            h_days_rest = max(1, int((int(datetime.strptime(match_date, '%Y-%m-%d').timestamp()) - h_last[0]) / DAY_SEC))
+        if a_last and a_last[0]:
+            a_days_rest = max(1, int((int(datetime.strptime(match_date, '%Y-%m-%d').timestamp()) - a_last[0]) / DAY_SEC))
+    except:
+        pass
     features = np.array([[
         h_elo or 1600, a_elo or 1600, elo_diff,
-        h_xgf or 1.2, h_xga or 1.2,
-        a_xgf or 1.2, a_xga or 1.2,
         h_xgf or 1.2, h_xga or 1.2,
         a_xgf or 1.2, a_xga or 1.2,
         h_f or 0.5, a_f or 0.5,
         h_mp or 0, a_mp or 0,
         h_shots or 10, a_shots or 10,
+        h_shots_a or 10, a_shots_a or 10,
+        h_xg_diff, a_xg_diff,
+        h_shot_diff, a_shot_diff,
+        h_days_rest, a_days_rest,
+        fp_h, fp_d, fp_a,
+        fp_avail,
     ]])
     lam_h = max(0.25, min(4.5, float(model_h.predict(features)[0])))
     lam_a = max(0.25, min(4.5, float(model_a.predict(features)[0])))

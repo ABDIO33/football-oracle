@@ -1,4 +1,4 @@
-import os, json, requests
+import os, json
 
 WC2026_VENUES = {
     'Estadio Azteca':       {'city': 'Mexico City', 'country': 'Mexico', 'altitude_m': 2240, 'capacity': 87523, 'avg_temp_c': 22, 'is_roof': False, 'surface': 'grass'},
@@ -47,17 +47,6 @@ def venue_factor(venue_name=None, home_team=None, away_team=None, fixture_id=Non
         'applied': False,
     }
     vname = venue_name
-    if not vname and fixture_id:
-        try:
-            from prediction_engine import API_FOOTBALL_BASE, _cached_or_fetch
-            headers = lambda: {'x-apisports-key': os.environ.get('API_SPORT_KEY', '')}
-            url = f"{API_FOOTBALL_BASE}/fixtures?id={fixture_id}"
-            data = _cached_or_fetch(url, headers, 1440)
-            if data and 'response' in data and data['response']:
-                v = data['response'][0].get('fixture', {}).get('venue', {})
-                vname = v.get('name', '')
-        except:
-            pass
     if not vname:
         return result
     resolved = _resolve_venue(vname)
@@ -104,14 +93,4 @@ def _is_host_nation(team_name, venue_name):
     return False
 
 def get_venue_for_fixture(fixture_id):
-    try:
-        from prediction_engine import API_FOOTBALL_BASE, _cached_or_fetch
-        headers = lambda: {'x-apisports-key': os.environ.get('API_SPORT_KEY', '')}
-        url = f"{API_FOOTBALL_BASE}/fixtures?id={fixture_id}"
-        data = _cached_or_fetch(url, headers, 1440)
-        if data and 'response' in data and data['response']:
-            v = data['response'][0].get('fixture', {}).get('venue', {})
-            return v.get('name', '')
-    except:
-        pass
     return ''

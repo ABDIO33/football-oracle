@@ -18,6 +18,10 @@ except ImportError:
 import evaluation
 import venues as venue_module
 try:
+    import forebet_scraper as forebets
+except ImportError:
+    forebets = None
+try:
     import calibration
 except ImportError:
     calibration = None
@@ -1583,10 +1587,17 @@ def determine_best_bet(prediction, home_team, away_team):
 # ═══════════════════════════════════════════════════════════════
 # ANALYZE MATCH DEEP (main function)
 # ═══════════════════════════════════════════════════════════════
-def analyze_match_deep(home_team, away_team, competition=None, neutral_venue=False, fixture_id=None, use_fotmob=False, use_statsbomb=False, use_clubelo=False, use_understat=False, use_whoscored=False, use_fbref=False, use_market_odds=False, use_lambda_model=False):
+def analyze_match_deep(home_team, away_team, competition=None, neutral_venue=False, fixture_id=None, use_fotmob=False, use_statsbomb=False, use_clubelo=False, use_understat=False, use_whoscored=False, use_fbref=False, use_market_odds=False, use_lambda_model=False, use_forebet=False, use_direct_model=False):
     start = time.time()
     home_resolved = _resolve_team_name(home_team)
     away_resolved = _resolve_team_name(away_team)
+    # WC2026: use dedicated predictor
+    if competition and 'world cup' in competition.lower():
+        try:
+            import wc2026_predictor as wc
+            return wc.analyze_match_deep(home_resolved, away_resolved, competition=competition)
+        except ImportError:
+            pass
     features = compute_features(home_resolved, away_resolved, neutral_venue)
     if use_fotmob and fs is not None:
         try:
@@ -1750,7 +1761,85 @@ def analyze_match_deep(home_team, away_team, competition=None, neutral_venue=Fal
                   'Ligue 1': 'Ligue_1', 'Ligue_1': 'Ligue_1'}
     league_key = league_map.get(competition, '') if competition else ''
     league_rho = mt.get_rho(league_key) if (league_key and mt) else None
-    prediction = dixon_coles_predict(hg, ag, rho=league_rho)  # uses per-league rho or _FITTED_RHO
+    # Market odds fetch (before Direct model so odds features can be used)
+    market_probs = None
+    if use_market_odds:
+        market_probs = get_market_probabilities(home_resolved, away_resolved, league_key=competition)
+    odds_b365 = odds_avg = None
+    if market_probs and market_probs.get('available'):
+        overround = market_probs.get('overround', 1.0)
+        mh = market_probs['home'] / 100.0
+        md = market_probs['draw'] / 100.0
+        ma = market_probs['away'] / 100.0
+        odds_b365 = (overround / mh if mh > 0 else 10.0,
+                     overround / md if md > 0 else 10.0,
+                     overround / ma if ma > 0 else 10.0)
+        odds_avg = odds_b365  # Same as avg when only one source
+
+    # Direct Score Model ── XGBoost multi-class (25 scores) replaces Dixon-Coles
+    direct_used = False
+    if use_direct_model:
+        try:
+            import direct_predictor as dp
+            direct_result = dp.predict_match(home_resolved, away_resolved, datetime.now().strftime('%Y-%m-%d'),
+                                             odds_b365=odds_b365, odds_avg=odds_avg)
+            if direct_result is not None:
+                sp = direct_result['score_probs']
+                p1x2 = direct_result['probs_1x2']
+                max_g = MAX_GOALS_DC
+                probs = np.zeros((max_g + 1, max_g + 1), dtype=float)
+                for h in range(5):
+                    for a in range(5):
+                        key = f'{h}-{a}'
+                        probs[h, a] = sp.get(key, 0)
+                total_p = probs.sum()
+                if total_p > 0:
+                    probs /= total_p
+                home_win = float(np.tril(probs, -1).sum())
+                draw = float(np.trace(probs))
+                away_win = float(np.triu(probs, 1).sum())
+                idx = np.arange(max_g + 1)
+                total = idx[:, None] + idx[None, :]
+                prediction = {
+                    'home_win_prob': home_win,
+                    'draw_prob': draw,
+                    'away_win_prob': away_win,
+                    'most_likely_score': direct_result['predicted_score'],
+                    'exact_score_prob': round(direct_result['predicted_prob'] * 100, 2),
+                    'under_0_5': float(probs[total <= 0].sum()),
+                    'under_1_5': float(probs[total <= 1].sum()),
+                    'under_2_5': float(probs[total <= 2].sum()),
+                    'under_3_5': float(probs[total <= 3].sum()),
+                    'under_4_5': float(probs[total <= 4].sum()),
+                    'under_5_5': float(probs[total <= 5].sum()),
+                    'over_2_5': float(probs[total > 2].sum()),
+                    'over_3_5': float(probs[total > 3].sum()),
+                    'over_4_5': float(probs[total > 4].sum()),
+                    'btts_yes': float(probs[1:, 1:].sum()),
+                    'btts_no': float(probs[:1, :1].sum()) + float(probs[0, 1:].sum()) + float(probs[1:, 0].sum()),
+                    'probs': probs,
+                    'expected_goals_home': direct_result['expected_goals']['home'],
+                    'expected_goals_away': direct_result['expected_goals']['away'],
+                    'top_scores': [{'score': s, 'prob': round(p * 100, 2)} for s, p in direct_result['top_scores'][:8]],
+                    'top_3': [{'score': s, 'prob': round(p * 100, 2)} for s, p in direct_result['top_scores'][:3]],
+                    'asian_handicap': {
+                        'ah_0': round(home_win, 4),
+                        'ah_m025': round(home_win + 0.5 * draw, 4),
+                        'ah_05': round(home_win, 4),
+                        'ah_m075': round(home_win - 0.5 * float(probs[(idx[:, None] - idx[None, :]) == 1].sum()), 4),
+                        'ah_10': round(float(probs[(idx[:, None] - idx[None, :]) >= 2].sum()) + 0.5 * (home_win - float(probs[(idx[:, None] - idx[None, :]) >= 2].sum())), 4),
+                    },
+                }
+                prediction['btts_no'] = 1.0 - prediction['btts_yes']
+                # Override hg, ag for downstream WC/venue blending
+                hg = direct_result['expected_goals']['home']
+                ag = direct_result['expected_goals']['away']
+                direct_used = True
+                features['direct_model_applied'] = True
+        except Exception as ex:
+            print(f'[Direct model] failed: {ex}')
+    if not direct_used:
+        prediction = dixon_coles_predict(hg, ag, rho=league_rho)
     _AI_CALLS = getattr(analyze_match_deep, '_ai_calls', 0)
     if (has_agent or has_groq) and _AI_CALLS < 12:
         analyze_match_deep._ai_calls = _AI_CALLS + 1
@@ -1786,9 +1875,74 @@ def analyze_match_deep(home_team, away_team, competition=None, neutral_venue=Fal
         prediction['wc_away_stats'] = wc_away
     # Market odds integration (Odds API blend)
     market_probs = None
-    if use_market_odds or ODDS_API_KEY:
-        market_probs = get_market_probabilities(home_resolved, away_resolved, league_key=competition)
-    # Save pre-market true probabilities (pure Dixon-Coles) for value bet detection
+    # FD Direct Model blend (uses market odds as features, full score distribution)
+    if market_probs and market_probs.get('available') and use_direct_model:
+        try:
+            import fd_direct_predictor as fdp
+            overround = market_probs.get('overround', 1.0)
+            mh = market_probs['home'] / 100.0
+            md = market_probs['draw'] / 100.0
+            ma = market_probs['away'] / 100.0
+            # Convert market probs to B365-like odds
+            b365h = overround / mh if mh > 0 else 10.0
+            b365d = overround / md if md > 0 else 10.0
+            b365a = overround / ma if ma > 0 else 10.0
+            fd_result = fdp.predict_match(b365h, b365d, b365a)
+            if fd_result and direct_used:
+                fd_probs = np.zeros((MAX_GOALS_DC + 1, MAX_GOALS_DC + 1), dtype=float)
+                sp = fd_result['score_probs']
+                for h in range(5):
+                    for a in range(5):
+                        key = f'{h}-{a}'
+                        fd_probs[h, a] = sp.get(key, 0)
+                total_fd = fd_probs.sum()
+                if total_fd > 0:
+                    fd_probs /= total_fd
+                # Blend: average the full probability distributions (Direct + FD)
+                blend_weight = 0.35
+                probs = prediction.get('probs')
+                if probs is not None and probs.shape == fd_probs.shape:
+                    blended_probs = probs * (1 - blend_weight) + fd_probs * blend_weight
+                    blended_probs /= blended_probs.sum()  # renormalize
+                    # Rebuild prediction from blended probs
+                    idx = np.arange(MAX_GOALS_DC + 1)
+                    total = idx[:, None] + idx[None, :]
+                    home_win = float(np.tril(blended_probs, -1).sum())
+                    draw = float(np.trace(blended_probs))
+                    away_win = float(np.triu(blended_probs, 1).sum())
+                    prediction['probs'] = blended_probs
+                    prediction['home_win_prob'] = home_win
+                    prediction['draw_prob'] = draw
+                    prediction['away_win_prob'] = away_win
+                    prediction['under_0_5'] = float(blended_probs[total <= 0].sum())
+                    prediction['under_1_5'] = float(blended_probs[total <= 1].sum())
+                    prediction['under_2_5'] = float(blended_probs[total <= 2].sum())
+                    prediction['under_3_5'] = float(blended_probs[total <= 3].sum())
+                    prediction['under_4_5'] = float(blended_probs[total <= 4].sum())
+                    prediction['under_5_5'] = float(blended_probs[total <= 5].sum())
+                    prediction['over_2_5'] = float(blended_probs[total > 2].sum())
+                    prediction['over_3_5'] = float(blended_probs[total > 3].sum())
+                    prediction['over_4_5'] = float(blended_probs[total > 4].sum())
+                    prediction['btts_yes'] = float(blended_probs[1:, 1:].sum())
+                    prediction['btts_no'] = 1.0 - prediction['btts_yes']
+                    prediction['expected_goals_home'] = float((idx[:, None] * blended_probs).sum())
+                    prediction['expected_goals_away'] = float((idx[None, :] * blended_probs).sum())
+                    # Top scores from blended
+                    scores_list = []
+                    for h in range(5):
+                        for a in range(5):
+                            scores_list.append(((h, a), float(blended_probs[h, a])))
+                    scores_list.sort(key=lambda x: -x[1])
+                    predicted_score = scores_list[0][0]
+                    prediction['most_likely_score'] = f'{predicted_score[0]}-{predicted_score[1]}'
+                    prediction['exact_score_prob'] = round(scores_list[0][1] * 100, 2)
+                    prediction['top_scores'] = [{'score': f'{s[0]}-{s[1]}', 'prob': round(p * 100, 2)} for s, p in scores_list[:8]]
+                    prediction['top_3'] = [{'score': f'{s[0]}-{s[1]}', 'prob': round(p * 100, 2)} for s, p in scores_list[:3]]
+                    prediction['fd_model_blended'] = True
+        except Exception as ex:
+            if 'fd_direct_predictor' in str(type(ex)) or 'fd' in str(ex).lower():
+                print(f'[FD model] skip: {ex}')
+    # Save pre-market true probabilities (pure model) for value bet detection
     true_h = prediction['home_win_prob']
     true_d = prediction['draw_prob']
     true_a = prediction['away_win_prob']
@@ -1832,6 +1986,32 @@ def analyze_match_deep(home_team, away_team, competition=None, neutral_venue=Fal
                 pass
     else:
         prediction['market_data_used'] = False
+    # Forebet blend
+    FOREBET_WEIGHT = 0.25
+    if use_forebet and forebets is not None:
+        try:
+            fb_pred = forebets.find_prediction_for_match(home_resolved, away_resolved)
+            if fb_pred and fb_pred.get('prob_h') is not None:
+                fb_h = fb_pred['prob_h']
+                fb_d = fb_pred['prob_d']
+                fb_a = fb_pred['prob_a']
+                dc_h = prediction['home_win_prob']
+                dc_d = prediction['draw_prob']
+                dc_a = prediction['away_win_prob']
+                blended_h = dc_h * (1 - FOREBET_WEIGHT) + fb_h * FOREBET_WEIGHT
+                blended_d = dc_d * (1 - FOREBET_WEIGHT) + fb_d * FOREBET_WEIGHT
+                blended_a = dc_a * (1 - FOREBET_WEIGHT) + fb_a * FOREBET_WEIGHT
+                total_b = blended_h + blended_d + blended_a
+                if total_b > 0:
+                    prediction['home_win_prob'] = blended_h / total_b
+                    prediction['draw_prob'] = blended_d / total_b
+                    prediction['away_win_prob'] = blended_a / total_b
+                prediction['forebet_data_used'] = True
+                prediction['forebet_pred'] = fb_pred['forebet_pred']
+                prediction['forebet_correct_score'] = fb_pred['correct_score']
+                prediction['forebet_avg_goals'] = fb_pred['avg_goals']
+        except Exception:
+            pass
     # Venue factor
     venue_result = venue_module.venue_factor(venue_name=features.get('venue_name'), home_team=home_resolved, away_team=away_resolved)
     if venue_result['applied']:
@@ -2197,7 +2377,7 @@ def rate_matches(matches):
     rated = []
     for match in matches:
         try:
-            pred = analyze_match_deep(match['home_team'], match['away_team'], match.get('competition'), fixture_id=match.get('fixture_id'), use_understat=True, use_whoscored=True, use_fbref=True, use_market_odds=True, use_lambda_model=True)
+            pred = analyze_match_deep(match['home_team'], match['away_team'], match.get('competition'), fixture_id=match.get('fixture_id'), use_understat=True, use_whoscored=True, use_fbref=True, use_market_odds=True, use_lambda_model=True, use_forebet=True, use_direct_model=True)
             score = 0
             confidence_boost = {'HIGH': 30, 'MEDIUM': 15, 'LOW': 0}
             score += confidence_boost.get(pred['analysis']['confidence'], 0)

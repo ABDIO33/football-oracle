@@ -617,6 +617,36 @@ class TorchMLPWrapper:
         self.device = device
         self.model.eval()
         self.model.to(device)
+    def __getstate__(self):
+        import torch.nn as nn
+        arch = []
+        for layer in self.model:
+            if isinstance(layer, nn.Linear):
+                arch.append(('Linear', layer.in_features, layer.out_features, layer.bias is not None))
+            elif isinstance(layer, nn.BatchNorm1d):
+                arch.append(('BN', layer.num_features))
+            elif isinstance(layer, nn.ReLU):
+                arch.append(('ReLU',))
+            elif isinstance(layer, nn.Dropout):
+                arch.append(('Dropout', layer.p))
+        return {'state_dict': self.model.state_dict(), 'arch': arch, 'device': self.device}
+    def __setstate__(self, state):
+        import torch.nn as nn
+        layers = []
+        for item in state['arch']:
+            if item[0] == 'Linear':
+                layers.append(nn.Linear(item[1], item[2], item[3]))
+            elif item[0] == 'BN':
+                layers.append(nn.BatchNorm1d(item[1]))
+            elif item[0] == 'ReLU':
+                layers.append(nn.ReLU())
+            elif item[0] == 'Dropout':
+                layers.append(nn.Dropout(item[1]))
+        self.model = nn.Sequential(*layers)
+        self.model.load_state_dict(state['state_dict'])
+        self.device = state['device']
+        self.model.eval()
+        self.model.to(self.device)
     def predict_proba(self, X):
         import torch
         self.model.eval()
@@ -640,9 +670,12 @@ class EnsemblePredictor:
         if nn_total > 0 and len(self.models) > 0:
             X_imp = self.imp.transform(X)
             X_s = self.scaler.transform(X_imp)
-            w_each = nn_total / len(self.models)
-            for m in self.models:
-                proba += w_each * m.predict_proba(X_s)
+            n_nn = len(self.models)
+            has_weights = self.model_weights is not None and len(self.model_weights) == n_nn
+            w_sum = sum(self.model_weights) if has_weights else n_nn
+            for i, m in enumerate(self.models):
+                w = (self.model_weights[i] / w_sum) * nn_total if has_weights else nn_total / n_nn
+                proba += w * m.predict_proba(X_s)
         return proba
 
 _BLEND_CACHE = None

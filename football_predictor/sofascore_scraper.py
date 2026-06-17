@@ -109,19 +109,19 @@ def get_team_upcoming(team_id, limit=5):
     return data['events']
 
 def get_match_detail(match_id):
-    data = _get(f'/match/{match_id}', cache_minutes=30)
+    data = _get(f'/event/{match_id}', cache_minutes=30)
     return data
 
 def get_match_statistics(match_id):
-    data = _get(f'/match/{match_id}/statistics', cache_minutes=1440)
+    data = _get(f'/event/{match_id}/statistics', cache_minutes=1440)
     return data
 
 def get_match_lineups(match_id):
-    data = _get(f'/match/{match_id}/lineups', cache_minutes=1440)
+    data = _get(f'/event/{match_id}/lineups', cache_minutes=1440)
     return data
 
 def get_match_h2h(match_id):
-    data = _get(f'/match/{match_id}/h2h', cache_minutes=1440)
+    data = _get(f'/event/{match_id}/h2h', cache_minutes=1440)
     return data
 
 def get_standings(tournament_id, season_id):

@@ -1,8 +1,13 @@
 {
   "val_samples": 15081,
-  "meta_exact_pct": 20.46,
-  "meta_1x2_pct": 54.77,
-  "blend_exact_pct": 18.16,
-  "improvement_pct": 2.29,
+  "meta_exact_pct": 22.0,
+  "meta_1x2_pct": 56.85,
+  "blend_exact_pct": 22.52,
+  "improvement_pct": -0.52,
   "learned_weights": {
-    "XGBoost": 
+    "XGBoost": 0.2759000062942505,
+    "DeepNN-1": 0.26589998602867126,
+    "DeepNN-2": 0.23899999260902405,
+    "DeepNN-3": 0.219200000166893
+  }
+}

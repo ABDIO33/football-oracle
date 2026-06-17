@@ -264,6 +264,29 @@ def main():
     except Exception as e:
         print(f"[!] Backfill error: {e}")
 
+    # Step 0.55: Lineups backfill — incremental (500 per run)
+    try:
+        from backfill import collect_lineups
+        lu = collect_lineups(limit_events=500)
+        if lu > 0:
+            print(f"[OK] Lineups backfill: {lu} new")
+        # Show remaining
+        import sqlite3
+        conn = sqlite3.connect('scrape_cache.db')
+        rem = conn.execute('SELECT COUNT(*) FROM sofa_historical_results r LEFT JOIN sofa_lineups l ON r.id=l.event_id WHERE l.event_id IS NULL').fetchone()[0]
+        conn.close()
+        print(f"[STATS] Lineups remaining: {rem}")
+    except Exception as e:
+        print(f"[!] Lineups backfill error: {e}")
+
+    # Step 0.56: Rebuild player impact database
+    try:
+        from player_impact import build
+        build()
+        print(f"[OK] Player impact DB rebuilt")
+    except Exception as e:
+        print(f"[!] Player impact rebuild error: {e}")
+
     # Step 0.6: Walk-forward — chronological Elo + rolling stats
     try:
         from walkforward import WalkForwardProcessor
@@ -286,6 +309,53 @@ def main():
         bt.close()
     except Exception as e:
         print(f"[!] Backtest error: {e}")
+
+    # Step 0.8: Forebet — collect daily predictions
+    try:
+        import forebet_scraper as fbs
+        td = fbs.get_today_predictions()
+        n_today = fbs.store_predictions(td, 'today')
+        yd = fbs.get_yesterday_predictions()
+        n_yest = fbs.store_predictions(yd, 'yesterday')
+        print(f"[FOREBET] Collected {n_today} today + {n_yest} yesterday predictions")
+    except Exception as e:
+        print(f"[!] Forebet error: {e}")
+
+    # Step 0.95: Value Betting Pipeline — daily value bets
+    try:
+        from value_betting_pipeline import run as vb_run
+        vb_run()
+        print("[OK] Value betting pipeline complete")
+    except Exception as e:
+        print(f"[!] Value betting error: {e}")
+
+    # Step 0.96: WC2026 — update predictions + track results
+    try:
+        import wc2026_predictor as wc
+        # Regenerate WC predictions with latest data
+        preds = wc.predict_all()
+        wc.save_predictions(preds)
+        # Track actual results vs predictions
+        import sqlite3
+        conn = sqlite3.connect('scrape_cache.db')
+        cur = conn.execute('''
+            SELECT wf.date, wf.home_team, wf.away_team, wf.pred_home_win,
+                   wf.pred_draw, wf.pred_away_win, r.home_score, r.away_score
+            FROM wc_fixtures wf
+            JOIN sofa_historical_results r ON r.home_team = wf.home_team
+                AND r.away_team = wf.away_team
+                AND r.date = wf.date
+            WHERE r.home_score IS NOT NULL AND r.status_type = 'finished'
+        ''')
+        tracked = 0
+        for row in cur.fetchall():
+            tracked += 1
+        conn.close()
+        if tracked:
+            print(f"[WC2026] Tracking {tracked} resolved WC matches")
+        print(f"[WC2026] {len(preds)} predictions active")
+    except Exception as e:
+        print(f"[!] WC2026 error: {e}")
 
     # Step 1: Resolve pending predictions
     try:

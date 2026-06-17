@@ -72,7 +72,7 @@ def analyze_url():
         prediction = _analysis_cache[cache_key]
     else:
         _thinking_delay(1)
-        prediction = analyze_match_deep(home_team, away_team)
+        prediction = analyze_match_deep(home_team, away_team, use_direct_model=True)
         _analysis_cache[cache_key] = prediction
         _last_analysis_time[cache_key] = now
     return render_template('result.html',
@@ -94,7 +94,7 @@ def predict():
         prediction = _analysis_cache[cache_key]
     else:
         _thinking_delay(1)
-        prediction = analyze_match_deep(home_team, away_team, neutral_venue=neutral_venue)
+        prediction = analyze_match_deep(home_team, away_team, neutral_venue=neutral_venue, use_direct_model=True)
         _analysis_cache[cache_key] = prediction
         _last_analysis_time[cache_key] = now
     return render_template('result.html',
@@ -112,7 +112,7 @@ def analyze_selected():
         home = m.get('home_team', '')
         away = m.get('away_team', '')
         if home and away:
-            pred = analyze_match_deep(home, away)
+            pred = analyze_match_deep(home, away, use_direct_model=True)
             results.append({
                 'home_team': home,
                 'away_team': away,
@@ -149,7 +149,7 @@ def api_analyze():
         pred = _analysis_cache[cache_key]
     else:
         time.sleep(2)
-        pred = analyze_match_deep(home_team, away_team, neutral_venue=neutral_venue)
+        pred = analyze_match_deep(home_team, away_team, neutral_venue=neutral_venue, use_direct_model=True)
         _analysis_cache[cache_key] = pred
         _last_analysis_time[cache_key] = now
     top_3 = pred.get('top_scores', [])[:3]
