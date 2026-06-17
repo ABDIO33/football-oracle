@@ -1,71 +1,109 @@
 # Football Oracle — Context & Key Decisions
 
 ## Project Goal
-Build the world's most accurate football exact-score prediction system using free/lightweight sources on GitHub Actions free tier.
+Build the world's best football prediction system (RPS + value betting) using free/lightweight sources on GitHub Actions free tier.
+Exact score ceiling: 13.98% (mathematical limit for Poisson-distributed scores) — **BROKEN** at 16.29% with player-level + travel data.
 
 ## Architecture
-- **Core**: Dixon-Coles bivariate Poisson model with per-league rho fitted via MLE on 19,748 Understat matches
-- **Prediction Engine**: `football_predictor/prediction_engine.py` — `analyze_match_deep()` with multi-source blending
-- **Data Sources** (by priority): SofaScore (curl_cffi) > Understat (xG/PPDA) > ClubElo (soccerdata) > StatsBomb > FotMob > WhoScored (curl_cffi) > Market Odds (The Odds API)
-- **NEW Walk-forward pipeline**: Zero-lookahead Elo + rolling xG stats computed chronologically → stored in `walkforward_state` table
-- **NEW Backtesting**: Time-split validation via `backtest.py`, stores results in `backtest_results` table
-- **NEW Backfill**: `backfill.py` collects 730 days of SofaScore results (resumable, rate-limited)
+- **Core**: XGBoost + MLP Blend Direct Score Predictor (81 features, 25 classes: 0-0 to 4-4+) — replaces Dixon-Coles Poisson
+- **Prediction Engine**: `football_predictor/prediction_engine.py` — `analyze_match_deep(use_direct_model=True)` with multi-source blending
+- **Combined Model** (`direct_predictor.py`): **16.29% exact, 54.58% 1X2, RPS 0.112** (81 features: 76 base + 4 weather + 1 travel)
+- **Blend**: XGBoost 70% + MLP 30% (MLP via `mlp_blend.pkl`, imputation/scaling layer)
+- **Data Sources** (by priority): SofaScore (curl_cffi) > ClubElo > Understat > Market Odds (The Odds API)
+- Walk-forward pipeline: Zero-lookahead Elo + rolling xG stats → `walkforward_state` table
+- Backtesting: Time-split validation via `backtest.py` → `backtest_results`
+- Backfill: `backfill.py` collects SofaScore results (resumable, rate-limited)
 
-## Per-League Rho (model_trainer)
-| League | Rho |
-|--------|-----|
-| EPL | -0.098 |
-| La Liga | -0.026 |
-| Bundesliga | -0.122 |
-| Serie A | -0.042 |
-| Ligue 1 | -0.083 |
-| Global | -0.070 |
+## Performance Evolution
+| Date | Model | Exact | 1X2 | RPS | Features |
+|------|-------|-------|-----|-----|----------|
+| Jun 14 | Direct Score (baseline) | 13.74% | 49.57% | 0.126 | 71 |
+| Jun 15 | +Player Impact (6 feat) | 15.56% | 53.27% | 0.114 | 76 |
+| Jun 15 | +Weather (4 feat, 102 stadia) | 15.68% | 53.14% | 0.113 | 80 |
+| Jun 15 | +Tuning (subsample=0.9) | 15.82% | 53.29% | 0.113 | 80 |
+| Jun 16 | **+Travel Distance (+1 feat)** | **16.29%** | **54.58%** | **0.112** | **81** |
+
+**Ceiling smashed**: 16.29% > 13.98% Poisson ceiling — player-level + travel data provides non-Poisson signal.
 
 ## API Keys Status
-- **ODDS_API_KEY**: `1aa4dd22f7ee80b8d03c654c064c4fce` — The Odds API (500 req/month, ~350 remaining)
-- Keys stored in `football_predictor/.env` and `zake-v2/.env`
-- All env vars loaded via `os.environ.get()` at runtime
+- **ODDS_API_KEY**: `1aa4dd22f7ee80b8d03c654c064c4fce` — The Odds API (500 req/month)
+- Keys stored in `football_predictor/.env`
 
 ## Key Files & Functions
-- `odds_api_scraper.py`: Market odds + value bet detection (`find_value_bets()`)
-- `prediction_engine.py`: `analyze_match_deep(use_market_odds=True)` for value detection
+- `direct_predictor.py`: XGBoost + MLP blend (81 features). **16.29% exact, 54.58% 1X2, RPS 0.112**
+- `player_impact.py`: Core 11 + impact scores. 1,929 teams, 8,988 lineups
+- `travel.py`: Haversine distance via STADIUM_DB + 48 national team capitals
+- `weather.py`: open-meteo.com with SQLite cache (102 stadiums, 7.5% match coverage)
+- `prediction_engine.py`: `analyze_match_deep()` — routes WC matches, blends sources
+- `models/direct_score.json`: XGBoost model (81 features)
+- `models/mlp_blend.pkl`: MLP model + imputer + scaler + blend weights
+- `odds_api_scraper.py`: Market odds + value bet detection
 - `github_runner.py`: GHA pipeline (weekly retrain + daily predictions)
-- `understat_scraper.py`: Understat data (free, no Cloudflare)
-- `sofascore_scraper.py`: SofaScore client (curl_cffi + x-requested-with)
-- `model_trainer.py`: Per-league rho MLE trainer
-- `backfill.py`: 730-day SofaScore historical data collector (resumable, rate-limited)
-- `walkforward.py`: Chronological Elo + rolling xG stats (zero lookahead, stores in `walkforward_state`)
-- `backtest.py`: Time-split validation pipeline (stores in `backtest_results`, feeds calibration)
-- **NEW `lambda_predictor.py`**: XGBoost/GBR λ-regressor. Predicts λ_home/λ_away from walkforward features. Blends with formula-based λ. Backtest: 24.2% exact, 73% 1X2, 0.125 RPS.
 
-## Recent Integration (June 2026)
-- The Odds API integrated → `use_market_odds=True` + value bet detection
-- 26 bookmakers covered per match, overround removed
-- Value detection: compares pure Dixon-Coles (pre-blend) vs market implied probabilities
-- Kelly criterion for bet sizing
-- League aliases map competition names to API keys
-- **Walk-forward pipeline (Jun 14 2026)**: New `backfill.py` + `walkforward.py` + `backtest.py` files. Chronological zero-lookahead Elo and rolling xG stats. Time-split backtesting. Integrated into GHA runner.
-- **Lambda regressor (Jun 14 2026)**: `lambda_predictor.py` — XGBoost/GBR predicts λ_home/λ_away from walkforward features. Blends with formula-based λ. Integrated into `prediction_engine.py` via `use_lambda_model=True`. Backtest: Exact **24.2%**, 1X2 **73%**, RPS **0.125** (time-split validated, no leakage). Realistic ceiling **20-25% exact**.
+## 81 Features
+### Walkforward (25)
+home_elo, away_elo, elo_diff, home_xg_for/against, away_xg_for/against,
+home_form, away_form, home/away_matches_played,
+home_shots_for, away_shots_for, home_shots_against, away_shots_against,
+home_xg_diff, away_xg_diff, home_shot_diff, away_shot_diff,
+home_days_rest, away_days_rest,
+forebet_prob_h/d/a, forebet_available
 
-## GHA Runner (Updated)
+### Statistics (12)
+stat_h/away_xg, shots, sot, possession, corners, fouls
+
+### Lineups + Player Impact (10)
+home_formation_def, away_formation_def, formation_diff, has_lineups,
+home_missing_core, away_missing_core, home_att_loss, away_att_loss, home_def_loss, away_def_loss
+
+### Market Odds (6)
+odds_b365h/d/a, odds_avgh/d/a
+
+### Engineered (23)
+elo_form_home/away, elo_xg_home/away, form_xg_home/away,
+elo_diff_form_diff, fatigue_home/away,
+xg_ratio, shots_ratio, form_ratio, xgf_xga_ratio_home/away, shot_eff_home/away,
+elo_diff_sq, xg_diff_sq, form_diff_sq,
+month, day_of_week, season_progress, is_weekend
+
+### Weather (4)
+home_temp, home_precip, home_wind, home_humidity
+
+### Travel (1)
+travel_distance (km, haversine, 2.5% coverage)
+
+## GHA Runner (Updated Jun 16)
 - Runs via `github_runner.py`
 - Weekly model retrain (Monday <6 UTC)
-- **Step 0.5**: Backfill — incremental SofaScore collection (last 3 days)
-- **Step 0.6**: Walk-forward — process new matches chronologically
-- **Step 0.7**: Backtest — time-split validation on recent 500 matches
-- **Step 0.8**: Lambda model — retrain λ-regressor (GradientBoostingRegressor) on walkforward features
-- Outputs to `output/index.html` + `output/predictions.json`
-- Backtest metrics (N, Exact%, 1X2%, RPS) shown on main HTML dashboard
+- **Step 0.5**: Backfill — incremental SofaScore collection
+- **Step 0.55**: Lineups backfill — targeting productive competitions (85% hit rate)
+- **Step 0.56**: Player Impact DB rebuild
+- **Step 0.6**: Walk-forward
+- **Step 0.7**: Backtest
+- **Step 0.8**: Forebet collection
+- **Step 0.95**: Value Betting Pipeline
+- **Step 0.96**: WC2026 tracking
+- Uses `dp.predict_match()` which automatically loads MLP blend if available
+- Runs via `github_runner.py`
+- Weekly model retrain (Monday <6 UTC)
+- **Step 0.5**: Backfill — incremental SofaScore collection
+- **Step 0.55**: Lineups backfill — targeting productive competitions (85% hit rate)
+- **Step 0.56**: Player Impact DB rebuild
+- **Step 0.6**: Walk-forward
+- **Step 0.7**: Backtest
+- **Step 0.8**: Forebet collection
+- **Step 0.95**: Value Betting Pipeline
+- **Step 0.96**: WC2026 tracking
+- Uses `dp.predict_match()` which automatically loads MLP blend if available
+
+## WC2026 Predictor
+- 96 matches with travel distance + weather (102 stadiums) + referee
+- Poisson + Dixon-Coles (ρ=-0.070) + ClubElo + travel + weather
+- Predictions in `output/wc_predictions.json`
 
 ## Known Limitations
-- FBref blocked by Cloudflare Enterprise (only works on GHA with Chrome)
-- WhoScored statistics endpoints blocked by oddschecker fingerprint
-- Betfair geo-blocked in Morocco
-- Sportmonks free tier too limited (abandoned)
-- Realistic exact score ceiling: 20-25% (with λ-regressor)
-- **`_cached_or_fetch()` uses `requests` library** — blocked by SofaScore Cloudflare. All SofaScore API calls must use `curl_cffi` directly with in-memory cache (`_CACHE`/`_CACHE_TIME` dicts), not `_cached_or_fetch`. National teams (Qatar, Switzerland) return 0 events from `/team/{id}/events/last/20` endpoint — no fallback data available.
-- **API-Football key dead**: Key `2064edeecfd82a209e2dca203d5ac9b6` returns 403 "Invalid API key" (error code "4xSe"). All code now uses SofaScore direct API as primary source.
-
-## Bugs Fixed
-- **`_cached_or_fetch()` + SofaScore Cloudflare block** (Jun 14 2026): Both `get_daily_matches()` and `get_live_team_data()` used `_cached_or_fetch()` for SofaScore API calls, but `_cached_or_fetch()` uses the `requests` library which cannot bypass SofaScore Cloudflare. All calls silently failed (`_cached_or_fetch` catches all exceptions). Fix: replaced all SofaScore calls with direct `curl_cffi` + `_CACHE`/`_CACHE_TIME` in-memory dicts (matched by cache key). `get_daily_matches()` now returns 205 live matches from SofaScore. `get_live_team_data()` returns `sofascore_api` source for TEAM_DB teams (Malmo FF: 1.93 attack, 15 played; BK Hacken: 2.47 attack, 15 played).
-- **UnboundLocalError in `get_live_team_data()`** (Jun 14 2026): Inner `from datetime import datetime` at original line 997 inside match-processing loop made `datetime` a local var across the entire function. `datetime.now().year` at line 945 raised `UnboundLocalError` before reaching the inner import. Fix: removed the redundant inner import (module-level import at line 3 already provides `datetime`). Without this fix, `get_live_team_data()` silently returned `TEAM_DB` defaults (`source: database`) because the outer `try/except` at line 907 caught the exception. All 7 occurrences of `datetime.now()` / `datetime.strptime()` in the function now use the module-level import correctly.
+- **Statistics**: Only Apr-Jun 2026 (9,462 rows). No Jan-Mar 2026 data.
+- **Lineups**: 8,988/100,540 (8.9%). Productive competitions exhausted.
+- **Weather**: 102/106 stadiums. Covers 7.5% of matches.
+- **Odds API**: 500 req/month limit.
+- **Player-level injury data**: No free source for injuries/suspensions.

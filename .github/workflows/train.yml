@@ -1,0 +1,82 @@
+name: Train Ensemble Model
+
+on:
+  workflow_dispatch:  # manual trigger only
+  schedule:
+    - cron: '0 6 * * 1'  # weekly: Monday 6 AM UTC
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300  # 5 hours max
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+          pip install xgboost scikit-learn numpy pandas joblib curl_cffi
+          pip install lightgbm 2>/dev/null || true
+      
+      - name: Cache SQLite database
+        uses: actions/cache@v4
+        with:
+          path: football_predictor/scrape_cache.db
+          key: db-${{ github.run_id }}
+          restore-keys: |
+            db-
+      
+      - name: Download latest database
+        run: |
+          curl -L -o football_predictor/scrape_cache.db.zip https://github.com/${{ github.repository }}/releases/download/latest/scrape_cache.db.zip 2>/dev/null || echo "No cached DB found"
+          cd football_predictor && ls -la scrape_cache.db 2>/dev/null || echo "No DB to unpack"
+      
+      - name: Run Ensemble Training
+        run: |
+          cd football_predictor
+          python ensemble_trainer.py 2>&1 | tee ensemble_train.log
+      
+      - name: Run Meta-Learner
+        run: |
+          cd football_predictor
+          python meta_learner_ensemble.py 2>&1 | tee meta_learner.log
+      
+      - name: Upload trained models
+        uses: actions/upload-artifact@v4
+        with:
+          name: trained-models
+          path: |
+            football_predictor/models/
+          retention-days: 30
+      
+      - name: Upload training logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: training-logs
+          path: |
+            football_predictor/*.log
+            football_predictor/models/*.json
+          retention-days: 90
+      
+      - name: Create release with database
+        run: |
+          cd football_predictor
+          if [ -f scrape_cache.db ]; then
+            zip -9 scrape_cache.db.zip scrape_cache.db
+            gh release upload latest scrape_cache.db.zip --clobber 2>/dev/null || echo "No gh auth for release"
+          fi

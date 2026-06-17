@@ -1,0 +1,8 @@
+{
+  "val_samples": 15081,
+  "meta_exact_pct": 20.46,
+  "meta_1x2_pct": 54.77,
+  "blend_exact_pct": 18.16,
+  "improvement_pct": 2.29,
+  "learned_weights": {
+    "XGBoost": 

@@ -1,0 +1,57 @@
+name: Daily Predictions
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 8 * * *'  # daily at 8 AM UTC
+
+jobs:
+  predict:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+          pip install xgboost scikit-learn numpy pandas joblib curl_cffi
+      
+      - name: Download trained models
+        uses: actions/download-artifact@v4
+        with:
+          name: trained-models
+          path: football_predictor/models/
+      
+      - name: Restore cached database
+        uses: actions/cache@v4
+        with:
+          path: football_predictor/scrape_cache.db
+          key: db-restore
+      
+      - name: Fetch upcoming fixtures
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: |
+          cd football_predictor
+          python upcoming_fixtures_oddsapi.py 2>&1 | tee fixtures.log
+      
+      - name: Run predictions
+        run: |
+          cd football_predictor
+          python predict_upcoming.py 2>&1 | tee predict.log
+      
+      - name: Upload predictions
+        uses: actions/upload-artifact@v4
+        with:
+          name: predictions-${{ github.run_id }}
+          path: |
+            football_predictor/output/
+          retention-days: 7
