@@ -1,51 +1,9 @@
 {
   "date": "2026-06-17",
-  "timestamp": "2026-06-17T19:36:19.114157",
-  "total_matches_with_odds": 2,
-  "value_bets_count": 3,
+  "timestamp": "2026-06-17T22:57:37.676848",
+  "total_matches_with_odds": 1,
+  "value_bets_count": 1,
   "results": [
-    {
-      "home": "England",
-      "away": "Croatia",
-      "competition": "FIFA World Cup",
-      "date": "2026-06-17",
-      "prediction": {
-        "home_prob": 39.29,
-        "draw_prob": 28.04,
-        "away_prob": 32.67,
-        "predicted_score": "1-1",
-        "confidence": 13.38
-      },
-      "market_odds": {
-        "home_prob": 57.06,
-        "draw_prob": 25.11,
-        "away_prob": 17.83,
-        "bookmaker_count": 47,
-        "overround": 4.91
-      },
-      "value_bets": [
-        {
-          "outcome": "away",
-          "true_prob": 32.67,
-          "market_prob": 17.83,
-          "edge_pct": 83.23,
-          "fair_odds": 5.61,
-          "suggested_odds_cutoff": 3.06,
-          "kelly_fraction": 0.1806,
-          "verdict": "STRONG"
-        },
-        {
-          "outcome": "draw",
-          "true_prob": 28.04,
-          "market_prob": 25.11,
-          "edge_pct": 11.67,
-          "fair_odds": 3.98,
-          "suggested_odds_cutoff": 3.57,
-          "kelly_fraction": 0.0391,
-          "verdict": "MODERATE"
-        }
-      ]
-    },
     {
       "home": "Ghana",
       "away": "Panama",
@@ -59,21 +17,21 @@
         "confidence": 13.37
       },
       "market_odds": {
-        "home_prob": 40.93,
-        "draw_prob": 30.03,
-        "away_prob": 29.04,
-        "bookmaker_count": 47,
-        "overround": 4.78
+        "home_prob": 40.55,
+        "draw_prob": 30.26,
+        "away_prob": 29.2,
+        "bookmaker_count": 48,
+        "overround": 5.17
       },
       "value_bets": [
         {
           "outcome": "away",
           "true_prob": 32.3,
-          "market_prob": 29.04,
-          "edge_pct": 11.23,
-          "fair_odds": 3.44,
+          "market_prob": 29.2,
+          "edge_pct": 10.62,
+          "fair_odds": 3.42,
           "suggested_odds_cutoff": 3.1,
-          "kelly_fraction": 0.0459,
+          "kelly_fraction": 0.0438,
           "verdict": "MODERATE"
         }
       ]
