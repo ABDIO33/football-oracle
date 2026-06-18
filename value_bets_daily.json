@@ -1,6 +1,6 @@
 {
   "date": "2026-06-18",
-  "timestamp": "2026-06-18T16:46:22.751379",
+  "timestamp": "2026-06-18T19:39:56.433687",
   "total_matches_with_odds": 1,
   "value_bets_count": 2,
   "results": [
@@ -17,19 +17,19 @@
         "confidence": 13.4
       },
       "market_odds": {
-        "home_prob": 73.64,
-        "draw_prob": 17.35,
-        "away_prob": 9.0,
-        "bookmaker_count": 48,
-        "overround": 4.86
+        "home_prob": 73.45,
+        "draw_prob": 17.34,
+        "away_prob": 9.22,
+        "bookmaker_count": 47,
+        "overround": 4.52
       },
       "value_bets": [
         {
           "outcome": "away",
           "true_prob": 33.44,
-          "market_prob": 9.0,
-          "edge_pct": 271.56,
-          "fair_odds": 11.11,
+          "market_prob": 9.22,
+          "edge_pct": 262.69,
+          "fair_odds": 10.85,
           "suggested_odds_cutoff": 2.99,
           "kelly_fraction": 0.25,
           "verdict": "STRONG"
@@ -37,11 +37,11 @@
         {
           "outcome": "draw",
           "true_prob": 28.09,
-          "market_prob": 17.35,
-          "edge_pct": 61.9,
-          "fair_odds": 5.76,
+          "market_prob": 17.34,
+          "edge_pct": 62.0,
+          "fair_odds": 5.77,
           "suggested_odds_cutoff": 3.56,
-          "kelly_fraction": 0.1299,
+          "kelly_fraction": 0.1301,
           "verdict": "STRONG"
         }
       ]
