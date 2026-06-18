@@ -1,38 +1,48 @@
 {
-  "date": "2026-06-17",
-  "timestamp": "2026-06-17T22:57:37.676848",
+  "date": "2026-06-18",
+  "timestamp": "2026-06-18T09:53:06.561298",
   "total_matches_with_odds": 1,
-  "value_bets_count": 1,
+  "value_bets_count": 2,
   "results": [
     {
-      "home": "Ghana",
-      "away": "Panama",
+      "home": "Canada",
+      "away": "Qatar",
       "competition": "FIFA World Cup",
-      "date": "2026-06-17",
+      "date": "2026-06-18",
       "prediction": {
-        "home_prob": 39.68,
-        "draw_prob": 28.01,
-        "away_prob": 32.3,
+        "home_prob": 38.47,
+        "draw_prob": 28.09,
+        "away_prob": 33.44,
         "predicted_score": "1-1",
-        "confidence": 13.37
+        "confidence": 13.4
       },
       "market_odds": {
-        "home_prob": 40.55,
-        "draw_prob": 30.26,
-        "away_prob": 29.2,
+        "home_prob": 74.52,
+        "draw_prob": 16.94,
+        "away_prob": 8.54,
         "bookmaker_count": 48,
-        "overround": 5.17
+        "overround": 4.92
       },
       "value_bets": [
         {
           "outcome": "away",
-          "true_prob": 32.3,
-          "market_prob": 29.2,
-          "edge_pct": 10.62,
-          "fair_odds": 3.42,
-          "suggested_odds_cutoff": 3.1,
-          "kelly_fraction": 0.0438,
-          "verdict": "MODERATE"
+          "true_prob": 33.44,
+          "market_prob": 8.54,
+          "edge_pct": 291.57,
+          "fair_odds": 11.71,
+          "suggested_odds_cutoff": 2.99,
+          "kelly_fraction": 0.25,
+          "verdict": "STRONG"
+        },
+        {
+          "outcome": "draw",
+          "true_prob": 28.09,
+          "market_prob": 16.94,
+          "edge_pct": 65.82,
+          "fair_odds": 5.9,
+          "suggested_odds_cutoff": 3.56,
+          "kelly_fraction": 0.1342,
+          "verdict": "STRONG"
         }
       ]
     }
