@@ -1,10 +1,10 @@
 {
-  "test_samples": 20108,
-  "xgb_exact_pct": 13.92,
-  "xgb_1x2_pct": 50.39,
-  "xgb_rps": 0.1241,
-  "ensemble_exact_pct": 14.58,
-  "ensemble_1x2_pct": 49.03,
-  "ensemble_rps": 0.1238,
+  "test_samples": 31922,
+  "xgb_exact_pct": 14.14,
+  "xgb_1x2_pct": 52.12,
+  "xgb_rps": 0.1223,
+  "ensemble_exact_pct": 14.06,
+  "ensemble_1x2_pct": 50.15,
+  "ensemble_rps": 0.1227,
   "config": "XGB(30%)+M3+M4+M5"
 }
