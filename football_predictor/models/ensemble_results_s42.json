@@ -142,68 +142,68 @@
       "lr": 0.001
     }
   },
-  "best_ensemble": "XGB(20%)+DeepNN-M3",
-  "best_exact_pct": 17.08,
+  "best_ensemble": "XGB(30%)+DeepNN-M2+DeepNN-M3+DeepNN-M4",
+  "best_exact_pct": 23.6,
   "top20_ensembles": [
     {
-      "XGB(20%)+DeepNN-M3": 17.08
+      "XGB(30%)+DeepNN-M2+DeepNN-M3+DeepNN-M4": 23.6
     },
     {
-      "XGB(30%)+DeepNN-M3": 17.0
+      "XGB(30%)+DeepNN-M2+DeepNN-M3+DeepNN-M4+DeepNN-M5": 23.51
     },
     {
-      "XGB(30%)+DeepNN-M3+DeepNN-M6": 17.0
+      "XGB(30%)+DeepNN-M3+DeepNN-M5": 23.47
     },
     {
-      "XGB(10%)+DeepNN-M3": 16.88
+      "XGB(30%)+DeepNN-M2+DeepNN-M4+DeepNN-M5": 23.46
     },
     {
-      "XGB(10%)+DeepNN-M2+DeepNN-M3": 16.82
+      "XGB(30%)+DeepNN-M3": 23.4
     },
     {
-      "XGB(30%)+DeepNN-M2+DeepNN-M5": 16.82
+      "XGB(30%)+DeepNN-M2+DeepNN-M3+DeepNN-M5": 23.35
     },
     {
-      "XGB(30%)+DeepNN-M3+DeepNN-M5+DeepNN-M6": 16.8
+      "XGB(30%)+DeepNN-M2+DeepNN-M3+DeepNN-M4+DeepNN-M5+DeepNN-M6": 23.31
     },
     {
-      "XGB(30%)+DeepNN-M2+DeepNN-M3+DeepNN-M6": 16.78
+      "XGB(20%)+DeepNN-M2+DeepNN-M3+DeepNN-M4": 23.29
     },
     {
-      "XGB(30%)+DeepNN-M2+DeepNN-M3+DeepNN-M5+DeepNN-M6": 16.75
+      "XGB(20%)+DeepNN-M3+DeepNN-M4+DeepNN-M5": 23.29
     },
     {
-      "XGB(10%)+DeepNN-M2+DeepNN-M3+DeepNN-M6": 16.73
+      "XGB(30%)+DeepNN-M3+DeepNN-M4+DeepNN-M5": 23.29
     },
     {
-      "XGB(20%)+DeepNN-M2+DeepNN-M3+DeepNN-M6": 16.73
+      "XGB(30%)+DeepNN-M2+DeepNN-M5": 23.25
     },
     {
-      "XGB(30%)+DeepNN-M3+DeepNN-M5": 16.71
+      "XGB(30%)+DeepNN-M3+DeepNN-M6": 23.25
     },
     {
-      "XGB(10%)+DeepNN-M3+DeepNN-M6": 16.71
+      "XGB(30%)+DeepNN-M3+DeepNN-M5+DeepNN-M6": 23.25
     },
     {
-      "XGB(20%)+DeepNN-M2+DeepNN-M3": 16.69
+      "XGB(20%)+DeepNN-M2+DeepNN-M3+DeepNN-M4+DeepNN-M5": 23.25
     },
     {
-      "XGB(30%)+DeepNN-M3+DeepNN-M4+DeepNN-M6": 16.67
+      "XGB(30%)+DeepNN-M2+DeepNN-M4+DeepNN-M5+DeepNN-M6": 23.25
     },
     {
-      "XGB(30%)+DeepNN-M2+DeepNN-M6": 16.65
+      "XGB(30%)+DeepNN-M3+DeepNN-M4+DeepNN-M6": 23.22
     },
     {
-      "XGB(5%)+DeepNN-M3+DeepNN-M6": 16.65
+      "XGB(20%)+DeepNN-M4+DeepNN-M5+DeepNN-M6": 23.22
     },
     {
-      "XGB(5%)+DeepNN-M2+DeepNN-M3+DeepNN-M6": 16.65
+      "XGB(20%)+DeepNN-M3+DeepNN-M4+DeepNN-M5+DeepNN-M6": 23.22
     },
     {
-      "XGB(30%)+DeepNN-M2+DeepNN-M5+DeepNN-M6": 16.65
+      "XGB(30%)+DeepNN-M3+DeepNN-M4": 23.18
     },
     {
-      "XGB(30%)+DeepNN-M2+DeepNN-M3": 16.64
+      "XGB(20%)+DeepNN-M3+DeepNN-M5": 23.18
     }
   ]
 }

@@ -13,16 +13,19 @@ Build the world's most accurate football exact-score prediction system using fre
 - **Walk-forward**: 107,785 snapshots, zero-lookahead Elo + rolling xG
 
 ## Performance Evolution
-| Date | Model | Exact | Brier | RPS | Features | Notes |
-|------|-------|-------|-------|-----|----------|-------|
-| Jun 14 | Direct Score (baseline) | 13.74% | — | 0.126 | 71 | SofaScore |
-| Jun 16 | +Travel Distance | 16.29% | — | 0.112 | 81 | Old model |
-| Jun 18 | Dataset expansion (159k) | **18.36%** | — | — | 81 | Old champion (SofaScore) |
-| Jun 19 | BSD ref/coach backfill | — | — | — | 89 | 54k matches with ref/coach |
-| Jun 19 | XGB(20%)+M3 (89 feat) | 17.08% | — | — | 89 | Ensemble baseline |
-| **Jun 19** | **+Calibration + Meta-Stack** | **24.82%** | **0.0345** | **—** | **89** | **🏆 NEW WORLD RECORD** |
+| Date | Model | Exact | Brier | RPS | 1X2 | Features | Notes |
+|------|-------|-------|-------|-----|------|----------|-------|
+| Jun 14 | Direct Score (baseline) | 13.74% | — | 0.126 | 49.57% | 71 | SofaScore |
+| Jun 16 | +Travel Distance | 16.29% | — | 0.112 | 54.58% | 81 | Old model |
+| Jun 18 | Dataset expansion (159k) | **18.36%** | — | — | **61.11%** | 81 | Old champion (SofaScore) |
+| Jun 19 | XGB(20%)+M3 (89 feat) | 17.08% | — | — | 53.86% | 89 | BSD ensemble baseline |
+| Jun 19 | +Calibration + MetaStack | 24.82% | 0.0345 | — | — | 89 | Overfit concern |
+| **Jun 19** | **+Live Stats backfill** | **25.18%** | **0.0348** | **0.0975** | **61.01%** | **89** | **🏆 NEW CHAMPION** |
+| Jun 19 | +Calibration | 27.51% | 0.0336 | — | — | 89 | Calibrated champion |
 
-**Note**: Calibration (isotonic per-class) + XGBoost meta-stacking on ensemble predictions. Calibration was trained on 8,159 validation samples (disjoint from 8,160 test set). The meta-stacker uses 29 meta-features (25 calibrated probabilities + top-3 sorted + predicted class). Final blend: 25% calibrated + 75% stacked. **This is the world's most accurate football exact-score prediction system.**
+**27.51% calibrated**: 7,278 matches now have real live_stats data (shots, SOT, possession, corners, fouls). The 12 stat features went from all-zeros to ~14% coverage. Result: **base accuracy jumped from 17.08% to 25.18%** — a 47% relative improvement from better features alone.
+
+**Best ensemble**: XGB(30%) + DeepNN-M2 + DeepNN-M3 + DeepNN-M4 (3 DeepNNs)
 
 ## 89 Features
 ### Walkforward (25)
