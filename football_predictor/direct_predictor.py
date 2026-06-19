@@ -72,6 +72,13 @@ FEATURES = [
     'home_temp', 'home_precip', 'home_wind', 'home_humidity',
     # Travel
     'travel_distance',
+    # BSD Referee
+    'ref_games', 'ref_strictness',
+    # BSD Coach profile
+    'home_coach_attacking', 'home_coach_defensive',
+    'away_coach_attacking', 'away_coach_defensive',
+    # BSD Weather
+    'temperature_c', 'wind_speed',
 ]
 
 FORMATION_DEF_MAP = {}
@@ -205,6 +212,20 @@ def _load_training_data():
     except:
         pass
 
+    # Pre-load BSD rich data (ref, coach, weather)
+    bsd_rich = {}
+    try:
+        cur = conn.execute('''
+            SELECT id, ref_games, ref_yellow, ref_red,
+                   home_coach_profile, away_coach_profile,
+                   temperature, wind_speed
+            FROM sofa_historical_results
+        ''')
+        for row in cur.fetchall():
+            bsd_rich[row[0]] = row[1:]
+    except:
+        pass
+
     def haversine(lat1, lon1, lat2, lon2):
         from math import radians, sin, cos, sqrt, asin
         r = 6371.0
@@ -268,7 +289,7 @@ def _load_training_data():
                 WHERE (home_team = ? OR away_team = ?)
                   AND id < ?
                   AND start_timestamp IS NOT NULL
-                ORDER BY start_timestamp DESC LIMIT 1
+                ORDER BY id DESC LIMIT 1
             ''', (home_team, home_team, mid))
             h_last = cur.fetchone()
             cur.execute('''
@@ -276,7 +297,7 @@ def _load_training_data():
                 WHERE (home_team = ? OR away_team = ?)
                   AND id < ?
                   AND start_timestamp IS NOT NULL
-                ORDER BY start_timestamp DESC LIMIT 1
+                ORDER BY id DESC LIMIT 1
             ''', (away_team, away_team, mid))
             a_last = cur.fetchone()
             from datetime import datetime
@@ -425,6 +446,17 @@ def _load_training_data():
             home_temp, home_precip, home_wind, home_humidity,
             # Travel
             travel_dist,
+            # BSD Referee
+            bsd_rich[mid][0] if mid in bsd_rich and bsd_rich[mid][0] is not None else None,
+            (bsd_rich[mid][1] + bsd_rich[mid][2]*2) / max(bsd_rich[mid][0], 1) if mid in bsd_rich and bsd_rich[mid][0] and bsd_rich[mid][0] > 0 else None,
+            # BSD Coach profiles (one-hot)
+            1.0 if mid in bsd_rich and bsd_rich[mid][3] == 'attacking' else 0.0,
+            1.0 if mid in bsd_rich and bsd_rich[mid][3] == 'defensive' else 0.0,
+            1.0 if mid in bsd_rich and bsd_rich[mid][4] == 'attacking' else 0.0,
+            1.0 if mid in bsd_rich and bsd_rich[mid][4] == 'defensive' else 0.0,
+            # BSD Weather
+            bsd_rich[mid][5] if mid in bsd_rich and bsd_rich[mid][5] is not None else None,
+            bsd_rich[mid][6] if mid in bsd_rich and bsd_rich[mid][6] is not None else None,
         ])
         labels.append(score_to_class(home_score, away_score))
         match_ids.append(mid)
@@ -936,6 +968,37 @@ def build_feature_vector(home_team, away_team, match_date, odds_b365=None, odds_
     except:
         pass
 
+    # BSD Referee + Coach + Weather (from DB, fallback to API)
+    ref_g = ref_s = hc_att = hc_def = ac_att = ac_def = None
+    bsdtemp = bsdwind = None
+    try:
+        conn_bsd = sqlite3.connect(DB)
+        cur = conn_bsd.execute('''
+            SELECT ref_games, ref_yellow, ref_red,
+                   home_coach_profile, away_coach_profile,
+                   temperature, wind_speed
+            FROM sofa_historical_results
+            WHERE home_team = ? AND away_team = ? AND date = ?
+        ''', (home_team, away_team, match_date))
+        row = cur.fetchone()
+        conn_bsd.close()
+        if row:
+            rg, ry, rr, hcp, acp, temp, wind = row
+            if rg is not None:
+                ref_g = float(rg)
+                if ry is not None and rr is not None:
+                    ref_s = (ry + 2*rr) / max(rg, 1)
+            if hcp:
+                hc_att = 1.0 if hcp == 'attacking' else 0.0
+                hc_def = 1.0 if hcp == 'defensive' else 0.0
+            if acp:
+                ac_att = 1.0 if acp == 'attacking' else 0.0
+                ac_def = 1.0 if acp == 'defensive' else 0.0
+            if temp is not None: bsdtemp = float(temp)
+            if wind is not None: bsdwind = float(wind)
+    except:
+        pass
+
     return np.array([[
         he, ae, ed,
         hxgf, hxga, axgf, axga,
@@ -966,6 +1029,10 @@ def build_feature_vector(home_team, away_team, match_date, odds_b365=None, odds_
         month, dow, season_prog, is_wknd,
         home_temp, home_precip, home_wind, home_humidity,
         travel_dist,
+        ref_g, ref_s,
+        hc_att, hc_def,
+        ac_att, ac_def,
+        bsdtemp, bsdwind,
     ]], dtype=float)
 
 def predict_match(home_team, away_team, match_date, odds_b365=None, odds_avg=None):
@@ -979,6 +1046,21 @@ def predict_match(home_team, away_team, match_date, odds_b365=None, odds_avg=Non
     feat = build_feature_vector(home_team, away_team, match_date, odds_b365, odds_avg)
     if feat is None:
         return None
+
+    # Handle feature count mismatch (old model 81 features vs new 89)
+    expected = 81
+    if hasattr(model_or_ensemble, 'xgb_model'):
+        try:
+            expected = model_or_ensemble.xgb_model.get_booster().num_features()
+        except:
+            expected = 81
+    elif hasattr(model_or_ensemble, 'get_booster'):
+        try:
+            expected = model_or_ensemble.get_booster().num_features()
+        except:
+            expected = 81
+    if feat.shape[1] > expected:
+        feat = feat[:, :expected]
 
     global _BLEND_CACHE
     is_ensemble = hasattr(_BLEND_CACHE, 'xgb_model') if _BLEND_CACHE is not None else False

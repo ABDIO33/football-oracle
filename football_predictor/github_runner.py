@@ -238,11 +238,10 @@ def main():
     print(f"[{ts}] Football Oracle Runner starting...")
     odds_remaining = 0
     try:
-        import odds_api_scraper as oas
-        odds_remaining = oas.get_remaining_requests()
-        print(f"[ODDS] API: {odds_remaining} requests remaining this month")
+        import bsd_api
+        print(f"[ODDS] BSD API: unlimited requests (replaced Odds API 500/mo limit)")
     except Exception as e:
-        print(f"[ODDS] Not available: {e}")
+        print(f"[ODDS] BSD API not available: {e}")
 
     # Step 0: Retrain model params weekly
     try:

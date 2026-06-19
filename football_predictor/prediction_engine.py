@@ -860,23 +860,22 @@ def get_competition_matches(team_name, from_date, to_date=None):
 # MARKET PROBABILITIES
 # ═══════════════════════════════════════════════════════════════
 def get_market_probabilities(home_team, away_team, league_key=None):
-    """Use odds_api_scraper for market probabilities with overround removal"""
-    global ODDS_API_KEY
-    if not ODDS_API_KEY and oas:
-        ODDS_API_KEY = oas.ODDS_API_KEY
-    if not ODDS_API_KEY:
+    """Use BSD API for market probabilities — no limits, richer data"""
+    try:
+        import bsd_api as bsd
+        if not bsd.API_KEY:
+            return None
+    except:
         return None
-    cache_key = f"odds_{home_team}_{away_team}"
+    cache_key = f"odds_bsd_{home_team}_{away_team}"
     now = time.time()
     if cache_key in _CACHE and (now - _CACHE_TIME.get(cache_key, 0)) < 1800:
         return _CACHE[cache_key]
-    if oas is None:
-        return None
     try:
-        event = oas.get_odds_for_match(home_team, away_team, league_key=league_key)
+        event = bsd.get_odds_for_match(home_team, away_team)
         if not event:
             return None
-        probs = oas.extract_market_probabilities(event)
+        probs = bsd.extract_market_probabilities(event)
         if not probs:
             return None
         result = {
@@ -885,8 +884,9 @@ def get_market_probabilities(home_team, away_team, league_key=None):
             'draw': probs['fair_probs'].get('draw', 33.33),
             'away': probs['fair_probs'].get('away', 33.33),
             'overround': probs.get('avg_overround', 0),
-            'bookmaker_count': probs['bookmaker_count'],
+            'bookmaker_count': probs.get('bookmaker_count', 1),
             'fair_probs': probs['fair_probs'],
+            'source': 'BSD',
         }
         _CACHE[cache_key] = result
         _CACHE_TIME[cache_key] = now

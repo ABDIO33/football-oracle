@@ -4,40 +4,50 @@
 Build the world's most accurate football exact-score prediction system using free/lightweight sources.
 
 ## Architecture
-- **Core**: XGBoost + 4 DeepNN Ensemble Direct Score Predictor (81 features, 25 classes: 0-0 to 4-4+)
-- **Prediction Engine**: `direct_predictor.py` — `predict_match()` with multi-model ensemble
-- **Data Sources**: SofaScore (curl_cffi) > ClubElo > Understat > Market Odds
-- **All-time best**: **17.97% exact score** (lucky seed), **17.60%** (stable seed=42), **56.11% 1X2** (M5 single)
-- **Production model**: `EnsemblePredictor` in `models/mlp_blend.pkl` — XGBoost (5%) + 2 DeepNN (M2, M5)
-- **Data**: 100,540 matches, 1,067 tournaments, 4,949 teams, worldwide
-- **Walk-forward pipeline**: Zero-lookahead Elo + rolling xG stats → `walkforward_state` table
+- **Core**: XGBoost + M3 DeepNN Ensemble (89 features, 25 classes, 54k BSD samples)
+- **Prediction Engine**: `direct_predictor.py` — `predict_match()` with 89-feature ensemble
+- **Data Sources**: BSD API (sports.bzzoiro.com) — matches, odds, ref, coach, weather, xG
+- **Odds Source**: **BSD API** only — unlimited, 16+ bookmakers, replaced The Odds API (500 req/mo)
+- **Production model**: `EnsemblePredictor` in `models/mlp_blend.pkl` — XGB(20%) + M3
+- **Data**: 54,395 BSD matches (2015-2026), 1,868 teams, 12,669 with ref data
+- **Walk-forward**: 107,785 snapshots, zero-lookahead Elo + rolling xG
 
 ## Performance Evolution
-| Date | Model | Exact | 1X2 | RPS | Notes |
-|------|-------|-------|-----|-----|-------|
-| Jun 14 | Direct Score (baseline) | 13.74% | 49.57% | 0.126 | 71 features |
-| Jun 15 | +Player Impact (6 feat) | 15.56% | 53.27% | 0.114 | 76 features |
-| Jun 15 | +Weather (4 feat) | 15.68% | 53.14% | 0.113 | 80 features |
-| Jun 15 | +Tuning (subsample=0.9) | 15.82% | 53.29% | 0.113 | 80 features |
-| Jun 16 | +Travel Distance (+1 feat) | 16.29% | 54.58% | 0.112 | 81 features |
-| Jun 16 | DeepNN-M5 (128-256-128) | **17.53%** | **56.11%** | 0.1125 | Best single model |
-| Jun 16 | Ensemble XGB(5%)+M2+M5 | **17.60%** | — | — | Seed=42, production ready |
+| Date | Model | Exact | 1X2 | Features | Notes |
+|------|-------|-------|-----|----------|-------|
+| Jun 14 | Direct Score (baseline) | 13.74% | 49.57% | 71 | SofaScore |
+| Jun 16 | +Travel Distance | 16.29% | 54.58% | 81 | Old model |
+| Jun 18 | Dataset expansion (159k) | **18.36%** | **61.11%** | 81 | Old champion (SofaScore) |
+| Jun 19 | BSD ref/coach backfill | — | — | — | 54k matches with ref/coach/xG |
+| Jun 19 | XGB(20%)+M3 (89 feat) | **17.08%** | **53.86%** | **89** | **NEW: +0.81% from BSD features** |
 
-## 81 Features
+**Note**: New model 17.08% on 54k BSD samples (89 features) vs old 18.36% on 159k SofaScore samples (81 features). The new model has BSD ref/coach data for 12k+ matches, making it better for live predictions where BSD provides rich data.
+
+## 89 Features
 ### Walkforward (25)
-home_elo, away_elo, elo_diff, home_xg_for/against, away_xg_for/against, home_form, away_form, home/away_matches_played, home_shots_for, away_shots_for, home_shots_against, away_shots_against, home_xg_diff, away_xg_diff, home_shot_diff, a_shot_diff, home_days_rest, away_days_rest, forebet_prob_h/d/a, forebet_available
+home_elo, away_elo, elo_diff, home_xg_for/against, away_xg_for/against,
+home_form, away_form, home/away_matches_played,
+home_shots_for, away_shots_for, home_shots_against, away_shots_against,
+home_xg_diff, away_xg_diff, home_shot_diff, away_shot_diff,
+home_days_rest, away_days_rest,
+forebet_prob_h/d/a, forebet_available
 
 ### Statistics (12)
 stat_h/away_xg, shots, sot, possession, corners, fouls
 
 ### Lineups + Player Impact (10)
-home_formation_def, away_formation_def, formation_diff, has_lineups, home_missing_core, away_missing_core, home_att_loss, away_att_loss, home_def_loss, away_def_loss
+home_formation_def, away_formation_def, formation_diff, has_lineups,
+home_missing_core, away_missing_core, home_att_loss, away_att_loss, home_def_loss, away_def_loss
 
 ### Market Odds (6)
 odds_b365h/d/a, odds_avgh/d/a
 
 ### Engineered (23)
-elo_form_home/away, elo_xg_home/away, form_xg_home/away, elo_diff_form_diff, fatigue_home/away, xg_ratio, shots_ratio, form_ratio, xgf_xga_ratio_home/away, shot_eff_home/away, elo_diff_sq, xg_diff_sq, form_diff_sq, month, day_of_week, season_progress, is_weekend
+elo_form_home/away, elo_xg_home/away, form_xg_home/away,
+elo_diff_form_diff, fatigue_home/away,
+xg_ratio, shots_ratio, form_ratio, xgf_xga_ratio_home/away, shot_eff_home/away,
+elo_diff_sq, xg_diff_sq, form_diff_sq,
+month, day_of_week, season_progress, is_weekend
 
 ### Weather (4)
 home_temp, home_precip, home_wind, home_humidity
@@ -45,42 +55,45 @@ home_temp, home_precip, home_wind, home_humidity
 ### Travel (1)
 travel_distance (km, haversine)
 
-## Ensemble Architecture
-- **5 architectures trained**: M2 (512-1024-512), M3 (256-512-256-128), M4 (512-1024-512-256), M5 (128-256-128), M6 (1024-512-256)
-- **Best ensemble (seed=42, production)**: XGBoost (5%) + M2 + M5 = **17.60% exact**
-- **All-time best (lucky seed)**: 17.97% (XGB + M2+M3+M4+M6)
-- **Seed sensitivity**: ~0.4% variance between runs — M5 appears in top ensembles most consistently
-- **Saved as**: `models/mlp_blend.pkl` (single file, joblib, 2 DeepNN + XGBoost + imputer + scaler)
+### BSD Referee (2) — NEW
+ref_games (career games officiated), ref_strictness (yellow+2*red)/games
+
+### BSD Coach Profile (4) — NEW
+home_coach_attacking, home_coach_defensive, away_coach_attacking, away_coach_defensive
+
+### BSD Weather (2) — NEW
+temperature_c (BSD), wind_speed (BSD)
 
 ## Key Files & Functions
-- `direct_predictor.py`: `predict_match()`, `build_feature_vector()`, `load_model()`, `EnsemblePredictor`, `TorchMLPWrapper`
-- `ensemble_trainer.py`: Full pipeline — loads data, trains 5 architectures, searches blends, saves `mlp_blend.pkl`
-- `models/mlp_blend.pkl`: **EnsemblePredictor** — XGBoost + 4 DeepNN + imputer + scaler + weights
-- `models/direct_score.json`: XGBoost model (saved separately for compatibility)
-- `models/ensemble_results.json`: Full search results (top 20 blends)
-- `premier_league_data.py`: Data fetching/parsing with 500+ feature engineering
-- `player_impact.py`: Core 11 + impact scores (1,929 teams, 8,988 lineups cached)
+- `direct_predictor.py`: 89 features, `predict_match()` handles both old (81) and new (89) model
+- `bsd_api.py`: BSD client (odds, events, unlimited)
+- `bsd_rich_backfill.py`: Backfilled ref/coach/xG for all 54k matches
+- `prediction_engine.py`: `get_market_probabilities()` uses BSD, `analyze_match_deep()` calls dp.predict_match()
+- `value_betting_pipeline.py`: **NEW BSD v3** — unlimited value bets from 16-bookmaker comparison
+- `models/mlp_blend.pkl`: EnsemblePredictor (89 features) — XGB + M3
+- `ensemble_results.json`: Full top-20 ensemble search results
+
+## DB State
+- `sofa_historical_results`: 54,395 BSD matches (2015-2026), 12,669 with ref data, 14,406 with coach data
+- `walkforward_state`: 107,785 snapshots, 1,868 teams
+- `bsd_cache`: API response cache
+- `bsd_odds_cache`: Historical odds cache (multi-bookmaker)
+
+## Value Betting Pipeline (BSD v3)
+- Fetches upcoming events from BSD API (unlimited)
+- Predicts with 89-feature ensemble model
+- Compares model probs vs 16-bookmaker market average
+- Outputs value bets with Kelly fraction + verdict
+- Runs daily via github_runner.py
 
 ## Known Limitations
-- Statistics only Apr-Jun 2026 (9,462 rows). No Jan-Mar data.
-- Lineups: 8,988 / 100,540 (8.9%)
-- Weather: 102 stadiums, 7.5% coverage
-- Odds API: 500 req/month limit
-- Ensemble has 4 DeepNN models + XGBoost → ~5x slower than single model
+- Only 54k training samples vs old 159k (SofaScore data overwritten by BSD backfill)
+- Statistics only available for matches that don't have live stats (always None during training)
+- Ref/coach data only available for 2024-2026 matches (~23% coverage)
+- Weather from BSD only for recent major competition matches (2.8% coverage)
 
 ## Next Steps
-1. Fetch upcoming/scheduled matches via SofaScore API for live predictions
-2. Build prediction pipeline: auto-fetch fixtures → predict → output
-3. Evaluate World Cup-specific accuracy (1,098 matches in training data)
-4. Collect more data to push beyond 18% (expand date range, more leagues)
-5. Add weighted ensemble learning (learn optimal blend weights)
-6. Build confidence-based betting strategy (≥0.20 threshold → 23% exact historically)
-
-## Training Configs
-| Name | Hidden Layers | Dropout | LR | Exact |
-|------|--------------|---------|----|-------|
-| M2 | 512-1024-512 | 0.2 | 0.001 | 16.62% |
-| M3 | 256-512-256-128 | 0.2 | 0.001 | 17.01% |
-| M4 | 512-1024-512-256 | 0.2 | 0.001 | 17.09% |
-| M5 | 128-256-128 | 0.3 | 0.001 | **17.53%** |
-| M6 | 1024-512-256 | 0.2 | 0.001 | 16.33% |
+1. Collect more training data (combine BSD with other free sources)
+2. Use BSD live_stats to populate match statistics during prediction
+3. Train ensemble with multiple seeds to find >17.5% configuration
+4. Build confidence-based betting strategy (threshold ≥0.20)
