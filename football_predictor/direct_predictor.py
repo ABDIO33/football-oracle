@@ -42,6 +42,8 @@ FEATURES = [
     'home_xg_diff', 'away_xg_diff', 'home_shot_diff', 'away_shot_diff',
     'home_days_rest', 'away_days_rest',
     'forebet_prob_h', 'forebet_prob_d', 'forebet_prob_a', 'forebet_available',
+    # Glicko-2
+    'home_glicko', 'away_glicko', 'home_glicko_rd', 'away_glicko_rd',
     # Match statistics
     'stat_h_xg', 'stat_a_xg', 'stat_h_shots', 'stat_a_shots',
     'stat_h_sot', 'stat_a_sot', 'stat_h_possession', 'stat_a_possession',
@@ -254,6 +256,20 @@ def _load_training_data():
         h_elo, h_xgf, h_xga, h_f, h_mp, h_shots, h_shots_a = h
         a_elo, a_xgf, a_xga, a_f, a_mp, a_shots, a_shots_a = a
 
+        # Glicko-2 features
+        h_glicko = a_glicko = 1500.0
+        h_glicko_rd = a_glicko_rd = 350.0
+        try:
+            cur.execute('''SELECT glicko_rating, glicko_rd FROM glicko_state
+                WHERE team_name = ? AND date <= ? ORDER BY date DESC LIMIT 1''', (home_team, match_date))
+            g = cur.fetchone()
+            if g: h_glicko, h_glicko_rd = g[0], g[1]
+            cur.execute('''SELECT glicko_rating, glicko_rd FROM glicko_state
+                WHERE team_name = ? AND date <= ? ORDER BY date DESC LIMIT 1''', (away_team, match_date))
+            g = cur.fetchone()
+            if g: a_glicko, a_glicko_rd = g[0], g[1]
+        except: pass
+
         elo_diff = h_elo - a_elo
         h_xg_diff = (h_xgf or 1.2) - (h_xga or 1.2)
         a_xg_diff = (a_xgf or 1.2) - (a_xga or 1.2)
@@ -385,6 +401,7 @@ def _load_training_data():
             h_xg_diff, a_xg_diff, h_shot_diff, a_shot_diff,
             hdr, adr,
             fp_h, fp_d, fp_a, fp_avail,
+            h_glicko, a_glicko, h_glicko_rd, a_glicko_rd,
             stats[mid][0] if mid in stats else None,
             stats[mid][1] if mid in stats else None,
             stats[mid][2] if mid in stats else None,
@@ -739,6 +756,18 @@ def build_feature_vector(home_team, away_team, match_date, odds_b365=None, odds_
         a = cur.fetchone()
         if not h or not a:
             return None
+
+        # Glicko-2 features
+        h_glicko, a_glicko = 1500.0, 1500.0
+        h_glicko_rd, a_glicko_rd = 350.0, 350.0
+        try:
+            cur.execute('SELECT glicko_rating, glicko_rd FROM glicko_state WHERE team_name=? AND date<=? ORDER BY date DESC LIMIT 1', (home_r, match_date))
+            g = cur.fetchone()
+            if g: h_glicko, h_glicko_rd = g[0], g[1]
+            cur.execute('SELECT glicko_rating, glicko_rd FROM glicko_state WHERE team_name=? AND date<=? ORDER BY date DESC LIMIT 1', (away_r, match_date))
+            g = cur.fetchone()
+            if g: a_glicko, a_glicko_rd = g[0], g[1]
+        except: pass
     finally:
         conn.close()
 
@@ -944,6 +973,7 @@ def build_feature_vector(home_team, away_team, match_date, odds_b365=None, odds_
         h_xg_diff, a_xg_diff, h_shot_diff, a_shot_diff,
         hdr, adr,
         fp_h, fp_d, fp_a, fp_avail,
+        h_glicko, a_glicko, h_glicko_rd, a_glicko_rd,
         st_h_xg, st_a_xg,
         st_h_shots, st_a_shots,
         st_h_sot, st_a_sot,

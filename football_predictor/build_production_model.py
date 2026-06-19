@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.impute import SimpleImputer
 
-N_FEATURES = 81
+N_FEATURES = 85
 TARGET_CLASSES = [f'{h}-{a}' for h, a in SCORE_CLASSES]
 NUM_CLASSES = len(SCORE_CLASSES)
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
@@ -74,7 +74,7 @@ scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=80)
 train_dataset = TensorDataset(
     torch.tensor(X_train_sc, dtype=torch.float32),
     torch.tensor(y_train_enc, dtype=torch.long))
-train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True, num_workers=0)
+train_loader = DataLoader(train_dataset, batch_size=1024, shuffle=True, num_workers=0)
 X_test_t = torch.tensor(X_test_sc, dtype=torch.float32).to(DEVICE)
 y_test_t = torch.tensor(y_test_enc, dtype=torch.long).to(DEVICE)
 
@@ -83,7 +83,7 @@ best_state = None
 patience = 20
 patience_counter = 0
 
-for epoch in range(150):
+for epoch in range(100):
     model_m4_raw.train()
     for Xb, yb in train_loader:
         Xb, yb = Xb.to(DEVICE), yb.to(DEVICE)
