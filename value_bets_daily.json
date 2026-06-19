@@ -1,0 +1,50 @@
+{
+  "date": "2026-06-19",
+  "timestamp": "2026-06-19T09:59:53.774638",
+  "total_matches_with_odds": 1,
+  "value_bets_count": 2,
+  "results": [
+    {
+      "home": "Scotland",
+      "away": "Morocco",
+      "competition": "FIFA World Cup",
+      "date": "2026-06-19",
+      "prediction": {
+        "home_prob": 34.21,
+        "draw_prob": 28.12,
+        "away_prob": 37.68,
+        "predicted_score": "1-1",
+        "confidence": 13.42
+      },
+      "market_odds": {
+        "home_prob": 17.5,
+        "draw_prob": 26.74,
+        "away_prob": 55.76,
+        "bookmaker_count": 48,
+        "overround": 5.02
+      },
+      "value_bets": [
+        {
+          "outcome": "home",
+          "true_prob": 34.21,
+          "market_prob": 17.5,
+          "edge_pct": 95.49,
+          "fair_odds": 5.71,
+          "suggested_odds_cutoff": 2.92,
+          "kelly_fraction": 0.2025,
+          "verdict": "STRONG"
+        },
+        {
+          "outcome": "draw",
+          "true_prob": 28.12,
+          "market_prob": 26.74,
+          "edge_pct": 5.16,
+          "fair_odds": 3.74,
+          "suggested_odds_cutoff": 3.56,
+          "kelly_fraction": 0.0188,
+          "verdict": "WEAK"
+        }
+      ]
+    }
+  ]
+}
