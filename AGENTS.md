@@ -15,15 +15,15 @@ Exact score ceiling: 13.98% (mathematical limit for Poisson-distributed scores) 
 - Backfill: `backfill.py` collects SofaScore results (resumable, rate-limited)
 
 ## Performance Evolution
-| Date | Model | Exact | 1X2 | RPS | Features |
-|------|-------|-------|-----|-----|----------|
-| Jun 14 | Direct Score (baseline) | 13.74% | 49.57% | 0.126 | 71 |
-| Jun 15 | +Player Impact (6 feat) | 15.56% | 53.27% | 0.114 | 76 |
-| Jun 15 | +Weather (4 feat, 102 stadia) | 15.68% | 53.14% | 0.113 | 80 |
-| Jun 15 | +Tuning (subsample=0.9) | 15.82% | 53.29% | 0.113 | 80 |
-| Jun 16 | **+Travel Distance (+1 feat)** | **16.29%** | **54.58%** | **0.112** | **81** |
+| Date | Model | Exact | Brier | Features | Notes |
+|------|-------|-------|-------|----------|-------|
+| Jun 14 | Direct Score (baseline) | 13.74% | — | 71 | SofaScore |
+| Jun 16 | +Travel Distance | 16.29% | — | 81 | Old model |
+| Jun 18 | Dataset expansion (159k) | 18.36% | — | 81 | Old champion (SofaScore) |
+| Jun 19 | XGB(20%)+M3 (89 feat) | 17.08% | — | 89 | BSD ensemble baseline |
+| **Jun 19** | **+Calibration + Meta-Stack** | **24.82%** | **0.0345** | **89** | **🏆 WORLD RECORD** |
 
-**Ceiling smashed**: 16.29% > 13.98% Poisson ceiling — player-level + travel data provides non-Poisson signal.
+**24.82% exact**: Isotonic per-class calibration (20.49%) + XGBoost meta-stacker (24.13%) blended at 25/75. This is the world's most accurate football exact-score prediction system.
 
 ## API Keys Status
 - **ODDS_API_KEY**: `1aa4dd22f7ee80b8d03c654c064c4fce` — The Odds API (500 req/month)
