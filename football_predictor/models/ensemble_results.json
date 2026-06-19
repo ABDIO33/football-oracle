@@ -1,8 +1,13 @@
 {
-  "best_exact": 19.8,
-  "best_1x2": 63.01,
-  "best_rps": 0.1,
-  "best_ensemble": "XGB(80%)+M4",
+  "best_exact": 30.63,
+  "best_1x2": 83.75,
+  "best_rps": 0.0503,
+  "best_ensemble": "XGB(60%)+M4",
+  "model_weights": {
+    "xgb": 0.6000000000000001,
+    "m4": 0.3999999999999999
+  },
   "training_samples": 264533,
+  "features": 85,
   "test_samples": 52907
 }
