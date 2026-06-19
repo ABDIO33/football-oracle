@@ -1,109 +1,78 @@
 # Football Oracle — Context & Key Decisions
 
 ## Project Goal
-Build the world's best football prediction system (RPS + value betting) using free/lightweight sources on GitHub Actions free tier.
-Exact score ceiling: 13.98% (mathematical limit for Poisson-distributed scores) — **BROKEN** at 16.29% with player-level + travel data.
+Build the world's best football exact-score prediction system (25-class: 0-0 to 4-4+) for value betting, targeting 20%+ exact score globally. Runs on GitHub Actions free tier + local Windows.
 
-## Architecture
-- **Core**: XGBoost + MLP Blend Direct Score Predictor (81 features, 25 classes: 0-0 to 4-4+) — replaces Dixon-Coles Poisson
-- **Prediction Engine**: `football_predictor/prediction_engine.py` — `analyze_match_deep(use_direct_model=True)` with multi-source blending
-- **Combined Model** (`direct_predictor.py`): **16.29% exact, 54.58% 1X2, RPS 0.112** (81 features: 76 base + 4 weather + 1 travel)
-- **Blend**: XGBoost 70% + MLP 30% (MLP via `mlp_blend.pkl`, imputation/scaling layer)
-- **Data Sources** (by priority): SofaScore (curl_cffi) > ClubElo > Understat > Market Odds (The Odds API)
-- Walk-forward pipeline: Zero-lookahead Elo + rolling xG stats → `walkforward_state` table
-- Backtesting: Time-split validation via `backtest.py` → `backtest_results`
-- Backfill: `backfill.py` collects SofaScore results (resumable, rate-limited)
+## Architecture (Current: Jun 19)
+- **Core**: XGBoost(80%) + DeepNN-M4(20%) Ensemble Direct Score Predictor (81 features, 25 classes)
+- **Production model**: `EnsemblePredictor` in `models/mlp_blend.pkl` — XGB(80%) + M4(512→1024→512→256)
+- **Performance**: **19.80% exact, 63.01% 1X2, RPS 0.100** (random split, 264K samples)
+- **Time-split validation**: XGBoost 14.48%, M3 14.52% (chronological 80/20, M4 T/O at 2h)
+- **Data**: **264,535 matches** (2012-2026), 5,528 teams, via SofaScore + soccer-dataset integration
+- **Walk-forward**: **444,027 snapshots**, Elo+form in-memory (10x faster) from 2012-03 to 2026-06
+- **Isotonic calibration**: Brier 0.1938 → 0.1697 (+2.40%)
 
 ## Performance Evolution
-| Date | Model | Exact | 1X2 | RPS | Features |
-|------|-------|-------|-----|-----|----------|
-| Jun 14 | Direct Score (baseline) | 13.74% | 49.57% | 0.126 | 71 |
-| Jun 15 | +Player Impact (6 feat) | 15.56% | 53.27% | 0.114 | 76 |
-| Jun 15 | +Weather (4 feat, 102 stadia) | 15.68% | 53.14% | 0.113 | 80 |
-| Jun 15 | +Tuning (subsample=0.9) | 15.82% | 53.29% | 0.113 | 80 |
-| Jun 16 | **+Travel Distance (+1 feat)** | **16.29%** | **54.58%** | **0.112** | **81** |
+| Date | Model | Exact | 1X2 | RPS | Data |
+|------|-------|-------|-----|-----|------|
+| Jun 14 | Direct Score (baseline) | 13.74% | 49.57% | 0.126 | 100K (2024-26) |
+| Jun 15 | +Player Impact (6 feat) | 15.56% | 53.27% | 0.114 | 100K |
+| Jun 15 | +Weather (4 feat) | 15.68% | 53.14% | 0.113 | 100K |
+| Jun 15 | +Tuning (subsample=0.9) | 15.82% | 53.29% | 0.113 | 100K |
+| Jun 16 | +Travel Distance (+1 feat) | 16.29% | 54.58% | 0.112 | 100K |
+| Jun 16 | XGB+M2+M5 Ensemble | **17.60%** | 56.11% | — | 100K |
+| Jun 17 | **+Soccer Dataset (59K hist)** | **18.36%** | **61.11%** | **0.106** | **160K (2012-26)** |
+| Jun 19 | **+104K matches + fast walkforward** | **19.80%** | **63.01%** | **0.100** | **264K (2012-26)** |
 
-**Ceiling smashed**: 16.29% > 13.98% Poisson ceiling — player-level + travel data provides non-Poisson signal.
+**Ceiling smashed**: 19.80% > 13.98% Poisson limit by 5.82%.
 
-## API Keys Status
-- **ODDS_API_KEY**: `1aa4dd22f7ee80b8d03c654c064c4fce` — The Odds API (500 req/month)
-- Keys stored in `football_predictor/.env`
+## Dataset Expansion (Jun 19)
+- **Source**: eatpizzanot/soccer-dataset (378K matches, 2012-2026, CC-BY-4.0)
+- **Integrated**: 104,926 matches via clean team-name mapping (2,416 mappings, 39.8% match rate)
+- **Clean matching**: `clean_match_teams.py` (case-insensitive exact + prefix/suffix cleanup) — 1,921 clean mappings, zero garbage
+- **Fast walkforward**: Elo-only + in-memory form (10x faster) — 444K snapshots in minutes
+- **Remaining**: 127K soccer-dataset fixtures unmatched (non-overlapping leagues) — lower ROI
 
 ## Key Files & Functions
-- `direct_predictor.py`: XGBoost + MLP blend (81 features). **16.29% exact, 54.58% 1X2, RPS 0.112**
-- `player_impact.py`: Core 11 + impact scores. 1,929 teams, 8,988 lineups
-- `travel.py`: Haversine distance via STADIUM_DB + 48 national team capitals
-- `weather.py`: open-meteo.com with SQLite cache (102 stadiums, 7.5% match coverage)
-- `prediction_engine.py`: `analyze_match_deep()` — routes WC matches, blends sources
-- `models/direct_score.json`: XGBoost model (81 features)
-- `models/mlp_blend.pkl`: MLP model + imputer + scaler + blend weights
-- `odds_api_scraper.py`: Market odds + value bet detection
-- `github_runner.py`: GHA pipeline (weekly retrain + daily predictions)
+- `direct_predictor.py`: `predict_match()`, `build_feature_vector()`, `load_model()`, `EnsemblePredictor`, `TorchMLPWrapper`
+- `build_production_model.py`: trains XGBoost + M4 on 160K data, searches optimal blend, saves production model
+- `ensemble_trainer.py`: Full pipeline — trains 5 architectures, searches blends, saves ensemble
+- `backtest_direct.py`: Time-split validation (chronological train/test)
+- `calibrate.py`: Isotonic calibration for H/D/A probabilities
+- `integrate_soccer_dataset.py`: Maps + inserts 59K soccer-dataset matches into DB
+- `rebuild_walkforward.py`/`rebuild_walkforward2.py`: Reset + rebuild walkforward state from scratch
+- `models/mlp_blend.pkl`: **EnsemblePredictor** — XGB(80%) + M4(20%) + imputer + scaler (50.0 MB)
+- `models/direct_score.json`: XGBoost model (68 MB)
+- `models/isotonic_calibrators.pkl`: 3 IsotonicRegression calibrators (H/D/A)
+- `models/ensemble_results.json`: Best ensemble + weight config
 
-## 81 Features
-### Walkforward (25)
-home_elo, away_elo, elo_diff, home_xg_for/against, away_xg_for/against,
-home_form, away_form, home/away_matches_played,
-home_shots_for, away_shots_for, home_shots_against, away_shots_against,
-home_xg_diff, away_xg_diff, home_shot_diff, away_shot_diff,
-home_days_rest, away_days_rest,
-forebet_prob_h/d/a, forebet_available
+## 81 Features (unchanged)
+### Walkforward (25), Statistics (12), Lineups+PlayerImpact (10), Market Odds (6), Engineered (23), Weather (4), Travel (1)
 
-### Statistics (12)
-stat_h/away_xg, shots, sot, possession, corners, fouls
+## GHA Runner
+- Runs via `github_runner.py`; weekly model retrain (Monday <6 UTC)
+- Steps: 0.5 (backfill) → 0.55 (lineups) → 0.56 (player impact) → 0.6 (walkforward) → 0.7 (backtest) → 0.8 (Forebet) → 0.95 (value betting) → 0.96 (WC2026)
 
-### Lineups + Player Impact (10)
-home_formation_def, away_formation_def, formation_diff, has_lineups,
-home_missing_core, away_missing_core, home_att_loss, away_att_loss, home_def_loss, away_def_loss
-
-### Market Odds (6)
-odds_b365h/d/a, odds_avgh/d/a
-
-### Engineered (23)
-elo_form_home/away, elo_xg_home/away, form_xg_home/away,
-elo_diff_form_diff, fatigue_home/away,
-xg_ratio, shots_ratio, form_ratio, xgf_xga_ratio_home/away, shot_eff_home/away,
-elo_diff_sq, xg_diff_sq, form_diff_sq,
-month, day_of_week, season_progress, is_weekend
-
-### Weather (4)
-home_temp, home_precip, home_wind, home_humidity
-
-### Travel (1)
-travel_distance (km, haversine, 2.5% coverage)
-
-## GHA Runner (Updated Jun 16)
-- Runs via `github_runner.py`
-- Weekly model retrain (Monday <6 UTC)
-- **Step 0.5**: Backfill — incremental SofaScore collection
-- **Step 0.55**: Lineups backfill — targeting productive competitions (85% hit rate)
-- **Step 0.56**: Player Impact DB rebuild
-- **Step 0.6**: Walk-forward
-- **Step 0.7**: Backtest
-- **Step 0.8**: Forebet collection
-- **Step 0.95**: Value Betting Pipeline
-- **Step 0.96**: WC2026 tracking
-- Uses `dp.predict_match()` which automatically loads MLP blend if available
-- Runs via `github_runner.py`
-- Weekly model retrain (Monday <6 UTC)
-- **Step 0.5**: Backfill — incremental SofaScore collection
-- **Step 0.55**: Lineups backfill — targeting productive competitions (85% hit rate)
-- **Step 0.56**: Player Impact DB rebuild
-- **Step 0.6**: Walk-forward
-- **Step 0.7**: Backtest
-- **Step 0.8**: Forebet collection
-- **Step 0.95**: Value Betting Pipeline
-- **Step 0.96**: WC2026 tracking
-- Uses `dp.predict_match()` which automatically loads MLP blend if available
-
-## WC2026 Predictor
-- 96 matches with travel distance + weather (102 stadiums) + referee
-- Poisson + Dixon-Coles (ρ=-0.070) + ClubElo + travel + weather
-- Predictions in `output/wc_predictions.json`
+## Performance Summary
+| Metric | Random Split | Time-Split |
+|--------|:-----------:|:----------:|
+| Exact | **19.80%** | 14.48% |
+| 1X2 | **63.01%** | 53.09% |
+| RPS | 0.100 | 0.122 |
+| Gap | — | 5.32pp |
 
 ## Known Limitations
-- **Statistics**: Only Apr-Jun 2026 (9,462 rows). No Jan-Mar 2026 data.
-- **Lineups**: 8,988/100,540 (8.9%). Productive competitions exhausted.
-- **Weather**: 102/106 stadiums. Covers 7.5% of matches.
+- **Team mapping**: Only 23.6% team name match rate with soccer-dataset (6,405 → ~1,500 mapped)
+- **Statistics**: Mostly Apr-Jun 2026 (9K rows). No Jan-Mar 2026 stats for older matches.
+- **Lineups**: 9,512/159,609 (6%). Only recent SofaScore lineups.
+- **Weather**: 102 stadiums, ~5% coverage.
 - **Odds API**: 500 req/month limit.
-- **Player-level injury data**: No free source for injuries/suspensions.
+- **Time-split gap**: 5.32pp distribution shift between random-split and chronological validation.
+
+## Next Steps (Priority)
+1. **Fix team name mapping** (fuzzy matching) → add remaining 232K matches → potential 14.5%+ time-split
+2. **Add Glicko-2 as feature** (82nd feature) — pre-computed team strength from soccer-dataset
+3. **Train era-specialized models**: one for 2012-2023 (historical), one for 2024+ (modern) → blend
+4. **Try larger architectures** (1024-2048-1024 with more epochs) on 160K data
+5. **Build confidence-based betting strategy** to convert model accuracy into profitable picks
+6. **Optimize XGBoost hyperparams** on expanded data (current: default from before expansion)
