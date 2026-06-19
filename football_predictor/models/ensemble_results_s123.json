@@ -1,0 +1,209 @@
+{
+  "features": [
+    "home_elo",
+    "away_elo",
+    "elo_diff",
+    "home_xg_for",
+    "home_xg_against",
+    "away_xg_for",
+    "away_xg_against",
+    "home_form",
+    "away_form",
+    "home_matches_played",
+    "away_matches_played",
+    "home_shots_for",
+    "away_shots_for",
+    "home_shots_against",
+    "away_shots_against",
+    "home_xg_diff",
+    "away_xg_diff",
+    "home_shot_diff",
+    "away_shot_diff",
+    "home_days_rest",
+    "away_days_rest",
+    "forebet_prob_h",
+    "forebet_prob_d",
+    "forebet_prob_a",
+    "forebet_available",
+    "stat_h_xg",
+    "stat_a_xg",
+    "stat_h_shots",
+    "stat_a_shots",
+    "stat_h_sot",
+    "stat_a_sot",
+    "stat_h_possession",
+    "stat_a_possession",
+    "stat_h_corners",
+    "stat_a_corners",
+    "stat_h_fouls",
+    "stat_a_fouls",
+    "home_formation_def",
+    "away_formation_def",
+    "formation_diff",
+    "has_lineups",
+    "home_missing_core",
+    "away_missing_core",
+    "home_att_loss",
+    "away_att_loss",
+    "home_def_loss",
+    "away_def_loss",
+    "odds_b365h",
+    "odds_b365d",
+    "odds_b365a",
+    "odds_avgh",
+    "odds_avgd",
+    "odds_avga",
+    "elo_form_home",
+    "elo_form_away",
+    "elo_xg_home",
+    "elo_xg_away",
+    "form_xg_home",
+    "form_xg_away",
+    "elo_diff_form_diff",
+    "fatigue_home",
+    "fatigue_away",
+    "xg_ratio",
+    "shots_ratio",
+    "form_ratio",
+    "xgf_xga_ratio_home",
+    "xgf_xga_ratio_away",
+    "shot_eff_home",
+    "shot_eff_away",
+    "elo_diff_sq",
+    "xg_diff_sq",
+    "form_diff_sq",
+    "month",
+    "day_of_week",
+    "season_progress",
+    "is_weekend",
+    "home_temp",
+    "home_precip",
+    "home_wind",
+    "home_humidity",
+    "travel_distance",
+    "ref_games",
+    "ref_strictness",
+    "home_coach_attacking",
+    "home_coach_defensive",
+    "away_coach_attacking",
+    "away_coach_defensive",
+    "temperature_c",
+    "wind_speed"
+  ],
+  "num_classes": 25,
+  "train_samples": 48955,
+  "test_samples": 5440,
+  "all_configs": {
+    "DeepNN-M2": {
+      "hidden": [
+        512,
+        1024,
+        512
+      ],
+      "dropout": 0.2,
+      "lr": 0.001
+    },
+    "DeepNN-M3": {
+      "hidden": [
+        256,
+        512,
+        256,
+        128
+      ],
+      "dropout": 0.2,
+      "lr": 0.001
+    },
+    "DeepNN-M4": {
+      "hidden": [
+        512,
+        1024,
+        512,
+        256
+      ],
+      "dropout": 0.2,
+      "lr": 0.001
+    },
+    "DeepNN-M5": {
+      "hidden": [
+        128,
+        256,
+        128
+      ],
+      "dropout": 0.3,
+      "lr": 0.001
+    },
+    "DeepNN-M6": {
+      "hidden": [
+        1024,
+        512,
+        256
+      ],
+      "dropout": 0.2,
+      "lr": 0.001
+    }
+  },
+  "best_ensemble": "XGB(20%)+DeepNN-M5",
+  "best_exact_pct": 16.95,
+  "top20_ensembles": [
+    {
+      "XGB(20%)+DeepNN-M5": 16.95
+    },
+    {
+      "XGB(30%)+DeepNN-M5": 16.95
+    },
+    {
+      "XGB(30%)+DeepNN-M3+DeepNN-M5+DeepNN-M6": 16.93
+    },
+    {
+      "XGB(30%)+DeepNN-M2+DeepNN-M3+DeepNN-M5+DeepNN-M6": 16.91
+    },
+    {
+      "XGB(30%)+DeepNN-M2+DeepNN-M3+DeepNN-M4+DeepNN-M5+DeepNN-M6": 16.84
+    },
+    {
+      "XGB(20%)+DeepNN-M3+DeepNN-M5+DeepNN-M6": 16.8
+    },
+    {
+      "XGB(20%)+DeepNN-M4+DeepNN-M5+DeepNN-M6": 16.8
+    },
+    {
+      "XGB(30%)+DeepNN-M4+DeepNN-M5+DeepNN-M6": 16.8
+    },
+    {
+      "XGB(30%)+DeepNN-M2+DeepNN-M5+DeepNN-M6": 16.78
+    },
+    {
+      "XGB(30%)+DeepNN-M3": 16.76
+    },
+    {
+      "XGB(10%)+DeepNN-M2+DeepNN-M5": 16.76
+    },
+    {
+      "XGB(20%)+DeepNN-M3+DeepNN-M5": 16.76
+    },
+    {
+      "XGB(20%)+DeepNN-M5+DeepNN-M6": 16.76
+    },
+    {
+      "XGB(30%)+DeepNN-M5+DeepNN-M6": 16.76
+    },
+    {
+      "XGB(30%)+DeepNN-M3+DeepNN-M4+DeepNN-M5": 16.76
+    },
+    {
+      "XGB(30%)+DeepNN-M2+DeepNN-M6": 16.75
+    },
+    {
+      "XGB(30%)+DeepNN-M3+DeepNN-M5": 16.75
+    },
+    {
+      "XGB(30%)+DeepNN-M3+DeepNN-M6": 16.75
+    },
+    {
+      "XGB(20%)+DeepNN-M2+DeepNN-M4+DeepNN-M6": 16.75
+    },
+    {
+      "XGB(10%)+DeepNN-M5": 16.73
+    }
+  ]
+}

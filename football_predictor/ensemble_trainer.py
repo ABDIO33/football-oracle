@@ -8,8 +8,8 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 os.environ['PYTHONIOENCODING'] = 'utf-8'
 
-# Fixed seeds for reproducibility
-SEED = 42
+# Fixed seeds for reproducibility (accept from command line)
+SEED = int(sys.argv[1]) if len(sys.argv) > 1 else 42
 random.seed(SEED)
 np.random.seed(SEED)
 import torch
@@ -260,9 +260,10 @@ info = {
     'best_exact_pct': round(best['exact']*100, 2),
     'top20_ensembles': [{r['name']: round(r['exact']*100, 2)} for r in results[:20]],
 }
-with open(os.path.join(MODEL_DIR, 'ensemble_results.json'), 'w') as f:
+results_path = os.path.join(MODEL_DIR, f'ensemble_results_s{SEED}.json')
+with open(results_path, 'w') as f:
     json.dump(info, f, indent=2)
-print(f"Saved ensemble results to models/ensemble_results.json")
+print(f"Saved ensemble results to {results_path}")
 
 print("\n" + "=" * 70)
 print(f"BEST RESULT: {best['exact']*100:.2f}% exact score")

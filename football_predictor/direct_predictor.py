@@ -4,7 +4,7 @@ direct_predictor.py — XGBoost Direct Score Predictor (25 classes)
 نتوقع الـ score مباشرة كـ multi-class (0-0, 0-1, ..., 4-4+)
 """
 
-import sqlite3, os, json
+import sqlite3, os, json, pickle
 import numpy as np
 import pandas as pd
 
@@ -1077,6 +1077,32 @@ def predict_match(home_team, away_team, match_date, odds_b365=None, odds_avg=Non
                 proba = w_xgb * proba + w_mlp * mlp_proba
             except:
                 pass
+
+    # Apply calibration + stacking if available
+    calibrator_path = os.path.join(os.path.dirname(__file__), 'models', 'calibrator_stack.pkl')
+    if os.path.exists(calibrator_path):
+        try:
+            with open(calibrator_path, 'rb') as f:
+                cal_data = pickle.load(f)
+            calibrators = cal_data.get('calibrators', [])
+            if len(calibrators) == NUM_CLASSES:
+                cal_proba = np.array([cal.transform(np.atleast_1d(proba[c]))[0] for cal, c in zip(calibrators, range(NUM_CLASSES))])
+                cal_proba = np.clip(cal_proba, 0, 1)
+                cal_sum = cal_proba.sum()
+                if cal_sum > 0:
+                    cal_proba = cal_proba / cal_sum
+                # Apply meta-stacking blend
+                meta_model = cal_data.get('meta_model')
+                blend_alpha = cal_data.get('blend_alpha', 0.5)
+                if meta_model is not None:
+                    meta_feat = np.concatenate([cal_proba, np.sort(cal_proba)[-3:], [cal_proba.argmax()]]).reshape(1, -1)
+                    stack_proba = meta_model.predict_proba(meta_feat)[0]
+                    proba = blend_alpha * cal_proba + (1 - blend_alpha) * stack_proba
+                    proba = proba / proba.sum()
+                else:
+                    proba = cal_proba
+        except Exception as e:
+            pass
 
     result = {}
     score_probs = {}

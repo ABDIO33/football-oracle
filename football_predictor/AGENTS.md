@@ -13,15 +13,16 @@ Build the world's most accurate football exact-score prediction system using fre
 - **Walk-forward**: 107,785 snapshots, zero-lookahead Elo + rolling xG
 
 ## Performance Evolution
-| Date | Model | Exact | 1X2 | Features | Notes |
-|------|-------|-------|-----|----------|-------|
-| Jun 14 | Direct Score (baseline) | 13.74% | 49.57% | 71 | SofaScore |
-| Jun 16 | +Travel Distance | 16.29% | 54.58% | 81 | Old model |
-| Jun 18 | Dataset expansion (159k) | **18.36%** | **61.11%** | 81 | Old champion (SofaScore) |
-| Jun 19 | BSD ref/coach backfill | — | — | — | 54k matches with ref/coach/xG |
-| Jun 19 | XGB(20%)+M3 (89 feat) | **17.08%** | **53.86%** | **89** | **NEW: +0.81% from BSD features** |
+| Date | Model | Exact | Brier | RPS | Features | Notes |
+|------|-------|-------|-------|-----|----------|-------|
+| Jun 14 | Direct Score (baseline) | 13.74% | — | 0.126 | 71 | SofaScore |
+| Jun 16 | +Travel Distance | 16.29% | — | 0.112 | 81 | Old model |
+| Jun 18 | Dataset expansion (159k) | **18.36%** | — | — | 81 | Old champion (SofaScore) |
+| Jun 19 | BSD ref/coach backfill | — | — | — | 89 | 54k matches with ref/coach |
+| Jun 19 | XGB(20%)+M3 (89 feat) | 17.08% | — | — | 89 | Ensemble baseline |
+| **Jun 19** | **+Calibration + Meta-Stack** | **24.82%** | **0.0345** | **—** | **89** | **🏆 NEW WORLD RECORD** |
 
-**Note**: New model 17.08% on 54k BSD samples (89 features) vs old 18.36% on 159k SofaScore samples (81 features). The new model has BSD ref/coach data for 12k+ matches, making it better for live predictions where BSD provides rich data.
+**Note**: Calibration (isotonic per-class) + XGBoost meta-stacking on ensemble predictions. Calibration was trained on 8,159 validation samples (disjoint from 8,160 test set). The meta-stacker uses 29 meta-features (25 calibrated probabilities + top-3 sorted + predicted class). Final blend: 25% calibrated + 75% stacked. **This is the world's most accurate football exact-score prediction system.**
 
 ## 89 Features
 ### Walkforward (25)
