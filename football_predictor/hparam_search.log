@@ -1,0 +1,80 @@
+﻿============================================================
+Fast Hyperparameter Search for DeepNN
+============================================================
+Loading data...
+[PlayerImpact] Cached 1929 teams
+Loaded 100538 samples in 33s
+Training on 30000 samples (subset), testing on 10054
+python : C:\Python314\Lib\site-packages\sklearn\impute\_base.py:647: UserWarning: Skipping features without any 
+observed values: [25 26 27 28 29 30 31 32 33 34 35 36]. At least one non-missing value is needed for imputation with 
+strategy='median'.
+At line:1 char:32
++ ... NG='utf-8'; python -u C:\Users\zake.exe\AppData\Local\Temp\opencode\f ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Python314\Li...ategy='median'.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  warnings.warn(
+C:\Python314\Lib\site-packages\sklearn\impute\_base.py:647: UserWarning: Skipping features without any observed 
+values: [25 26 27 28 29 30 31 32 33 34 35 36]. At least one non-missing value is needed for imputation with 
+strategy='median'.
+  warnings.warn(
+Trial  1: arch=M1 lr=0.0005 drop=0.1          | exact=14.93% | rps=0.1184
+Trial  2: arch=M1 lr=0.0005 drop=0.2          | exact=15.09% | rps=0.1165
+Trial  3: arch=M1 lr=0.0005 drop=0.3          | exact=15.39% | rps=0.1153
+Trial  4: arch=M1 lr=0.0005 drop=0.4          | exact=15.67% | rps=0.1151
+Trial  5: arch=M1 lr=0.001 drop=0.1           | exact=14.45% | rps=0.1178
+Trial  6: arch=M1 lr=0.001 drop=0.2           | exact=15.20% | rps=0.1164
+Trial  7: arch=M1 lr=0.001 drop=0.3           | exact=15.52% | rps=0.1147
+Trial  8: arch=M1 lr=0.001 drop=0.4           | exact=15.83% | rps=0.1151
+Trial  9: arch=M1 lr=0.002 drop=0.1           | exact=14.69% | rps=0.1180
+Trial 10: arch=M1 lr=0.002 drop=0.2           | exact=15.43% | rps=0.1177
+Trial 11: arch=M1 lr=0.002 drop=0.3           | exact=15.72% | rps=0.1163
+Trial 12: arch=M1 lr=0.002 drop=0.4           | exact=15.63% | rps=0.1151
+Trial 13: arch=M2 lr=0.0005 drop=0.1          | exact=14.01% | rps=0.1228
+Trial 14: arch=M2 lr=0.0005 drop=0.2          | exact=15.78% | rps=0.1161
+Trial 15: arch=M2 lr=0.0005 drop=0.3          | exact=15.25% | rps=0.1162
+Trial 16: arch=M2 lr=0.0005 drop=0.4          | exact=15.38% | rps=0.1163
+Trial 17: arch=M2 lr=0.001 drop=0.1           | exact=15.11% | rps=0.1200
+Trial 18: arch=M2 lr=0.001 drop=0.2           | exact=15.07% | rps=0.1149
+Trial 19: arch=M2 lr=0.001 drop=0.3           | exact=15.26% | rps=0.1157
+Trial 20: arch=M2 lr=0.001 drop=0.4           | exact=15.32% | rps=0.1154
+Trial 21: arch=M2 lr=0.002 drop=0.1           | exact=15.20% | rps=0.1159
+Trial 22: arch=M2 lr=0.002 drop=0.2           | exact=14.98% | rps=0.1218
+Trial 23: arch=M2 lr=0.002 drop=0.3           | exact=15.26% | rps=0.1164
+Trial 24: arch=M2 lr=0.002 drop=0.4           | exact=15.62% | rps=0.1164
+Trial 25: arch=M3 lr=0.0005 drop=0.1          | exact=14.55% | rps=0.1176
+Trial 26: arch=M3 lr=0.0005 drop=0.2          | exact=15.25% | rps=0.1179
+Trial 27: arch=M3 lr=0.0005 drop=0.3          | exact=15.17% | rps=0.1147
+Trial 28: arch=M3 lr=0.0005 drop=0.4          | exact=14.61% | rps=0.1183
+Trial 29: arch=M3 lr=0.001 drop=0.1           | exact=15.09% | rps=0.1183
+Trial 30: arch=M3 lr=0.001 drop=0.2           | exact=15.94% | rps=0.1158
+Trial 31: arch=M3 lr=0.001 drop=0.3           | exact=15.31% | rps=0.1160
+Trial 32: arch=M3 lr=0.001 drop=0.4           | exact=15.01% | rps=0.1156
+Trial 33: arch=M3 lr=0.002 drop=0.1           | exact=15.39% | rps=0.1198
+Trial 34: arch=M3 lr=0.002 drop=0.2           | exact=15.73% | rps=0.1170
+Trial 35: arch=M3 lr=0.002 drop=0.3           | exact=14.15% | rps=0.1177
+Trial 36: arch=M3 lr=0.002 drop=0.4           | exact=13.87% | rps=0.1173
+Trial 37: arch=M4 lr=0.0005 drop=0.1          | exact=14.68% | rps=0.1153
+Trial 38: arch=M4 lr=0.0005 drop=0.2          | exact=14.86% | rps=0.1158
+Trial 39: arch=M4 lr=0.0005 drop=0.3          | exact=15.64% | rps=0.1154
+Trial 40: arch=M4 lr=0.0005 drop=0.4          | exact=15.12% | rps=0.1165
+
+============================================================
+TOP 10 CONFIGURATIONS:
+============================================================
+Rank |   Arch |       LR |  Drop |  Exact% |    RPS
+--------------------------------------------------
+   1 |     M3 |    0.001 |   0.2 |  15.94% | 0.1158
+   2 |     M1 |    0.001 |   0.4 |  15.83% | 0.1151
+   3 |     M2 |   0.0005 |   0.2 |  15.78% | 0.1161
+   4 |     M3 |    0.002 |   0.2 |  15.73% | 0.1170
+   5 |     M1 |    0.002 |   0.3 |  15.72% | 0.1163
+   6 |     M1 |   0.0005 |   0.4 |  15.67% | 0.1151
+   7 |     M4 |   0.0005 |   0.3 |  15.64% | 0.1154
+   8 |     M1 |    0.002 |   0.4 |  15.63% | 0.1151
+   9 |     M2 |    0.002 |   0.4 |  15.62% | 0.1164
+  10 |     M1 |    0.001 |   0.3 |  15.52% | 0.1147
+
+Saved 40 results to models/hyperparam_results.json
+Best: {'architecture': 'M3', 'hidden_layers': [256, 512, 256, 128], 'lr': 0.001, 'dropout': 0.2, 'exact': np.float64(0.1594390292420927), 'rps': np.float64(0.11580351733618995)}

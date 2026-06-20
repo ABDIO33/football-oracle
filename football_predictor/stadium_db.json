@@ -1,0 +1,956 @@
+{
+  "Manchester City": {
+    "sofascore_name": "Manchester City",
+    "team_id": 17,
+    "venue_name": "Etihad Stadium",
+    "city": "Manchester",
+    "lat": 53.4831448,
+    "lng": -2.2005273,
+    "nominatim_name": "Etihad Stadium, Joe Mercer Way, Bradford, Manchester, Greater Manchester, England, M11 3FF, United Kingdom"
+  },
+  "Arsenal": {
+    "sofascore_name": "Arsenal",
+    "team_id": 42,
+    "venue_name": "Emirates Stadium",
+    "city": "London",
+    "lat": 51.5550404,
+    "lng": -0.1083997,
+    "nominatim_name": "Emirates Stadium, 75, Drayton Park, Finsbury Park, London Borough of Islington, Greater London, England, N5 1BU, United Kingdom"
+  },
+  "Liverpool": {
+    "sofascore_name": "Liverpool FC",
+    "team_id": 44,
+    "venue_name": "Anfield",
+    "city": "Liverpool",
+    "lat": 53.4309011,
+    "lng": -2.9609719,
+    "nominatim_name": "Anfield, Anfield Road, Anfield, Liverpool, Liverpool City Region, England, L4 0TH, United Kingdom"
+  },
+  "Chelsea": {
+    "sofascore_name": "Chelsea",
+    "team_id": 38,
+    "venue_name": "Stamford Bridge",
+    "city": "London",
+    "lat": 51.4816869,
+    "lng": -0.1910336,
+    "nominatim_name": "Stamford Bridge, Britannia Gate, Walham Green, Fulham, London Borough of Hammersmith and Fulham, Greater London, England, SW6 1HD, United Kingdom"
+  },
+  "Manchester United": {
+    "sofascore_name": "Manchester United",
+    "team_id": 35,
+    "venue_name": "Old Trafford",
+    "city": "Manchester",
+    "lat": 53.4631096,
+    "lng": -2.2913865,
+    "nominatim_name": "Old Trafford, Sir Matt Busby Way, Wharfside, Stretford, Trafford, Greater Manchester, England, M16 0RA, United Kingdom"
+  },
+  "Tottenham Hotspur": {
+    "sofascore_name": "Tottenham Hotspur",
+    "team_id": 33,
+    "venue_name": "Tottenham Hotspur Stadium",
+    "city": "London",
+    "lat": 51.604157,
+    "lng": -0.0662604,
+    "nominatim_name": "Tottenham Hotspur Stadium, Paxton Place, London Borough of Haringey, Greater London, England, N17 0FH, United Kingdom"
+  },
+  "Newcastle United": {
+    "sofascore_name": "Newcastle United",
+    "team_id": 39,
+    "venue_name": "St James' Park",
+    "city": "Newcastle upon Tyne",
+    "lat": 54.9754693,
+    "lng": -1.6218737,
+    "nominatim_name": "St. James' Park, Barrack Road, Grainger Town, Newcastle upon Tyne, Tyne and Wear, North East, England, NE1 4ST, United Kingdom"
+  },
+  "Aston Villa": {
+    "sofascore_name": "Aston Villa",
+    "team_id": 40,
+    "venue_name": "Villa Park",
+    "city": "Birmingham",
+    "lat": 52.5091264,
+    "lng": -1.8850354,
+    "nominatim_name": "Villa Park, Trinity Road, Aston, Birmingham, West Midlands, England, B6 6HE, United Kingdom"
+  },
+  "Brighton & Hove Albion": {
+    "sofascore_name": "Brighton & Hove Albion",
+    "team_id": 30,
+    "venue_name": "American Express Stadium",
+    "city": "Falmer",
+    "lat": 50.8615471,
+    "lng": -0.0836931,
+    "nominatim_name": "American Express Stadium, Village Way, Coldean, Brighton, Brighton and Hove, England, BN1 9BL, United Kingdom"
+  },
+  "West Ham United": {
+    "sofascore_name": "West Ham United",
+    "team_id": 37,
+    "venue_name": "London Stadium",
+    "city": "London",
+    "lat": 51.5386207,
+    "lng": -0.0166238,
+    "nominatim_name": "London Stadium, Gate 1 Access Road, Stratford, London Borough of Newham, Greater London, England, E20 2ST, United Kingdom"
+  },
+  "Brentford": {
+    "sofascore_name": "Brentford",
+    "team_id": 50,
+    "venue_name": "Brentford Community Stadium",
+    "city": "London",
+    "lat": 51.490713,
+    "lng": -0.2889802,
+    "nominatim_name": "Gtech Community Stadium, Lionel Road South, Strand-on-the-Green, Brentford, Greater London, England, TW8 0NT, United Kingdom"
+  },
+  "Crystal Palace": {
+    "sofascore_name": "Crystal Palace",
+    "team_id": 7,
+    "venue_name": "Selhurst Park",
+    "city": "London",
+    "lat": 51.3982429,
+    "lng": -0.0852551,
+    "nominatim_name": "Selhurst Park, Whitehorse Lane, Thornton Heath, London Borough of Croydon, Greater London, England, SE25 6PU, United Kingdom"
+  },
+  "Fulham": {
+    "sofascore_name": "Fulham",
+    "team_id": 43,
+    "venue_name": "Craven Cottage",
+    "city": "London",
+    "lat": 51.4749218,
+    "lng": -0.2217448,
+    "nominatim_name": "Craven Cottage, Stevenage Road, Fulham, London Borough of Hammersmith and Fulham, Greater London, England, SW6 6HH, United Kingdom"
+  },
+  "Wolverhampton": {
+    "sofascore_name": "Wolverhampton",
+    "team_id": 3,
+    "venue_name": "Molineux Stadium",
+    "city": "Wolverhampton",
+    "lat": 52.5902723,
+    "lng": -2.1304079,
+    "nominatim_name": "Molineux Stadium, Waterloo Road, Springfield, Heath Town, Park Village, Wolverhampton, West Midlands, England, WV1 4QR, United Kingdom"
+  },
+  "Everton": {
+    "sofascore_name": "Everton",
+    "team_id": 48,
+    "venue_name": "Hill Dickinson Stadium",
+    "city": "Liverpool",
+    "lat": 53.4250024,
+    "lng": -3.0027092,
+    "nominatim_name": "Hill Dickinson Stadium, Regent Road, Vauxhall, Liverpool, Liverpool City Region, England, L5 9TG, United Kingdom"
+  },
+  "Nottingham Forest": {
+    "sofascore_name": "Nottingham Forest",
+    "team_id": 14,
+    "venue_name": "City Ground",
+    "city": "Nottingham",
+    "lat": 52.9399387,
+    "lng": -1.1328954,
+    "nominatim_name": "The City Ground, Pavilion Road, Abbey Park, West Bridgford, City of Nottingham, Nottinghamshire, East Midlands, England, NG2 5FJ, United Kingdom"
+  },
+  "Bournemouth": {
+    "sofascore_name": "Bournemouth",
+    "team_id": 60,
+    "venue_name": "Vitality Stadium",
+    "city": "Bournemouth",
+    "lat": 50.7351815,
+    "lng": -1.8383279,
+    "nominatim_name": "Vitality Stadium, Middleton Gardens, Littledown, Bournemouth, Bournemouth, Christchurch and Poole, England, BH7 7AF, United Kingdom"
+  },
+  "Leicester City": {
+    "sofascore_name": "Leicester City",
+    "team_id": 31,
+    "venue_name": "King Power Stadium",
+    "city": "Leicester",
+    "lat": 52.620397,
+    "lng": -1.1423352,
+    "nominatim_name": "King Power Stadium, Filbert Way, Bede Island, Leicester, City of Leicester, England, LE2 7FL, United Kingdom"
+  },
+  "Southampton": {
+    "sofascore_name": "Southampton",
+    "team_id": 45,
+    "venue_name": "St. Mary's Stadium",
+    "city": "Southampton",
+    "lat": 50.9058615,
+    "lng": -1.3908774,
+    "nominatim_name": "St. Mary's Stadium, Britannia Road, Belvidere, Northam, Southampton, England, SO14 5FP, United Kingdom"
+  },
+  "Barcelona": {
+    "sofascore_name": "FC Barcelona",
+    "team_id": 2817,
+    "venue_name": "Spotify Camp Nou",
+    "city": "Barcelona",
+    "lat": 41.3808806,
+    "lng": 2.1228182,
+    "nominatim_name": "Spotify Camp Nou, Avinguda de Joan XXIII, la Maternitat, la Maternitat i Sant Ramon, les Corts, Barcelona, Barcelonès, Barcelona, Catalunya, 08028, España"
+  },
+  "Real Madrid": {
+    "sofascore_name": "Real Madrid",
+    "team_id": 2829,
+    "venue_name": "Bernabéu",
+    "city": "Madrid",
+    "lat": 40.4530437,
+    "lng": -3.688197,
+    "nominatim_name": "Estadio Santiago Bernabéu, Calle del Padre Damián, Hispanoamérica, Chamartín, Madrid, Comunidad de Madrid, 28020, España"
+  },
+  "Athletic Bilbao": {
+    "sofascore_name": "Athletic Club",
+    "team_id": 2825,
+    "venue_name": "San Mamés",
+    "city": "Bilbao",
+    "lat": 43.264204,
+    "lng": -2.9493915,
+    "nominatim_name": "San Mames, Telmo Zarra kalea, Basurtu, Basurtu-Zorrotza, Bilbao, Bizkaia, Euskadi, 48014, España"
+  },
+  "Real Sociedad": {
+    "sofascore_name": "Real Sociedad",
+    "team_id": 2824,
+    "venue_name": "Reale Arena",
+    "city": "San Sebastian",
+    "lat": 43.3013899,
+    "lng": -1.9735689,
+    "nominatim_name": "Reale Arena, 1, Anoeta pasealekua, Amaraberri, Anoeta, Amara Berri, Centro, Donostia / San Sebastián, Gipuzkoa, Euskadi, 20014, España"
+  },
+  "Real Betis": {
+    "sofascore_name": "Real Betis",
+    "team_id": 2816,
+    "venue_name": "Benito Villamarin",
+    "city": "Seville",
+    "lat": 37.3564503,
+    "lng": -5.9809176,
+    "nominatim_name": "Estadio Benito Villamarín, Avenida Padre García Tejero, Heliópolis, Distrito Bellavista-La Palmera, Sevilla, Andalucía, 41012, España"
+  },
+  "Valencia": {
+    "sofascore_name": "Valencia",
+    "team_id": 2828,
+    "venue_name": "Mestalla",
+    "city": "Valencia",
+    "lat": 39.4745279,
+    "lng": -0.3581566,
+    "nominatim_name": "Mestalla, Avinguda de Suècia, Mestalla, el Pla del Real, València, Comarca de València, València / Valencia, Comunitat Valenciana, 46010, España"
+  },
+  "Villarreal": {
+    "sofascore_name": "Villarreal",
+    "team_id": 2819,
+    "venue_name": "Estadio de la Ceramica",
+    "city": "Villarreal",
+    "lat": 39.9442083,
+    "lng": -0.1034046,
+    "nominatim_name": "Estadio de la Cerámica, Carrer del Riu Millars, Vila-real, la Plana Baixa, Castelló / Castellón, Comunitat Valenciana, 12540, España"
+  },
+  "Sevilla": {
+    "sofascore_name": "Sevilla",
+    "team_id": 2833,
+    "venue_name": "Ramón Sánchez Pizjuán",
+    "city": "Seville",
+    "lat": 37.3846337,
+    "lng": -5.9711558,
+    "nominatim_name": "Ramón Sánchez Pizjuán, 1, Avenida de Eduardo Dato, La Buhaira, Nervión, Sevilla, Andalucía, 41018, España"
+  },
+  "Girona": {
+    "sofascore_name": "Girona FC",
+    "team_id": 24264,
+    "venue_name": "Estadi Montilivi",
+    "city": "Girona",
+    "lat": 41.9612296,
+    "lng": 2.8289964,
+    "nominatim_name": "Estadi Municipal de Montilivi, Avinguda de Montilivi, Disseminat de la Creu de Palau, Palau, Girona, Gironès, Girona, Catalunya, 17003, España"
+  },
+  "Bayern Munich": {
+    "sofascore_name": "FC Bayern München",
+    "team_id": 2672,
+    "venue_name": "Allianz Arena",
+    "city": "Munich",
+    "lat": 48.2187901,
+    "lng": 11.6236227,
+    "nominatim_name": "Allianz Arena, 5, Werner-Heisenberg-Allee, Fröttmaning, Schwabing-Freimann, München, Bayern, 80939, Deutschland"
+  },
+  "Borussia Dortmund": {
+    "sofascore_name": "Borussia Dortmund",
+    "team_id": 2673,
+    "venue_name": "Signal Iduna Park",
+    "city": "Dortmund",
+    "lat": 51.4924922,
+    "lng": 7.4518549,
+    "nominatim_name": "SIGNAL IDUNA PARK, 50, Strobelallee, Innenstadt West, Dortmund, Nordrhein-Westfalen, 44139, Deutschland"
+  },
+  "RB Leipzig": {
+    "sofascore_name": "RB Leipzig",
+    "team_id": 36360,
+    "venue_name": "Red Bull Arena",
+    "city": "Leipzig",
+    "lat": 51.3457078,
+    "lng": 12.3482361,
+    "nominatim_name": "Red Bull Arena, Am Sportforum, Zentrum-Nordwest, Mitte, Leipzig, Sachsen, 04105, Deutschland"
+  },
+  "Bayer Leverkusen": {
+    "sofascore_name": "Bayer 04 Leverkusen",
+    "team_id": 2681,
+    "venue_name": "BayArena",
+    "city": "Leverkusen",
+    "lat": 51.0381439,
+    "lng": 7.0030964,
+    "nominatim_name": "BayArena, 122-124, Bismarckstraße, Küppersteg, Stadtbezirk II, Leverkusen, Nordrhein-Westfalen, 51373, Deutschland"
+  },
+  "Eintracht Frankfurt": {
+    "sofascore_name": "Eintracht Frankfurt",
+    "team_id": 2674,
+    "venue_name": "Deutsche Bank Park",
+    "city": "Frankfurt",
+    "lat": 50.0686103,
+    "lng": 8.6454154,
+    "nominatim_name": "Deutsche Bank Park, 362, Mörfelder Landstraße, Sachsenhausen Süd, Sachsenhausen, Süd, Frankfurt am Main, Hessen, 60528, Deutschland"
+  },
+  "VfB Stuttgart": {
+    "sofascore_name": "VfB Stuttgart",
+    "team_id": 2677,
+    "venue_name": "MHP Arena",
+    "city": "Stuttgart",
+    "lat": 48.7922488,
+    "lng": 9.2320857,
+    "nominatim_name": "MHPArena, 87, Mercedesstraße, Wasen, Bad Cannstatt, Stuttgart, Baden-Württemberg, 70372, Deutschland"
+  },
+  "Borussia Monchengladbach": {
+    "sofascore_name": "Borussia M'gladbach",
+    "team_id": 2527,
+    "venue_name": "Borussia-Park",
+    "city": "Monchengladbach",
+    "lat": 51.1746249,
+    "lng": 6.3854094,
+    "nominatim_name": "Borussia-Park, Hennes-Weisweiler-Allee, Rheindahlen-Land, West, Mönchengladbach, Nordrhein-Westfalen, 41179, Deutschland"
+  },
+  "VfL Wolfsburg": {
+    "sofascore_name": "VfL Wolfsburg",
+    "team_id": 2524,
+    "venue_name": "Volkswagen Arena",
+    "city": "Wolfsburg",
+    "lat": 52.4326524,
+    "lng": 10.8038151,
+    "nominatim_name": "Volkswagen Arena, 1, In den Allerwiesen, Hellwinkel, Wolfsburg, Niedersachsen, 38448, Deutschland"
+  },
+  "Union Berlin": {
+    "sofascore_name": "1. FC Union Berlin",
+    "team_id": 2547,
+    "venue_name": "An der alten Försterei",
+    "city": "Berlin",
+    "lat": 52.4569741,
+    "lng": 13.5680789,
+    "nominatim_name": "Stadion An der Alten Försterei, 263, An der Wuhlheide, Köpenick, Treptow-Köpenick, OBERNAZIS OBERMOTHERFUCKER!!!, 12555, Deutschland"
+  },
+  "SC Freiburg": {
+    "sofascore_name": "SC Freiburg",
+    "team_id": 2538,
+    "venue_name": "Europa-Park-Stadion",
+    "city": "Freiburg im Breisgau",
+    "lat": 48.0213778,
+    "lng": 7.829817,
+    "nominatim_name": "Europa-Park Stadion, 1, Achim-Stocker-Straße, Brühl-Industriegebiet, Brühl, Freiburg im Breisgau, Baden-Württemberg, 79108, Deutschland"
+  },
+  "Juventus": {
+    "sofascore_name": "Juventus",
+    "team_id": 2687,
+    "venue_name": "Allianz Stadium",
+    "city": "Turin",
+    "lat": 45.1095759,
+    "lng": 7.6421338,
+    "nominatim_name": "Allianz Stadium, Via Druento, Continassa, Vallette, Circoscrizione 5, Torino, Piemonte, 10151, Italia"
+  },
+  "Napoli": {
+    "sofascore_name": "SSC Napoli",
+    "team_id": 2714,
+    "venue_name": "Stadio Diego Armando Maradona",
+    "city": "Naples",
+    "lat": 40.8279773,
+    "lng": 14.192889,
+    "nominatim_name": "Stadio Diego Armando Maradona, Via Luigi Tansillo, Rione Lauro, Fuorigrotta, Municipalità 10, Napoli, Campania, 80125, Italia"
+  },
+  "Atalanta": {
+    "sofascore_name": "Atalanta",
+    "team_id": 2686,
+    "venue_name": "New Balance Arena",
+    "city": "Bergamo",
+    "lat": 45.7092068,
+    "lng": 9.6808327,
+    "nominatim_name": "New Balance Arena, Viale Giulio Cesare, Borgo Santa Caterina, Bergamo, Lombardia, 24124, Italia"
+  },
+  "Roma": {
+    "sofascore_name": "AS Roma",
+    "team_id": 2702,
+    "venue_name": "Stadio Olimpico",
+    "city": "Rome",
+    "lat": 41.9387659,
+    "lng": 12.458134,
+    "nominatim_name": "Stadio Olimpico;Ponte Milvio, Via del Foro Italico, Municipio Roma XV, Roma, Roma Capitale, Lazio, 00194, Italia"
+  },
+  "Lazio": {
+    "sofascore_name": "Lazio",
+    "team_id": 2699,
+    "venue_name": "Stadio Olimpico",
+    "city": "Rome",
+    "lat": 41.9387659,
+    "lng": 12.458134,
+    "nominatim_name": "Stadio Olimpico;Ponte Milvio, Via del Foro Italico, Municipio Roma XV, Roma, Roma Capitale, Lazio, 00194, Italia"
+  },
+  "Fiorentina": {
+    "sofascore_name": "Fiorentina",
+    "team_id": 2693,
+    "venue_name": "Stadio Artemio Franchi",
+    "city": "Florence",
+    "lat": 43.7808838,
+    "lng": 11.2828191,
+    "nominatim_name": "Stadio comunale Artemio Franchi, Viale Pierluigi Nervi, Campo di Marte, Quartiere 2, Firenze, Toscana, 50137, Italia"
+  },
+  "Bologna": {
+    "sofascore_name": "Bologna",
+    "team_id": 2685,
+    "venue_name": "Renato Dall'Ara",
+    "city": "Bologna",
+    "lat": 44.492317,
+    "lng": 11.3099971,
+    "nominatim_name": "Stadio Renato Dall'Ara, Via dello Sport, Saragozza, Porto-Saragozza, Bologna, Emilia-Romagna, 40135, Italia"
+  },
+  "Torino": {
+    "sofascore_name": "Torino",
+    "team_id": 2696,
+    "venue_name": "Stadio Olimpico Grande Torino",
+    "city": "Turin",
+    "lat": 45.0417432,
+    "lng": 7.6500185,
+    "nominatim_name": "Stadio Olimpico Grande Torino, Corso Giovanni Agnelli, Santa Rita, Circoscrizione 2, Torino, Piemonte, 10134, Italia"
+  },
+  "Paris Saint Germain": {
+    "sofascore_name": "Paris Saint-Germain",
+    "team_id": 1644,
+    "venue_name": "Parc des Princes",
+    "city": "Paris",
+    "lat": 48.8413634,
+    "lng": 2.2530693,
+    "nominatim_name": "Parc des Princes, 24, Rue du Commandant Guilbaud, Quartier d'Auteuil, Paris 16e Arrondissement, Paris, Île-de-France, France métropolitaine, 75016, France"
+  },
+  "Marseille": {
+    "sofascore_name": "Olympique de Marseille",
+    "team_id": 1641,
+    "venue_name": "Orange Velodrome",
+    "city": "Marseille",
+    "lat": 43.2698363,
+    "lng": 5.3959117,
+    "nominatim_name": "Orange Vélodrome, 3, Boulevard Michelet, Saint-Giniez, Marseille 8e Arrondissement, Marseille, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur, France métropolitaine, 13008, France"
+  },
+  "Lyon": {
+    "sofascore_name": "Olympique Lyonnais",
+    "team_id": 1649,
+    "venue_name": "Groupama Stadium",
+    "city": "Lyon",
+    "lat": 45.7653624,
+    "lng": 4.9820543,
+    "nominatim_name": "Groupama Stadium, Allée Nord-Ouest, Le Grand Montout, Charpieu, Décines-Charpieu, Lyon, Métropole de Lyon, Rhône, Auvergne-Rhône-Alpes, France métropolitaine, 69150, France"
+  },
+  "Monaco": {
+    "sofascore_name": "AS Monaco",
+    "team_id": 1653,
+    "venue_name": "Stade Louis II",
+    "city": "Fontvieille",
+    "lat": 43.7275713,
+    "lng": 7.4154577,
+    "nominatim_name": "Stade Louis-II, Avenue des Castelans, Fontvieille, Monaco, 98020, Monaco"
+  },
+  "Lille": {
+    "sofascore_name": "Lille",
+    "team_id": 1643,
+    "venue_name": "Decathlon Arena - Stade Pierre Mauroy",
+    "city": "Lille",
+    "lat": 50.6119044,
+    "lng": 3.130508,
+    "nominatim_name": "Decathlon Arena-Stade Pierre-Mauroy, Boulevard de Tournai, Hôtel-de-Ville, Saint-Sauveur, Villeneuve-d'Ascq, Lille, Nord, Hauts-de-France, France métropolitaine, 59491, France"
+  },
+  "Nice": {
+    "sofascore_name": "Nice",
+    "team_id": 1661,
+    "venue_name": "Allianz Riviera",
+    "city": "Nice",
+    "lat": 43.7051477,
+    "lng": 7.1926033,
+    "nominatim_name": "Allianz Riviera, Allée Camille Muffat, Saint-Isidore, Nice, Alpes-Maritimes, Provence-Alpes-Côte d'Azur, France métropolitaine, 06284, France"
+  },
+  "Rennes": {
+    "sofascore_name": "Stade Rennais",
+    "team_id": 1658,
+    "venue_name": "Roazhon Park",
+    "city": "Rennes",
+    "lat": 48.1075655,
+    "lng": -1.7126543,
+    "nominatim_name": "Roazhon Park, Rue de Lorient, Moulin du Comte, Bourg l'Évesque - La Touche - Moulin du Comte, Quartiers Ouest, Rennes, Ille-et-Vilaine, Bretagne, France métropolitaine, 35000, France"
+  },
+  "Lens": {
+    "sofascore_name": "RC Lens",
+    "team_id": 1648,
+    "venue_name": "Stade Bollaert-Delelis",
+    "city": "Lens",
+    "lat": 50.4328242,
+    "lng": 2.8149863,
+    "nominatim_name": "Stade Bollaert-Delelis, Avenue Alfred Maës, Cité n°4, Lens, Pas-de-Calais, Hauts-de-France, France métropolitaine, 62300, France"
+  },
+  "Strasbourg": {
+    "sofascore_name": "RC Strasbourg",
+    "team_id": 1659,
+    "venue_name": "Stade de la Meinau",
+    "city": "Strasbourg",
+    "lat": 48.5599481,
+    "lng": 7.7551221,
+    "nominatim_name": "Stade de la Meinau, Piste Georges Speicher, Meinau, Strasbourg, Bas-Rhin, Collectivité européenne d'Alsace, Grand Est, France métropolitaine, 67100, France"
+  },
+  "Toulouse": {
+    "sofascore_name": "Toulouse",
+    "team_id": 1681,
+    "venue_name": "Stadium de Toulouse",
+    "city": "Toulouse",
+    "lat": 43.5832262,
+    "lng": 1.4340638,
+    "nominatim_name": "Stadium de Toulouse, 1bis, Allée Gabriel Biénès, Empalot, Saint-Michel / Saint-Agne / Empalot / Le Busca / Île du Ramier / Montplaisir, Toulouse, Haute-Garonne, Occitanie, France métropolitaine, 31028, France"
+  },
+  "Ajax": {
+    "sofascore_name": "AFC Ajax",
+    "team_id": 2953,
+    "venue_name": "Johan Cruijff Arena",
+    "city": "Amsterdam",
+    "lat": 52.314353,
+    "lng": 4.9428431,
+    "nominatim_name": "Johan Cruijff ArenA, 1, Johan Cruijff Boulevard, Zuidoost, Amsterdam, Noord-Holland, Nederland, 1100 DL, Nederland"
+  },
+  "Feyenoord": {
+    "sofascore_name": "Feyenoord",
+    "team_id": 2959,
+    "venue_name": "De Kuip",
+    "city": "Rotterdam",
+    "lat": 51.8938646,
+    "lng": 4.5232281,
+    "nominatim_name": "Stadion Feijenoord, Olympiaweg, De Veranda, Oud-IJsselmonde, IJsselmonde, Rotterdam, Zuid-Holland, Nederland, 3077 AL, Nederland"
+  },
+  "PSV": {
+    "sofascore_name": "PSV Eindhoven",
+    "team_id": 2952,
+    "venue_name": "Philips Stadion",
+    "city": "Eindhoven",
+    "lat": 51.4417077,
+    "lng": 5.4674257,
+    "nominatim_name": "Philips Stadion, Hulstlaan, Philipsdorp, Strijp, Eindhoven, Noord-Brabant, Nederland, 5616 PJ, Nederland"
+  },
+  "Benfica": {
+    "sofascore_name": "Benfica",
+    "team_id": 3006,
+    "venue_name": "Estádio da Luz",
+    "city": "Lisbon",
+    "lat": 38.7526893,
+    "lng": -9.1846899,
+    "nominatim_name": "Estádio da Luz, Avenida Lusíada, São Domingos de Benfica, Lisboa, 1500-065, Portugal"
+  },
+  "Porto": {
+    "sofascore_name": "FC Porto",
+    "team_id": 3002,
+    "venue_name": "Estádio do Dragão",
+    "city": "Porto",
+    "lat": 41.1618235,
+    "lng": -8.5837492,
+    "nominatim_name": "Estádio do Dragão, Via Futebol Clube do Porto, Monte Aventino, Campanhã, Porto, 4435-111, Portugal"
+  },
+  "Sporting CP": {
+    "sofascore_name": "Sporting CP",
+    "team_id": 3001,
+    "venue_name": "Estádio José Alvalade",
+    "city": "Lisbon",
+    "lat": 38.7612164,
+    "lng": -9.1607831,
+    "nominatim_name": "Estádio José Alvalade, Rua Professor Fernando da Fonseca, Lumiar, Lisboa, 1501-806, Portugal"
+  },
+  "Celtic": {
+    "sofascore_name": "Celtic",
+    "team_id": 2352,
+    "venue_name": "Celtic Park",
+    "city": "Glasgow",
+    "lat": 55.8501815,
+    "lng": -4.2068227,
+    "nominatim_name": "Celtic Park, Dalriada Street, Lilybank, Newbank, Glasgow, Glasgow City, Alba / Scotland, G40 3RE, United Kingdom"
+  },
+  "Rangers": {
+    "sofascore_name": "Rangers",
+    "team_id": 2351,
+    "venue_name": "Ibrox",
+    "city": "Glasgow",
+    "lat": 55.85313,
+    "lng": -4.3092916,
+    "nominatim_name": "Ibrox, Glasgow, Glasgow City, Alba / Scotland, G51 2XD, United Kingdom"
+  },
+  "Galatasaray": {
+    "sofascore_name": "Galatasaray",
+    "team_id": 3061,
+    "venue_name": "Rams Park Stadyumu",
+    "city": "Istanbul",
+    "lat": 41.103369,
+    "lng": 28.9909522,
+    "nominatim_name": "RAMS Park, Metin Oktay Caddesi, Huzur Mahallesi, Sarıyer, İstanbul, Marmara Bölgesi, 34485, Türkiye"
+  },
+  "Fenerbahce": {
+    "sofascore_name": "Fenerbahçe",
+    "team_id": 3052,
+    "venue_name": "Chobani Stadium",
+    "city": "Istanbul",
+    "lat": 40.9875807,
+    "lng": 29.0369773,
+    "nominatim_name": "Chobani Stadyumu, 3, Bağdat Caddesi, Ziverbey, Zühtüpaşa Mahallesi, Kadıköy, İstanbul, Marmara Bölgesi, 34724, Türkiye"
+  },
+  "Besiktas": {
+    "sofascore_name": "Beşiktaş JK",
+    "team_id": 3050,
+    "venue_name": "Tüpraş Stadyumu",
+    "city": "Istanbul",
+    "lat": 41.0394982,
+    "lng": 28.9943382,
+    "nominatim_name": "Tüpraş Stadyumu, 1, Dolmabahçe Caddesi, Maçka, Vişnezade Mahallesi, Beşiktaş, İstanbul, Marmara Bölgesi, 34357, Türkiye"
+  },
+  "Club Brugge": {
+    "sofascore_name": "Club Brugge KV",
+    "team_id": 2888,
+    "venue_name": "Jan Breydel Stadium",
+    "city": "Bruges",
+    "lat": 51.1933461,
+    "lng": 3.1805853,
+    "nominatim_name": "Jan Breydelstadion, Olympialaan, Sint-Andries, Brugge, West-Vlaanderen, Vlaanderen, 8200, België / Belgique / Belgien"
+  },
+  "Anderlecht": {
+    "sofascore_name": "RSC Anderlecht",
+    "team_id": 2900,
+    "venue_name": "Lotto Park",
+    "city": "Brussels",
+    "lat": 50.8340203,
+    "lng": 4.2978564,
+    "nominatim_name": "Lotto Park, Avenue Théo Verbeeck - Théo Verbeecklaan, Meir, Anderlecht, Brussel-Hoofdstad - Bruxelles-Capitale, Région de Bruxelles-Capitale - Brussels Hoofdstedelijk Gewest, 1070, België / Belgique / Belgien"
+  },
+  "Dinamo Zagreb": {
+    "sofascore_name": "GNK Dinamo Zagreb",
+    "team_id": 2032,
+    "venue_name": "Stadion Maksimir",
+    "city": "Zagreb",
+    "lat": 45.8186879,
+    "lng": 16.0179376,
+    "nominatim_name": "Stadion Maksimir, 128, Maksimirska cesta, Mjesni odbor Maksimirska naselja, Gradska četvrt Maksimir, Zagreb, Grad Zagreb, 10000, Hrvatska"
+  },
+  "Slavia Prague": {
+    "sofascore_name": "SK Slavia Praha",
+    "team_id": 2216,
+    "venue_name": "Fortuna Arena",
+    "city": "Prague",
+    "lat": 50.0675695,
+    "lng": 14.4715052,
+    "nominatim_name": "Fortuna Arena, 1540/2a, U Slavie, Vršovice, Praha 10, obvod Praha 10, Praha, 100 00, Česko"
+  },
+  "Sparta Prague": {
+    "sofascore_name": "AC Sparta Praha",
+    "team_id": 2218,
+    "venue_name": "epet ARENA",
+    "city": "Prague",
+    "lat": 50.0997126,
+    "lng": 14.4158918,
+    "nominatim_name": "epet ARENA, 1066/98, Milady Horákové, Bubeneč, Praha 7, obvod Praha 7, Praha, 116 93, Česko"
+  },
+  "Olympiacos": {
+    "sofascore_name": "Olympiacos FC",
+    "team_id": 3245,
+    "venue_name": "Georgios Karaiskakis Stadium",
+    "city": "Piraeus",
+    "lat": 37.9464689,
+    "lng": 23.6644117,
+    "nominatim_name": "Γήπεδο Γεώργιος Καραϊσκάκης, Καραολή και Δημητρίου, Νέο Φάληρο, 3η Κοινότητα Πειραιά, Πειραιάς, Δήμος Πειραιώς, Περιφερειακή Ενότητα Πειραιώς, Περιφέρεια Αττικής, Αποκεντρωμένη Διοίκηση Αττικής, 185 41, Ελλάς"
+  },
+  "PAOK": {
+    "sofascore_name": "PAOK",
+    "team_id": 3251,
+    "venue_name": "Toumba Stadium",
+    "city": "Thessaloniki",
+    "lat": 40.6138703,
+    "lng": 22.9723655,
+    "nominatim_name": "Στάδιο ΠΑΟΚ, 1, Μικράς Ασίας, Κάτω Τούμπα, 4η Κοινότητα Θεσσαλονίκης, Δημοτική Ενότητα Θεσαλονίκης, Δήμος Θεσσαλονίκης, Μητροπολιτική Ενότητα Θεσσαλονίκης, Περιφέρεια Κεντρικής Μακεδονίας, Αποκεντρωμένη Διοίκηση Μακεδονίας - Θράκης, 543 51, Ελλάς"
+  },
+  "Red Bull Salzburg": {
+    "sofascore_name": "Red Bull Salzburg",
+    "team_id": 2046,
+    "venue_name": "Red Bull Arena",
+    "city": "Salzburg",
+    "lat": 47.8163956,
+    "lng": 12.9982439,
+    "nominatim_name": "Red Bull Arena, Kaindlstraße, Kleßheim, Siezenheim, Wals-Siezenheim, Bezirk Salzburg-Umgebung, Salzburg, 5071, Österreich"
+  },
+  "FC Copenhagen": {
+    "sofascore_name": "FC København",
+    "team_id": 1284,
+    "venue_name": "Parken",
+    "city": "Copenhagen",
+    "lat": 55.7027043,
+    "lng": 12.5722638,
+    "nominatim_name": "Parken, Øster Allé, Indre Østerbro, Østervold, Østerbro, København, Københavns Kommune, Region Hovedstaden, 2100, Danmark"
+  },
+  "Bodo Glimt": {
+    "sofascore_name": "Bodø/Glimt",
+    "team_id": 656,
+    "venue_name": "Aspmyra Stadion",
+    "city": "Bodø",
+    "lat": 67.2766478,
+    "lng": 14.3844344,
+    "nominatim_name": "Aspmyra stadion, Hålogalandsgata, Aspåsen, Vestbyen, Hernes - Hierggenjárgga - Härrgenjárrga, Bodø, Nordland, 8004, Norge"
+  },
+  "Malmo FF": {
+    "sofascore_name": "Malmö FF",
+    "team_id": 1892,
+    "venue_name": "Eleda Stadium",
+    "city": "Malmo",
+    "lat": 55.5837345,
+    "lng": 12.987735,
+    "nominatim_name": "Eleda Stadion, Kroksbäcksstigen, Stadion, Väster, Malmö, Malmö kommun, Skåne län, 217 62, Sverige"
+  },
+  "Inter Miami": {
+    "sofascore_name": "Inter Miami CF",
+    "team_id": 337602,
+    "venue_name": "Nu Stadium",
+    "city": "Miami",
+    "lat": 25.7923568,
+    "lng": -80.2604659,
+    "nominatim_name": "Nu Stadium, 1900, Northwest 37th Avenue, Miami, Miami-Dade County, Florida, 33125, United States"
+  },
+  "LA Galaxy": {
+    "sofascore_name": "LA Galaxy",
+    "team_id": 2513,
+    "venue_name": "Dignity Health Sports Park",
+    "city": "Carson",
+    "lat": 33.8622861,
+    "lng": -118.2629121,
+    "nominatim_name": "Dignity Health Sports Park, 18400, South Avalon Boulevard, Carson, Los Angeles County, California, 90746, United States"
+  },
+  "Los Angeles FC": {
+    "sofascore_name": "Los Angeles FC",
+    "team_id": 274650,
+    "venue_name": "BMO Stadium",
+    "city": "Los Angeles",
+    "lat": 34.012814,
+    "lng": -118.2840892,
+    "nominatim_name": "BMO Stadium, South Coliseum Drive, Exposition Park, Los Angeles, Los Angeles County, California, 90037, United States"
+  },
+  "Flamengo": {
+    "sofascore_name": "Flamengo",
+    "team_id": 5981,
+    "venue_name": "Estádio do Maracanã",
+    "city": "Rio de Janeiro",
+    "lat": -22.9121619,
+    "lng": -43.2311861,
+    "nominatim_name": "Estádio Jornalista Mário Filho, Avenida Rei Pelé, Maracanã, Rio de Janeiro, Região Sudeste, 20271-130, Brasil"
+  },
+  "Santos": {
+    "sofascore_name": "Santos",
+    "team_id": 1968,
+    "venue_name": "Estádio Urbano Caldeira",
+    "city": "Santos",
+    "lat": -23.9511157,
+    "lng": -46.3389913,
+    "nominatim_name": "Estádio Urbano Caldeira, Rua Princesa Isabel, Vila Belmiro, Santos, São Paulo, Região Sudeste, 11075-501, Brasil"
+  },
+  "Sao Paulo": {
+    "sofascore_name": "São Paulo",
+    "team_id": 1981,
+    "venue_name": "MorumBIS",
+    "city": "Sao Paulo",
+    "lat": -23.6001016,
+    "lng": -46.7201264,
+    "nominatim_name": "MorumBIS, 1, Praça Roberto Gomes Pedrosa, Morumbi, São Paulo, Região Sudeste, 05653-070, Brasil"
+  },
+  "Corinthians": {
+    "sofascore_name": "Corinthians",
+    "team_id": 1957,
+    "venue_name": "Neo Química Arena",
+    "city": "Sao Paulo",
+    "lat": -23.5453327,
+    "lng": -46.4743055,
+    "nominatim_name": "Neo Química Arena, 111, Avenida Miguel Inácio Curi, Cidade Antônio Estêvão de Carvalho, Itaquera, São Paulo, Região Sudeste, 08295-005, Brasil"
+  },
+  "Al Hilal": {
+    "sofascore_name": "Al-Hilal",
+    "team_id": 21895,
+    "venue_name": "Kingdom Arena",
+    "city": "Riyadh",
+    "lat": 24.7789353,
+    "lng": 46.6059081,
+    "nominatim_name": "المملكة أرينا, شارع الحوي, حطين, حي حطين, بلدية الشمال, الدرعية, محافظة الدرعية, منطقة الرياض, 13516, السعودية"
+  },
+  "Al Nassr": {
+    "sofascore_name": "Al-Nassr",
+    "team_id": 23400,
+    "venue_name": "Al-Awwal Park",
+    "city": "Riyadh",
+    "lat": 24.7291958,
+    "lng": 46.6237712,
+    "nominatim_name": "حديقة الاول, road_14, جامعة الملك سعود, حي النخيل, بلدية المعذر, الرياض, محافظة الرياض, منطقة الرياض, 12513, السعودية"
+  },
+  "Brazil": {
+    "sofascore_name": "Brazil",
+    "team_id": 4748,
+    "venue_name": "Estádio do Maracanã",
+    "city": "Rio de Janeiro",
+    "lat": -22.9121619,
+    "lng": -43.2311861,
+    "nominatim_name": "Estádio Jornalista Mário Filho, Avenida Rei Pelé, Maracanã, Rio de Janeiro, Região Sudeste, 20271-130, Brasil"
+  },
+  "Argentina": {
+    "sofascore_name": "Argentina",
+    "team_id": 4819,
+    "venue_name": "Estadio Mâs Monumental",
+    "city": "Buenos Aires",
+    "lat": -34.5452932,
+    "lng": -58.4497385,
+    "nominatim_name": "Estadio Monumental, Conector Interciclovías, Belgrano, Buenos Aires, Comuna 13, Ciudad Autónoma de Buenos Aires, C1424BCL, Argentina"
+  },
+  "England": {
+    "sofascore_name": "England",
+    "team_id": 4713,
+    "venue_name": "Wembley Stadium",
+    "city": "London",
+    "lat": 51.5560695,
+    "lng": -0.2796034,
+    "nominatim_name": "Wembley Stadium, Spanish Steps, London Borough of Brent, Greater London, England, HA9 0SN, United Kingdom"
+  },
+  "France": {
+    "sofascore_name": "France",
+    "team_id": 4481,
+    "venue_name": "Stade de France",
+    "city": "Paris",
+    "lat": 48.8557562,
+    "lng": 2.3535027,
+    "nominatim_name": "Stade de France, Place Saint-Gervais, Quartier Saint-Gervais, Paris 4e Arrondissement, Paris, Île-de-France, France métropolitaine, 75004, France"
+  },
+  "Netherlands": {
+    "sofascore_name": "Netherlands",
+    "team_id": 4705,
+    "venue_name": "Johan Cruijff Arena",
+    "city": "Amsterdam",
+    "lat": 52.314353,
+    "lng": 4.9428431,
+    "nominatim_name": "Johan Cruijff ArenA, 1, Johan Cruijff Boulevard, Zuidoost, Amsterdam, Noord-Holland, Nederland, 1100 DL, Nederland"
+  },
+  "Belgium": {
+    "sofascore_name": "Belgium",
+    "team_id": 4717,
+    "venue_name": "Stade Roi Baudouin",
+    "city": "Brussels",
+    "lat": 50.8957221,
+    "lng": 4.3341279,
+    "nominatim_name": "Stade Roi Baudouin - Koning Boudewijnstadion, Avenue des Athlètes - Atletenlaan, Heysel - Heizel, Laeken - Laken, Bruxelles - Brussel, Brussel-Hoofdstad - Bruxelles-Capitale, Région de Bruxelles-Capitale - Brussels Hoofdstedelijk Gewest, 1020, België / Belgique / Belgien"
+  },
+  "Denmark": {
+    "sofascore_name": "Denmark",
+    "team_id": 4476,
+    "venue_name": "Parken",
+    "city": "Copenhagen",
+    "lat": 55.7027043,
+    "lng": 12.5722638,
+    "nominatim_name": "Parken, Brumleby, Indre Østerbro, Østervold, Østerbro, København, Københavns Kommune, Region Hovedstaden, 2100, Danmark"
+  },
+  "Uruguay": {
+    "sofascore_name": "Uruguay",
+    "team_id": 4725,
+    "venue_name": "Estadio Centenario",
+    "city": "Montevideo",
+    "lat": -34.8945392,
+    "lng": -56.1526841,
+    "nominatim_name": "Estadio Centenario, Avenida Federico R. Vidiella, Parque Batlle, Montevideo, 11601, Uruguay"
+  },
+  "Morocco": {
+    "sofascore_name": "Morocco",
+    "team_id": 4778,
+    "venue_name": "Stade Mohammed V",
+    "city": "Casablanca",
+    "lat": 33.5828249,
+    "lng": -7.6468329,
+    "nominatim_name": "Stade Mohammed V مركب محمد الخامس, Rue Socrate زنقة سقراط, Les Princesses الأميرات, Arrondissement du Maârif ⵜⴰⴳⵣⵣⵓⵎⵜ ⵏ ⵍⵎⵄⴰⵔⵉⴼ مقاطعة المعاريف, Préfecture d'arrondissements de Casablanca-Anfa عمالة مقاطعات الدار البيضاء أنفا, Casablanca ⵜⴰⴷⴷⴰⵔⵜ ⵜⵓⵎⵍⵉⵍⵜ الدار البيضاء, Pachalik de Casablanca باشوية الدار البيضاء, Préfecture de Casablanca عمالة الدار البيضاء, Casablanca-Settat ⵜⴰⴷⴷⴰⵔⵜ ⵜⵓⵎⵍⵉⵍⵜ-ⵙⵟⵟⴰⵜ الدار البيضاء-سطات, 20025, Maroc ⵍⵎⵖⵔⵉⴱ المغرب"
+  },
+  "Senegal": {
+    "sofascore_name": "Senegal",
+    "team_id": 4739,
+    "venue_name": "Stade Me Abdoulaye Wade",
+    "city": "Diamniadio",
+    "lat": 14.7323943,
+    "lng": -17.2010784,
+    "nominatim_name": "Stade Me Abdoulaye WADE, A 1, Dene Malick Gueye, Commune de Diamniadio, Arrondissement de Diamniadio, Département de Rufisque, Région de Dakar, Sénégal"
+  },
+  "Nigeria": {
+    "sofascore_name": "Nigeria",
+    "team_id": 4785,
+    "venue_name": "Moshood Abiola National Stadium",
+    "city": "Abuja",
+    "lat": 9.0380149,
+    "lng": 7.4534259,
+    "nominatim_name": "Moshood Abiola National Stadium, Independence Avenue, Kukwaba, Abuja, Municipal Area Council, Federal Capital Territory, 900104, Nigeria"
+  },
+  "Egypt": {
+    "sofascore_name": "Egypt",
+    "team_id": 4758,
+    "venue_name": "Cairo International Stadium",
+    "city": "Cairo",
+    "lat": 30.0690313,
+    "lng": 31.3122096,
+    "nominatim_name": "إستاد القاهرة الدولي, شارع الاستاد, ثان مدينة نصر, القاهرة, 11153, مصر"
+  },
+  "Algeria": {
+    "sofascore_name": "Algeria",
+    "team_id": 4691,
+    "venue_name": "Stade 5 Juillet 1962",
+    "city": "Algiers",
+    "lat": 36.7595143,
+    "lng": 2.9952724,
+    "nominatim_name": "Stade du 5-Juillet-1962, Chemin Ahmed Ouaked, Aïn Allah عين الله, Dély Brahim ⴷⴻⵍⵉ ⴱⵔⴰⵀⵉⵎ دالي إبراھيم, Daïra de Chéraga, الجزائر ⴷⵣⴰⵢⴻⵔ, 16000, ⵍⵣⵣⴰⵢⴻⵔ الجزائر"
+  },
+  "Ghana": {
+    "sofascore_name": "Ghana",
+    "team_id": 4764,
+    "venue_name": "Accra Sports Stadium",
+    "city": "Accra",
+    "lat": 5.5515153,
+    "lng": -0.1923351,
+    "nominatim_name": "Accra Sports Stadium, 28th February Road, Ridge, Ministerial Area, La, Accra, Korle-Klottey Municipal District, Greater Accra Region, Ghana"
+  },
+  "Tunisia": {
+    "sofascore_name": "Tunisia",
+    "team_id": 4729,
+    "venue_name": "Stade Hammadi Agrebi",
+    "city": "Rades",
+    "lat": 36.7477717,
+    "lng": 10.27314,
+    "nominatim_name": "Stade Olympique Hammadi Agrebi, الطريق الوطنية تونس - رأس جدير, رادس الغابة, رادس, البساتين, معتمدية رادس, ولاية بن عروس, 2097, تونس"
+  },
+  "South Korea": {
+    "sofascore_name": "South Korea",
+    "team_id": 4735,
+    "venue_name": "Seoul World Cup Stadium",
+    "city": "Seoul",
+    "lat": 37.5683021,
+    "lng": 126.8972477,
+    "nominatim_name": "서울월드컵경기장, 240, 월드컵로, 성산동, 성산2동, 마포구, 서울특별시, 03932, 대한민국"
+  },
+  "Iran": {
+    "sofascore_name": "Iran",
+    "team_id": 4766,
+    "venue_name": "Azadi Stadium",
+    "city": "Tehran",
+    "lat": 35.7244962,
+    "lng": 51.2755487,
+    "nominatim_name": "ورزشگاه آزادی, ورودی شرقی ورزشگاه, ورزشگاه آزادی, منطقه ۲۲ شهر تهران, شهر تهران, بخش مرکزی شهرستان تهران, شهرستان تهران, استان تهران, 14836-86856, ایران"
+  },
+  "Saudi Arabia": {
+    "sofascore_name": "Saudi Arabia",
+    "team_id": 4834,
+    "venue_name": "Al-Shabab Club Stadium",
+    "city": "Riyadh",
+    "lat": 24.8031383,
+    "lng": 46.6288163,
+    "nominatim_name": "ملعب نادي الشباب, شارع محمد بن عبدالعزيز الدغيثر, الصحافة, بلدية الشمال, محافظة الرياض, منطقة الرياض, 13524, السعودية"
+  },
+  "Ecuador": {
+    "sofascore_name": "Ecuador",
+    "team_id": 4757,
+    "venue_name": "Estadio Rodrigo Paz Delgado",
+    "city": "Quito",
+    "lat": -0.1077231,
+    "lng": -78.4890768,
+    "nominatim_name": "Estadio Rodrigo Paz Delgado, General norte 9, Ponceano, El Condado, Quito, Pichincha, 170310, Ecuador"
+  }
+}

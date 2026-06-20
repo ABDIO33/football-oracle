@@ -1,0 +1,103 @@
+{
+  "features": [
+    "b365h",
+    "b365d",
+    "b365a",
+    "avgh",
+    "avgd",
+    "avga",
+    "implied_h",
+    "implied_d",
+    "implied_a",
+    "overround",
+    "log_odds_h",
+    "log_odds_d",
+    "log_odds_a"
+  ],
+  "exact_accuracy": 0.10415075120957473,
+  "acc_1x2": 0.431117901706137,
+  "rps": 0.1364384345828183,
+  "train_size": 3751,
+  "test_size": 3927,
+  "split_date": "2025-01-01",
+  "model_type": "XGBoost multi:softprob",
+  "n_classes": 25,
+  "per_league": {
+    "League 2": {
+      "total": 379,
+      "exact": 31
+    },
+    "League 1": {
+      "total": 374,
+      "exact": 44
+    },
+    "Championship": {
+      "total": 354,
+      "exact": 34
+    },
+    "Conference": {
+      "total": 269,
+      "exact": 32
+    },
+    "Segunda": {
+      "total": 233,
+      "exact": 26
+    },
+    "Serie A": {
+      "total": 202,
+      "exact": 27
+    },
+    "La Liga": {
+      "total": 199,
+      "exact": 24
+    },
+    "Premier League": {
+      "total": 192,
+      "exact": 16
+    },
+    "Super Lig": {
+      "total": 189,
+      "exact": 25
+    },
+    "Serie B": {
+      "total": 180,
+      "exact": 21
+    },
+    "Bundesliga": {
+      "total": 171,
+      "exact": 8
+    },
+    "Ligue 1": {
+      "total": 170,
+      "exact": 23
+    },
+    "Ligue 2": {
+      "total": 162,
+      "exact": 16
+    },
+    "Primeira Liga": {
+      "total": 162,
+      "exact": 22
+    },
+    "Eredivisie": {
+      "total": 154,
+      "exact": 17
+    },
+    "2. Bundesliga": {
+      "total": 153,
+      "exact": 8
+    },
+    "Pro League": {
+      "total": 151,
+      "exact": 17
+    },
+    "Super League": {
+      "total": 121,
+      "exact": 12
+    },
+    "Premiership": {
+      "total": 112,
+      "exact": 6
+    }
+  }
+}

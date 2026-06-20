@@ -1,0 +1,31 @@
+Using best config from search: {'architecture': 'M3', 'hidden_layers': [256, 512, 256, 128], 'lr': 0.001, 'dropout': 0.2}
+======================================================================
+FINAL TRAINING — DeepNN with M3
+  lr=0.001, dropout=0.2, hidden=[256, 512, 256, 128]
+======================================================================
+[PlayerImpact] Cached 1929 teams
+Train: 90484, Test: 10054
+C:\Python314\Lib\site-packages\sklearn\impute\_base.py:647: UserWarning: Skipping features without any observed values: [25 26 27 28 29 30 31 32 33 34 35 36]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+C:\Python314\Lib\site-packages\sklearn\impute\_base.py:647: UserWarning: Skipping features without any observed values: [25 26 27 28 29 30 31 32 33 34 35 36]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+
+Training XGBoost baseline...
+  XGBoost: exact=15.53%  1X2=53.61%  RPS=0.1132
+
+Training DeepNN...
+  Epoch  20: test_acc=0.1652
+  Epoch  40: test_acc=0.1642
+  DeepNN:   exact=17.04%  1X2=55.49%  RPS=0.1153
+
+Searching blend weights...
+
+=== FINAL RESULTS ===
+XGBoost alone:    exact=15.53%  1X2=53.61%  RPS=0.1132
+DeepNN alone:     exact=17.04%  1X2=55.49%  RPS=0.1153
+Best blend (XGB=0.05+NN=0.95):
+                  exact=17.09%  1X2=55.41%  RPS=0.1148
+
+Saved XGBoost to models/direct_score.json
+Saved blend to models/mlp_blend.pkl
+Saved model info to models/direct_model_info.json

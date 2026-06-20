@@ -1,0 +1,19 @@
+[
+  {
+    "timestamp": "2026-06-16 04:37:04",
+    "exact_pct": 17.09,
+    "acc_1x2_pct": 55.41,
+    "rps": 0.1148,
+    "nn_config": {
+      "architecture": "M3",
+      "hidden_layers": [
+        256,
+        512,
+        256,
+        128
+      ],
+      "lr": 0.001,
+      "dropout": 0.2
+    }
+  }
+]

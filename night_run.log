@@ -1,0 +1,123 @@
+[22:02:42] === NIGHT RUN START ===
+[22:02:42] Time: 2026-06-15 22:02:42
+[22:02:42] Python: 3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]
+[22:02:43] Phase 1: Lineups backfill (batches of 500, max 60)
+[Lineups] Fetching for 500 events...
+[Lineups] 200/500
+[Lineups] 400/500
+[Lineups] Done. 411 new, 5215 total lineups in DB.
+[22:07:12] Batch 1: +411 new, 5215 total
+[Lineups] Fetching for 500 events...
+[Lineups] 200/500
+[Lineups] 400/500
+[Lineups] Done. 411 new, 5626 total lineups in DB.
+[22:11:49] Batch 2: +411 new, 5626 total
+[Lineups] Fetching for 500 events...
+[Lineups] 200/500
+[Lineups] 400/500
+[Lineups] Done. 409 new, 6036 total lineups in DB.
+[22:16:11] Batch 3: +410 new, 6036 total
+[Lineups] Fetching for 500 events...
+[Lineups] 200/500
+[Lineups] 400/500
+[Lineups] Done. 406 new, 6442 total lineups in DB.
+[22:20:52] Batch 4: +406 new, 6442 total
+[Lineups] Fetching for 500 events...
+[Lineups] 200/500
+[Lineups] 400/500
+[Lineups] Done. 404 new, 6846 total lineups in DB.
+[22:25:04] Batch 5: +404 new, 6846 total
+[Lineups] Fetching for 500 events...
+[Lineups] 200/500
+[Lineups] Done. 393 new, 7239 total lineups in DB.
+[22:30:15] Batch 6: +393 new, 7239 total
+[Lineups] Fetching for 500 events...
+[Lineups] 200/500
+[Lineups] Done. 388 new, 7627 total lineups in DB.
+[22:35:06] Batch 7: +388 new, 7627 total
+[Lineups] Fetching for 500 events...
+[Lineups] 200/500
+[Lineups] Done. 382 new, 8009 total lineups in DB.
+[22:39:17] Batch 8: +382 new, 8009 total
+[Lineups] Fetching for 500 events...
+[Lineups] 200/500
+[Lineups] Done. 372 new, 8381 total lineups in DB.
+[22:43:27] Batch 9: +372 new, 8381 total
+[Lineups] Fetching for 500 events...
+[Lineups] 200/500
+[Lineups] Done. 362 new, 8743 total lineups in DB.
+[22:47:37] Batch 10: +362 new, 8743 total
+[Lineups] Fetching for 500 events...
+[Lineups] 200/500
+[Lineups] Done. 245 new, 8988 total lineups in DB.
+[22:51:48] Batch 11: +245 new, 8988 total
+[Lineups] Fetching for 500 events...
+[Lineups] Done. 0 new, 8988 total lineups in DB.
+[22:56:02] Batch 12: +0 new, 8988 total
+[22:56:02] Low hit rate (0/500) — productive competitions probably exhausted
+[22:56:02] Phase 1 done: 8988 total lineups
+[22:56:02] Phase 2: Rebuilding Player Impact DB...
+[PlayerImpact] Processing 8988 lineups...
+[PlayerImpact] 57126 unique players, 2177 teams
+[PlayerImpact] Done: 1929 teams with core starters
+[22:56:16] Phase 2 done
+[22:56:16] Phase 3: Retraining Direct model...
+[PlayerImpact] Cached 1929 teams
+[Direct] Loaded 100538 samples, 76 features, 25 classes
+[Direct] Class distribution:
+  0-0: 7527 (7.5%)
+  0-1: 7970 (7.9%)
+  0-2: 4676 (4.7%)
+  0-3: 2368 (2.4%)
+  0-4: 1739 (1.7%)
+  1-0: 10187 (10.1%)
+  1-1: 11422 (11.4%)
+  1-2: 6920 (6.9%)
+  1-3: 2741 (2.7%)
+  1-4: 1539 (1.5%)
+  2-0: 6941 (6.9%)
+  2-1: 8696 (8.6%)
+  2-2: 4932 (4.9%)
+  2-3: 2058 (2.0%)
+  2-4: 892 (0.9%)
+  3-0: 3899 (3.9%)
+  3-1: 4015 (4.0%)
+  3-2: 2541 (2.5%)
+  3-3: 991 (1.0%)
+  3-4: 485 (0.5%)
+  4-0: 3255 (3.2%)
+  4-1: 2637 (2.6%)
+  4-2: 1339 (1.3%)
+  4-3: 508 (0.5%)
+  4-4: 260 (0.3%)
+
+[Direct] Results (10054 matches):
+  Exact score: 15.56% (1564/10054)
+  1X2: 53.27%
+  RPS: 0.114
+[Direct] Saved to models/direct_score.json
+[22:59:32] Phase 3 done: 76 features
+[22:59:32] === NIGHT RUN COMPLETE ===
+[22:02:42] === NIGHT RUN START ===
+[22:02:42] Time: 2026-06-15 22:02:42
+[22:02:42] Python: 3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]
+[22:02:43] Phase 1: Lineups backfill (batches of 500, max 60)
+[22:07:12] Batch 1: +411 new, 5215 total
+[22:11:49] Batch 2: +411 new, 5626 total
+[22:16:11] Batch 3: +410 new, 6036 total
+[22:20:52] Batch 4: +406 new, 6442 total
+[22:25:04] Batch 5: +404 new, 6846 total
+[22:30:15] Batch 6: +393 new, 7239 total
+[22:35:06] Batch 7: +388 new, 7627 total
+[22:39:17] Batch 8: +382 new, 8009 total
+[22:43:27] Batch 9: +372 new, 8381 total
+[22:47:37] Batch 10: +362 new, 8743 total
+[22:51:48] Batch 11: +245 new, 8988 total
+[22:56:02] Batch 12: +0 new, 8988 total
+[22:56:02] Low hit rate (0/500) — productive competitions probably exhausted
+[22:56:02] Phase 1 done: 8988 total lineups
+[22:56:02] Phase 2: Rebuilding Player Impact DB...
+[22:56:16] Phase 2 done
+[22:56:16] Phase 3: Retraining Direct model...
+[22:59:32] Phase 3 done: 76 features
+[22:59:32] === NIGHT RUN COMPLETE ===

@@ -535,7 +535,7 @@ def train(save=True):
     if save:
         model_dir = os.path.join(os.path.dirname(__file__), 'models')
         os.makedirs(model_dir, exist_ok=True)
-        model.save_model(os.path.join(model_dir, 'direct_score.json'))
+        model.save_model(os.path.join(model_dir, 'direct_score.ubj'))
         # Save model info
         with open(os.path.join(model_dir, 'direct_model_info.json'), 'w') as f:
             json.dump({
@@ -698,7 +698,9 @@ class EnsemblePredictor:
 _BLEND_CACHE = None
 def load_model():
     global _BLEND_CACHE
-    path = os.path.join(os.path.dirname(__file__), 'models', 'direct_score.json')
+    path = os.path.join(os.path.dirname(__file__), 'models', 'direct_score.ubj')
+    if not os.path.exists(path):
+        path = os.path.join(os.path.dirname(__file__), 'models', 'direct_score.json')
     if not os.path.exists(path):
         return None
     import xgboost as xgb

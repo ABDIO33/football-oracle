@@ -1,0 +1,52 @@
+2026-06-15 19:06:20.982572|Juventude|no_key_players|15526137
+2026-06-15 19:06:20.983314|Ponte Preta|no_key_players|15526137
+2026-06-15 19:06:37.347896|São Bernardo|no_key_players|15526128
+2026-06-15 19:06:37.348339|Sport Recife|no_key_players|15526128
+2026-06-15 19:06:53.829065|Botafogo|no_key_players|15526127
+2026-06-15 19:06:53.829465|Operário-Pr|no_key_players|15526127
+2026-06-15 19:07:07.052285|Novorizontino|no_key_players|15526135
+2026-06-15 19:07:07.053202|Náutico|no_key_players|15526135
+2026-06-15 19:07:38.731590|Deportes Concepción|no_key_players|15353063
+2026-06-15 19:07:38.731969|Deportes Limache|no_key_players|15353063
+2026-06-15 19:07:43.793115|Unión La Calera|no_key_players|15353056
+2026-06-15 19:07:43.793341|Universidad de Chile|no_key_players|15353056
+2026-06-15 19:07:50.072721|Universidad Católica|no_key_players|15353067
+2026-06-15 19:07:50.073131|Universidad de Concepción|no_key_players|15353067
+2026-06-15 19:09:13.807791|New England Revolution II|no_key_players|15421027
+2026-06-15 19:09:13.808168|New York Red Bulls|no_key_players|15421027
+2026-06-15 19:09:19.008156|Philadelphia Union|no_key_players|15421026
+2026-06-15 19:09:19.008535|New York City FC|no_key_players|15421026
+2026-06-15 19:09:22.795646|Toronto FC|no_key_players|15421024
+2026-06-15 19:09:22.796141|Connecticut United|no_key_players|15421024
+2026-06-15 19:09:35.418689|Chicago Fire|no_key_players|15421022
+2026-06-15 19:09:35.419104|Inter Miami|no_key_players|15421022
+2026-06-15 19:09:41.428815|FC Cincinnati|no_key_players|15421028
+2026-06-15 19:09:41.429321|Columbus Crew|no_key_players|15421028
+2026-06-15 19:09:51.907284|Almirante Brown|no_key_players|15275692
+2026-06-15 19:09:51.907696|Godoy Cruz|no_key_players|15275692
+2026-06-15 19:09:59.249393|Deportivo Madryn|no_key_players|15275689
+2026-06-15 19:09:59.249794|San Miguel|no_key_players|15275689
+2026-06-15 19:10:05.295155|Estudiantes de Buenos Aires|no_key_players|15275694
+2026-06-15 19:10:05.295999|All Boys|no_key_players|15275694
+2026-06-15 19:10:13.244976|Ferro Carril Oeste|no_key_players|15275687
+2026-06-15 19:10:13.245601|Acassuso|no_key_players|15275687
+2026-06-15 19:10:19.041654|Patronato|no_key_players|15275700
+2026-06-15 19:10:19.042082|Atlético de Rafaela|no_key_players|15275700
+2026-06-15 19:10:36.120640|Racing de Córdoba|no_key_players|15275686
+2026-06-15 19:10:36.121101|Chaco For Ever|no_key_players|15275686
+2026-06-15 19:10:48.438074|Temperley|no_key_players|15275697
+2026-06-15 19:10:48.438305|Güemes|no_key_players|15275697
+2026-06-15 19:10:54.887234|Deportivo Maipú|no_key_players|15275698
+2026-06-15 19:10:54.887445|Tristán Suárez|no_key_players|15275698
+2026-06-15 19:11:05.125934|Central Norte De Salta|no_key_players|15275688
+2026-06-15 19:11:05.126454|San Telmo|no_key_players|15275688
+2026-06-15 19:11:25.830152|Dnepr Mogilev|no_key_players|16265393
+2026-06-15 19:11:25.830687|Arsenal Dzerzhinsk|Martin Odegaard,Bukayo Saka,Gabriel Jesus|16265393
+2026-06-15 19:14:30.470133|Shenzhen Juniors|no_key_players|15657842
+2026-06-15 19:14:30.470803|Guangxi Hengchen|no_key_players|15657842
+2026-06-15 19:14:38.906678|Wuxi Wugo|no_key_players|15657843
+2026-06-15 19:14:38.907193|Meizhou Hakka|no_key_players|15657843
+2026-06-15 19:14:45.048585|Foshan Nanshi|no_key_players|15657844
+2026-06-15 19:14:45.048956|Shaanxi Union|no_key_players|15657844
+2026-06-15 19:14:53.031827|Nantong Zhiyun|no_key_players|15657845
+2026-06-15 19:14:53.032215|Yanbian Longding|no_key_players|15657845

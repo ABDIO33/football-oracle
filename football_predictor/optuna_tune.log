@@ -1,0 +1,22 @@
+﻿============================================================
+Optuna Hyperparameter Optimization for DeepNN
+============================================================
+Running 30 trials...
+python : [I 2026-06-16 03:03:18,388] A new study created in memory with name: 
+no-name-84a0de00-1edf-4059-b0a6-919fbd7f2edb
+At line:1 char:32
++ ... NG='utf-8'; python -u C:\Users\zake.exe\AppData\Local\Temp\opencode\o ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([I 2026-06-16 0...a6-919fbd7f2edb:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[PlayerImpact] Cached 1929 teams
+  0%|          | 0/30 [00:00<?, ?it/s]C:\Python314\Lib\site-packages\sklearn\impute\_base.py:647: UserWarning: 
+Skipping features without any observed values: [25 26 27 28 29 30 31 32 33 34 35 36]. At least one non-missing value 
+is needed for imputation with strategy='median'.
+  warnings.warn(
+C:\Python314\Lib\site-packages\sklearn\impute\_base.py:647: UserWarning: Skipping features without any observed 
+values: [25 26 27 28 29 30 31 32 33 34 35 36]. At least one non-missing value is needed for imputation with 
+strategy='median'.
+  warnings.warn(

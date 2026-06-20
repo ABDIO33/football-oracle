@@ -1,0 +1,14 @@
+{
+  "test_samples": 10054,
+  "exact_pct": 13.74,
+  "acc_1x2_pct": 49.57,
+  "rps": 0.126,
+  "mean_max_prob_pct": 13.98,
+  "median_max_prob_pct": 13.7,
+  "mean_actual_prob_pct": 7.72,
+  "gap_pp": 0.25,
+  "theoretical_poisson_ceiling_pct": 13.53,
+  "at_ceiling": true,
+  "exact_first_half": 14.04,
+  "exact_second_half": 13.43
+}

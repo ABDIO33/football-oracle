@@ -1,0 +1,15 @@
+======================================================================
+FINAL ENSEMBLE TRAINING
+======================================================================
+[PlayerImpact] Cached 1929 teams
+C:\Python314\Lib\site-packages\sklearn\impute\_base.py:647: UserWarning: Skipping features without any observed values: [25 26 27 28 29 30 31 32 33 34 35 36]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+C:\Python314\Lib\site-packages\sklearn\impute\_base.py:647: UserWarning: Skipping features without any observed values: [25 26 27 28 29 30 31 32 33 34 35 36]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+
+Training XGBoost baseline...
+
+============================================================
+Training DeepNN-M2 (512->1024->512)
+============================================================
+  Epoch  20: test_acc=0.1662

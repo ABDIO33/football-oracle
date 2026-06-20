@@ -1,0 +1,674 @@
+{
+  "Manchester City": {
+    "sofascore_name": "Manchester City",
+    "team_id": 17,
+    "venue_name": "Etihad Stadium",
+    "city": "Manchester"
+  },
+  "Arsenal": {
+    "sofascore_name": "Arsenal",
+    "team_id": 42,
+    "venue_name": "Emirates Stadium",
+    "city": "London"
+  },
+  "Liverpool": {
+    "sofascore_name": "Liverpool FC",
+    "team_id": 44,
+    "venue_name": "Anfield",
+    "city": "Liverpool"
+  },
+  "Chelsea": {
+    "sofascore_name": "Chelsea",
+    "team_id": 38,
+    "venue_name": "Stamford Bridge",
+    "city": "London"
+  },
+  "Manchester United": {
+    "sofascore_name": "Manchester United",
+    "team_id": 35,
+    "venue_name": "Old Trafford",
+    "city": "Manchester"
+  },
+  "Tottenham Hotspur": {
+    "sofascore_name": "Tottenham Hotspur",
+    "team_id": 33,
+    "venue_name": "Tottenham Hotspur Stadium",
+    "city": "London"
+  },
+  "Newcastle United": {
+    "sofascore_name": "Newcastle United",
+    "team_id": 39,
+    "venue_name": "St James' Park",
+    "city": "Newcastle upon Tyne"
+  },
+  "Aston Villa": {
+    "sofascore_name": "Aston Villa",
+    "team_id": 40,
+    "venue_name": "Villa Park",
+    "city": "Birmingham"
+  },
+  "Brighton & Hove Albion": {
+    "sofascore_name": "Brighton & Hove Albion",
+    "team_id": 30,
+    "venue_name": "American Express Stadium",
+    "city": "Falmer"
+  },
+  "West Ham United": {
+    "sofascore_name": "West Ham United",
+    "team_id": 37,
+    "venue_name": "London Stadium",
+    "city": "London"
+  },
+  "Brentford": {
+    "sofascore_name": "Brentford",
+    "team_id": 50,
+    "venue_name": "Brentford Community Stadium",
+    "city": "London"
+  },
+  "Crystal Palace": {
+    "sofascore_name": "Crystal Palace",
+    "team_id": 7,
+    "venue_name": "Selhurst Park",
+    "city": "London"
+  },
+  "Fulham": {
+    "sofascore_name": "Fulham",
+    "team_id": 43,
+    "venue_name": "Craven Cottage",
+    "city": "London"
+  },
+  "Wolverhampton": {
+    "sofascore_name": "Wolverhampton",
+    "team_id": 3,
+    "venue_name": "Molineux Stadium",
+    "city": "Wolverhampton"
+  },
+  "Everton": {
+    "sofascore_name": "Everton",
+    "team_id": 48,
+    "venue_name": "Hill Dickinson Stadium",
+    "city": "Liverpool"
+  },
+  "Nottingham Forest": {
+    "sofascore_name": "Nottingham Forest",
+    "team_id": 14,
+    "venue_name": "City Ground",
+    "city": "Nottingham"
+  },
+  "Bournemouth": {
+    "sofascore_name": "Bournemouth",
+    "team_id": 60,
+    "venue_name": "Vitality Stadium",
+    "city": "Bournemouth"
+  },
+  "Leicester City": {
+    "sofascore_name": "Leicester City",
+    "team_id": 31,
+    "venue_name": "King Power Stadium",
+    "city": "Leicester"
+  },
+  "Southampton": {
+    "sofascore_name": "Southampton",
+    "team_id": 45,
+    "venue_name": "St. Mary's Stadium",
+    "city": "Southampton"
+  },
+  "Barcelona": {
+    "sofascore_name": "FC Barcelona",
+    "team_id": 2817,
+    "venue_name": "Spotify Camp Nou",
+    "city": "Barcelona"
+  },
+  "Real Madrid": {
+    "sofascore_name": "Real Madrid",
+    "team_id": 2829,
+    "venue_name": "Bernabéu",
+    "city": "Madrid"
+  },
+  "Atletico Madrid": {
+    "sofascore_name": "Atlético Madrid",
+    "team_id": 2836,
+    "venue_name": "Riyadh Air Metropolitano",
+    "city": "Madrid"
+  },
+  "Athletic Bilbao": {
+    "sofascore_name": "Athletic Club",
+    "team_id": 2825,
+    "venue_name": "San Mamés",
+    "city": "Bilbao"
+  },
+  "Real Sociedad": {
+    "sofascore_name": "Real Sociedad",
+    "team_id": 2824,
+    "venue_name": "Reale Arena",
+    "city": "San Sebastian"
+  },
+  "Real Betis": {
+    "sofascore_name": "Real Betis",
+    "team_id": 2816,
+    "venue_name": "Benito Villamarin",
+    "city": "Seville"
+  },
+  "Valencia": {
+    "sofascore_name": "Valencia",
+    "team_id": 2828,
+    "venue_name": "Mestalla",
+    "city": "Valencia"
+  },
+  "Villarreal": {
+    "sofascore_name": "Villarreal",
+    "team_id": 2819,
+    "venue_name": "Estadio de la Ceramica",
+    "city": "Villarreal"
+  },
+  "Sevilla": {
+    "sofascore_name": "Sevilla",
+    "team_id": 2833,
+    "venue_name": "Ramón Sánchez Pizjuán",
+    "city": "Seville"
+  },
+  "Girona": {
+    "sofascore_name": "Girona FC",
+    "team_id": 24264,
+    "venue_name": "Estadi Montilivi",
+    "city": "Girona"
+  },
+  "Bayern Munich": {
+    "sofascore_name": "FC Bayern München",
+    "team_id": 2672,
+    "venue_name": "Allianz Arena",
+    "city": "Munich"
+  },
+  "Borussia Dortmund": {
+    "sofascore_name": "Borussia Dortmund",
+    "team_id": 2673,
+    "venue_name": "Signal Iduna Park",
+    "city": "Dortmund"
+  },
+  "RB Leipzig": {
+    "sofascore_name": "RB Leipzig",
+    "team_id": 36360,
+    "venue_name": "Red Bull Arena",
+    "city": "Leipzig"
+  },
+  "Bayer Leverkusen": {
+    "sofascore_name": "Bayer 04 Leverkusen",
+    "team_id": 2681,
+    "venue_name": "BayArena",
+    "city": "Leverkusen"
+  },
+  "Eintracht Frankfurt": {
+    "sofascore_name": "Eintracht Frankfurt",
+    "team_id": 2674,
+    "venue_name": "Deutsche Bank Park",
+    "city": "Frankfurt"
+  },
+  "VfB Stuttgart": {
+    "sofascore_name": "VfB Stuttgart",
+    "team_id": 2677,
+    "venue_name": "MHP Arena",
+    "city": "Stuttgart"
+  },
+  "Borussia Monchengladbach": {
+    "sofascore_name": "Borussia M'gladbach",
+    "team_id": 2527,
+    "venue_name": "Borussia-Park",
+    "city": "Monchengladbach"
+  },
+  "VfL Wolfsburg": {
+    "sofascore_name": "VfL Wolfsburg",
+    "team_id": 2524,
+    "venue_name": "Volkswagen Arena",
+    "city": "Wolfsburg"
+  },
+  "Union Berlin": {
+    "sofascore_name": "1. FC Union Berlin",
+    "team_id": 2547,
+    "venue_name": "An der alten Försterei",
+    "city": "Berlin"
+  },
+  "SC Freiburg": {
+    "sofascore_name": "SC Freiburg",
+    "team_id": 2538,
+    "venue_name": "Europa-Park-Stadion",
+    "city": "Freiburg im Breisgau"
+  },
+  "Inter Milan": {
+    "sofascore_name": "Inter",
+    "team_id": 2697,
+    "venue_name": "San Siro/Giuseppe Meazza",
+    "city": "Milan"
+  },
+  "AC Milan": {
+    "sofascore_name": "AC Milan",
+    "team_id": 2692,
+    "venue_name": "San Siro/Giuseppe Meazza",
+    "city": "Milan"
+  },
+  "Juventus": {
+    "sofascore_name": "Juventus",
+    "team_id": 2687,
+    "venue_name": "Allianz Stadium",
+    "city": "Turin"
+  },
+  "Napoli": {
+    "sofascore_name": "SSC Napoli",
+    "team_id": 2714,
+    "venue_name": "Stadio Diego Armando Maradona",
+    "city": "Naples"
+  },
+  "Atalanta": {
+    "sofascore_name": "Atalanta",
+    "team_id": 2686,
+    "venue_name": "New Balance Arena",
+    "city": "Bergamo"
+  },
+  "Roma": {
+    "sofascore_name": "AS Roma",
+    "team_id": 2702,
+    "venue_name": "Stadio Olimpico",
+    "city": "Rome"
+  },
+  "Lazio": {
+    "sofascore_name": "Lazio",
+    "team_id": 2699,
+    "venue_name": "Stadio Olimpico",
+    "city": "Rome"
+  },
+  "Fiorentina": {
+    "sofascore_name": "Fiorentina",
+    "team_id": 2693,
+    "venue_name": "Stadio Artemio Franchi",
+    "city": "Florence"
+  },
+  "Bologna": {
+    "sofascore_name": "Bologna",
+    "team_id": 2685,
+    "venue_name": "Renato Dall'Ara",
+    "city": "Bologna"
+  },
+  "Torino": {
+    "sofascore_name": "Torino",
+    "team_id": 2696,
+    "venue_name": "Stadio Olimpico Grande Torino",
+    "city": "Turin"
+  },
+  "Paris Saint Germain": {
+    "sofascore_name": "Paris Saint-Germain",
+    "team_id": 1644,
+    "venue_name": "Parc des Princes",
+    "city": "Paris"
+  },
+  "Marseille": {
+    "sofascore_name": "Olympique de Marseille",
+    "team_id": 1641,
+    "venue_name": "Orange Velodrome",
+    "city": "Marseille"
+  },
+  "Lyon": {
+    "sofascore_name": "Olympique Lyonnais",
+    "team_id": 1649,
+    "venue_name": "Groupama Stadium",
+    "city": "Lyon"
+  },
+  "Monaco": {
+    "sofascore_name": "AS Monaco",
+    "team_id": 1653,
+    "venue_name": "Stade Louis II",
+    "city": "Fontvieille"
+  },
+  "Lille": {
+    "sofascore_name": "Lille",
+    "team_id": 1643,
+    "venue_name": "Decathlon Arena - Stade Pierre Mauroy",
+    "city": "Lille"
+  },
+  "Nice": {
+    "sofascore_name": "Nice",
+    "team_id": 1661,
+    "venue_name": "Allianz Riviera",
+    "city": "Nice"
+  },
+  "Rennes": {
+    "sofascore_name": "Stade Rennais",
+    "team_id": 1658,
+    "venue_name": "Roazhon Park",
+    "city": "Rennes"
+  },
+  "Lens": {
+    "sofascore_name": "RC Lens",
+    "team_id": 1648,
+    "venue_name": "Stade Bollaert-Delelis",
+    "city": "Lens"
+  },
+  "Strasbourg": {
+    "sofascore_name": "RC Strasbourg",
+    "team_id": 1659,
+    "venue_name": "Stade de la Meinau",
+    "city": "Strasbourg"
+  },
+  "Toulouse": {
+    "sofascore_name": "Toulouse",
+    "team_id": 1681,
+    "venue_name": "Stadium de Toulouse",
+    "city": "Toulouse"
+  },
+  "Ajax": {
+    "sofascore_name": "AFC Ajax",
+    "team_id": 2953,
+    "venue_name": "Johan Cruijff Arena",
+    "city": "Amsterdam"
+  },
+  "Feyenoord": {
+    "sofascore_name": "Feyenoord",
+    "team_id": 2959,
+    "venue_name": "De Kuip",
+    "city": "Rotterdam"
+  },
+  "PSV": {
+    "sofascore_name": "PSV Eindhoven",
+    "team_id": 2952,
+    "venue_name": "Philips Stadion",
+    "city": "Eindhoven"
+  },
+  "Benfica": {
+    "sofascore_name": "Benfica",
+    "team_id": 3006,
+    "venue_name": "Estádio da Luz",
+    "city": "Lisbon"
+  },
+  "Porto": {
+    "sofascore_name": "FC Porto",
+    "team_id": 3002,
+    "venue_name": "Estádio do Dragão",
+    "city": "Porto"
+  },
+  "Sporting CP": {
+    "sofascore_name": "Sporting CP",
+    "team_id": 3001,
+    "venue_name": "Estádio José Alvalade",
+    "city": "Lisbon"
+  },
+  "Celtic": {
+    "sofascore_name": "Celtic",
+    "team_id": 2352,
+    "venue_name": "Celtic Park",
+    "city": "Glasgow"
+  },
+  "Rangers": {
+    "sofascore_name": "Rangers",
+    "team_id": 2351,
+    "venue_name": "Ibrox",
+    "city": "Glasgow"
+  },
+  "Galatasaray": {
+    "sofascore_name": "Galatasaray",
+    "team_id": 3061,
+    "venue_name": "Rams Park Stadyumu",
+    "city": "Istanbul"
+  },
+  "Fenerbahce": {
+    "sofascore_name": "Fenerbahçe",
+    "team_id": 3052,
+    "venue_name": "Chobani Stadium",
+    "city": "Istanbul"
+  },
+  "Besiktas": {
+    "sofascore_name": "Beşiktaş JK",
+    "team_id": 3050,
+    "venue_name": "Tüpraş Stadyumu",
+    "city": "Istanbul"
+  },
+  "Club Brugge": {
+    "sofascore_name": "Club Brugge KV",
+    "team_id": 2888,
+    "venue_name": "Jan Breydel Stadium",
+    "city": "Bruges"
+  },
+  "Anderlecht": {
+    "sofascore_name": "RSC Anderlecht",
+    "team_id": 2900,
+    "venue_name": "Lotto Park",
+    "city": "Brussels"
+  },
+  "Dinamo Zagreb": {
+    "sofascore_name": "GNK Dinamo Zagreb",
+    "team_id": 2032,
+    "venue_name": "Stadion Maksimir",
+    "city": "Zagreb"
+  },
+  "Slavia Prague": {
+    "sofascore_name": "SK Slavia Praha",
+    "team_id": 2216,
+    "venue_name": "Fortuna Arena",
+    "city": "Prague"
+  },
+  "Sparta Prague": {
+    "sofascore_name": "AC Sparta Praha",
+    "team_id": 2218,
+    "venue_name": "epet ARENA",
+    "city": "Prague"
+  },
+  "Olympiacos": {
+    "sofascore_name": "Olympiacos FC",
+    "team_id": 3245,
+    "venue_name": "Georgios Karaiskakis Stadium",
+    "city": "Piraeus"
+  },
+  "PAOK": {
+    "sofascore_name": "PAOK",
+    "team_id": 3251,
+    "venue_name": "Toumba Stadium",
+    "city": "Thessaloniki"
+  },
+  "Red Bull Salzburg": {
+    "sofascore_name": "Red Bull Salzburg",
+    "team_id": 2046,
+    "venue_name": "Red Bull Arena",
+    "city": "Salzburg"
+  },
+  "FC Copenhagen": {
+    "sofascore_name": "FC København",
+    "team_id": 1284,
+    "venue_name": "Parken",
+    "city": "Copenhagen"
+  },
+  "Bodo Glimt": {
+    "sofascore_name": "Bodø/Glimt",
+    "team_id": 656,
+    "venue_name": "Aspmyra Stadion",
+    "city": "Bodø"
+  },
+  "Malmo FF": {
+    "sofascore_name": "Malmö FF",
+    "team_id": 1892,
+    "venue_name": "Eleda Stadium",
+    "city": "Malmo"
+  },
+  "Inter Miami": {
+    "sofascore_name": "Inter Miami CF",
+    "team_id": 337602,
+    "venue_name": "Nu Stadium",
+    "city": "Miami"
+  },
+  "LA Galaxy": {
+    "sofascore_name": "LA Galaxy",
+    "team_id": 2513,
+    "venue_name": "Dignity Health Sports Park",
+    "city": "Carson"
+  },
+  "Los Angeles FC": {
+    "sofascore_name": "Los Angeles FC",
+    "team_id": 274650,
+    "venue_name": "BMO Stadium",
+    "city": "Los Angeles"
+  },
+  "Flamengo": {
+    "sofascore_name": "Flamengo",
+    "team_id": 5981,
+    "venue_name": "Estádio do Maracanã",
+    "city": "Rio de Janeiro"
+  },
+  "Palmeiras": {
+    "sofascore_name": "Palmeiras",
+    "team_id": 1963,
+    "venue_name": "Nubank Parque",
+    "city": "Sao Paulo"
+  },
+  "Santos": {
+    "sofascore_name": "Santos",
+    "team_id": 1968,
+    "venue_name": "Estádio Urbano Caldeira",
+    "city": "Santos"
+  },
+  "Sao Paulo": {
+    "sofascore_name": "São Paulo",
+    "team_id": 1981,
+    "venue_name": "MorumBIS",
+    "city": "Sao Paulo"
+  },
+  "Corinthians": {
+    "sofascore_name": "Corinthians",
+    "team_id": 1957,
+    "venue_name": "Neo Química Arena",
+    "city": "Sao Paulo"
+  },
+  "Al Hilal": {
+    "sofascore_name": "Al-Hilal",
+    "team_id": 21895,
+    "venue_name": "Kingdom Arena",
+    "city": "Riyadh"
+  },
+  "Al Nassr": {
+    "sofascore_name": "Al-Nassr",
+    "team_id": 23400,
+    "venue_name": "Al-Awwal Park",
+    "city": "Riyadh"
+  },
+  "Al Ittihad": {
+    "sofascore_name": "Al-Ittihad",
+    "team_id": 34315,
+    "venue_name": "Alinma Stadium",
+    "city": "Jeddah"
+  },
+  "Brazil": {
+    "sofascore_name": "Brazil",
+    "team_id": 4748,
+    "venue_name": "Estádio do Maracanã",
+    "city": "Rio de Janeiro"
+  },
+  "Argentina": {
+    "sofascore_name": "Argentina",
+    "team_id": 4819,
+    "venue_name": "Estadio Mâs Monumental",
+    "city": "Buenos Aires"
+  },
+  "England": {
+    "sofascore_name": "England",
+    "team_id": 4713,
+    "venue_name": "Wembley Stadium",
+    "city": "London"
+  },
+  "France": {
+    "sofascore_name": "France",
+    "team_id": 4481,
+    "venue_name": "Stade de France",
+    "city": "Paris"
+  },
+  "Netherlands": {
+    "sofascore_name": "Netherlands",
+    "team_id": 4705,
+    "venue_name": "Johan Cruijff Arena",
+    "city": "Amsterdam"
+  },
+  "Belgium": {
+    "sofascore_name": "Belgium",
+    "team_id": 4717,
+    "venue_name": "Stade Roi Baudouin",
+    "city": "Brussels"
+  },
+  "Denmark": {
+    "sofascore_name": "Denmark",
+    "team_id": 4476,
+    "venue_name": "Parken",
+    "city": "Copenhagen"
+  },
+  "Uruguay": {
+    "sofascore_name": "Uruguay",
+    "team_id": 4725,
+    "venue_name": "Estadio Centenario",
+    "city": "Montevideo"
+  },
+  "Morocco": {
+    "sofascore_name": "Morocco",
+    "team_id": 4778,
+    "venue_name": "Stade Mohammed V",
+    "city": "Casablanca"
+  },
+  "Senegal": {
+    "sofascore_name": "Senegal",
+    "team_id": 4739,
+    "venue_name": "Stade Me Abdoulaye Wade",
+    "city": "Diamniadio"
+  },
+  "Nigeria": {
+    "sofascore_name": "Nigeria",
+    "team_id": 4785,
+    "venue_name": "Moshood Abiola National Stadium",
+    "city": "Abuja"
+  },
+  "Egypt": {
+    "sofascore_name": "Egypt",
+    "team_id": 4758,
+    "venue_name": "Cairo International Stadium",
+    "city": "Cairo"
+  },
+  "Algeria": {
+    "sofascore_name": "Algeria",
+    "team_id": 4691,
+    "venue_name": "Stade 5 Juillet 1962",
+    "city": "Algiers"
+  },
+  "Ghana": {
+    "sofascore_name": "Ghana",
+    "team_id": 4764,
+    "venue_name": "Accra Sports Stadium",
+    "city": "Accra"
+  },
+  "Cameroon": {
+    "sofascore_name": "Cameroon",
+    "team_id": 4751,
+    "venue_name": "Olembe Stadium",
+    "city": "Yaounde"
+  },
+  "Tunisia": {
+    "sofascore_name": "Tunisia",
+    "team_id": 4729,
+    "venue_name": "Stade Hammadi Agrebi",
+    "city": "Rades"
+  },
+  "South Korea": {
+    "sofascore_name": "South Korea",
+    "team_id": 4735,
+    "venue_name": "Seoul World Cup Stadium",
+    "city": "Seoul"
+  },
+  "Iran": {
+    "sofascore_name": "Iran",
+    "team_id": 4766,
+    "venue_name": "Azadi Stadium",
+    "city": "Tehran"
+  },
+  "Saudi Arabia": {
+    "sofascore_name": "Saudi Arabia",
+    "team_id": 4834,
+    "venue_name": "Al-Shabab Club Stadium",
+    "city": "Riyadh"
+  },
+  "Ecuador": {
+    "sofascore_name": "Ecuador",
+    "team_id": 4757,
+    "venue_name": "Estadio Rodrigo Paz Delgado",
+    "city": "Quito"
+  }
+}
