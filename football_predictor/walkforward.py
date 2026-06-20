@@ -49,7 +49,13 @@ class WalkForwardProcessor:
         self.elo = {}  # team_name -> current elo
         self.matches_played = defaultdict(int)
         self.rolling_stats = {}  # team_name -> {xg_for, xg_against, shots_for, shots_against, form}
+        self._last_match_date = {}  # team_name -> last date played
+        self._state_buffer = []  # Batch buffer for state INSERTs
+        self._progress_buffer = []  # Batch buffer for progress INSERTs
         self.conn = sqlite3.connect(DB)
+        # Bulk insert optimization
+        self.conn.execute('PRAGMA synchronous=OFF')
+        self.conn.execute('PRAGMA journal_mode=OFF')
         init_db()
         self._load_state()
 
@@ -74,26 +80,22 @@ class WalkForwardProcessor:
         return self.elo.get(team, INITIAL_ELO), self.matches_played.get(team, 0)
 
     def _get_days_since_last(self, team, date_str):
-        cur = self.conn.execute('''
-            SELECT date FROM sofa_historical_results
-            WHERE (home_team = ? OR away_team = ?)
-              AND date < ? AND status_type = 'finished'
-            ORDER BY date DESC LIMIT 1
-        ''', (team, team, date_str))
-        row = cur.fetchone()
-        if row:
+        if team in self._last_match_date:
             from datetime import datetime as dt
             d1 = dt.strptime(date_str, '%Y-%m-%d')
-            d0 = dt.strptime(row[0], '%Y-%m-%d')
+            d0 = dt.strptime(self._last_match_date[team], '%Y-%m-%d')
             return (d1 - d0).days
         return 7
 
     def get_rolling(self, team, date, window=10):
-        """Get rolling stats for team using only matches before date."""
+        """Get rolling stats for team using in-memory state (faster)."""
         result = {'xg_for': 1.2, 'xg_against': 1.2, 'xg_for_last5': 1.2, 'xg_against_last5': 1.2,
                   'shots_for': 10, 'shots_against': 10,
                   'form': 0.5, 'form_str': '', 'matches_in_window': 0,
                   'goal_diff': 0.0, 'gf_per_game': 1.2, 'ga_per_game': 1.2}
+        # Use in-memory state directly (fast path for rebuild)
+        if team in self.rolling_stats:
+            return self.rolling_stats[team]
         try:
             cur = self.conn.execute('''
                 SELECT r.home_team, r.away_team, r.home_score, r.away_score,
@@ -196,27 +198,55 @@ class WalkForwardProcessor:
         self.elo[away_team] = away_elo_old + K_FACTOR * (act_a - exp_a)
         self.matches_played[home_team] += 1
         self.matches_played[away_team] += 1
-        # Save state snapshot AFTER updating
+        self._last_match_date[home_team] = date_str
+        self._last_match_date[away_team] = date_str
+        # Update in-memory rolling stats (fast path)
+        for team, gf, ga in [(home_team, home_goals, away_goals), (away_team, away_goals, home_goals)]:
+            rs = self.rolling_stats.get(team, {'xg_for': 1.2, 'xg_against': 1.2, 'xg_for_last5': 1.2, 'xg_against_last5': 1.2,
+                'shots_for': 10, 'form': 0.5, 'form_str': '', 'goal_diff': 0.0, 'gf_per_game': 1.2, 'ga_per_game': 1.2})
+            n = self.matches_played.get(team, 1)
+            rs['xg_for'] = ((rs['xg_for'] * (n-1)) + gf) / n if n > 1 else gf
+            rs['xg_against'] = ((rs['xg_against'] * (n-1)) + ga) / n if n > 1 else ga
+            rs['shots_for'] = ((rs['shots_for'] * (n-1)) + (gf + ga)) / n if n > 1 else (gf + ga)
+            rs['goal_diff'] = rs['xg_for'] - rs['xg_against']
+            rs['gf_per_game'] = rs['xg_for']
+            rs['ga_per_game'] = rs['xg_against']
+            form_char = 'W' if gf > ga else ('D' if gf == ga else 'L')
+            rs['form_str'] = (rs.get('form_raw', '') + form_char)[-20:]
+            wins = rs['form_str'].count('W')
+            draws = rs['form_str'].count('D')
+            total = len(rs['form_str'])
+            rs['form'] = (wins * 3 + draws) / (total * 3) if total else 0.5
+            rs['form_raw'] = rs['form_str']
+            self.rolling_stats[team] = rs
+        # Buffer state INSERTs (batch commit every 1000)
         for team, elo_new in [(home_team, self.elo[home_team]), (away_team, self.elo[away_team])]:
-            roll = self.get_rolling(team, date_str, 20)
-            form_raw = self.rolling_stats.get(team, {}).get('form_raw', '')
-            if team == home_team:
-                form_raw = (form_raw + ('W' if home_goals > away_goals else 'D' if home_goals == away_goals else 'L'))[-20:]
-            else:
-                form_raw = (form_raw + ('W' if away_goals > home_goals else 'D' if away_goals == home_goals else 'L'))[-20:]
-            self.conn.execute('''
+            roll = self.rolling_stats.get(team, {})
+            form_raw = roll.get('form_raw', '')
+            self._state_buffer.append((team, date_str, elo_new, self.matches_played[team],
+                roll.get('xg_for', 1.2), roll.get('xg_against', 1.2),
+                roll.get('shots_for', 10), 0,
+                roll.get('form', 0.5), form_raw))
+        self._progress_buffer.append((ts, datetime.now().isoformat()))
+        return features
+
+    def flush_buffers(self):
+        if self._state_buffer:
+            self.conn.executemany('''
                 INSERT OR REPLACE INTO walkforward_state
                 (team_name, date, elo, matches_played,
                  rolling_xg_for, rolling_xg_against,
                  rolling_shots_for, rolling_shots_against,
                  form_points, form_raw)
                 VALUES (?,?,?,?,?,?,?,?,?,?)
-            ''', (team, date_str, elo_new, self.matches_played[team],
-                  roll['xg_for'], roll['xg_against'],
-                  roll['shots_for'], 0,
-                  roll['form'], form_raw))
+            ''', self._state_buffer)
+            self._state_buffer = []
+        if self._progress_buffer:
+            self.conn.executemany('''
+                INSERT OR REPLACE INTO walkforward_progress (event_id, processed_at) VALUES (?, ?)
+            ''', self._progress_buffer)
+            self._progress_buffer = []
         self.conn.commit()
-        return features
 
     def run_historical(self, start_date=None, end_date=None):
         """Process ALL historical matches chronologically."""
@@ -242,13 +272,15 @@ class WalkForwardProcessor:
                 continue
             try:
                 self.process_match(home, away, int(hs), int(aws), ts, date_str)
-                self.conn.execute('INSERT OR REPLACE INTO walkforward_progress VALUES (?, ?)', (eid, datetime.now().isoformat()))
-                self.conn.commit()
+                # Add to progress buffer
+                self._progress_buffer.append((eid, datetime.now().isoformat()))
                 processed += 1
             except Exception as ex:
                 print(f"[WF] Error processing {home} vs {away} ({date_str}): {ex}")
             if processed % 1000 == 0:
+                self.flush_buffers()
                 print(f"[WF] {processed}/{total} matches processed ({skipped} skipped)")
+        self.flush_buffers()
         print(f"[WF] Done. {processed} new, {total} total matches. {skipped} already processed.")
         return processed
 

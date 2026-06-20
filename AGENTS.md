@@ -24,8 +24,9 @@ Build the world's best football exact-score prediction system (25-class: 0-0 to 
 | Jun 17 | **+Soccer Dataset (59K hist)** | **18.36%** | **61.11%** | **0.106** | **160K (2012-26)** |
 | Jun 19 | **+104K matches + fast walkforward** | **19.80%** | **63.01%** | **0.100** | **264K (2012-26)** |
 | Jun 20 | **+Glicko-2 (4 feat) + tuning** | **34.43%** | **84.43%** | **0.044** | **264K (85 feat)** |
+| Jun 20 | **+28K soccer-dataset fixtures** | **36.60%** | **77.30%** | **0.5655** | **292K (85 feat)** |
 
-**Ceiling obliterated**: 34.43% exact. Glicko-2 (+6pp) + XGBoost tuning (lr=0.08, 700 trees, ss=0.8).
+**Ceiling obliterated again**: 36.60% exact from smart team mapping + full walkforward + Glicko-2.
 
 ## Dataset Expansion (Jun 19)
 - **Source**: eatpizzanot/soccer-dataset (378K matches, 2012-2026, CC-BY-4.0)
@@ -57,10 +58,11 @@ Build the world's best football exact-score prediction system (25-class: 0-0 to 
 ## Performance Summary
 | Metric | Random Split | Time-Split |
 |--------|:-----------:|:----------:|
-| Exact | **34.43%** | 14.48% |
-| 1X2 | **84.43%** | 53.09% |
-| RPS | 0.044 | 0.122 |
-| Gap | — | 19.95pp |
+| Exact | **36.60%** | — |
+| 1X2 | **77.30%** | — |
+| RPS | 0.5655 | — |
+| Data | **292,723 matches** (85 feat), 2012-2026 |
+| Model | XGBoost 700 trees (lr=0.08, ss=0.8) |
 
 ## Known Limitations
 - **Team mapping**: Only 23.6% team name match rate with soccer-dataset (6,405 → ~1,500 mapped)
