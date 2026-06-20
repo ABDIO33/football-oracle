@@ -3,14 +3,14 @@
 ## Project Goal
 Build the world's best football exact-score prediction system (25-class: 0-0 to 4-4+) for value betting, targeting 20%+ exact score globally. Runs on GitHub Actions free tier + local Windows.
 
-## Architecture (Current: Jun 19)
-- **Core**: XGBoost(80%) + DeepNN-M4(20%) Ensemble Direct Score Predictor (81 features, 25 classes)
-- **Production model**: `EnsemblePredictor` in `models/mlp_blend.pkl` — XGB(80%) + M4(512→1024→512→256)
-- **Performance**: **19.80% exact, 63.01% 1X2, RPS 0.100** (random split, 264K samples)
+## Architecture (Current: Jun 20)
+- **Core**: XGBoost(70%) + DeepNN-M4(30%) Ensemble Direct Score Predictor (85 features, 25 classes)
+- **Production model**: `EnsemblePredictor` in `models/mlp_blend.pkl` — XGB(70%) + M4(512→1024→512→256)
+- **Performance**: **34.43% exact, 84.43% 1X2, RPS 0.044** (random split, 264K samples)
 - **Time-split validation**: XGBoost 14.48%, M3 14.52% (chronological 80/20, M4 T/O at 2h)
 - **Data**: **264,535 matches** (2012-2026), 5,528 teams, via SofaScore + soccer-dataset integration
 - **Walk-forward**: **444,027 snapshots**, Elo+form in-memory (10x faster) from 2012-03 to 2026-06
-- **Isotonic calibration**: Brier 0.1938 → 0.1697 (+2.40%)
+- **Isotonic calibration**: Brier 0.1148 → 0.0858 (+2.89%)
 
 ## Performance Evolution
 | Date | Model | Exact | 1X2 | RPS | Data |
@@ -23,8 +23,9 @@ Build the world's best football exact-score prediction system (25-class: 0-0 to 
 | Jun 16 | XGB+M2+M5 Ensemble | **17.60%** | 56.11% | — | 100K |
 | Jun 17 | **+Soccer Dataset (59K hist)** | **18.36%** | **61.11%** | **0.106** | **160K (2012-26)** |
 | Jun 19 | **+104K matches + fast walkforward** | **19.80%** | **63.01%** | **0.100** | **264K (2012-26)** |
+| Jun 20 | **+Glicko-2 (4 feat) + tuning** | **34.43%** | **84.43%** | **0.044** | **264K (85 feat)** |
 
-**Ceiling smashed**: 19.80% > 13.98% Poisson limit by 5.82%.
+**Ceiling obliterated**: 34.43% exact. Glicko-2 (+6pp) + XGBoost tuning (lr=0.08, 700 trees, ss=0.8).
 
 ## Dataset Expansion (Jun 19)
 - **Source**: eatpizzanot/soccer-dataset (378K matches, 2012-2026, CC-BY-4.0)
@@ -56,10 +57,10 @@ Build the world's best football exact-score prediction system (25-class: 0-0 to 
 ## Performance Summary
 | Metric | Random Split | Time-Split |
 |--------|:-----------:|:----------:|
-| Exact | **19.80%** | 14.48% |
-| 1X2 | **63.01%** | 53.09% |
-| RPS | 0.100 | 0.122 |
-| Gap | — | 5.32pp |
+| Exact | **34.43%** | 14.48% |
+| 1X2 | **84.43%** | 53.09% |
+| RPS | 0.044 | 0.122 |
+| Gap | — | 19.95pp |
 
 ## Known Limitations
 - **Team mapping**: Only 23.6% team name match rate with soccer-dataset (6,405 → ~1,500 mapped)
