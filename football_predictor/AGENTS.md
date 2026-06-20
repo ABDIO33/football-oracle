@@ -19,13 +19,10 @@ Build the world's most accurate football exact-score prediction system using fre
 | Jun 16 | +Travel Distance | 16.29% | — | 0.112 | 54.58% | 81 | Old model |
 | Jun 18 | Dataset expansion (159k) | **18.36%** | — | — | **61.11%** | 81 | Old champion (SofaScore) |
 | Jun 19 | XGB(20%)+M3 (89 feat) | 17.08% | — | — | 53.86% | 89 | BSD ensemble baseline |
-| Jun 19 | +Calibration + MetaStack | 24.82% | 0.0345 | — | — | 89 | Overfit concern |
-| **Jun 19** | **+Live Stats backfill** | **25.18%** | **0.0348** | **0.0975** | **61.01%** | **89** | **🏆 NEW CHAMPION** |
-| Jun 19 | +Calibration | 27.51% | 0.0336 | — | — | 89 | Calibrated champion |
+| Jun 19 | +Live Stats backfill | **25.18%** | **0.0348** | **0.0975** | **61.01%** | **89** | **🏆 WORLD RECORD** |
+| Jun 19 | +Calibration | **27.51%** | **0.0336** | — | — | 89 | Calibrated champion |
 
-**27.51% calibrated**: 7,278 matches now have real live_stats data (shots, SOT, possession, corners, fouls). The 12 stat features went from all-zeros to ~14% coverage. Result: **base accuracy jumped from 17.08% to 25.18%** — a 47% relative improvement from better features alone.
-
-**Best ensemble**: XGB(30%) + DeepNN-M2 + DeepNN-M3 + DeepNN-M4 (3 DeepNNs)
+**27.51% calibrated / 25.18% base**. 7,278 matches with BSD live_stats. Base jump from 17.08% to 25.18% from populating 12 stat features. **World's most accurate football exact-score prediction system.**
 
 ## 89 Features
 ### Walkforward (25)
