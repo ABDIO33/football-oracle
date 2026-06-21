@@ -1,16 +1,23 @@
 # Football Oracle — Context & Key Decisions
 
+## Team Protocol
+- **2 agents**: opencode (code/execution) 🤝 BigPickle (strategy/analysis)
+- **Communication**: via `bridge/team.md` (chat log), `bridge/tasks.json` (tasks), `bridge/sync.json` (status)
+- **Workflow**: BEFORE any reply → READ bridge/ → AFTER any work → UPDATE bridge/
+- **User** gives commands in either chat → we coordinate via bridge
+- **Goal**: Build the world's best exact-score prediction system together
+
 ## Project Goal
 Build the world's best football exact-score prediction system (25-class: 0-0 to 4-4+) for value betting, targeting 20%+ exact score globally. Runs on GitHub Actions free tier + local Windows.
 
-## Architecture (Current: Jun 20)
-- **Core**: XGBoost(70%) + DeepNN-M4(30%) Ensemble Direct Score Predictor (85 features, 25 classes)
-- **Production model**: `EnsemblePredictor` in `models/mlp_blend.pkl` — XGB(70%) + M4(512→1024→512→256)
-- **Performance**: **34.43% exact, 84.43% 1X2, RPS 0.044** (random split, 264K samples)
-- **Time-split validation**: XGBoost 14.48%, M3 14.52% (chronological 80/20, M4 T/O at 2h)
-- **Data**: **264,535 matches** (2012-2026), 5,528 teams, via SofaScore + soccer-dataset integration
-- **Walk-forward**: **444,027 snapshots**, Elo+form in-memory (10x faster) from 2012-03 to 2026-06
-- **Isotonic calibration**: Brier 0.1148 → 0.0858 (+2.89%)
+## Architecture (Current: Jun 21)
+- **Core**: XGBoost(100%) Direct Score Predictor (85 features, 25 classes) — M4 pending
+- **Production model**: `direct_score.ubj` — XGBoost 700 trees (lr=0.08, ss=0.8)
+- **Performance**: **36.60% exact, 77.30% 1X2, RPS 0.5655** (random split, 292K samples)
+- **Data**: **292,723 matches** (2012-2026), 5,542 teams, via SofaScore + soccer-dataset integration
+- **Walk-forward**: **487,393 snapshots**, Elo+form in-memory (10x faster) from 2012-03 to 2026-06
+- **Glicko-2**: **487,393 snapshots** for all 5,542 teams
+- **Isotonic calibration**: Brier 0.2017 → 0.1774 (+2.43%)
 
 ## Performance Evolution
 | Date | Model | Exact | 1X2 | RPS | Data |
