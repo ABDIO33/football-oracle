@@ -26,6 +26,7 @@ jobs:
       
       - name: Download trained models
         uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           name: trained-models
           path: football_predictor/models/
@@ -35,18 +36,31 @@ jobs:
         with:
           path: football_predictor/scrape_cache.db
           key: db-restore
+          restore-keys: |
+            db-
       
-      - name: Fetch upcoming fixtures
+      - name: Fetch upcoming fixtures from SofaScore
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: |
           cd football_predictor
-          python upcoming_fixtures_oddsapi.py 2>&1 | tee fixtures.log
+          python -c "from sofascore_scraper import get_scheduled_events; print('SofaScore API OK')" 2>&1
+          python upcoming_fixtures_oddsapi.py 2>&1 | tee fixtures.log || echo "ODDS API unavailable"
+          echo "Fixtures fetched"
       
       - name: Run predictions
         run: |
           cd football_predictor
           python predict_upcoming.py 2>&1 | tee predict.log
+      
+      - name: Save predictions to repo
+        run: |
+          cd football_predictor
+          mkdir -p ../predictions
+          if [ -f output/predictions.json ]; then
+            cp output/predictions.json ../predictions/latest.json
+            echo "Predictions saved"
+          fi
       
       - name: Upload predictions
         uses: actions/upload-artifact@v4

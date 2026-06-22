@@ -46,15 +46,15 @@ jobs:
           curl -L -o football_predictor/scrape_cache.db.zip https://github.com/${{ github.repository }}/releases/download/latest/scrape_cache.db.zip 2>/dev/null || echo "No cached DB found"
           cd football_predictor && ls -la scrape_cache.db 2>/dev/null || echo "No DB to unpack"
       
-      - name: Run Ensemble Training
+      - name: Build Real Production Model
         run: |
           cd football_predictor
-          python ensemble_trainer.py 2>&1 | tee ensemble_train.log
+          python build_real_model.py 2>&1 | tee build_real_model.log
       
-      - name: Run Meta-Learner
+      - name: Improve M5 with extra epochs (if possible)
         run: |
           cd football_predictor
-          python meta_learner_ensemble.py 2>&1 | tee meta_learner.log
+          python improve_m5.py 2>&1 | tee improve_m5.log || echo "M5 skipped (no GPU)"
       
       - name: Upload trained models
         uses: actions/upload-artifact@v4

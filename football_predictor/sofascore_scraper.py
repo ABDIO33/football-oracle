@@ -1,20 +1,20 @@
 """Sofascore API client — unlimited, no API key, replaces api-football"""
 from curl_cffi import requests
 import json, time, os, sqlite3
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 
 BASE = 'https://www.sofascore.com/api/v1'
 SOFA_HEADERS = {
     'User-Agent': (
-        'Mozilla/5.0 (Linux; Android 14; Pixel 9 Pro) '
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
         'AppleWebKit/537.36 (KHTML, like Gecko) '
-        'Chrome/120.0.6099.230 Mobile Safari/537.36'
+        'Chrome/124.0.0.0 Safari/537.36'
     ),
     'Accept': 'application/json',
     'Accept-Language': 'en-US,en;q=0.9',
     'Origin': 'https://www.sofascore.com',
     'Referer': 'https://www.sofascore.com/',
-    'x-requested-with': '721637',
+    'x-requested-with': 'XMLHttpRequest',
 }
 SOFA_DB = os.path.join(os.path.dirname(__file__), 'scrape_cache.db')
 _cache = {}
@@ -42,7 +42,7 @@ def _get(path, params=None, cache_minutes=1440):
     if now - _last_req < 0.3:
         time.sleep(0.3 - (now - _last_req))
     try:
-        r = requests.get(url, headers=SOFA_HEADERS, impersonate="chrome120", timeout=15)
+        r = requests.get(url, headers=SOFA_HEADERS, impersonate="chrome124", timeout=15)
         _last_req = time.time()
         if r.status_code == 200:
             data = r.json()
@@ -237,3 +237,35 @@ def warmup_all_teams(team_names):
     conn.commit()
     conn.close()
     return found
+
+def get_scheduled_events(dt=None):
+    """Get all scheduled football events for a given date."""
+    if dt is None:
+        dt = date.today()
+    ds = dt.strftime('%Y-%m-%d') if isinstance(dt, (date, datetime)) else str(dt)
+    data = _get(f'/sport/football/scheduled-events/{ds}', cache_minutes=5)
+    if data and 'events' in data:
+        return data['events']
+    return []
+
+def get_tournament_info(tournament_id):
+    """Get tournament details including seasons."""
+    data = _get(f'/unique-tournament/{tournament_id}', cache_minutes=1440)
+    return data
+
+def get_season_events(tournament_id, season_id):
+    """Get events for a tournament season."""
+    data = _get(f'/unique-tournament/{tournament_id}/season/{season_id}/events/last/0', cache_minutes=60)
+    if data and 'events' in data:
+        return data['events']
+    return []
+
+def get_match_details(match_id):
+    """Get full match details."""
+    data = _get(f'/event/{match_id}', cache_minutes=10)
+    return data
+
+def get_match_lineups(match_id):
+    """Get lineups for a match."""
+    data = _get(f'/event/{match_id}/lineups', cache_minutes=60)
+    return data
