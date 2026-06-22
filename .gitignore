@@ -27,3 +27,5 @@ football_predictor/homepage_data.json
 football_predictor/backfill.log
 football_predictor/models/lambda_home.pkl
 football_predictor/models/lambda_away.pkl
+.cloudflare_config.json
+test_mcp.py

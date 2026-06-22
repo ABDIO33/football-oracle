@@ -1,6 +1,6 @@
 {
-  "cal_samples": 52907,
-  "raw_brier": 0.1148,
-  "cal_brier": 0.0858,
-  "improvement": 2.89
+  "cal_samples": 58545,
+  "raw_brier": 0.2017,
+  "cal_brier": 0.1774,
+  "improvement": 2.43
 }

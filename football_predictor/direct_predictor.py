@@ -696,8 +696,65 @@ class EnsemblePredictor:
         return proba
 
 _BLEND_CACHE = None
+
+class RealEnsemblePredictor:
+    """Wrapper for real_model.pkl: XGBoost + M5 ensemble."""
+    def __init__(self, xgb_model, m5_model, imputer, scaler, weights):
+        self.xgb_model = xgb_model
+        self.m5 = m5_model
+        self.imp = imputer
+        self.scaler = scaler
+        self.w_xgb = weights['xgb']
+        self.w_m5 = weights['m5']
+
+    def predict_proba(self, X):
+        import torch
+        X_imp = self.imp.transform(X)
+        X_s = self.scaler.transform(X_imp)
+        xgb_proba = self.xgb_model.predict_proba(X_s)
+        self.m5.eval()
+        with torch.no_grad():
+            X_t = torch.tensor(X_s, dtype=torch.float32)
+            m5_proba = torch.softmax(self.m5(X_t), dim=1).cpu().numpy()
+        return self.w_xgb * xgb_proba + self.w_m5 * m5_proba
+
+def load_real_model():
+    """Load real_model.pkl (XGBoost + M5, chronological). Returns None if not found."""
+    path = os.path.join(os.path.dirname(__file__), 'models', 'real_model.pkl')
+    if not os.path.exists(path):
+        return None
+    try:
+        import joblib, torch, torch.nn as nn
+        data = joblib.load(path)
+        input_dim = len(data['features'])
+
+        class _M5(nn.Module):
+            def __init__(self):
+                super().__init__()
+                self.net = nn.Sequential(
+                    nn.Linear(input_dim, 128), nn.BatchNorm1d(128), nn.ReLU(), nn.Dropout(0.3),
+                    nn.Linear(128, 256), nn.BatchNorm1d(256), nn.ReLU(), nn.Dropout(0.3),
+                    nn.Linear(256, 128), nn.BatchNorm1d(128), nn.ReLU(), nn.Dropout(0.3),
+                    nn.Linear(128, NUM_CLASSES)
+                )
+            def forward(self, x):
+                return self.net(x)
+
+        m5 = _M5()
+        m5.load_state_dict(data['m5_state'])
+        m5.eval()
+        return RealEnsemblePredictor(data['xgb_model'], m5, data['imputer'], data['scaler'], data['weights'])
+    except Exception as e:
+        print(f'[load_real_model] Error: {e}')
+        return None
+
 def load_model():
     global _BLEND_CACHE
+    # Try real_model.pkl first (best production model)
+    real = load_real_model()
+    if real is not None:
+        _BLEND_CACHE = real
+        return _BLEND_CACHE
     path = os.path.join(os.path.dirname(__file__), 'models', 'direct_score.ubj')
     if not os.path.exists(path):
         path = os.path.join(os.path.dirname(__file__), 'models', 'direct_score.json')

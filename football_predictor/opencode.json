@@ -8,6 +8,11 @@
         "@playwright/mcp@latest"
       ],
       "enabled": true
+    },
+    "cloudflare-ai": {
+      "type": "local",
+      "command": ["python", "cloudflare_ai_mcp.py"],
+      "enabled": true
     }
   }
 }

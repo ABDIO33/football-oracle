@@ -1,0 +1,25 @@
+{
+  "model": "XGBoost + M5 (chronological)",
+  "test_samples": 58545,
+  "xgb": {
+    "exact_pct": 20.72,
+    "1x2_pct": 67.04,
+    "rps": 0.0853
+  },
+  "m5": {
+    "exact_pct": 24.36,
+    "1x2_pct": 73.33,
+    "rps": 0.0661
+  },
+  "ensemble": {
+    "exact_pct": 24.42,
+    "1x2_pct": 73.42,
+    "rps": 0.0658
+  },
+  "best_blend": {
+    "xgb_pct": 15,
+    "m5_pct": 85,
+    "exact_pct": 24.42
+  },
+  "vs_old_timesplit_14.14": "+10.28pp"
+}
