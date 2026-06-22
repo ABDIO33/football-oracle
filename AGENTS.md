@@ -35,22 +35,35 @@ Build the world's best football exact-score prediction system (25-class: 0-0 to 
 | Jun 22 | XGB+M5 Ensemble | **24.42%** | **73.42%** | Time |
 
 ## Key Files (Updated Jun 22)
-- `models/real_model.pkl`: **NEW production model** — XGBoost(15%) + M5(85%) + imputer + scaler
+- `models/real_model.pkl`: **Production model** — XGBoost(15%) + M5(85%) + imputer + scaler
 - `models/real_xgb.ubj`: XGBoost model (chronologically trained, 20.72% time-split)
 - `models/real_m5.pt`: M5 state dict (24.36% time-split)
 - `models/real_model_results.json`: Full metrics + betting strategy results
 - `build_real_model.py`: Script to build REAL production model (no lookahead)
 - `direct_score.ubj`: **DEPRECATED** — 36.60% random split (overfit, only 7.70% time-split)
+- `direct_predictor.py`: **Updated** — `load_model()` now tries `real_model.pkl` FIRST via `RealEnsemblePredictor` before `mlp_blend.pkl`/`direct_score.ubj`
+- `predict_upcoming.py`: Standalone prediction script for `odds_upcoming` table matches
+- `cloudflare_ai_mcp.py`: MCP server for Cloudflare Workers AI (Llama, Mistral, Qwen, etc.)
+- `smart_team_mapper.py`: Team name resolution with fuzzy matching
+
+## Completed This Session (Jun 22)
+- **GitHub token removed from remote URL** — was exposed in git origin
+- **real_model.pkl integrated** — `RealEnsemblePredictor` class + `load_real_model()` in `direct_predictor.py`
+- **Live predictions running** — `predict_upcoming.py` successfully predicts all 129 upcoming matches using real_model
+- **Value bets found** — 74 matches with >5% EV vs Pinnacle odds (World Cup, Brazil Serie B, etc.)
+- **Git push** `4c01e38` — committed real model + pipeline changes
 
 ## Known Limitations
+- **real_model.pkl (56 MB) and real_xgb.ubj (56 MB) exceed GitHub's 50 MB recommendation** — may need Git LFS eventually
 - **XGBoost overfits badly**: 36.60% random → 7.70% time-split (4.75x drop). DeepNN more robust.
 - **M5 only trained 60 epochs**: could improve with more epochs/layers
-- **No real-time prediction**: model built in memory, not integrated into web service
-- **Betting not tested with real odds**: 37.9% @30% conf is promising but needs real odds validation
+- **No real-time prediction**: model prediction script exists but no web service
+- **Value bets include extreme outliers** (e.g., +1436% EV on Curaçao vs Ivory Coast) — some may be data sparsity artifacts
+- **Many upcoming matches lack Pinnacle odds** — 38/85 future matches have no Pinnacle odds for comparison
 
 ## Next Steps (Priority)
-1. **Integrate into betting_strategy.py**: use `real_model.pkl` for live predictions, test with real SofaScore odds
-2. **Improve M5**: add more layers (256-512-256), train 100+ epochs, add Glicko-2 as 86th feature
-3. **Build web service**: expose model via Flask for real-time score predictions
-4. **Live betting test**: predict tomorrow's matches, compare with real odds
-5. **Fix XGBoost overfit**: use chronological CV, reduce n_estimators, add reg_alpha/lambda
+1. **Improve M5**: retrain with 100+ epochs, add layers (256-512-256), add Glicko-2 as 86th feature
+2. **Set up GitHub Actions**: automated weekly retrain + prediction push
+3. **Build web service**: expose model via Flask/Streamlit for real-time predictions
+4. **Refine value bet detection**: filter by confidence + EV threshold, add Kelly sizing
+5. **Reduce model file sizes**: strip unnecessary data from pickled models (remove unused .pt checkpoints)

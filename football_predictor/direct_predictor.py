@@ -718,29 +718,36 @@ class RealEnsemblePredictor:
             m5_proba = torch.softmax(self.m5(X_t), dim=1).cpu().numpy()
         return self.w_xgb * xgb_proba + self.w_m5 * m5_proba
 
+def _build_m5(input_dim, arch='128-256-128'):
+    import torch.nn as nn
+    sizes = [int(x) for x in arch.split('-')]
+    layers = []
+    prev = input_dim
+    for s in sizes:
+        layers.extend([nn.Linear(prev, s), nn.BatchNorm1d(s), nn.ReLU(), nn.Dropout(0.3)])
+        prev = s
+    layers.append(nn.Linear(prev, NUM_CLASSES))
+    class _M5(nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.net = nn.Sequential(*layers)
+        def forward(self, x):
+            return self.net(x)
+    return _M5()
+
 def load_real_model():
-    """Load real_model.pkl (XGBoost + M5, chronological). Returns None if not found."""
-    path = os.path.join(os.path.dirname(__file__), 'models', 'real_model.pkl')
+    """Load real_model.pkl or improved_model.pkl. Returns None if not found."""
+    path = os.path.join(os.path.dirname(__file__), 'models', 'improved_model.pkl')
+    if not os.path.exists(path):
+        path = os.path.join(os.path.dirname(__file__), 'models', 'real_model.pkl')
     if not os.path.exists(path):
         return None
     try:
-        import joblib, torch, torch.nn as nn
+        import joblib, torch
         data = joblib.load(path)
         input_dim = len(data['features'])
-
-        class _M5(nn.Module):
-            def __init__(self):
-                super().__init__()
-                self.net = nn.Sequential(
-                    nn.Linear(input_dim, 128), nn.BatchNorm1d(128), nn.ReLU(), nn.Dropout(0.3),
-                    nn.Linear(128, 256), nn.BatchNorm1d(256), nn.ReLU(), nn.Dropout(0.3),
-                    nn.Linear(256, 128), nn.BatchNorm1d(128), nn.ReLU(), nn.Dropout(0.3),
-                    nn.Linear(128, NUM_CLASSES)
-                )
-            def forward(self, x):
-                return self.net(x)
-
-        m5 = _M5()
+        arch = data.get('architecture', '128-256-128')
+        m5 = _build_m5(input_dim, arch)
         m5.load_state_dict(data['m5_state'])
         m5.eval()
         return RealEnsemblePredictor(data['xgb_model'], m5, data['imputer'], data['scaler'], data['weights'])

@@ -1,0 +1,50 @@
+[13:53:43] ============================================================
+[13:53:43] IMPROVING M5: 120 EPOCHS, DEEPER ARCH
+[13:53:43] ============================================================
+[13:53:43] Loading data...
+[13:57:59] Train: 234176, Test: 58545, Features: 85
+[13:58:04] Preprocessed. Time: 261s
+[13:58:04] [1/3] Training XGBoost...
+[14:13:56] XGBoost: exact=20.72% 1X2=67.04% RPS=0.0853 Time: 1213s
+[14:13:56] [2/3] Training M5-BIG (256->512->256, 120 epochs)...
+[14:13:56] Device: CPU
+[14:14:15] Epoch 1/120: val_acc=20.52% best=20.52% ep_time=17.0s remain=34min
+[14:15:40] Epoch 6/120: val_acc=22.61% best=22.61% ep_time=17.0s remain=32min
+[14:17:05] Epoch 11/120: val_acc=23.50% best=23.58% ep_time=17.0s remain=31min
+[14:18:30] Epoch 16/120: val_acc=23.98% best=23.98% ep_time=17.0s remain=29min
+[14:19:55] Epoch 21/120: val_acc=23.94% best=24.14% ep_time=17.0s remain=28min
+[14:21:20] Epoch 26/120: val_acc=24.07% best=24.24% ep_time=17.0s remain=27min
+[14:22:45] Epoch 31/120: val_acc=24.30% best=24.36% ep_time=17.0s remain=25min
+[14:24:09] Epoch 36/120: val_acc=24.60% best=24.60% ep_time=16.9s remain=24min
+[14:25:35] Epoch 41/120: val_acc=24.43% best=24.60% ep_time=17.0s remain=22min
+[14:27:00] Epoch 46/120: val_acc=24.31% best=24.60% ep_time=17.0s remain=21min
+[14:28:25] Epoch 51/120: val_acc=24.42% best=24.60% ep_time=17.0s remain=20min
+[14:29:50] Epoch 56/120: val_acc=24.50% best=24.60% ep_time=17.1s remain=18min
+[14:31:15] Epoch 61/120: val_acc=24.43% best=24.60% ep_time=17.0s remain=17min
+[14:32:40] Epoch 66/120: val_acc=24.40% best=24.60% ep_time=17.0s remain=15min
+[14:34:05] Epoch 71/120: val_acc=24.44% best=24.60% ep_time=16.9s remain=14min
+[14:35:30] Epoch 76/120: val_acc=24.44% best=24.60% ep_time=17.0s remain=12min
+[14:36:54] Epoch 81/120: val_acc=24.44% best=24.60% ep_time=17.0s remain=11min
+[14:38:19] Epoch 86/120: val_acc=24.45% best=24.60% ep_time=17.0s remain=10min
+[14:39:44] Epoch 91/120: val_acc=24.44% best=24.60% ep_time=17.0s remain=8min
+[14:41:10] Epoch 96/120: val_acc=24.47% best=24.60% ep_time=17.0s remain=7min
+[14:42:34] Epoch 101/120: val_acc=24.47% best=24.60% ep_time=17.0s remain=5min
+[14:43:59] Epoch 106/120: val_acc=24.46% best=24.60% ep_time=17.0s remain=4min
+[14:45:24] Epoch 111/120: val_acc=24.42% best=24.60% ep_time=17.0s remain=3min
+[14:46:49] Epoch 116/120: val_acc=24.52% best=24.60% ep_time=17.0s remain=1min
+[14:47:57] Epoch 120/120: val_acc=24.51% best=24.60% ep_time=17.0s remain=0min
+[14:48:00] M5-BIG: exact=24.60% 1X2=73.96% RPS=0.0647
+[14:48:00] [3/3] Searching ensemble blend...
+[14:48:00] Blend search: {"0.05": 24.59, "0.1": 24.62, "0.15": 24.67, "0.2": 24.69, "0.25": 24.66, "0.3": 24.66, "0.35": 24.61, "0.4": 24.5, "0.45": 24.36, "0.5": 24.24, "0.55": 24.16, "0.6": 24.0, "0.65": 23.74, "0.7": 23.44, "0.75": 23.14, "0.8": 22.7, "0.85": 22.26, "0.9": 21.76, "0.95": 21.24}
+[14:48:00] Best: XGB(20%) + M5(80%) = 24.69%
+[14:48:02] 
+[14:48:02] === COMPARISON ===
+[14:48:02] XGBoost:      20.72% (was 20.72%)
+[14:48:02] M5-BIG 120ep: 24.60% (was 24.36%)
+[14:48:02] Ensemble:     24.69% (was 24.42%)
+[14:48:02] Improvement:  +0.27pp
+[14:48:02] 
+[14:48:02] Betting @30% threshold:
+[14:48:02]   @30%: 4327/10923 = 39.6% (was 37.9%)
+[14:48:02] 
+[14:48:02] Saving improved model...
