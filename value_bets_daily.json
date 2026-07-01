@@ -1,40 +1,7 @@
 {
   "date": "2026-07-01",
-  "timestamp": "2026-07-01T19:18:11.510756",
-  "total_matches_with_odds": 1,
-  "value_bets_count": 1,
-  "results": [
-    {
-      "home": "Belgium",
-      "away": "Senegal",
-      "competition": "FIFA World Cup",
-      "date": "2026-07-01",
-      "prediction": {
-        "home_prob": 38.33,
-        "draw_prob": 28.09,
-        "away_prob": 33.58,
-        "predicted_score": "1-1",
-        "confidence": 13.4
-      },
-      "market_odds": {
-        "home_prob": 47.22,
-        "draw_prob": 28.39,
-        "away_prob": 24.39,
-        "bookmaker_count": 46,
-        "overround": 5.0
-      },
-      "value_bets": [
-        {
-          "outcome": "away",
-          "true_prob": 33.58,
-          "market_prob": 24.39,
-          "edge_pct": 37.68,
-          "fair_odds": 4.1,
-          "suggested_odds_cutoff": 2.98,
-          "kelly_fraction": 0.1215,
-          "verdict": "STRONG"
-        }
-      ]
-    }
-  ]
+  "timestamp": "2026-07-01T22:46:10.189040",
+  "total_matches_with_odds": 0,
+  "value_bets_count": 0,
+  "results": []
 }
