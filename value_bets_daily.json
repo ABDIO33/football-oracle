@@ -1,7 +1,92 @@
 {
-  "date": "2026-07-01",
-  "timestamp": "2026-07-01T22:46:10.189040",
-  "total_matches_with_odds": 0,
-  "value_bets_count": 0,
-  "results": []
+  "date": "2026-07-02",
+  "timestamp": "2026-07-02T08:29:39.260870",
+  "total_matches_with_odds": 2,
+  "value_bets_count": 4,
+  "results": [
+    {
+      "home": "Spain",
+      "away": "Austria",
+      "competition": "FIFA World Cup",
+      "date": "2026-07-02",
+      "prediction": {
+        "home_prob": 41.47,
+        "draw_prob": 27.86,
+        "away_prob": 30.67,
+        "predicted_score": "1-1",
+        "confidence": 13.29
+      },
+      "market_odds": {
+        "home_prob": 71.0,
+        "draw_prob": 19.6,
+        "away_prob": 9.4,
+        "bookmaker_count": 45,
+        "overround": 4.85
+      },
+      "value_bets": [
+        {
+          "outcome": "away",
+          "true_prob": 30.67,
+          "market_prob": 9.4,
+          "edge_pct": 226.28,
+          "fair_odds": 10.64,
+          "suggested_odds_cutoff": 3.26,
+          "kelly_fraction": 0.2348,
+          "verdict": "STRONG"
+        },
+        {
+          "outcome": "draw",
+          "true_prob": 27.86,
+          "market_prob": 19.6,
+          "edge_pct": 42.14,
+          "fair_odds": 5.1,
+          "suggested_odds_cutoff": 3.59,
+          "kelly_fraction": 0.1027,
+          "verdict": "STRONG"
+        }
+      ]
+    },
+    {
+      "home": "Portugal",
+      "away": "Croatia",
+      "competition": "FIFA World Cup",
+      "date": "2026-07-02",
+      "prediction": {
+        "home_prob": 37.95,
+        "draw_prob": 28.11,
+        "away_prob": 33.94,
+        "predicted_score": "1-1",
+        "confidence": 13.41
+      },
+      "market_odds": {
+        "home_prob": 55.07,
+        "draw_prob": 25.87,
+        "away_prob": 19.06,
+        "bookmaker_count": 45,
+        "overround": 4.61
+      },
+      "value_bets": [
+        {
+          "outcome": "away",
+          "true_prob": 33.94,
+          "market_prob": 19.06,
+          "edge_pct": 78.07,
+          "fair_odds": 5.25,
+          "suggested_odds_cutoff": 2.95,
+          "kelly_fraction": 0.1838,
+          "verdict": "STRONG"
+        },
+        {
+          "outcome": "draw",
+          "true_prob": 28.11,
+          "market_prob": 25.87,
+          "edge_pct": 8.66,
+          "fair_odds": 3.87,
+          "suggested_odds_cutoff": 3.56,
+          "kelly_fraction": 0.0302,
+          "verdict": "WEAK"
+        }
+      ]
+    }
+  ]
 }
