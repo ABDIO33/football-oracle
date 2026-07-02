@@ -1,6 +1,6 @@
 {
   "date": "2026-07-02",
-  "timestamp": "2026-07-02T15:40:23.430227",
+  "timestamp": "2026-07-02T18:57:45.812959",
   "total_matches_with_odds": 2,
   "value_bets_count": 4,
   "results": [
@@ -17,31 +17,31 @@
         "confidence": 13.29
       },
       "market_odds": {
-        "home_prob": 73.15,
-        "draw_prob": 18.36,
-        "away_prob": 8.49,
-        "bookmaker_count": 46,
-        "overround": 4.93
+        "home_prob": 70.33,
+        "draw_prob": 19.95,
+        "away_prob": 9.73,
+        "bookmaker_count": 47,
+        "overround": 4.83
       },
       "value_bets": [
         {
           "outcome": "away",
           "true_prob": 30.67,
-          "market_prob": 8.49,
-          "edge_pct": 261.25,
-          "fair_odds": 11.78,
+          "market_prob": 9.73,
+          "edge_pct": 215.21,
+          "fair_odds": 10.28,
           "suggested_odds_cutoff": 3.26,
-          "kelly_fraction": 0.2424,
+          "kelly_fraction": 0.232,
           "verdict": "STRONG"
         },
         {
           "outcome": "draw",
           "true_prob": 27.86,
-          "market_prob": 18.36,
-          "edge_pct": 51.74,
-          "fair_odds": 5.45,
+          "market_prob": 19.95,
+          "edge_pct": 39.65,
+          "fair_odds": 5.01,
           "suggested_odds_cutoff": 3.59,
-          "kelly_fraction": 0.1164,
+          "kelly_fraction": 0.0988,
           "verdict": "STRONG"
         }
       ]
@@ -59,31 +59,31 @@
         "confidence": 13.41
       },
       "market_odds": {
-        "home_prob": 56.53,
-        "draw_prob": 25.44,
-        "away_prob": 18.03,
-        "bookmaker_count": 46,
-        "overround": 4.76
+        "home_prob": 57.09,
+        "draw_prob": 25.37,
+        "away_prob": 17.54,
+        "bookmaker_count": 47,
+        "overround": 4.73
       },
       "value_bets": [
         {
           "outcome": "away",
           "true_prob": 33.94,
-          "market_prob": 18.03,
-          "edge_pct": 88.24,
-          "fair_odds": 5.55,
+          "market_prob": 17.54,
+          "edge_pct": 93.5,
+          "fair_odds": 5.7,
           "suggested_odds_cutoff": 2.95,
-          "kelly_fraction": 0.1941,
+          "kelly_fraction": 0.1989,
           "verdict": "STRONG"
         },
         {
           "outcome": "draw",
           "true_prob": 28.11,
-          "market_prob": 25.44,
-          "edge_pct": 10.5,
-          "fair_odds": 3.93,
+          "market_prob": 25.37,
+          "edge_pct": 10.8,
+          "fair_odds": 3.94,
           "suggested_odds_cutoff": 3.56,
-          "kelly_fraction": 0.0358,
+          "kelly_fraction": 0.0367,
           "verdict": "MODERATE"
         }
       ]
