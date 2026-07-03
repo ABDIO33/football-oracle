@@ -1,48 +1,38 @@
 {
-  "date": "2026-07-02",
-  "timestamp": "2026-07-02T22:36:48.975182",
+  "date": "2026-07-03",
+  "timestamp": "2026-07-03T08:34:12.511246",
   "total_matches_with_odds": 1,
-  "value_bets_count": 2,
+  "value_bets_count": 1,
   "results": [
     {
-      "home": "Portugal",
-      "away": "Croatia",
+      "home": "Australia",
+      "away": "Egypt",
       "competition": "FIFA World Cup",
-      "date": "2026-07-02",
+      "date": "2026-07-03",
       "prediction": {
-        "home_prob": 37.95,
-        "draw_prob": 28.11,
-        "away_prob": 33.94,
+        "home_prob": 35.22,
+        "draw_prob": 28.14,
+        "away_prob": 36.63,
         "predicted_score": "1-1",
-        "confidence": 13.41
+        "confidence": 13.43
       },
       "market_odds": {
-        "home_prob": 56.5,
-        "draw_prob": 25.91,
-        "away_prob": 17.59,
-        "bookmaker_count": 46,
-        "overround": 4.8
+        "home_prob": 26.44,
+        "draw_prob": 33.25,
+        "away_prob": 40.31,
+        "bookmaker_count": 47,
+        "overround": 4.6
       },
       "value_bets": [
         {
-          "outcome": "away",
-          "true_prob": 33.94,
-          "market_prob": 17.59,
-          "edge_pct": 92.95,
-          "fair_odds": 5.69,
-          "suggested_odds_cutoff": 2.95,
-          "kelly_fraction": 0.1984,
+          "outcome": "home",
+          "true_prob": 35.22,
+          "market_prob": 26.44,
+          "edge_pct": 33.21,
+          "fair_odds": 3.78,
+          "suggested_odds_cutoff": 2.84,
+          "kelly_fraction": 0.1194,
           "verdict": "STRONG"
-        },
-        {
-          "outcome": "draw",
-          "true_prob": 28.11,
-          "market_prob": 25.91,
-          "edge_pct": 8.49,
-          "fair_odds": 3.86,
-          "suggested_odds_cutoff": 3.56,
-          "kelly_fraction": 0.0297,
-          "verdict": "WEAK"
         }
       ]
     }
