@@ -1,40 +1,7 @@
 {
   "date": "2026-07-03",
-  "timestamp": "2026-07-03T15:34:29.436718",
-  "total_matches_with_odds": 1,
-  "value_bets_count": 1,
-  "results": [
-    {
-      "home": "Australia",
-      "away": "Egypt",
-      "competition": "FIFA World Cup",
-      "date": "2026-07-03",
-      "prediction": {
-        "home_prob": 35.22,
-        "draw_prob": 28.14,
-        "away_prob": 36.63,
-        "predicted_score": "1-1",
-        "confidence": 13.43
-      },
-      "market_odds": {
-        "home_prob": 26.44,
-        "draw_prob": 33.29,
-        "away_prob": 40.27,
-        "bookmaker_count": 46,
-        "overround": 4.77
-      },
-      "value_bets": [
-        {
-          "outcome": "home",
-          "true_prob": 35.22,
-          "market_prob": 26.44,
-          "edge_pct": 33.21,
-          "fair_odds": 3.78,
-          "suggested_odds_cutoff": 2.84,
-          "kelly_fraction": 0.1194,
-          "verdict": "STRONG"
-        }
-      ]
-    }
-  ]
+  "timestamp": "2026-07-03T18:46:06.036927",
+  "total_matches_with_odds": 0,
+  "value_bets_count": 0,
+  "results": []
 }
