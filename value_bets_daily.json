@@ -1,6 +1,6 @@
 {
   "date": "2026-07-03",
-  "timestamp": "2026-07-03T08:34:12.511246",
+  "timestamp": "2026-07-03T11:45:37.037939",
   "total_matches_with_odds": 1,
   "value_bets_count": 1,
   "results": [
@@ -17,21 +17,21 @@
         "confidence": 13.43
       },
       "market_odds": {
-        "home_prob": 26.44,
-        "draw_prob": 33.25,
-        "away_prob": 40.31,
-        "bookmaker_count": 47,
-        "overround": 4.6
+        "home_prob": 26.46,
+        "draw_prob": 33.24,
+        "away_prob": 40.3,
+        "bookmaker_count": 45,
+        "overround": 4.7
       },
       "value_bets": [
         {
           "outcome": "home",
           "true_prob": 35.22,
-          "market_prob": 26.44,
-          "edge_pct": 33.21,
+          "market_prob": 26.46,
+          "edge_pct": 33.11,
           "fair_odds": 3.78,
           "suggested_odds_cutoff": 2.84,
-          "kelly_fraction": 0.1194,
+          "kelly_fraction": 0.1191,
           "verdict": "STRONG"
         }
       ]
