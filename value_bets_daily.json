@@ -1,0 +1,82 @@
+{
+  "date": "2026-07-04",
+  "timestamp": "2026-07-04T08:10:58.239533",
+  "total_matches_with_odds": 2,
+  "value_bets_count": 3,
+  "results": [
+    {
+      "home": "Canada",
+      "away": "Morocco",
+      "competition": "FIFA World Cup",
+      "date": "2026-07-04",
+      "prediction": {
+        "home_prob": 34.21,
+        "draw_prob": 28.12,
+        "away_prob": 37.68,
+        "predicted_score": "1-1",
+        "confidence": 13.42
+      },
+      "market_odds": {
+        "home_prob": 18.69,
+        "draw_prob": 27.9,
+        "away_prob": 53.41,
+        "bookmaker_count": 47,
+        "overround": 4.6
+      },
+      "value_bets": [
+        {
+          "outcome": "home",
+          "true_prob": 34.21,
+          "market_prob": 18.69,
+          "edge_pct": 83.04,
+          "fair_odds": 5.35,
+          "suggested_odds_cutoff": 2.92,
+          "kelly_fraction": 0.1909,
+          "verdict": "STRONG"
+        }
+      ]
+    },
+    {
+      "home": "Paraguay",
+      "away": "France",
+      "competition": "FIFA World Cup",
+      "date": "2026-07-04",
+      "prediction": {
+        "home_prob": 29.4,
+        "draw_prob": 27.7,
+        "away_prob": 42.9,
+        "predicted_score": "1-1",
+        "confidence": 13.22
+      },
+      "market_odds": {
+        "home_prob": 5.5,
+        "draw_prob": 13.38,
+        "away_prob": 81.12,
+        "bookmaker_count": 47,
+        "overround": 4.55
+      },
+      "value_bets": [
+        {
+          "outcome": "home",
+          "true_prob": 29.4,
+          "market_prob": 5.5,
+          "edge_pct": 434.55,
+          "fair_odds": 18.18,
+          "suggested_odds_cutoff": 3.4,
+          "kelly_fraction": 0.25,
+          "verdict": "STRONG"
+        },
+        {
+          "outcome": "draw",
+          "true_prob": 27.7,
+          "market_prob": 13.38,
+          "edge_pct": 107.03,
+          "fair_odds": 7.47,
+          "suggested_odds_cutoff": 3.61,
+          "kelly_fraction": 0.1653,
+          "verdict": "STRONG"
+        }
+      ]
+    }
+  ]
+}
