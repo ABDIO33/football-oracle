@@ -1,0 +1,16 @@
+{
+  "app_key": "",
+  "username": "",
+  "password": "",
+  "cert_path": "C:\\Users\\zake.exe\\Desktop\\Score Exact 100\\football_predictor\\betfair_config\\certs\\betfair_client.crt",
+  "cert_key_path": "C:\\Users\\zake.exe\\Desktop\\Score Exact 100\\football_predictor\\betfair_config\\certs\\betfair_client.key",
+  "use_ssl": true,
+  "timeout": 30,
+  "max_retries": 3,
+  "retry_delay": 5,
+  "endpoints": {
+    "identity": "https://identitysso-api.betfair.com",
+    "api": "https://api.betfair.com/exchange/",
+    "navigation": "https://api.betfair.com/exchange/betting/rest/v1.0/"
+  }
+}

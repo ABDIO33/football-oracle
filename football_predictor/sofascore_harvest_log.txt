@@ -1,0 +1,352 @@
+============================================================
+SOFASCORE MASS HARVESTER V2
+Quick mode: False
+============================================================
+
+==================================================
+  England Premier League (tid=17, sid=96668)
+==================================================
+  [OK] 38 rounds available
+  [..] Round 10/38: 100 matches so far...
+  [..] Round 20/38: 200 matches so far...
+  [..] Round 30/38: 300 matches so far...
+  [OK] FINAL: 380 matches, 0 errors
+
+==================================================
+  England Championship (tid=18, sid=97037)
+==================================================
+  [OK] 46 rounds available
+  [..] Round 10/46: 120 matches so far...
+  [..] Round 20/46: 240 matches so far...
+  [..] Round 30/46: 360 matches so far...
+  [..] Round 40/46: 480 matches so far...
+  [OK] FINAL: 552 matches, 0 errors
+
+==================================================
+  England League One (tid=24, sid=97077)
+==================================================
+  [OK] 42 rounds available
+  [..] Round 10/42: 120 matches so far...
+  [..] Round 20/42: 240 matches so far...
+  [..] Round 30/42: 360 matches so far...
+  [..] Round 40/42: 480 matches so far...
+  [OK] FINAL: 500 matches, 0 errors
+
+==================================================
+  England League Two (tid=25, sid=97078)
+==================================================
+  [OK] 24 rounds available
+  [..] Round 10/24: 120 matches so far...
+  [..] Round 20/24: 240 matches so far...
+  [OK] FINAL: 285 matches, 0 errors
+
+==================================================
+  Italy Serie A (tid=23, sid=95836)
+==================================================
+  [OK] 38 rounds available
+  [..] Round 10/38: 100 matches so far...
+  [..] Round 20/38: 200 matches so far...
+  [..] Round 30/38: 300 matches so far...
+  [OK] FINAL: 380 matches, 0 errors
+
+==================================================
+  Italy Serie B (tid=53, sid=79502)
+==================================================
+  [OK] 41 rounds available
+  [..] Round 10/41: 101 matches so far...
+  [..] Round 20/41: 201 matches so far...
+  [..] Round 30/41: 301 matches so far...
+  [..] Round 40/41: 402 matches so far...
+  [OK] FINAL: 412 matches, 0 errors
+
+==================================================
+  Spain La Liga (tid=8, sid=77559)
+==================================================
+  [OK] 38 rounds available
+  [..] Round 10/38: 101 matches so far...
+  [..] Round 20/38: 202 matches so far...
+  [..] Round 30/38: 303 matches so far...
+  [OK] FINAL: 383 matches, 0 errors
+
+==================================================
+  Spain La Liga 2 (tid=1476, sid=77994)
+==================================================
+  [OK] 32 rounds available
+  [..] Round 10/32: 81 matches so far...
+  [..] Round 20/32: 166 matches so far...
+  [..] Round 30/32: 247 matches so far...
+  [OK] FINAL: 263 matches, 0 errors
+
+==================================================
+  Germany Bundesliga (tid=35, sid=77333)
+==================================================
+  [OK] 35 rounds available
+  [..] Round 10/35: 90 matches so far...
+  [..] Round 20/35: 183 matches so far...
+  [..] Round 30/35: 273 matches so far...
+  [OK] FINAL: 318 matches, 0 errors
+
+==================================================
+  Germany 2. Bundesliga (tid=44, sid=77354)
+==================================================
+  [OK] 35 rounds available
+  [..] Round 10/35: 90 matches so far...
+  [..] Round 20/35: 180 matches so far...
+  [..] Round 30/35: 270 matches so far...
+  [OK] FINAL: 315 matches, 0 errors
+
+==================================================
+  Germany 3. Liga (tid=491, sid=96691)
+==================================================
+  [!] No rounds found
+
+==================================================
+  France Ligue 1 (tid=34, sid=96127)
+==================================================
+  [OK] 34 rounds available
+  [..] Round 10/34: 90 matches so far...
+  [..] Round 20/34: 180 matches so far...
+  [..] Round 30/34: 270 matches so far...
+  [OK] FINAL: 306 matches, 0 errors
+
+==================================================
+  France Ligue 2 (tid=182, sid=96109)
+==================================================
+  [OK] 34 rounds available
+  [..] Round 10/34: 91 matches so far...
+  [..] Round 20/34: 181 matches so far...
+  [..] Round 30/34: 270 matches so far...
+  [OK] FINAL: 306 matches, 0 errors
+
+==================================================
+  Netherlands Eredivisie (tid=37, sid=96143)
+==================================================
+  [OK] 34 rounds available
+  [..] Round 10/34: 90 matches so far...
+  [..] Round 20/34: 180 matches so far...
+  [..] Round 30/34: 270 matches so far...
+  [OK] FINAL: 306 matches, 0 errors
+
+==================================================
+  Portugal Liga Portugal (tid=238, sid=77806)
+==================================================
+  [OK] 35 rounds available
+  [..] Round 10/35: 90 matches so far...
+  [..] Round 20/35: 181 matches so far...
+  [..] Round 30/35: 272 matches so far...
+  [OK] FINAL: 317 matches, 0 errors
+
+==================================================
+  Europe UEFA Champions League (tid=7, sid=96758)
+==================================================
+  [OK] 11 rounds available
+  [OK] FINAL: 96 matches, 3 errors
+
+==================================================
+  Europe UEFA Europa League (tid=679, sid=97010)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Europe UEFA Conference League (tid=17015, sid=97011)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Scotland Premiership (tid=36, sid=96658)
+==================================================
+  [OK] 33 rounds available
+  [..] Round 10/33: 60 matches so far...
+  [..] Round 20/33: 120 matches so far...
+  [..] Round 30/33: 180 matches so far...
+  [OK] FINAL: 198 matches, 0 errors
+
+==================================================
+  Belgium Pro League (tid=38, sid=96616)
+==================================================
+  [OK] 34 rounds available
+  [..] Round 10/34: 90 matches so far...
+  [..] Round 20/34: 180 matches so far...
+  [..] Round 30/34: 270 matches so far...
+  [OK] FINAL: 306 matches, 0 errors
+
+==================================================
+  Belgium Challenger Pro League (tid=9, sid=96991)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Turkey Super Lig (tid=52, sid=77805)
+==================================================
+  [OK] 34 rounds available
+  [..] Round 10/34: 96 matches so far...
+  [..] Round 20/34: 186 matches so far...
+  [..] Round 30/34: 278 matches so far...
+  [OK] FINAL: 314 matches, 0 errors
+
+==================================================
+  Russia Premier League (tid=203, sid=97023)
+==================================================
+  [OK] 30 rounds available
+  [..] Round 10/30: 80 matches so far...
+  [..] Round 20/30: 160 matches so far...
+  [..] Round 30/30: 240 matches so far...
+  [OK] FINAL: 240 matches, 0 errors
+
+==================================================
+  Austria Bundesliga (tid=46, sid=96130)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Switzerland Super League (tid=215, sid=96589)
+==================================================
+  [OK] 22 rounds available
+  [..] Round 10/22: 60 matches so far...
+  [..] Round 20/22: 120 matches so far...
+  [OK] FINAL: 132 matches, 0 errors
+
+==================================================
+  Denmark Superliga (tid=39, sid=96650)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Sweden Allsvenskan (tid=51, sid=96655)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Norway Eliteserien (tid=55, sid=96654)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Poland Ekstraklasa (tid=60, sid=97025)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Czech Republic First League (tid=172, sid=96966)
+==================================================
+  [OK] 1 rounds available
+  [OK] FINAL: 8 matches, 0 errors
+
+==================================================
+  Greece Super League (tid=67, sid=96669)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Croatia HNL (tid=56, sid=96897)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Romania Liga I (tid=54, sid=96997)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Bulgaria First League (tid=65, sid=97026)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Serbia SuperLiga (tid=64, sid=97027)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Ukraine Premier League (tid=218, sid=77625)
+==================================================
+  [OK] 31 rounds available
+  [..] Round 10/31: 80 matches so far...
+  [..] Round 20/31: 160 matches so far...
+  [..] Round 30/31: 241 matches so far...
+  [OK] FINAL: 249 matches, 0 errors
+
+==================================================
+  Hungary NB I (tid=66, sid=97030)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Brazil Serie A (tid=48, sid=96657)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Brazil Serie B (tid=390, sid=89840)
+==================================================
+  [OK] 38 rounds available
+  [..] Round 10/38: 101 matches so far...
+  [..] Round 20/38: 202 matches so far...
+  [..] Round 30/38: 302 matches so far...
+  [OK] FINAL: 382 matches, 0 errors
+
+==================================================
+  Argentina Primera Division (tid=22, sid=96760)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Chile Primera Division (tid=30, sid=96670)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Colombia Primera A (tid=33, sid=96660)
+==================================================
+  [!] No rounds found
+
+==================================================
+  USA MLS (tid=42, sid=96128)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Mexico Liga MX (tid=319, sid=96659)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Japan J1 League (tid=79, sid=96663)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Japan J2 League (tid=318, sid=96888)
+==================================================
+  [!] No rounds found
+
+==================================================
+  South Korea K League 1 (tid=78, sid=96664)
+==================================================
+  [!] No rounds found
+
+==================================================
+  China Super League (tid=80, sid=96665)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Saudi Arabia Pro League (tid=955, sid=96662)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Australia A-League (tid=75, sid=96661)
+==================================================
+  [!] No rounds found
+
+==================================================
+  Netherlands Eerste Divisie (tid=59, sid=96317)
+==================================================
+  [!] No rounds found
+  DB: 8248 rows from 27 leagues
+
+============================================================
+TOTAL: 8248 matches in source_sofascore_extended
+Time: 525s
+============================================================

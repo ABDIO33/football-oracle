@@ -1,0 +1,13 @@
+{
+  "name": "pi-web-ui-v3",
+  "version": "3.0.0",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "express": "^4.21.0",
+    "ws": "^8.18.0",
+    "marked": "^15.0.0",
+    "highlight.js": "^11.11.0"
+  }
+}

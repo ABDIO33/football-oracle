@@ -1,0 +1,438 @@
+[01:01:35] ============================================================
+[01:01:35] ALT MASS REGISTRATION - KEYS ON PAGE
+[01:01:35] ============================================================
+[01:01:35] Existing: HF=0, EX=0, AN=0
+[01:01:35] Captured keys: 0
+[01:01:36] 
+--- HuggingFace (200 targets) ---
+[01:01:39] KEY HF hf1: n0wSQlta6TsdfYwJvGAkixiylnqbRL...
+[01:01:41] KEY HF hf2: zQRGGlzyeF8aqubdDpS0yWPuFbeB1z...
+[01:01:43] OK HF hf3 (no key on page)
+[01:01:44] KEY HF hf4: hOBI63dP43KiYEtEnbn2N6SQoBD4mA...
+[01:01:46] OK HF hf5 (no key on page)
+[01:01:48] KEY HF hf6: V73YAzqoslbW33yg66fLIyC7Z0Yr9R...
+[01:01:50] KEY HF hf7: U4BEnZHIpt1nN51p1rkTIhwXJCqlF2...
+[01:01:52] OK HF hf8 (no key on page)
+[01:01:54] OK HF hf9 (no key on page)
+[01:01:56] KEY HF hf10: wbMFw3gfJSP0eo6nxWTyhLrjXlzv1r...
+[01:01:58] KEY HF hf11: xXnm8cHRrHcIWt3tyxwPnEE347Q0hy...
+[01:02:00] OK HF hf12 (no key on page)
+[01:02:01] OK HF hf13 (no key on page)
+[01:02:03] KEY HF hf14: hklD108suqBGYIP6hEjHXvgWCPexOW...
+[01:02:05] KEY HF hf15: Vy2Msi8cMifJUup7KdSCaxj9FzE0Xf...
+[01:02:07] KEY HF hf16: kBNWHIFAsYVrtRGw0khhcGRCtPfMbn...
+[01:02:09] KEY HF hf17: yfWgjSf8tVAJhU1DbdlhHjdjaY1Wne...
+[01:02:11] KEY HF hf18: WISpz24HLiiMIi7UZMI0JmTTpVxyzQ...
+[01:02:13] OK HF hf19 (no key on page)
+[01:02:15] OK HF hf20 (no key on page)
+[01:02:15]   HF 20/200
+[01:02:16] OK HF hf21 (no key on page)
+[01:02:18] OK HF hf22 (no key on page)
+[01:02:20] OK HF hf23 (no key on page)
+[01:02:22] OK HF hf24 (no key on page)
+[01:02:24] OK HF hf25 (no key on page)
+[01:02:26] OK HF hf26 (no key on page)
+[01:02:28] OK HF hf27 (no key on page)
+[01:02:30] OK HF hf28 (no key on page)
+[01:02:32] OK HF hf29 (no key on page)
+[01:02:33] OK HF hf30 (no key on page)
+[01:02:35] OK HF hf31 (no key on page)
+[01:02:37] OK HF hf32 (no key on page)
+[01:02:39] OK HF hf33 (no key on page)
+[01:02:41] OK HF hf34 (no key on page)
+[01:02:43] OK HF hf35 (no key on page)
+[01:02:45] OK HF hf36 (no key on page)
+[01:02:47] OK HF hf37 (no key on page)
+[01:02:48] OK HF hf38 (no key on page)
+[01:02:50] OK HF hf39 (no key on page)
+[01:02:52] OK HF hf40 (no key on page)
+[01:02:53]   HF 40/200
+[01:02:54] OK HF hf41 (no key on page)
+[01:02:56] OK HF hf42 (no key on page)
+[01:02:58] OK HF hf43 (no key on page)
+[01:03:00] OK HF hf44 (no key on page)
+[01:03:02] OK HF hf45 (no key on page)
+[01:03:04] OK HF hf46 (no key on page)
+[01:03:06] OK HF hf47 (no key on page)
+[01:03:07] OK HF hf48 (no key on page)
+[01:03:09] OK HF hf49 (no key on page)
+[01:03:11] OK HF hf50 (no key on page)
+[01:03:13] OK HF hf51 (no key on page)
+[01:03:14] OK HF hf52 (no key on page)
+[01:03:16] OK HF hf53 (no key on page)
+[01:03:18] OK HF hf54 (no key on page)
+[01:03:20] OK HF hf55 (no key on page)
+[01:03:22] OK HF hf56 (no key on page)
+[01:03:24] OK HF hf57 (no key on page)
+[01:03:25] OK HF hf58 (no key on page)
+[01:03:27] OK HF hf59 (no key on page)
+[01:03:29] OK HF hf60 (no key on page)
+[01:03:30]   HF 60/200
+[01:03:31] OK HF hf61 (no key on page)
+[01:03:33] OK HF hf62 (no key on page)
+[01:03:35] OK HF hf63 (no key on page)
+[01:03:37] OK HF hf64 (no key on page)
+[01:03:39] OK HF hf65 (no key on page)
+[01:03:41] OK HF hf66 (no key on page)
+[01:03:43] OK HF hf67 (no key on page)
+[01:03:45] OK HF hf68 (no key on page)
+[01:03:47] OK HF hf69 (no key on page)
+[01:03:49] OK HF hf70 (no key on page)
+[01:03:51] OK HF hf71 (no key on page)
+[01:03:53] OK HF hf72 (no key on page)
+[01:03:54] OK HF hf73 (no key on page)
+[01:03:56] OK HF hf74 (no key on page)
+[01:03:58] OK HF hf75 (no key on page)
+[01:04:00] OK HF hf76 (no key on page)
+[01:04:02] OK HF hf77 (no key on page)
+[01:04:03] OK HF hf78 (no key on page)
+[01:04:05] OK HF hf79 (no key on page)
+[01:04:07] OK HF hf80 (no key on page)
+[01:04:08]   HF 80/200
+[01:04:09] OK HF hf81 (no key on page)
+[01:04:11] OK HF hf82 (no key on page)
+[01:04:13] OK HF hf83 (no key on page)
+[01:04:14] OK HF hf84 (no key on page)
+[01:04:16] OK HF hf85 (no key on page)
+[01:04:18] OK HF hf86 (no key on page)
+[01:04:20] OK HF hf87 (no key on page)
+[01:04:22] OK HF hf88 (no key on page)
+[01:04:23] OK HF hf89 (no key on page)
+[01:04:25] OK HF hf90 (no key on page)
+[01:04:27] OK HF hf91 (no key on page)
+[01:04:29] OK HF hf92 (no key on page)
+[01:04:31] OK HF hf93 (no key on page)
+[01:04:33] OK HF hf94 (no key on page)
+[01:04:35] OK HF hf95 (no key on page)
+[01:04:37] OK HF hf96 (no key on page)
+[01:04:39] OK HF hf97 (no key on page)
+[01:04:41] OK HF hf98 (no key on page)
+[01:04:42] OK HF hf99 (no key on page)
+[01:04:44] OK HF hf100 (no key on page)
+[01:04:45]   HF 100/200
+[01:04:46] OK HF hf101 (no key on page)
+[01:04:48] OK HF hf102 (no key on page)
+[01:04:50] OK HF hf103 (no key on page)
+[01:04:52] OK HF hf104 (no key on page)
+[01:04:54] OK HF hf105 (no key on page)
+[01:04:55] OK HF hf106 (no key on page)
+[01:04:57] OK HF hf107 (no key on page)
+[01:04:59] OK HF hf108 (no key on page)
+[01:05:01] OK HF hf109 (no key on page)
+[01:05:03] OK HF hf110 (no key on page)
+[01:05:05] OK HF hf111 (no key on page)
+[01:05:07] OK HF hf112 (no key on page)
+[01:05:09] OK HF hf113 (no key on page)
+[01:05:11] OK HF hf114 (no key on page)
+[01:05:13] OK HF hf115 (no key on page)
+[01:05:15] OK HF hf116 (no key on page)
+[01:05:17] OK HF hf117 (no key on page)
+[01:05:18] OK HF hf118 (no key on page)
+[01:05:20] OK HF hf119 (no key on page)
+[01:05:22] OK HF hf120 (no key on page)
+[01:05:22]   HF 120/200
+[01:05:24] OK HF hf121 (no key on page)
+[01:05:26] OK HF hf122 (no key on page)
+[01:05:28] OK HF hf123 (no key on page)
+[01:05:30] OK HF hf124 (no key on page)
+[01:05:32] OK HF hf125 (no key on page)
+[01:05:34] OK HF hf126 (no key on page)
+[01:05:36] OK HF hf127 (no key on page)
+[01:05:38] OK HF hf128 (no key on page)
+[01:05:40] OK HF hf129 (no key on page)
+[01:05:41] OK HF hf130 (no key on page)
+[01:05:43] OK HF hf131 (no key on page)
+[01:05:45] OK HF hf132 (no key on page)
+[01:05:47] OK HF hf133 (no key on page)
+[01:05:49] OK HF hf134 (no key on page)
+[01:05:50] OK HF hf135 (no key on page)
+[01:05:52] OK HF hf136 (no key on page)
+[01:05:54] OK HF hf137 (no key on page)
+[01:05:56] OK HF hf138 (no key on page)
+[01:05:58] OK HF hf139 (no key on page)
+[01:06:00] OK HF hf140 (no key on page)
+[01:06:00]   HF 140/200
+[01:06:01] OK HF hf141 (no key on page)
+[01:06:03] OK HF hf142 (no key on page)
+[01:06:05] OK HF hf143 (no key on page)
+[01:06:07] OK HF hf144 (no key on page)
+[01:06:09] OK HF hf145 (no key on page)
+[01:06:11] OK HF hf146 (no key on page)
+[01:06:13] OK HF hf147 (no key on page)
+[01:06:15] OK HF hf148 (no key on page)
+[01:06:16] OK HF hf149 (no key on page)
+[01:06:18] OK HF hf150 (no key on page)
+[01:06:20] OK HF hf151 (no key on page)
+[01:06:22] OK HF hf152 (no key on page)
+[01:06:24] OK HF hf153 (no key on page)
+[01:06:26] OK HF hf154 (no key on page)
+[01:06:28] OK HF hf155 (no key on page)
+[01:06:30] OK HF hf156 (no key on page)
+[01:06:31] OK HF hf157 (no key on page)
+[01:06:33] OK HF hf158 (no key on page)
+[01:06:35] OK HF hf159 (no key on page)
+[01:06:36] OK HF hf160 (no key on page)
+[01:06:37]   HF 160/200
+[01:06:39] OK HF hf161 (no key on page)
+[01:06:42] OK HF hf162 (no key on page)
+[01:06:45] OK HF hf163 (no key on page)
+[01:06:46] OK HF hf164 (no key on page)
+[01:06:48] OK HF hf165 (no key on page)
+[01:06:50] OK HF hf166 (no key on page)
+[01:06:52] OK HF hf167 (no key on page)
+[01:06:54] OK HF hf168 (no key on page)
+[01:06:56] OK HF hf169 (no key on page)
+[01:06:58] OK HF hf170 (no key on page)
+[01:07:00] OK HF hf171 (no key on page)
+[01:07:02] OK HF hf172 (no key on page)
+[01:07:04] OK HF hf173 (no key on page)
+[01:07:06] OK HF hf174 (no key on page)
+[01:07:08] OK HF hf175 (no key on page)
+[01:07:10] OK HF hf176 (no key on page)
+[01:07:12] OK HF hf177 (no key on page)
+[01:07:14] OK HF hf178 (no key on page)
+[01:07:16] OK HF hf179 (no key on page)
+[01:07:18] OK HF hf180 (no key on page)
+[01:07:18]   HF 180/200
+[01:07:20] OK HF hf181 (no key on page)
+[01:07:21] OK HF hf182 (no key on page)
+[01:07:23] OK HF hf183 (no key on page)
+[01:07:26] OK HF hf184 (no key on page)
+[01:07:28] OK HF hf185 (no key on page)
+[01:07:30] OK HF hf186 (no key on page)
+[01:07:31] OK HF hf187 (no key on page)
+[01:07:34] OK HF hf188 (no key on page)
+[01:07:35] OK HF hf189 (no key on page)
+[01:07:37] OK HF hf190 (no key on page)
+[01:07:39] OK HF hf191 (no key on page)
+[01:07:41] OK HF hf192 (no key on page)
+[01:07:43] OK HF hf193 (no key on page)
+[01:07:45] OK HF hf194 (no key on page)
+[01:07:47] OK HF hf195 (no key on page)
+[01:07:49] OK HF hf196 (no key on page)
+[01:07:50] OK HF hf197 (no key on page)
+[01:07:52] OK HF hf198 (no key on page)
+[01:07:54] OK HF hf199 (no key on page)
+[01:07:56] OK HF hf200 (no key on page)
+[01:07:56]   HF 200/200
+[01:07:56] 
+--- ExchangeRate (200 targets) ---
+[01:07:58] OK EX ex1
+[01:08:00] OK EX ex2
+[01:08:02] OK EX ex3
+[01:08:03] OK EX ex4
+[01:08:05] OK EX ex5
+[01:08:06] OK EX ex6
+[01:08:08] OK EX ex7
+[01:08:10] OK EX ex8
+[01:08:12] OK EX ex9
+[01:08:14] OK EX ex10
+[01:08:15] OK EX ex11
+[01:08:17] OK EX ex12
+[01:08:19] OK EX ex13
+[01:08:21] OK EX ex14
+[01:08:22] OK EX ex15
+[01:08:24] OK EX ex16
+[01:08:26] OK EX ex17
+[01:08:28] OK EX ex18
+[01:08:30] OK EX ex19
+[01:08:31] OK EX ex20
+[01:08:32]   EX 20/200
+[01:08:33] OK EX ex21
+[01:08:35] OK EX ex22
+[01:08:37] OK EX ex23
+[01:08:38] OK EX ex24
+[01:08:40] OK EX ex25
+[01:08:41] OK EX ex26
+[01:08:43] OK EX ex27
+[01:08:45] OK EX ex28
+[01:08:47] OK EX ex29
+[01:08:48] OK EX ex30
+[01:08:50] OK EX ex31
+[01:08:51] OK EX ex32
+[01:08:53] OK EX ex33
+[01:08:54] OK EX ex34
+[01:08:56] OK EX ex35
+[01:08:58] OK EX ex36
+[01:08:59] OK EX ex37
+[01:09:01] OK EX ex38
+[01:09:02] OK EX ex39
+[01:09:04] OK EX ex40
+[01:09:05]   EX 40/200
+[01:09:06] OK EX ex41
+[01:09:07] OK EX ex42
+[01:09:09] OK EX ex43
+[01:09:11] OK EX ex44
+[01:09:13] OK EX ex45
+[01:09:14] OK EX ex46
+[01:09:16] OK EX ex47
+[01:09:17] OK EX ex48
+[01:09:19] OK EX ex49
+[01:09:21] OK EX ex50
+[01:09:22] OK EX ex51
+[01:09:24] OK EX ex52
+[01:09:26] OK EX ex53
+[01:09:27] OK EX ex54
+[01:09:29] OK EX ex55
+[01:09:31] OK EX ex56
+[01:09:33] OK EX ex57
+[01:09:34] OK EX ex58
+[01:09:36] OK EX ex59
+[01:09:38] OK EX ex60
+[01:09:39]   EX 60/200
+[01:09:40] OK EX ex61
+[01:09:41] OK EX ex62
+[01:09:43] OK EX ex63
+[01:09:45] OK EX ex64
+[01:09:46] OK EX ex65
+[01:09:48] OK EX ex66
+[01:09:50] OK EX ex67
+[01:09:52] OK EX ex68
+[01:09:54] OK EX ex69
+[01:09:56] OK EX ex70
+[01:09:57] OK EX ex71
+[01:09:59] OK EX ex72
+[01:10:01] OK EX ex73
+[01:10:03] OK EX ex74
+[01:10:04] OK EX ex75
+[01:10:06] OK EX ex76
+[01:10:08] OK EX ex77
+[01:10:10] OK EX ex78
+[01:10:12] OK EX ex79
+[01:10:13] OK EX ex80
+[01:10:14]   EX 80/200
+[01:10:15] OK EX ex81
+[01:10:17] OK EX ex82
+[01:10:19] OK EX ex83
+[01:10:20] OK EX ex84
+[01:10:22] OK EX ex85
+[01:10:24] OK EX ex86
+[01:10:26] OK EX ex87
+[01:10:27] OK EX ex88
+[01:10:29] OK EX ex89
+[01:10:31] OK EX ex90
+[01:10:33] OK EX ex91
+[01:10:35] OK EX ex92
+[01:10:36] OK EX ex93
+[01:10:38] OK EX ex94
+[01:10:40] OK EX ex95
+[01:10:41] OK EX ex96
+[01:10:43] OK EX ex97
+[01:10:45] OK EX ex98
+[01:10:47] OK EX ex99
+[01:10:49] OK EX ex100
+[01:10:49]   EX 100/200
+[01:10:50] OK EX ex101
+[01:10:52] OK EX ex102
+[01:10:54] OK EX ex103
+[01:10:56] OK EX ex104
+[01:10:58] OK EX ex105
+[01:10:59] OK EX ex106
+[01:11:01] OK EX ex107
+[01:11:03] OK EX ex108
+[01:11:05] OK EX ex109
+[01:11:06] OK EX ex110
+[01:11:08] OK EX ex111
+[01:11:10] OK EX ex112
+[01:11:12] OK EX ex113
+[01:11:14] OK EX ex114
+[01:11:15] OK EX ex115
+[01:11:17] OK EX ex116
+[01:11:18] OK EX ex117
+[01:11:20] OK EX ex118
+[01:11:22] OK EX ex119
+[01:11:23] OK EX ex120
+[01:11:24]   EX 120/200
+[01:11:25] OK EX ex121
+[01:11:27] OK EX ex122
+[01:11:28] OK EX ex123
+[01:11:30] OK EX ex124
+[01:11:32] OK EX ex125
+[01:11:34] OK EX ex126
+[01:11:35] OK EX ex127
+[01:11:37] OK EX ex128
+[01:11:39] OK EX ex129
+[01:11:40] OK EX ex130
+[01:11:42] OK EX ex131
+[01:11:44] OK EX ex132
+[01:11:46] OK EX ex133
+[01:11:48] OK EX ex134
+[01:11:49] OK EX ex135
+[01:11:51] OK EX ex136
+[01:11:53] OK EX ex137
+[01:11:54] OK EX ex138
+[01:11:56] OK EX ex139
+[01:11:58] OK EX ex140
+[01:11:58]   EX 140/200
+[01:12:00] OK EX ex141
+[01:12:01] OK EX ex142
+[01:12:03] OK EX ex143
+[01:12:05] OK EX ex144
+[01:12:07] OK EX ex145
+[01:12:08] OK EX ex146
+[01:12:10] OK EX ex147
+[01:12:12] OK EX ex148
+[01:12:13] OK EX ex149
+[01:12:15] OK EX ex150
+[01:12:17] OK EX ex151
+[01:12:19] OK EX ex152
+[01:12:20] OK EX ex153
+[01:12:22] OK EX ex154
+[01:12:24] OK EX ex155
+[01:12:25] OK EX ex156
+[01:12:27] OK EX ex157
+[01:12:29] OK EX ex158
+[01:12:31] OK EX ex159
+[01:12:32] OK EX ex160
+[01:12:33]   EX 160/200
+[01:12:34] OK EX ex161
+[01:12:36] OK EX ex162
+[01:12:38] OK EX ex163
+[01:12:39] OK EX ex164
+[01:12:41] OK EX ex165
+[01:12:43] OK EX ex166
+[01:12:45] OK EX ex167
+[01:12:46] OK EX ex168
+[01:12:48] OK EX ex169
+[01:12:50] OK EX ex170
+[01:12:51] OK EX ex171
+[01:12:53] OK EX ex172
+[01:12:55] OK EX ex173
+[01:12:57] OK EX ex174
+[01:12:58] OK EX ex175
+[01:13:00] OK EX ex176
+[01:13:02] OK EX ex177
+[01:13:04] OK EX ex178
+[01:13:05] OK EX ex179
+[01:13:07] OK EX ex180
+[01:13:08]   EX 180/200
+[01:13:09] OK EX ex181
+[01:13:10] OK EX ex182
+[01:13:12] OK EX ex183
+[01:13:14] OK EX ex184
+[01:13:15] OK EX ex185
+[01:13:17] OK EX ex186
+[01:13:19] OK EX ex187
+[01:13:21] OK EX ex188
+[01:13:22] OK EX ex189
+[01:13:24] OK EX ex190
+[01:13:26] OK EX ex191
+[01:13:27] OK EX ex192
+[01:13:29] OK EX ex193
+[01:13:31] OK EX ex194
+[01:13:33] OK EX ex195
+[01:13:34] OK EX ex196
+[01:13:36] OK EX ex197
+[01:13:37] OK EX ex198
+[01:13:39] OK EX ex199
+[01:13:41] OK EX ex200
+[01:13:42]   EX 200/200
+[01:13:42] 
+--- API Ninjas (200 targets) ---
+[01:24:39]   AN 20/200
+[01:35:36]   AN 40/200
+[01:46:34]   AN 60/200
+[01:48:23]   AN 80/200
+[01:57:04]   AN 100/200
+[02:08:00]   AN 120/200
+[02:18:57]   AN 140/200

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pi — أنا هنا</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a12;--surface:#111120;--card:#16162b;--border:#2a2a45;
+  --text:#e8e8f0;--dim:#8888aa;--accent:#7c5cfc;--green:#00d4aa;
+  --red:#ff4477;--orange:#ff8844;--blue:#4488ff;--think:#5555aa;
+  --font:'Noto Sans Arabic',system-ui,sans-serif;--mono:'JetBrains Mono',mono;
+}
+html,body{height:100%;overflow:hidden}
+body{font-family:var(--font);background:var(--bg);color:var(--text);display:flex;flex-direction:column}
+
+/* Header */
+header{display:flex;align-items:center;gap:12px;padding:8px 18px;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0}
+header h1{font-size:1rem;font-weight:700;background:linear-gradient(135deg,#fff,var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.badge{font-size:.7rem;padding:2px 10px;border-radius:12px;background:var(--card);border:1px solid var(--border);color:var(--dim)}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-left:6px}
+.dot.on{background:var(--green);box-shadow:0 0 8px var(--green)}
+.dot.off{background:var(--red)}
+.spacer{flex:1}
+
+/* Chat */
+#chat{flex:1;overflow-y:auto;padding:14px 16px 6px;scroll-behavior:smooth}
+#chat::-webkit-scrollbar{width:4px}
+#chat::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+
+.msg{display:flex;margin-bottom:10px;animation:fade .2s}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.msg.user{justify-content:flex-start}
+.msg.assistant{justify-content:flex-end}
+
+.bubble{max-width:88%;padding:9px 13px;border-radius:12px;line-height:1.7;font-size:.9rem;word-wrap:break-word}
+.msg.user .bubble{background:linear-gradient(135deg,var(--accent),#5a3cdc);color:#fff;border-bottom-right-radius:3px}
+.msg.assistant .bubble{background:var(--card);border:1px solid var(--border);border-bottom-left-radius:3px;direction:ltr;text-align:left}
+.msg.assistant.rtl .bubble{direction:rtl;text-align:right}
+.msg.system .bubble{background:transparent;border:1px dashed var(--border);text-align:center;color:var(--dim);font-size:.8rem;max-width:100%}
+
+.bubble h1,.bubble h2,.bubble h3{margin:8px 0 5px;color:var(--green);font-size:1rem}
+.bubble h1{font-size:1.1rem}
+.bubble p{margin:3px 0}
+.bubble ul,.bubble ol{padding-right:18px;margin:3px 0}
+.bubble blockquote{border-right:3px solid var(--accent);padding-right:10px;color:var(--dim);margin:5px 0}
+.bubble code{background:rgba(0,0,0,.4);padding:1px 5px;border-radius:4px;font-family:var(--mono);font-size:.8rem;color:var(--green);direction:ltr;display:inline-block;text-align:left}
+.bubble pre{background:#0a0a12;border:1px solid var(--border);border-radius:6px;padding:10px;margin:6px 0;overflow-x:auto;direction:ltr;text-align:left}
+.bubble pre code{background:none;padding:0}
+.bubble a{color:var(--green)}
+.bubble table{border-collapse:collapse;margin:4px 0;width:100%}
+.bubble th,.bubble td{border:1px solid var(--border);padding:3px 7px;text-align:right}
+.bubble th{background:var(--surface)}
+.bubble hr{border:none;border-top:1px solid var(--border);margin:8px 0}
+
+/* Thinking */
+.think-block{background:rgba(85,85,170,.08);border:1px solid var(--think);border-radius:8px;padding:6px 10px;margin:4px 0 8px;font-size:.8rem;direction:ltr;text-align:left;cursor:pointer;user-select:none}
+.think-block .think-label{color:var(--think);font-size:.75rem;display:flex;gap:4px;align-items:center}
+.think-block .think-body{display:none;margin-top:4px;color:var(--dim);font-family:var(--mono);font-size:.72rem;white-space:pre-wrap;line-height:1.5}
+.think-block.open .think-body{display:block}
+
+/* Thinking dots */
+.thinking{display:flex;gap:3px;justify-content:flex-end;margin-bottom:8px}
+.thinking span{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:hop 1.2s infinite}
+.thinking span:nth-child(2){animation-delay:.2s}
+.thinking span:nth-child(3){animation-delay:.4s}
+@keyframes hop{0%,80%,100%{transform:scale(.5);opacity:.3}40%{transform:scale(1);opacity:1}}
+
+/* Tool calls */
+.tool-calls{margin-top:4px;border-top:1px solid var(--border);padding-top:4px}
+.tool-call{background:rgba(0,0,0,.2);border-radius:5px;margin:2px 0;padding:4px 8px;font-size:.76rem;direction:ltr;text-align:left}
+.tool-call .tch{display:flex;align-items:center;gap:5px;cursor:pointer;user-select:none;color:var(--dim)}
+.tool-call .tch:hover{color:var(--text)}
+.tool-call .tcb{display:none;margin-top:3px;padding:3px 0 3px 10px;font-family:var(--mono);font-size:.7rem;color:var(--dim);overflow-x:auto;white-space:pre-wrap}
+.tool-call.open .tcb{display:block}
+.tst{font-size:.68rem}
+.tst.pending{color:var(--orange)}
+.tst.success{color:var(--green)}
+.tst.error{color:var(--red)}
+.tst.running{color:var(--blue)}
+
+/* Welcome */
+.welcome{text-align:center;padding:50px 20px;max-width:460px;margin:0 auto}
+.welcome .icon{font-size:3rem;margin-bottom:10px}
+.welcome h2{font-size:1.3rem;margin-bottom:6px;background:linear-gradient(135deg,#fff,var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.welcome p{color:var(--dim);margin-bottom:3px}
+.welcome .hint{font-size:.78rem;margin-top:14px}
+.welcome .tags{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:14px}
+.welcome .tags code{background:var(--card);border:1px solid var(--border);padding:3px 12px;border-radius:20px;font-family:var(--mono);font-size:.73rem;color:var(--accent)}
+
+/* Toast */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;padding:8px 20px;border-radius:8px;font-size:.85rem;z-index:100;animation:fade .2s;max-width:90%;text-align:center}
+
+/* Input */
+.input-area{display:flex;gap:8px;padding:8px 14px 12px;background:var(--surface);border-top:1px solid var(--border);flex-shrink:0}
+.input-area textarea{flex:1;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:9px 12px;color:var(--text);font-family:var(--font);font-size:.9rem;resize:none;min-height:42px;max-height:120px;outline:none;transition:border-color .2s}
+.input-area textarea:focus{border-color:var(--accent)}
+.input-area textarea::placeholder{color:var(--dim)}
+.input-area button{width:42px;height:42px;border:none;border-radius:10px;background:var(--accent);color:#fff;font-size:1.1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.input-area button:hover{background:#6a4adc}
+.input-area button:disabled{opacity:.4;cursor:default}
+.input-area button.stop{background:var(--red)}
+.input-area button.stop:hover{background:#dd3366}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="dot on" id="dot"></span>
+  <h1>Pi</h1>
+  <span class="badge" id="model">...</span>
+  <span class="spacer"></span>
+  <span class="badge" id="count">0</span>
+</header>
+
+<div id="chat">
+  <div class="welcome" id="welcome">
+    <div class="icon">🏆</div>
+    <h2>أنا هنا — نفس Pi</h2>
+    <p>نفس الأدوات: read, write, edit, bash, skills, extensions</p>
+    <p class="hint">متصل بـ deepseek-v4-flash-free — جميع المزايا</p>
+    <div class="tags"><code>⚡ اسألني</code><code>🔧 /commands</code><code>📂 !bash</code></div>
+  </div>
+</div>
+
+<div class="input-area">
+  <textarea id="input" rows="1" placeholder="اكتب رسالتك..." dir="auto"></textarea>
+  <button id="sendBtn" onclick="send()">➤</button>
+  <button id="stopBtn" class="stop" onclick="abort()" style="display:none">■</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/highlight.min.js"></script>
+<script>
+// ─── State ──────────────────────────────────────────────────
+const S = {
+  ws: null,
+  connected: false,
+  streaming: false,
+  curContent: '',    // current streaming text_content
+  curThinking: '',   // current streaming thinking_content
+  msgId: 0,
+  toolCalls: {},
+};
+
+// ─── DOM ─────────────────────────────────────────────────────
+const $ = s => document.querySelector(s);
+const chat = $('#chat'), input = $('#input'), sendBtn = $('#sendBtn');
+const stopBtn = $('#stopBtn'), welcome = $('#welcome');
+const modelBadge = $('#model'), countBadge = $('#count'), dot = $('#dot');
+
+// ─── WebSocket ───────────────────────────────────────────────
+function connect() {
+  const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+  S.ws = new WebSocket(`${proto}//${location.host}`);
+
+  S.ws.onopen = () => {
+    S.connected = true;
+    dot.className = 'dot on';
+    
+    // Try to resume previous session (persistence)
+    const savedFile = localStorage.getItem('pi_sessionFile');
+    if (savedFile) {
+      console.log('Resuming session:', savedFile);
+      S.ws.send(JSON.stringify({ type: 'resume', sessionFile: savedFile }));
+    }
+  };
+
+  S.ws.onclose = () => {
+    S.connected = false;
+    dot.className = 'dot off';
+    finalize();
+    setTimeout(connect, 2000);
+  };
+
+  S.ws.onmessage = e => {
+    try { handle(JSON.parse(e.data)); } catch {}
+  };
+}
+
+// ─── Message Handler ────────────────────────────────────────
+function handle(msg) {
+  switch (msg.type) {
+    case 'connected':
+      modelBadge.textContent = msg.model || '?';
+      if (msg.sessionFile) {
+        localStorage.setItem('pi_sessionFile', msg.sessionFile);
+      }
+      // عرض المحادثات السابقة إذا موجودة
+      if (msg.messages && msg.messages.length > 0 && chat.querySelectorAll('.msg').length === 0) {
+        renderSavedMessages(msg.messages);
+      }
+      break;
+      
+    case 'resumed':
+      if (msg.sessionFile) {
+        localStorage.setItem('pi_sessionFile', msg.sessionFile);
+      }
+      // استبدال كل المحادثات بالمحفوظة
+      if (msg.messages) {
+        renderSavedMessages(msg.messages, true);
+      }
+      break;
+      
+    case 'error':
+      toast('⚠️ ' + msg.message);
+      finalize();
+      break;
+      
+    case 'pi_event':
+      onEvent(msg.event);
+      break;
+  }
+}
+
+function renderSavedMessages(messages, replace = false) {
+  if (replace) chat.innerHTML = '';
+  welcome?.remove();
+  
+  for (const m of messages) {
+    if (m.role === 'user') {
+      const d = document.createElement('div');
+      d.className = 'msg user';
+      d.innerHTML = '<div class="bubble">' + esc(m.content) + '</div>';
+      chat.appendChild(d);
+    } else if (m.role === 'assistant' && m.content) {
+      const d = document.createElement('div');
+      d.className = 'msg assistant';
+      if (/[\u0600-\u06FF]/.test(m.content)) d.classList.add('rtl');
+      d.innerHTML = '<div class="bubble">' + md(m.content) + '</div>';
+      chat.appendChild(d);
+    }
+  }
+  
+  hl();
+  scroll();
+  updateCount();
+}
+
+// ─── Pi Event Handler ───────────────────────────────────────
+let msgOpen = false; // track if a message is currently being streamed
+
+function onEvent(e) {
+  switch (e.type) {
+    case 'agent_start':
+      S.streaming = true;
+      S.curContent = '';
+      S.curThinking = '';
+      S.msgId++;
+      S.toolCalls = {};
+      msgOpen = false;
+      showDots();
+      break;
+
+    case 'agent_end':
+      finalize();
+      break;
+
+    case 'message_start':
+      msgOpen = true;
+      break;
+
+    case 'message_end':
+      msgOpen = false;
+      break;
+
+    case 'message_update': {
+      const d = e.assistantMessageEvent;
+      if (!d) break;
+
+      switch (d.type) {
+        case 'thinking_delta':
+          if (d.delta) {
+            S.curThinking += d.delta;
+            updateMsg();
+          }
+          break;
+        case 'thinking_start':
+        case 'thinking_end':
+          break;
+
+        case 'text_delta':
+          if (d.delta) {
+            S.curContent += d.delta;
+            updateMsg();
+          }
+          break;
+        case 'text_start':
+        case 'text_end':
+          break;
+
+        case 'toolcall_start':
+          if (d.partial) {
+            const id = d.partial.id || 'tc_' + Date.now();
+            S.toolCalls[id] = { name: d.partial.name || '?', args: '', status: 'pending', result: '' };
+            updateTools();
+          }
+          break;
+        case 'toolcall_delta':
+          for (const id in S.toolCalls) {
+            const tc = S.toolCalls[id];
+            if (tc.status === 'pending') { tc.args += d.delta || ''; break; }
+          }
+          updateTools();
+          break;
+        case 'toolcall_end':
+          for (const id in S.toolCalls) {
+            const tc = S.toolCalls[id];
+            if (tc.status === 'pending') {
+              if (d.toolCall) tc.name = d.toolCall.name || tc.name;
+              tc.status = 'running';
+              break;
+            }
+          }
+          updateTools();
+          break;
+      }
+      break;
+    }
+
+    case 'tool_execution_start': {
+      const tc = S.toolCalls[e.toolCallId];
+      if (tc) { tc.status = 'running'; tc.name = e.toolName || tc.name; updateTools(); }
+      break;
+    }
+    case 'tool_execution_update': {
+      const tc = S.toolCalls[e.toolCallId];
+      if (tc && e.partialResult) {
+        const t = e.partialResult.content?.find(c => c.type === 'text');
+        if (t) tc.result += t.text;
+        updateTools();
+      }
+      break;
+    }
+    case 'tool_execution_end': {
+      const tc = S.toolCalls[e.toolCallId];
+      if (tc) {
+        tc.status = e.isError ? 'error' : 'success';
+        if (e.result) {
+          const t = e.result.content?.find(c => c.type === 'text');
+          if (t) tc.result = t.text;
+        }
+        updateTools();
+      }
+      break;
+    }
+
+    case 'compaction_start':
+      toast('📦 ضغط السياق...');
+      break;
+    case 'compaction_end':
+      break;
+  }
+}
+
+// ─── Rendering ───────────────────────────────────────────────
+function esc(t) { const d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
+
+function md(t) {
+  if (!t) return '';
+  try { return marked.parse(t, {breaks:true, gfm:true}); } catch { return esc(t); }
+}
+
+function showDots() {
+  hideDots();
+  const d = document.createElement('div');
+  d.className = 'thinking'; d.id = 'dots';
+  d.innerHTML = '<span></span><span></span><span></span>';
+  chat.appendChild(d);
+  scroll();
+}
+
+function hideDots() { const e = document.getElementById('dots'); if (e) e.remove(); }
+
+function updateMsg() {
+  let el = document.getElementById('stream-msg');
+  if (!el) {
+    el = document.createElement('div');
+    el.className = 'msg assistant';
+    el.id = 'stream-msg';
+    el.innerHTML = '<div class="bubble" id="stream-bubble"></div>';
+    welcome?.remove();
+    hideDots();
+    chat.appendChild(el);
+  }
+
+  const bubble = document.getElementById('stream-bubble');
+  if (!bubble) return;
+
+  // Auto RTL
+  if (/[\u0600-\u06FF]/.test(S.curContent)) el.classList.add('rtl');
+  else el.classList.remove('rtl');
+
+  let html = '';
+
+  // Thinking block (collapsible)
+  if (S.curThinking) {
+    html += '<div class="think-block" onclick="this.classList.toggle(\'open\')">' +
+      '<div class="think-label">🧠 DeepSeek يفكر…</div>' +
+      '<div class="think-body">' + esc(S.curThinking) + '</div></div>';
+  }
+
+  // Main content
+  if (S.curContent) {
+    html += md(S.curContent);
+  }
+
+  bubble.innerHTML = html;
+  scroll();
+}
+
+function finalize() {
+  hideDots();
+  const el = document.getElementById('stream-msg');
+  if (el) {
+    // Re-render final content with highlighting
+    const bubble = document.getElementById('stream-bubble');
+    if (bubble && S.curContent) {
+      let html = '';
+      if (S.curThinking) {
+        html += '<div class="think-block" onclick="this.classList.toggle(\'open\')">' +
+          '<div class="think-label">🧠 DeepSeek يفكر…</div>' +
+          '<div class="think-body">' + esc(S.curThinking) + '</div></div>';
+      }
+      html += md(S.curContent);
+      bubble.innerHTML = html;
+      hl();
+    }
+    el.removeAttribute('id');
+  }
+
+  S.streaming = false;
+  S.curContent = '';
+  S.curThinking = '';
+  S.toolCalls = {};
+  enable();
+  updateCount();
+  hideDots();
+}
+
+function updateTools() {
+  const el = document.getElementById('stream-msg');
+  if (!el) return;
+  let c = el.querySelector('.tool-calls');
+  if (!c) {
+    c = document.createElement('div');
+    c.className = 'tool-calls';
+    el.appendChild(c);
+  }
+  const entries = Object.entries(S.toolCalls);
+  if (entries.length === 0) { c.remove(); return; }
+
+  c.innerHTML = entries.map(([id, tc]) => {
+    const open = tc.status === 'running' || tc.status === 'error';
+    const icon = tc.status==='success'?'✅':tc.status==='error'?'❌':tc.status==='running'?'⏳':'⚡';
+    return '<div class="tool-call' + (open?' open':'') + '">' +
+      '<div class="tch" onclick="this.parentElement.classList.toggle(\'open\')">' +
+        '<span class="tst ' + tc.status + '">' + icon + '</span>' +
+        esc(tc.name) +
+        '<span style="margin-right:auto;opacity:.5;font-size:.68rem">' + tc.status + '</span>' +
+      '</div>' +
+      (tc.args ? '<div class="tcb">' + esc(typeof tc.args === 'string' ? tc.args.substring(0,300) : JSON.stringify(tc.args,null,2).substring(0,300)) + '</div>' : '') +
+      (tc.result ? '<div class="tcb">' + esc(tc.result.substring(0,300)) + '</div>' : '') +
+    '</div>';
+  }).join('');
+}
+
+function hl() {
+  document.querySelectorAll('pre code').forEach(b => { if (window.hljs) hljs.highlightElement(b); });
+}
+
+function scroll() { requestAnimationFrame(() => { chat.scrollTop = chat.scrollHeight; }); }
+
+// ─── Actions ─────────────────────────────────────────────────
+function addUser(text) {
+  welcome?.remove();
+  const d = document.createElement('div');
+  d.className = 'msg user';
+  d.innerHTML = '<div class="bubble">' + esc(text) + '</div>';
+  chat.appendChild(d);
+  scroll();
+}
+
+function addSystem(text) {
+  const d = document.createElement('div');
+  d.className = 'msg system';
+  d.innerHTML = '<div class="bubble">' + text + '</div>';
+  chat.appendChild(d);
+  scroll();
+}
+
+function toast(t) {
+  const e = document.querySelector('.toast');
+  if (e) e.remove();
+  const d = document.createElement('div');
+  d.className = 'toast'; d.textContent = t;
+  document.body.appendChild(d);
+  setTimeout(() => d.remove(), 4000);
+}
+
+function updateCount() {
+  // Approximate: count user messages
+  countBadge.textContent = chat.querySelectorAll('.msg.user').length;
+}
+
+function disable() { input.disabled = true; sendBtn.disabled = true; }
+function enable() { input.disabled = false; sendBtn.disabled = false; if (!S.streaming) input.focus(); }
+
+function send() {
+  const text = input.value.trim();
+  if (!text || S.streaming || !S.connected) return;
+
+  input.value = ''; input.style.height = 'auto';
+  addUser(text);
+  disable();
+  sendBtn.style.display = 'none';
+  stopBtn.style.display = 'flex';
+
+  S.ws.send(JSON.stringify({ type: 'prompt', message: text }));
+}
+
+function abort() {
+  if (S.ws && S.streaming) {
+    S.ws.send(JSON.stringify({ type: 'abort' }));
+    addSystem('⛔ تم الإيقاف');
+    finalize();
+    stopBtn.style.display = 'none';
+    sendBtn.style.display = 'flex';
+  }
+}
+
+// ─── Input Events ────────────────────────────────────────────
+input.addEventListener('input', () => {
+  input.style.height = 'auto';
+  input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+});
+
+input.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+});
+
+// ─── Init ────────────────────────────────────────────────────
+connect();
+input.focus();
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "markets": {
+    "match_odds": true,
+    "correct_score": true,
+    "over_under_2_5": true,
+    "both_teams_to_score": true,
+    "asian_handicap": true
+  },
+  "stake_management": {
+    "base_stake": 10,
+    "kelly_fraction": 0.25,
+    "max_stake": 100,
+    "min_odds": 1.1,
+    "max_odds": 10.0
+  },
+  "filters": {
+    "in_play_only": false,
+    "competitions": [
+      "Premier League",
+      "La Liga",
+      "Serie A",
+      "Bundesliga",
+      "Ligue 1"
+    ],
+    "min_liquidity": 1000,
+    "max_delay_minutes": 60
+  },
+  "prediction_integration": {
+    "min_exact_score_prob": 0.2,
+    "min_value_threshold": 0.05,
+    "use_ensemble": true,
+    "model_path": "models/mlp_blend.pkl"
+  },
+  "risk_management": {
+    "daily_loss_limit": 500,
+    "max_consecutive_losses": 5,
+    "cooldown_minutes": 30,
+    "stop_loss_pct": 0.15
+  }
+}

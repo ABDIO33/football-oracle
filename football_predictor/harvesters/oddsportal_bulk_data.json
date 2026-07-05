@@ -1,0 +1,895 @@
+{
+  "england/premier-league": {
+    "name": "England Premier League",
+    "matches": 10,
+    "data": [
+      {
+        "home_team": "Arsenal",
+        "away_team": "Coventry",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-21",
+        "url": "/football/h2h/arsenal-hA1Zm19f/coventry-GOvB22xg/#2q2NhX43",
+        "match_id": 10852491
+      },
+      {
+        "home_team": "Hull",
+        "away_team": "Manchester Utd",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-22",
+        "url": "/football/h2h/hull-city-S66R0t75/manchester-united-ppjDR086/#zc0VjBZF",
+        "match_id": 10852493
+      },
+      {
+        "home_team": "Everton",
+        "away_team": "Crystal Palace",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-22",
+        "url": "/football/h2h/crystal-palace-AovF1Mia/everton-KluSTr9s/#rN3wkk4S",
+        "match_id": 10852495
+      },
+      {
+        "home_team": "Ipswich",
+        "away_team": "Sunderland",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-22",
+        "url": "/football/h2h/ipswich-thqhB2MB/sunderland-WSzc94ws/#Cxf9qTRk",
+        "match_id": 10852497
+      },
+      {
+        "home_team": "Nottingham",
+        "away_team": "Leeds",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-22",
+        "url": "/football/h2h/leeds-tUxUbLR2/nottingham-UsushcZr/#pjhHs7d2",
+        "match_id": 10852499
+      },
+      {
+        "home_team": "Brentford",
+        "away_team": "Tottenham",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-22",
+        "url": "/football/h2h/brentford-xYe7DwID/tottenham-UDg08Ohm/#EPW0kJF8",
+        "match_id": 10852501
+      },
+      {
+        "home_team": "Brighton",
+        "away_team": "Aston Villa",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-23",
+        "url": "/football/h2h/aston-villa-W00wmLO0/brighton-2XrRecc3/#Mkz9mcpL",
+        "match_id": 10852503
+      },
+      {
+        "home_team": "Manchester City",
+        "away_team": "Bournemouth",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-23",
+        "url": "/football/h2h/bournemouth-OtpNdwrc/manchester-city-Wtn9Stg0/#ILLvry8r",
+        "match_id": 10852505
+      },
+      {
+        "home_team": "Newcastle",
+        "away_team": "Liverpool",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-23",
+        "url": "/football/h2h/liverpool-lId4TMwf/newcastle-utd-p6ahwuwJ/#4xKntFxe",
+        "match_id": 10852507
+      },
+      {
+        "home_team": "Fulham",
+        "away_team": "Chelsea",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-24",
+        "url": "/football/h2h/chelsea-4fGZN2oK/fulham-69ZiU2Om/#C2Nfvg77",
+        "match_id": 10852509
+      }
+    ],
+    "size": 196563
+  },
+  "england/championship": {
+    "name": "England Championship",
+    "matches": 12,
+    "data": [
+      {
+        "home_team": "Wolves",
+        "away_team": "Blackburn",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-14",
+        "url": "/football/h2h/blackburn-6Nl8nagD/wolves-j3Azpf5d/#dQVxcCm3",
+        "match_id": 10910541
+      },
+      {
+        "home_team": "Bolton",
+        "away_team": "Preston",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/bolton-Or1bBrWD/preston-x8IDVcbi/#UwUpejIF",
+        "match_id": 10910543
+      },
+      {
+        "home_team": "Bristol City",
+        "away_team": "Millwall",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/bristol-city-MahqU27I/millwall-6uz2cJBL/#x4XhgUnS",
+        "match_id": 10910545
+      },
+      {
+        "home_team": "Charlton",
+        "away_team": "Derby",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/charlton-fXf5mQ7t/derby-Iug0YO0Q/#vXLWonu2",
+        "match_id": 10910549
+      },
+      {
+        "home_team": "Middlesbrough",
+        "away_team": "Lincoln",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/lincoln-city-hrHTRs5B/middlesbrough-6F0lvLNC/#6wEI9kX8",
+        "match_id": 10910551
+      },
+      {
+        "home_team": "Norwich",
+        "away_team": "West Brom",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/norwich-Qo6off6p/west-brom-CCBWpzjj/#E3HQ7T1L",
+        "match_id": 10910553
+      },
+      {
+        "home_team": "Portsmouth",
+        "away_team": "QPR",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/portsmouth-zckREQFJ/qpr-lrMHUHDc/#AZ2d27Pr",
+        "match_id": 10910555
+      },
+      {
+        "home_team": "Stoke",
+        "away_team": "Swansea",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/stoke-city-hSUajdSS/swansea-K6xezbY7/#GlmvgWqo",
+        "match_id": 10911569
+      },
+      {
+        "home_team": "Sheffield Utd",
+        "away_team": "Birmingham",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/birmingham-SWk4muv7/sheffield-utd-MeKPSerA/#dj140ofe",
+        "match_id": 10910557
+      },
+      {
+        "home_team": "Watford",
+        "away_team": "Southampton",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-16",
+        "url": "/football/h2h/southampton-WdKOwxDM/watford-UmMRoGzp/#4G4CbPO7",
+        "match_id": 10910559
+      },
+      {
+        "home_team": "Burnley",
+        "away_team": "West Ham",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-16",
+        "url": "/football/h2h/burnley-z3dmTMMO/west-ham-Cxq57r8g/#dAibMSGE",
+        "match_id": 10910561
+      },
+      {
+        "home_team": "Cardiff",
+        "away_team": "Wrexham",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-17",
+        "url": "/football/h2h/cardiff-hO8wh6aP/wrexham-IgO7K1ZA/#M5ttDiyH",
+        "match_id": 10911575
+      }
+    ],
+    "size": 207637
+  },
+  "england/league-one": {
+    "name": "England League One",
+    "matches": 12,
+    "data": [
+      {
+        "home_team": "Notts Co",
+        "away_team": "Leicester",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/leicester-KrrdAMyI/notts-county-EwJVdqzn/#pftP5YOO",
+        "match_id": 10908849
+      },
+      {
+        "home_team": "Reading",
+        "away_team": "Luton",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/luton-SlybbadF/reading-EmlVDpVP/#ETMlMg95",
+        "match_id": 10908855
+      },
+      {
+        "home_team": "Oxford Utd",
+        "away_team": "MK Dons",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/milton-keynes-dons-f9KDxtkU/oxford-utd-vgOBT43c/#06GYPyAt",
+        "match_id": 10908851
+      },
+      {
+        "home_team": "Huddersfield",
+        "away_team": "AFC Wimbledon",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/afc-wimbledon-4KREuF43/huddersfield-xxxpBZl2/#Iat1Bxem",
+        "match_id": 10908843
+      },
+      {
+        "home_team": "Barnsley",
+        "away_team": "Bromley",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/barnsley-UNGEKMx6/bromley-Opdcd08Q/#ljFdFodL",
+        "match_id": 10908833
+      },
+      {
+        "home_team": "Blackpool",
+        "away_team": "Wycombe",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/blackpool-8EFIJthC/wycombe-hl2V5JIl/#KY5S9PJr",
+        "match_id": 10908835
+      },
+      {
+        "home_team": "Bradford City",
+        "away_team": "Peterborough",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/bradford-city-bsc3EJ27/peterborough-tWeI85kh/#CtOZ73le",
+        "match_id": 10908837
+      },
+      {
+        "home_team": "Burton",
+        "away_team": "Stevenage",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/burton-nwCtJaJT/stevenage-ANwyQM2M/#pfMs6sJ7",
+        "match_id": 10908839
+      },
+      {
+        "home_team": "Cambridge Utd",
+        "away_team": "Wigan",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/cambridge-utd-lnb8EJRp/wigan-MgHlK2Na/#C0ETTpBE",
+        "match_id": 10908841
+      },
+      {
+        "home_team": "Mansfield",
+        "away_team": "Doncaster",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/doncaster-hlzYDy5q/mansfield-t6G9wMZN/#xUxH7ffC",
+        "match_id": 10908847
+      },
+      {
+        "home_team": "Leyton Orient",
+        "away_team": "Sheffield Wed",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/leyton-orient-KKyYcus9/sheffield-wed-llcCvIcG/#jDv99GPa",
+        "match_id": 10908845
+      },
+      {
+        "home_team": "Plymouth",
+        "away_team": "Stockport County",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/plymouth-WpGM6ELj/stockport-county-IX6WjNvr/#8WJtOFvg",
+        "match_id": 10908853
+      }
+    ],
+    "size": 207751
+  },
+  "england/league-two": {
+    "name": "England League Two",
+    "matches": 12,
+    "data": [
+      {
+        "home_team": "Newport",
+        "away_team": "Rochdale",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/newport-ChwgcrNJ/rochdale-bm2Vlsfl/#vw9xa7Sa",
+        "match_id": 10909655
+      },
+      {
+        "home_team": "Oldham",
+        "away_team": "Port Vale",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/oldham-O4voiHlk/port-vale-U3lM3y4e/#EZwvsZ6E",
+        "match_id": 10909631
+      },
+      {
+        "home_team": "Accrington",
+        "away_team": "Colchester",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/accrington-6ZvdGuYf/colchester-xYu73rNn/#MasnuDyR",
+        "match_id": 10909633
+      },
+      {
+        "home_team": "Barnet",
+        "away_team": "Salford",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/barnet-4KcaFam1/salford-W4AadhN3/#hrYHZjal",
+        "match_id": 10909635
+      },
+      {
+        "home_team": "York City",
+        "away_team": "Bristol Rovers",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/bristol-rovers-GILi6JC9/york-city-EcHUrsed/#zsKb6kzQ",
+        "match_id": 10909651
+      },
+      {
+        "home_team": "Cheltenham",
+        "away_team": "Rotherham",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/cheltenham-jizXHcsM/rotherham-KMfM7P4b/#QeWPXUT0",
+        "match_id": 10909637
+      },
+      {
+        "home_team": "Chesterfield",
+        "away_team": "Fleetwood",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/chesterfield-dQIMIN5n/fleetwood-town-tCZ3D68d/#CCUXV8bD",
+        "match_id": 10909639
+      },
+      {
+        "home_team": "Crawley",
+        "away_team": "Crewe",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/crawley-town-QVmLl54o/crewe-YacqHHdS/#vJMJgCjK",
+        "match_id": 10909641
+      },
+      {
+        "home_team": "Grimsby",
+        "away_team": "Exeter",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/exeter-ve14a3l4/grimsby-OEaiS3za/#rFBcnUrf",
+        "match_id": 10909645
+      },
+      {
+        "home_team": "Gillingham",
+        "away_team": "Walsall",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/gillingham-WvZyDeKk/walsall-YgrfcLuL/#zk8kljEs",
+        "match_id": 10909643
+      },
+      {
+        "home_team": "Northampton",
+        "away_team": "Swindon",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/northampton-l4P6dwRR/swindon-xSloasB8/#zNT4p8D6",
+        "match_id": 10909647
+      },
+      {
+        "home_team": "Tranmere",
+        "away_team": "Shrewsbury",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-15",
+        "url": "/football/h2h/shrewsbury-EqfQ6qK4/tranmere-jVhkb1QE/#8zSCrnrJ",
+        "match_id": 10909649
+      }
+    ],
+    "size": 207589
+  },
+  "italy/serie-a": {
+    "name": "Italy Serie A",
+    "matches": 10,
+    "data": [
+      {
+        "home_team": "Udinese",
+        "away_team": "Como",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-22",
+        "url": "/football/h2h/como-ttyLthOA/udinese-rXw8YKDE/#QuSvm8ln",
+        "match_id": 10692451
+      },
+      {
+        "home_team": "Inter",
+        "away_team": "Monza",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-22",
+        "url": "/football/h2h/inter-Iw7eKK25/monza-4YSMlwj7/#8Mn7Y8Zh",
+        "match_id": 10692443
+      },
+      {
+        "home_team": "Parma",
+        "away_team": "Cagliari",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-22",
+        "url": "/football/h2h/cagliari-SCGVmKHb/parma-6DxlaxHN/#GnjFWn45",
+        "match_id": 10692445
+      },
+      {
+        "home_team": "Genoa",
+        "away_team": "Napoli",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-22",
+        "url": "/football/h2h/genoa-d0PJxeie/napoli-69Dxbc61/#z9lazV4t",
+        "match_id": 10692441
+      },
+      {
+        "home_team": "Frosinone",
+        "away_team": "Juventus",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-23",
+        "url": "/football/h2h/frosinone-pfo9H1Wp/juventus-C06aJvIB/#nD9kGRJO",
+        "match_id": 10692439
+      },
+      {
+        "home_team": "Venezia",
+        "away_team": "Lecce",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-23",
+        "url": "/football/h2h/lecce-G8lYsMgU/venezia-MkPmVv50/#Y5VnonJb",
+        "match_id": 10692453
+      },
+      {
+        "home_team": "Torino",
+        "away_team": "AC Milan",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-23",
+        "url": "/football/h2h/ac-milan-8Sa8HInO/torino-MZFZnvX4/#dQiVS43U",
+        "match_id": 10692449
+      },
+      {
+        "home_team": "Atalanta",
+        "away_team": "Sassuolo",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-23",
+        "url": "/football/h2h/atalanta-8C9JjMXu/sassuolo-QDdvI0zl/#6Z7ZJ9Ka",
+        "match_id": 10692435
+      },
+      {
+        "home_team": "Bologna",
+        "away_team": "Lazio",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-24",
+        "url": "/football/h2h/bologna-0M9xNN8N/lazio-URcSl02h/#vm6sImkC",
+        "match_id": 10692437
+      },
+      {
+        "home_team": "AS Roma",
+        "away_team": "Fiorentina",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-24",
+        "url": "/football/h2h/as-roma-zVqqL0ma/fiorentina-Q3A3IbXH/#OCgNUQYH",
+        "match_id": 10692447
+      }
+    ],
+    "size": 193945
+  },
+  "scotland/premiership": {
+    "name": "Scotland Premiership",
+    "matches": 6,
+    "data": [
+      {
+        "home_team": "Dundee Utd",
+        "away_team": "Rangers",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-31",
+        "url": "/football/h2h/dundee-utd-8QEB2FFp/rangers-8vAWQXNS/#z5hO3DK0",
+        "match_id": 10845017
+      },
+      {
+        "home_team": "Falkirk",
+        "away_team": "St. Mirren",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-01",
+        "url": "/football/h2h/falkirk-nHDF1ZUj/st-mirren-tAVXZEyT/#MLjW1ikD",
+        "match_id": 10845019
+      },
+      {
+        "home_team": "Aberdeen",
+        "away_team": "Hearts",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-01",
+        "url": "/football/h2h/aberdeen-AmdbMiWq/hearts-0rGrwwNc/#lSrIPfsK",
+        "match_id": 10845021
+      },
+      {
+        "home_team": "St Johnstone",
+        "away_team": "Kilmarnock",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-02",
+        "url": "/football/h2h/kilmarnock-jX8ezy7G/st-johnstone-ULK83EjM/#pbUmKY4s",
+        "match_id": 10845023
+      },
+      {
+        "home_team": "Hibernian",
+        "away_team": "Motherwell",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-02",
+        "url": "/football/h2h/hibernian-f5Fnxcx4/motherwell-YuW7ZfMM/#hOXeICZg",
+        "match_id": 10845025
+      },
+      {
+        "home_team": "Celtic",
+        "away_team": "Dundee FC",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-03",
+        "url": "/football/h2h/celtic-QFKRRD8M/dundee-fc-hjIyrgaj/#bLz4Gj46",
+        "match_id": 10845027
+      }
+    ],
+    "size": 171934
+  },
+  "sweden/allsvenskan": {
+    "name": "Sweden Allsvenskan",
+    "matches": 9,
+    "data": [
+      {
+        "home_team": "Sirius",
+        "away_team": "Mjallby",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-03",
+        "url": "/football/h2h/mjallby-S0XtXM1E/sirius-vXr8fotG/#AkjMHCMt",
+        "match_id": 9775491
+      },
+      {
+        "home_team": "Degerfors",
+        "away_team": "Malmo FF",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-04",
+        "url": "/football/h2h/degerfors-zNSwBuue/malmo-ff-tYNTdpar/#pAZAAeFD",
+        "match_id": 9775489
+      },
+      {
+        "home_team": "Halmstad",
+        "away_team": "Vasteras SK",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-04",
+        "url": "/football/h2h/halmstad-Mmsc26yL/vasteras-sk-l8oLwJhB/#ILxwEUL5",
+        "match_id": 9775495
+      },
+      {
+        "home_team": "Goteborg",
+        "away_team": "AIK",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-05",
+        "url": "/football/h2h/aik-lzqk4S68/ifk-goteborg-UovQtopk/#4xqGLLNE",
+        "match_id": 9775481
+      },
+      {
+        "home_team": "Kalmar",
+        "away_team": "Orgryte",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-05",
+        "url": "/football/h2h/kalmar-rkrUu5ae/orgryte-CGT7Kq4j/#W4vVFjig",
+        "match_id": 9775493
+      },
+      {
+        "home_team": "Elfsborg",
+        "away_team": "Hammarby",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-05",
+        "url": "/football/h2h/elfsborg-rBi9iqU7/hammarby-SQsg3nME/#GUsfEwGl",
+        "match_id": 9775485
+      },
+      {
+        "home_team": "Brommapojkarna",
+        "away_team": "GAIS",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-06",
+        "url": "/football/h2h/brommapojkarna-ELVAW0WQ/gais-bJewAOTf/#lrt2CHp1",
+        "match_id": 9775487
+      },
+      {
+        "home_team": "Hacken",
+        "away_team": "Djurgarden",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-06",
+        "url": "/football/h2h/djurgarden-4Kh5hPE1/hacken-W6u0d7B3/#C2nOJahR",
+        "match_id": 9775483
+      },
+      {
+        "home_team": "Mjallby",
+        "away_team": "Djurgarden",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-09-03",
+        "url": "/football/h2h/djurgarden-4Kh5hPE1/mjallby-S0XtXM1E/#0r1l7M8L",
+        "match_id": 9775473
+      }
+    ],
+    "size": 201717
+  },
+  "norway/eliteserien": {
+    "name": "Norway Eliteserien",
+    "matches": 10,
+    "data": [
+      {
+        "home_team": "Fredrikstad",
+        "away_team": "Lillestrom",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-11",
+        "url": "/football/h2h/fredrikstad-bPdl4V8N/lillestrom-xYWBZlwN/#zmvIpIit",
+        "match_id": 9787601
+      },
+      {
+        "home_team": "Aalesund",
+        "away_team": "Molde",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-11",
+        "url": "/football/h2h/aalesund-nyrL8gfh/molde-KYcp5BgH/#UqYaeZ5b",
+        "match_id": 9787613
+      },
+      {
+        "home_team": "Tromso",
+        "away_team": "Valerenga",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-11",
+        "url": "/football/h2h/tromso-25HpQh9o/valerenga-ph9NNA8A/#8Uqiceyn",
+        "match_id": 9787611
+      },
+      {
+        "home_team": "KFUM Oslo",
+        "away_team": "Bodo/Glimt",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-12",
+        "url": "/football/h2h/bodo-glimt-S0WZMUNG/kfum-oslo-K4YaWRyM/#rDsQrdMh",
+        "match_id": 9787603
+      },
+      {
+        "home_team": "Brann",
+        "away_team": "Start",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-12",
+        "url": "/football/h2h/brann-QBbt6ivB/start-CUoNY9xc/#U5R9t6uP",
+        "match_id": 9787599
+      },
+      {
+        "home_team": "Sandefjord",
+        "away_team": "HamKam",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-12",
+        "url": "/football/h2h/ham-kam-pp5f19Wp/sandefjord-IXyr4UxA/#ChZtuELH",
+        "match_id": 9787607
+      },
+      {
+        "home_team": "Rosenborg",
+        "away_team": "Kristiansund",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-12",
+        "url": "/football/h2h/kristiansund-IDDWgzKt/rosenborg-G8LlPCOi/#vuyZtzi5",
+        "match_id": 9787605
+      },
+      {
+        "home_team": "Sarpsborg 08",
+        "away_team": "Viking",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-12",
+        "url": "/football/h2h/sarpsborg-08-UPrP2SMS/viking-bXAgOWwb/#I54swhjU",
+        "match_id": 9787609
+      },
+      {
+        "home_team": "Bodo/Glimt",
+        "away_team": "HamKam",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-22",
+        "url": "/football/h2h/bodo-glimt-S0WZMUNG/ham-kam-pp5f19Wp/#OGxzwcFj",
+        "match_id": 9787439
+      },
+      {
+        "home_team": "Valerenga",
+        "away_team": "HamKam",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-07-31",
+        "url": "/football/h2h/ham-kam-pp5f19Wp/valerenga-ph9NNA8A/#n1lVNFoJ",
+        "match_id": 9787659
+      }
+    ],
+    "size": 196737
+  },
+  "usa/mls": {
+    "name": "USA MLS",
+    "matches": 2,
+    "data": [
+      {
+        "home_team": "New England Revolution",
+        "away_team": "Houston Dynamo",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-08-08",
+        "url": "/football/h2h/houston-dynamo-2i4sdl32/new-england-revolution-tr3oe8I8/#vDOHN8Sh",
+        "match_id": 9704423
+      },
+      {
+        "home_team": "Seattle Sounders",
+        "away_team": "Real Salt Lake",
+        "home_goals": "",
+        "away_goals": "",
+        "score": "-",
+        "date": "2026-09-23",
+        "url": "/football/h2h/real-salt-lake-W0ealpQl/seattle-sounders-6P5S63Ah/#8pS1ig5t",
+        "match_id": 9704541
+      }
+    ],
+    "size": 143669
+  }
+}

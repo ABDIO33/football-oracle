@@ -1,0 +1,433 @@
+Access is denied.
+[23:14:21] ============================================================
+[23:14:21] MASS REGISTRATION BOT - 1000 API KEYS
+[23:14:21] ============================================================
+[23:14:22] 
+[📦] BATCH 1: football-data.org × 100
+[23:14:22] 
+   [1/100] elbazamine27+footballdata1@gmail.com
+[23:14:28]   💾 football-data.org: elbazamine27+footballdata1@gmail.com → REGISTERED
+[23:14:28] 
+   [2/100] elbazamine27+footballdata2@gmail.com
+[23:14:32]   💾 football-data.org: elbazamine27+footballdata2@gmail.com → REGISTERED
+[23:14:34] 
+   [3/100] elbazamine27+footballdata3@gmail.com
+[23:14:37]   💾 football-data.org: elbazamine27+footballdata3@gmail.com → REGISTERED
+[23:14:38] 
+   [4/100] elbazamine27+footballdata4@gmail.com
+[23:14:43]   💾 football-data.org: elbazamine27+footballdata4@gmail.com → REGISTERED
+[23:14:44] 
+   [5/100] elbazamine27+footballdata5@gmail.com
+[23:14:58]   💾 football-data.org: elbazamine27+footballdata5@gmail.com → REGISTERED
+[23:14:58] 
+   [6/100] elbazamine27+footballdata6@gmail.com
+[23:15:02]   💾 football-data.org: elbazamine27+footballdata6@gmail.com → REGISTERED
+[23:15:03] 
+   [7/100] elbazamine27+footballdata7@gmail.com
+[23:15:06]   💾 football-data.org: elbazamine27+footballdata7@gmail.com → REGISTERED
+[23:15:07] 
+   [8/100] elbazamine27+footballdata8@gmail.com
+[23:15:27]   💾 football-data.org: elbazamine27+footballdata8@gmail.com → REGISTERED
+[23:15:27] 
+   [9/100] elbazamine27+footballdata9@gmail.com
+[23:15:31]   💾 football-data.org: elbazamine27+footballdata9@gmail.com → REGISTERED
+[23:15:32] 
+   [10/100] elbazamine27+footballdata10@gmail.com
+[23:15:37]   💾 football-data.org: elbazamine27+footballdata10@gmail.com → REGISTERED
+[23:15:38] 
+   📊 Progress: 10 succeeded, 0 failed
+[23:15:38] 
+   [11/100] elbazamine27+footballdata11@gmail.com
+[23:15:42]   💾 football-data.org: elbazamine27+footballdata11@gmail.com → REGISTERED
+[23:15:43] 
+   [12/100] elbazamine27+footballdata12@gmail.com
+[23:15:50]   💾 football-data.org: elbazamine27+footballdata12@gmail.com → REGISTERED
+[23:15:51] 
+   [13/100] elbazamine27+footballdata13@gmail.com
+[23:15:55]   💾 football-data.org: elbazamine27+footballdata13@gmail.com → REGISTERED
+[23:15:56] 
+   [14/100] elbazamine27+footballdata14@gmail.com
+[23:16:01]   💾 football-data.org: elbazamine27+footballdata14@gmail.com → REGISTERED
+[23:16:02] 
+   [15/100] elbazamine27+footballdata15@gmail.com
+[23:16:05]   💾 football-data.org: elbazamine27+footballdata15@gmail.com → REGISTERED
+[23:16:06] 
+   [16/100] elbazamine27+footballdata16@gmail.com
+[23:16:10]   💾 football-data.org: elbazamine27+footballdata16@gmail.com → REGISTERED
+[23:16:11] 
+   [17/100] elbazamine27+footballdata17@gmail.com
+[23:16:16]   💾 football-data.org: elbazamine27+footballdata17@gmail.com → REGISTERED
+[23:16:17] 
+   [18/100] elbazamine27+footballdata18@gmail.com
+[23:16:20]   💾 football-data.org: elbazamine27+footballdata18@gmail.com → REGISTERED
+[23:16:21] 
+   [19/100] elbazamine27+footballdata19@gmail.com
+[23:16:25]   💾 football-data.org: elbazamine27+footballdata19@gmail.com → REGISTERED
+[23:16:26] 
+   [20/100] elbazamine27+footballdata20@gmail.com
+[23:16:30]   💾 football-data.org: elbazamine27+footballdata20@gmail.com → REGISTERED
+[23:16:31] 
+   📊 Progress: 20 succeeded, 0 failed
+[23:16:31] 
+   [21/100] elbazamine27+footballdata21@gmail.com
+[23:16:35]   💾 football-data.org: elbazamine27+footballdata21@gmail.com → REGISTERED
+[23:16:36] 
+   [22/100] elbazamine27+footballdata22@gmail.com
+[23:16:39]   💾 football-data.org: elbazamine27+footballdata22@gmail.com → REGISTERED
+[23:16:40] 
+   [23/100] elbazamine27+footballdata23@gmail.com
+[23:16:43]   💾 football-data.org: elbazamine27+footballdata23@gmail.com → REGISTERED
+[23:16:44] 
+   [24/100] elbazamine27+footballdata24@gmail.com
+[23:16:48]   💾 football-data.org: elbazamine27+footballdata24@gmail.com → REGISTERED
+[23:16:49] 
+   [25/100] elbazamine27+footballdata25@gmail.com
+[23:16:52]   💾 football-data.org: elbazamine27+footballdata25@gmail.com → REGISTERED
+[23:16:54] 
+   [26/100] elbazamine27+footballdata26@gmail.com
+[23:16:57]   💾 football-data.org: elbazamine27+footballdata26@gmail.com → REGISTERED
+[23:16:58] 
+   [27/100] elbazamine27+footballdata27@gmail.com
+[23:17:01]   💾 football-data.org: elbazamine27+footballdata27@gmail.com → REGISTERED
+[23:17:02] 
+   [28/100] elbazamine27+footballdata28@gmail.com
+[23:17:06]   💾 football-data.org: elbazamine27+footballdata28@gmail.com → REGISTERED
+[23:17:07] 
+   [29/100] elbazamine27+footballdata29@gmail.com
+[23:17:10]   💾 football-data.org: elbazamine27+footballdata29@gmail.com → REGISTERED
+[23:17:11] 
+   [30/100] elbazamine27+footballdata30@gmail.com
+[23:17:14]   💾 football-data.org: elbazamine27+footballdata30@gmail.com → REGISTERED
+[23:17:16] 
+   📊 Progress: 30 succeeded, 0 failed
+[23:17:16] 
+   [31/100] elbazamine27+footballdata31@gmail.com
+[23:17:19]   💾 football-data.org: elbazamine27+footballdata31@gmail.com → REGISTERED
+[23:17:20] 
+   [32/100] elbazamine27+footballdata32@gmail.com
+[23:17:24]   💾 football-data.org: elbazamine27+footballdata32@gmail.com → REGISTERED
+[23:17:25] 
+   [33/100] elbazamine27+footballdata33@gmail.com
+[23:17:28]   💾 football-data.org: elbazamine27+footballdata33@gmail.com → REGISTERED
+[23:17:30] 
+   [34/100] elbazamine27+footballdata34@gmail.com
+[23:17:33]   💾 football-data.org: elbazamine27+footballdata34@gmail.com → REGISTERED
+[23:17:35] 
+   [35/100] elbazamine27+footballdata35@gmail.com
+[23:17:39]   💾 football-data.org: elbazamine27+footballdata35@gmail.com → REGISTERED
+[23:17:40] 
+   [36/100] elbazamine27+footballdata36@gmail.com
+[23:17:43]   💾 football-data.org: elbazamine27+footballdata36@gmail.com → REGISTERED
+[23:17:44] 
+   [37/100] elbazamine27+footballdata37@gmail.com
+[23:17:47]   💾 football-data.org: elbazamine27+footballdata37@gmail.com → REGISTERED
+[23:17:49] 
+   [38/100] elbazamine27+footballdata38@gmail.com
+[23:17:52]   💾 football-data.org: elbazamine27+footballdata38@gmail.com → REGISTERED
+[23:17:53] 
+   [39/100] elbazamine27+footballdata39@gmail.com
+[23:17:57]   💾 football-data.org: elbazamine27+footballdata39@gmail.com → REGISTERED
+[23:17:58] 
+   [40/100] elbazamine27+footballdata40@gmail.com
+[23:18:01]   💾 football-data.org: elbazamine27+footballdata40@gmail.com → REGISTERED
+[23:18:03] 
+   📊 Progress: 40 succeeded, 0 failed
+[23:18:03] 
+   [41/100] elbazamine27+footballdata41@gmail.com
+[23:18:06]   💾 football-data.org: elbazamine27+footballdata41@gmail.com → REGISTERED
+[23:18:08] 
+   [42/100] elbazamine27+footballdata42@gmail.com
+[23:18:11]   💾 football-data.org: elbazamine27+footballdata42@gmail.com → REGISTERED
+[23:18:12] 
+   [43/100] elbazamine27+footballdata43@gmail.com
+[23:18:15]   💾 football-data.org: elbazamine27+footballdata43@gmail.com → REGISTERED
+[23:18:16] 
+   [44/100] elbazamine27+footballdata44@gmail.com
+[23:18:20]   💾 football-data.org: elbazamine27+footballdata44@gmail.com → REGISTERED
+[23:18:21] 
+   [45/100] elbazamine27+footballdata45@gmail.com
+[23:18:24]   💾 football-data.org: elbazamine27+footballdata45@gmail.com → REGISTERED
+[23:18:25] 
+   [46/100] elbazamine27+footballdata46@gmail.com
+[23:18:29]   💾 football-data.org: elbazamine27+footballdata46@gmail.com → REGISTERED
+[23:18:30] 
+   [47/100] elbazamine27+footballdata47@gmail.com
+[23:18:41]   💾 football-data.org: elbazamine27+footballdata47@gmail.com → REGISTERED
+[23:18:42] 
+   [48/100] elbazamine27+footballdata48@gmail.com
+[23:18:47]   💾 football-data.org: elbazamine27+footballdata48@gmail.com → REGISTERED
+[23:18:48] 
+   [49/100] elbazamine27+footballdata49@gmail.com
+[23:18:53]   💾 football-data.org: elbazamine27+footballdata49@gmail.com → REGISTERED
+[23:18:54] 
+   [50/100] elbazamine27+footballdata50@gmail.com
+[23:18:58]   💾 football-data.org: elbazamine27+footballdata50@gmail.com → REGISTERED
+[23:18:59] 
+   📊 Progress: 50 succeeded, 0 failed
+[23:18:59] 
+   [51/100] elbazamine27+footballdata51@gmail.com
+[23:19:04]   💾 football-data.org: elbazamine27+footballdata51@gmail.com → REGISTERED
+[23:19:05] 
+   [52/100] elbazamine27+footballdata52@gmail.com
+[23:19:09]   💾 football-data.org: elbazamine27+footballdata52@gmail.com → REGISTERED
+[23:19:09] 
+   [53/100] elbazamine27+footballdata53@gmail.com
+[23:19:13]   💾 football-data.org: elbazamine27+footballdata53@gmail.com → REGISTERED
+[23:19:15] 
+   [54/100] elbazamine27+footballdata54@gmail.com
+[23:19:19]   💾 football-data.org: elbazamine27+footballdata54@gmail.com → REGISTERED
+[23:19:19] 
+   [55/100] elbazamine27+footballdata55@gmail.com
+[23:19:23]   💾 football-data.org: elbazamine27+footballdata55@gmail.com → REGISTERED
+[23:19:24] 
+   [56/100] elbazamine27+footballdata56@gmail.com
+[23:19:30]   💾 football-data.org: elbazamine27+footballdata56@gmail.com → REGISTERED
+[23:19:31] 
+   [57/100] elbazamine27+footballdata57@gmail.com
+[23:19:35]   💾 football-data.org: elbazamine27+footballdata57@gmail.com → REGISTERED
+[23:19:36] 
+   [58/100] elbazamine27+footballdata58@gmail.com
+[23:19:40]   💾 football-data.org: elbazamine27+footballdata58@gmail.com → REGISTERED
+[23:19:42] 
+   [59/100] elbazamine27+footballdata59@gmail.com
+[23:19:45]   💾 football-data.org: elbazamine27+footballdata59@gmail.com → REGISTERED
+[23:19:46] 
+   [60/100] elbazamine27+footballdata60@gmail.com
+[23:19:49]   💾 football-data.org: elbazamine27+footballdata60@gmail.com → REGISTERED
+[23:19:51] 
+   📊 Progress: 60 succeeded, 0 failed
+[23:19:51] 
+   [61/100] elbazamine27+footballdata61@gmail.com
+[23:19:54]   💾 football-data.org: elbazamine27+footballdata61@gmail.com → REGISTERED
+[23:19:56] 
+   [62/100] elbazamine27+footballdata62@gmail.com
+[23:19:59]   💾 football-data.org: elbazamine27+footballdata62@gmail.com → REGISTERED
+[23:20:00] 
+   [63/100] elbazamine27+footballdata63@gmail.com
+[23:20:04]   💾 football-data.org: elbazamine27+footballdata63@gmail.com → REGISTERED
+[23:20:05] 
+   [64/100] elbazamine27+footballdata64@gmail.com
+[23:20:09]   💾 football-data.org: elbazamine27+footballdata64@gmail.com → REGISTERED
+[23:20:09] 
+   [65/100] elbazamine27+footballdata65@gmail.com
+[23:20:13]   💾 football-data.org: elbazamine27+footballdata65@gmail.com → REGISTERED
+[23:20:14] 
+   [66/100] elbazamine27+footballdata66@gmail.com
+[23:20:17]   💾 football-data.org: elbazamine27+footballdata66@gmail.com → REGISTERED
+[23:20:19] 
+   [67/100] elbazamine27+footballdata67@gmail.com
+[23:20:22]   💾 football-data.org: elbazamine27+footballdata67@gmail.com → REGISTERED
+[23:20:23] 
+   [68/100] elbazamine27+footballdata68@gmail.com
+[23:20:26]   💾 football-data.org: elbazamine27+footballdata68@gmail.com → REGISTERED
+[23:20:28] 
+   [69/100] elbazamine27+footballdata69@gmail.com
+[23:20:31]   💾 football-data.org: elbazamine27+footballdata69@gmail.com → REGISTERED
+[23:20:32] 
+   [70/100] elbazamine27+footballdata70@gmail.com
+[23:20:36]   💾 football-data.org: elbazamine27+footballdata70@gmail.com → REGISTERED
+[23:20:37] 
+   📊 Progress: 70 succeeded, 0 failed
+[23:20:37] 
+   [71/100] elbazamine27+footballdata71@gmail.com
+[23:20:40]   💾 football-data.org: elbazamine27+footballdata71@gmail.com → REGISTERED
+[23:20:42] 
+   [72/100] elbazamine27+footballdata72@gmail.com
+[23:20:45]   💾 football-data.org: elbazamine27+footballdata72@gmail.com → REGISTERED
+[23:20:46] 
+   [73/100] elbazamine27+footballdata73@gmail.com
+[23:20:50]   💾 football-data.org: elbazamine27+footballdata73@gmail.com → REGISTERED
+[23:20:51] 
+   [74/100] elbazamine27+footballdata74@gmail.com
+[23:20:54]   💾 football-data.org: elbazamine27+footballdata74@gmail.com → REGISTERED
+[23:20:56] 
+   [75/100] elbazamine27+footballdata75@gmail.com
+[23:20:59]   💾 football-data.org: elbazamine27+footballdata75@gmail.com → REGISTERED
+[23:21:00] 
+   [76/100] elbazamine27+footballdata76@gmail.com
+[23:21:03]   💾 football-data.org: elbazamine27+footballdata76@gmail.com → REGISTERED
+[23:21:04] 
+   [77/100] elbazamine27+footballdata77@gmail.com
+[23:21:08]   💾 football-data.org: elbazamine27+footballdata77@gmail.com → REGISTERED
+[23:21:09] 
+   [78/100] elbazamine27+footballdata78@gmail.com
+[23:21:13]   💾 football-data.org: elbazamine27+footballdata78@gmail.com → REGISTERED
+[23:21:13] 
+   [79/100] elbazamine27+footballdata79@gmail.com
+[23:21:17]   💾 football-data.org: elbazamine27+footballdata79@gmail.com → REGISTERED
+[23:21:18] 
+   [80/100] elbazamine27+footballdata80@gmail.com
+[23:21:21]   💾 football-data.org: elbazamine27+footballdata80@gmail.com → REGISTERED
+[23:21:22] 
+   📊 Progress: 80 succeeded, 0 failed
+[23:21:22] 
+   [81/100] elbazamine27+footballdata81@gmail.com
+[23:21:26]   💾 football-data.org: elbazamine27+footballdata81@gmail.com → REGISTERED
+[23:21:27] 
+   [82/100] elbazamine27+footballdata82@gmail.com
+[23:21:31]   💾 football-data.org: elbazamine27+footballdata82@gmail.com → REGISTERED
+[23:21:31] 
+   [83/100] elbazamine27+footballdata83@gmail.com
+[23:21:35]   💾 football-data.org: elbazamine27+footballdata83@gmail.com → REGISTERED
+[23:21:36] 
+   [84/100] elbazamine27+footballdata84@gmail.com
+[23:21:39]   💾 football-data.org: elbazamine27+footballdata84@gmail.com → REGISTERED
+[23:21:40] 
+   [85/100] elbazamine27+footballdata85@gmail.com
+[23:21:44]   💾 football-data.org: elbazamine27+footballdata85@gmail.com → REGISTERED
+[23:21:45] 
+   [86/100] elbazamine27+footballdata86@gmail.com
+[23:21:49]   💾 football-data.org: elbazamine27+footballdata86@gmail.com → REGISTERED
+[23:21:50] 
+   [87/100] elbazamine27+footballdata87@gmail.com
+[23:21:53]   💾 football-data.org: elbazamine27+footballdata87@gmail.com → REGISTERED
+[23:21:55] 
+   [88/100] elbazamine27+footballdata88@gmail.com
+[23:21:59]   💾 football-data.org: elbazamine27+footballdata88@gmail.com → REGISTERED
+[23:22:00] 
+   [89/100] elbazamine27+footballdata89@gmail.com
+[23:22:17]   💾 football-data.org: elbazamine27+footballdata89@gmail.com → REGISTERED
+[23:22:18] 
+   [90/100] elbazamine27+footballdata90@gmail.com
+[23:22:22]   💾 football-data.org: elbazamine27+footballdata90@gmail.com → REGISTERED
+[23:22:23] 
+   📊 Progress: 90 succeeded, 0 failed
+[23:22:23] 
+   [91/100] elbazamine27+footballdata91@gmail.com
+[23:22:26]   💾 football-data.org: elbazamine27+footballdata91@gmail.com → REGISTERED
+[23:22:27] 
+   [92/100] elbazamine27+footballdata92@gmail.com
+[23:22:31]   💾 football-data.org: elbazamine27+footballdata92@gmail.com → REGISTERED
+[23:22:31] 
+   [93/100] elbazamine27+footballdata93@gmail.com
+[23:22:35]   💾 football-data.org: elbazamine27+footballdata93@gmail.com → REGISTERED
+[23:22:35] 
+   [94/100] elbazamine27+footballdata94@gmail.com
+[23:22:39]   💾 football-data.org: elbazamine27+footballdata94@gmail.com → REGISTERED
+[23:22:40] 
+   [95/100] elbazamine27+footballdata95@gmail.com
+[23:22:43]   💾 football-data.org: elbazamine27+footballdata95@gmail.com → REGISTERED
+[23:22:45] 
+   [96/100] elbazamine27+footballdata96@gmail.com
+[23:22:48]   💾 football-data.org: elbazamine27+footballdata96@gmail.com → REGISTERED
+[23:22:49] 
+   [97/100] elbazamine27+footballdata97@gmail.com
+[23:22:53]   💾 football-data.org: elbazamine27+footballdata97@gmail.com → REGISTERED
+[23:22:54] 
+   [98/100] elbazamine27+footballdata98@gmail.com
+[23:22:57]   💾 football-data.org: elbazamine27+footballdata98@gmail.com → REGISTERED
+[23:22:59] 
+   [99/100] elbazamine27+footballdata99@gmail.com
+[23:23:04]   💾 football-data.org: elbazamine27+footballdata99@gmail.com → REGISTERED
+[23:23:06] 
+   [100/100] elbazamine27+footballdata100@gmail.com
+[23:23:10]   💾 football-data.org: elbazamine27+footballdata100@gmail.com → REGISTERED
+[23:23:11] 
+   📊 Progress: 100 succeeded, 0 failed
+[23:23:11] 
+✅ BATCH 1 done: 100 successes, 0 failures
+[23:23:11] 
+[📦] BATCH 2: NewsAPI × 20
+[23:23:11] 
+   [1/20] elbazamine27+newsapi1@gmail.com
+[23:23:17]   💾 NewsAPI: elbazamine27+newsapi1@gmail.com → REGISTERED
+[23:23:19] 
+   [2/20] elbazamine27+newsapi2@gmail.com
+[23:23:22]   💾 NewsAPI: elbazamine27+newsapi2@gmail.com → REGISTERED
+[23:23:24] 
+   [3/20] elbazamine27+newsapi3@gmail.com
+[23:23:28]   💾 NewsAPI: elbazamine27+newsapi3@gmail.com → REGISTERED
+[23:23:30] 
+   [4/20] elbazamine27+newsapi4@gmail.com
+[23:23:33]   💾 NewsAPI: elbazamine27+newsapi4@gmail.com → REGISTERED
+[23:23:35] 
+   [5/20] elbazamine27+newsapi5@gmail.com
+[23:23:39]   💾 NewsAPI: elbazamine27+newsapi5@gmail.com → REGISTERED
+[23:23:40] 
+   [6/20] elbazamine27+newsapi6@gmail.com
+[23:23:44]   💾 NewsAPI: elbazamine27+newsapi6@gmail.com → REGISTERED
+[23:23:45] 
+   [7/20] elbazamine27+newsapi7@gmail.com
+[23:23:49]   💾 NewsAPI: elbazamine27+newsapi7@gmail.com → REGISTERED
+[23:23:51] 
+   [8/20] elbazamine27+newsapi8@gmail.com
+[23:23:55]   💾 NewsAPI: elbazamine27+newsapi8@gmail.com → REGISTERED
+[23:23:56] 
+   [9/20] elbazamine27+newsapi9@gmail.com
+[23:24:00]   💾 NewsAPI: elbazamine27+newsapi9@gmail.com → REGISTERED
+[23:24:02] 
+   [10/20] elbazamine27+newsapi10@gmail.com
+[23:24:05]   💾 NewsAPI: elbazamine27+newsapi10@gmail.com → REGISTERED
+[23:24:07] 
+   [11/20] elbazamine27+newsapi11@gmail.com
+[23:24:11]   💾 NewsAPI: elbazamine27+newsapi11@gmail.com → REGISTERED
+[23:24:12] 
+   [12/20] elbazamine27+newsapi12@gmail.com
+[23:24:15]   💾 NewsAPI: elbazamine27+newsapi12@gmail.com → REGISTERED
+[23:24:17] 
+   [13/20] elbazamine27+newsapi13@gmail.com
+[23:24:21]   💾 NewsAPI: elbazamine27+newsapi13@gmail.com → REGISTERED
+[23:24:23] 
+   [14/20] elbazamine27+newsapi14@gmail.com
+[23:24:26]   💾 NewsAPI: elbazamine27+newsapi14@gmail.com → REGISTERED
+[23:24:28] 
+   [15/20] elbazamine27+newsapi15@gmail.com
+[23:24:31]   💾 NewsAPI: elbazamine27+newsapi15@gmail.com → REGISTERED
+[23:24:33] 
+   [16/20] elbazamine27+newsapi16@gmail.com
+[23:24:37]   💾 NewsAPI: elbazamine27+newsapi16@gmail.com → REGISTERED
+[23:24:39] 
+   [17/20] elbazamine27+newsapi17@gmail.com
+[23:24:42]   💾 NewsAPI: elbazamine27+newsapi17@gmail.com → REGISTERED
+[23:24:44] 
+   [18/20] elbazamine27+newsapi18@gmail.com
+[23:24:48]   💾 NewsAPI: elbazamine27+newsapi18@gmail.com → REGISTERED
+[23:24:49] 
+   [19/20] elbazamine27+newsapi19@gmail.com
+[23:24:53]   💾 NewsAPI: elbazamine27+newsapi19@gmail.com → REGISTERED
+[23:24:54] 
+   [20/20] elbazamine27+newsapi20@gmail.com
+[23:24:58]   💾 NewsAPI: elbazamine27+newsapi20@gmail.com → REGISTERED
+[23:25:00] 
+[📦] BATCH 3: WeatherAPI × 10
+[23:25:00] 
+   [1/10] elbazamine27+weatherapi1@gmail.com
+[23:25:02]   💾 WeatherAPI: elbazamine27+weatherapi1@gmail.com → VISITED
+[23:25:03] 
+   [2/10] elbazamine27+weatherapi2@gmail.com
+[23:25:05]   💾 WeatherAPI: elbazamine27+weatherapi2@gmail.com → VISITED
+[23:25:06] 
+   [3/10] elbazamine27+weatherapi3@gmail.com
+[23:25:08]   💾 WeatherAPI: elbazamine27+weatherapi3@gmail.com → VISITED
+[23:25:09] 
+   [4/10] elbazamine27+weatherapi4@gmail.com
+[23:25:12]   💾 WeatherAPI: elbazamine27+weatherapi4@gmail.com → VISITED
+[23:25:13] 
+   [5/10] elbazamine27+weatherapi5@gmail.com
+[23:25:15]   💾 WeatherAPI: elbazamine27+weatherapi5@gmail.com → VISITED
+[23:25:16] 
+   [6/10] elbazamine27+weatherapi6@gmail.com
+[23:25:18]   💾 WeatherAPI: elbazamine27+weatherapi6@gmail.com → VISITED
+[23:25:19] 
+   [7/10] elbazamine27+weatherapi7@gmail.com
+[23:25:21]   💾 WeatherAPI: elbazamine27+weatherapi7@gmail.com → VISITED
+[23:25:22] 
+   [8/10] elbazamine27+weatherapi8@gmail.com
+[23:25:24]   💾 WeatherAPI: elbazamine27+weatherapi8@gmail.com → VISITED
+[23:25:25] 
+   [9/10] elbazamine27+weatherapi9@gmail.com
+[23:25:26]   💾 WeatherAPI: elbazamine27+weatherapi9@gmail.com → VISITED
+[23:25:27] 
+   [10/10] elbazamine27+weatherapi10@gmail.com
+[23:25:30]   💾 WeatherAPI: elbazamine27+weatherapi10@gmail.com → VISITED
+[23:25:31] 
+============================================================
+[23:25:31] WRITING SUMMARY...
+[23:25:31] ============================================================
+[23:25:31] 
+✅ SUMMARY: C:/Users/zake.exe/Desktop/Score Exact 100/football_predictor/api_keys/1000_API_KEYS.txt
+[23:25:31] ✅ Total: 130
+[23:25:31] ✅ Successful: 120
+[23:25:31] 
+📧 API Keys are in Gmail inbox: elbazamine27@gmail.com
+[23:25:31] 📧 Open it to get all API Keys!

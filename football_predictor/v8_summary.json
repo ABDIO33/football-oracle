@@ -1,0 +1,9 @@
+{
+  "exact_score": 0.24907476901576128,
+  "1x2": 0.6355495742643443,
+  "features": 141,
+  "venue_matched": 60770,
+  "weather_matched": 12611,
+  "predictions": 54,
+  "time_taken": -2.384185791015625e-07
+}

@@ -1,0 +1,83 @@
+# Score Exact 100 — كامل السياق
+
+## المشروع
+**Score Exact 100** — أفضل نظام توقع نتائج كرة قدم دقيق في العالم (مجاني 100%).
+- قاعدة بيانات: **887,041 مباراة**، 1,067 بطولة، 4,949 فريق
+- أفضل دقة توقع نتيجة صحيحة: **17.97%** (seed محظوظ) / **17.60%** (seed=42, إنتاج)
+- أفضل دقة 1X2: **56.11%** (M5 منفرد)
+- RPS: **0.1125** (كلما قلّ أفضل)
+
+## الموديلات
+- **5 معماريين DeepNN**: M2 (512-1024-512), M3 (256-512-256-128), M4 (512-1024-512-256), M5 (128-256-128), M6 (1024-512-256)
+- **الإنتاج الحالي**: Ensemble XGBoost(5%) + M2 + M5 = 17.60%
+- **محفوظ في**: `models/mlp_blend.pkl` (joblib, DeepNN + XGBoost + imputer + scaler)
+- **81 ميزة**: walkforward Elo/xG (25) + إحصائيات (12) + تشكيلات/لاعبين (10) + أسعار (6) + ميزات مركبة (23) + طقس (4) + سفر (1)
+
+## سيرفرات شغالة
+| المنفذ | المشروع | الوظيفة |
+|--------|---------|---------|
+| **3456** 🏆 | **pi-web-ui-v3** (هذا) | **أنا — Pi SDK مع كل السياق** |
+| 5000 | football_predictor (Flask) | توقعات كرة القدم القديم |
+| 3457 | pi-web-ui-v2 (معطّل) | Flask chat (ليس أنا) |
+
+## كأس العالم 2026
+- **انطلق 11 يونيو 2026** — البطولة قائمة الآن!
+- Tournament ID في SofaScore: **16** (FIFA World Cup)
+- المجموعة B فقط في البيانات التاريخية (9 مباريات)
+- جدول المباريات فيه فرق وهمية (2E, 1I, إلخ) للأدوار النهائية
+- نحتاج تحديث البيانات بـ SofaScore API
+
+## مصدر البيانات الأساسي
+- **SofaScore API** (via `curl_cffi`، غير محدود، مجاني 100%)
+- ملف الماسح: `sofascore_scraper.py`
+- قاعدة بيانات: `scrape_cache.db` (آخر تحديث 2026-06-14)
+- ClubElo < Understat < أسعار السوق — مصادر احتياطية
+
+## تاريخ القرارات
+1. **اخترنا Pi SDK** على RPC mode لأنه يحافظ على ALL features
+2. **WebSocket** بدل polling للـ streaming المباشر
+3. **Neon cyberpunk** ثيم (يطابق الـ football predictor)
+4. **المنفذ 3456** (منفصل عن 5000)
+5. **AI Provider**: OpenCode (DeepSeek V4 Flash Free) — مجاني
+6. **API Key**: sk-soRBTGR3T4MPV61V8yIADozHf9gTGm2Y5ffdnozSKDwW29DjjgWioXmvpAwu0Mnq
+
+## ميزات待 إضافية لكسر ceiling 18%
+- Referee data (حكم المباراة)
+- Player impact model (تأثير اللاعبين)
+- Weather forecast (طقس يوم المباراة)
+- Travel distance (مسافة السفر)
+- Stadium data (ملعب + جمهور)
+
+## هيكل المجلدات
+```
+C:\Users\zake.exe\Desktop\Score Exact 100\
+├── football_predictor\    # المشروع الأصلي (Flask + models + data)
+│   ├── direct_predictor.py   # التوقعات
+│   ├── ensemble_trainer.py   # تدريب الـ ensemble
+│   ├── models\               # mlp_blend.pkl + النماذج
+│   ├── scrape_cache.db       # 887,041 مباراة
+│   ├── AGENTS.md
+│   ├── PROJECT_CONTEXT.md
+│   └── SYSTEM_BLUEPRINT.md
+├── pi-web-ui\             # v1 (Pi SDK، كان فيه double response)
+├── pi-web-ui-v2\          # v2 (Flask/OpenCode API مباشر — مش أنا)
+└── pi-web-ui-v3\          # ✅ v3 (Pi SDK — أنا الحقيقي)
+    ├── server.js
+    ├── public\index.html
+    ├── AGENTS.md           # هذا الملف — السياق الكامل
+    └── start.bat
+```
+
+## الأهداف الحالية
+1. ✅ تشغيل Web UI مع Pi SDK الحقيقي (بدون double response)
+2. 🔄 تحميل كل السياق في الواجهة
+3. ⬜ ربط قاعدة بيانات 887K مباراة للتنبؤ المباشر
+4. ⬜ إعادة تدريب النموذج بميزات إضافية (حكم، طقس، سفر)
+5. ⬜ نشر على GitHub Pages (استضافة مجانية)
+
+## ملاحظات مهمة
+- أنا (**DeepSeek V4 Flash Free**) هو نفس AI الموجود في Pi
+- عندي أدوات: **read, write, edit, bash** — أقدر أقرأ وأعدّل وأنفذ
+- عندي skills: **agent-reach** (بحث بالإنترنت)، **pinokio** (تشغيل تطبيقات)
+- EXTENSIONS: كل extension المثبت في `~/.pi/agent/extensions/`
+- اللغة: **عربي RTL + English** — أتحدث بطلاقة

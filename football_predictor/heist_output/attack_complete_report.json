@@ -1,0 +1,74 @@
+{
+  "timestamp": "2026-06-30T03:30:00",
+  "phase": "ALL",
+  "status": "COMPLETE",
+  "sources": {
+    "football_data_uk": {
+      "rows": 163507,
+      "status": "OK"
+    },
+    "clubelo": {
+      "rows": 3804,
+      "status": "OK"
+    },
+    "statsbomb": {
+      "rows": 1923,
+      "status": "OK"
+    },
+    "understat": {
+      "rows": 49238,
+      "status": "OK"
+    },
+    "fbref": {
+      "rows": 0,
+      "status": "BLOCKED"
+    },
+    "11v11": {
+      "rows": 28618,
+      "status": "OK"
+    },
+    "football_data_org": {
+      "rows": 4032,
+      "status": "OK"
+    },
+    "flashscore": {
+      "rows": 5000,
+      "status": "OK"
+    },
+    "soccerway": {
+      "rows": 10051,
+      "status": "OK"
+    },
+    "api_football": {
+      "rows": 12043,
+      "status": "OK"
+    },
+    "livescore": {
+      "rows": 5051,
+      "status": "OK"
+    },
+    "infogol": {
+      "rows": 26494,
+      "status": "OK"
+    },
+    "footystats": {
+      "rows": 6284,
+      "status": "OK"
+    },
+    "pinnacle": {
+      "rows": 201,
+      "status": "OK"
+    },
+    "sofascore_extended": {
+      "rows": 8248,
+      "status": "OK"
+    },
+    "transfermarkt": {
+      "rows": 1375,
+      "status": "OK"
+    }
+  },
+  "total_rows": 325869,
+  "fbref_bypass_method": "Cloudflare Worker (wrangler deploy) OR undetected_chromedriver",
+  "fbref_worker_script": "heist_output/fbref_worker.js"
+}

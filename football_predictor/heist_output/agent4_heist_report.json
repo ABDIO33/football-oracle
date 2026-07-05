@@ -1,0 +1,109 @@
+{
+  "timestamp": "2026-06-28T07:41:20.459108+00:00",
+  "sources": {
+    "fotmob": {
+      "total": 5759,
+      "finished": 2878,
+      "with_stats": 0,
+      "with_shotmap": 0,
+      "with_lineups": 0
+    },
+    "understat": {
+      "total": 6284,
+      "finished": 6284,
+      "with_stats": 6284,
+      "with_shotmap": 0,
+      "with_lineups": 0
+    }
+  },
+  "total_matches": 12043,
+  "total_injuries": 0,
+  "total_players": 40,
+  "total_shots": 0,
+  "date_range": {
+    "min": "2023-07-20T07:00:00Z",
+    "max": "2027-05-30T16:30:00Z"
+  },
+  "top_competitions": [
+    {
+      "name": "EPL",
+      "matches": 1429
+    },
+    {
+      "name": "Serie_A",
+      "matches": 1342
+    },
+    {
+      "name": "La_Liga",
+      "matches": 1334
+    },
+    {
+      "name": "Ligue_1",
+      "matches": 1115
+    },
+    {
+      "name": "Bundesliga",
+      "matches": 1064
+    },
+    {
+      "name": "Championship",
+      "matches": 552
+    },
+    {
+      "name": "MLS (USA)",
+      "matches": 510
+    },
+    {
+      "name": "FIFA World Cup",
+      "matches": 380
+    },
+    {
+      "name": "Premier League (ENG)",
+      "matches": 380
+    },
+    {
+      "name": "Primeira Liga",
+      "matches": 380
+    },
+    {
+      "name": "Serie A (ITA)",
+      "matches": 380
+    },
+    {
+      "name": "Belgian Pro League",
+      "matches": 306
+    },
+    {
+      "name": "Bundesliga (GER)",
+      "matches": 306
+    },
+    {
+      "name": "LaLiga (ESP)",
+      "matches": 306
+    },
+    {
+      "name": "Serie B",
+      "matches": 306
+    },
+    {
+      "name": "Swiss Super League",
+      "matches": 306
+    },
+    {
+      "name": "Eredivisie",
+      "matches": 240
+    },
+    {
+      "name": "Greek Super League",
+      "matches": 240
+    },
+    {
+      "name": "AFC Asian Cup",
+      "matches": 198
+    },
+    {
+      "name": "UEFA Champions League",
+      "matches": 189
+    }
+  ]
+}

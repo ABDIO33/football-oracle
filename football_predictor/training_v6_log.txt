@@ -1,0 +1,92 @@
+============================================================
+V6 ULTIMATE TRAINING — IMPROVED
+============================================================
+Data: Train=752672 Val=44274 Test=88551 (0.9M total)
+Feature dim: 120
+Classes (scores): 25 (0-0 to 4-4+)
+
+Training M1-d12...
+  ➜ M1-d12: exact=21.55%  1X2=62.41%  [1445 s]
+
+Training M2-d12-500...
+  ➜ M2-d12-500: exact=24.20%  1X2=63.64%  [1362 s]
+
+Training M3-d10...
+  ➜ M3-d10: exact=20.95%  1X2=62.20%  [563 s]
+
+Training M4-d8...
+  ➜ M4-d8: exact=20.96%  1X2=62.54%  [652 s]
+
+Training M5-d6...
+  ➜ M5-d6: exact=18.78%  1X2=60.68%  [400 s]
+
+Training M6-d14...
+  ➜ M6-d14: exact=24.76%  1X2=64.06%  [862 s]
+
+Training M7-d10-alt...
+  ➜ M7-d10-alt: exact=21.51%  1X2=62.75%  [530 s]
+
+============================================================
+ENSEMBLE SEARCH
+============================================================
+Naive average (all 7): exact=22.23%  1X2=62.60%
+Best single: M6-d14 (exact=24.76%)
+
+Searching all subset ensembles (equal weights)...
+  Size=1: best so far=24.76%
+  Size=2: best so far=24.76%
+  Size=3: best so far=24.76%
+  Size=4: best so far=24.76%
+  Size=5: best so far=24.76%
+Best subset (equal weights): models=[5]  exact=24.76%
+
+Weighted soft-probability search...
+  Subset ['M6-d14', 'M2-d12-500']: weighted=24.81%
+  Subset ['M6-d14', 'M2-d12-500', 'M1-d12']: weighted=24.58%
+  Subset ['M6-d14', 'M2-d12-500', 'M1-d12', 'M7-d10-alt']: weighted=24.31%
+  Subset ['M1-d12', 'M2-d12-500', 'M3-d10', 'M4-d8', 'M5-d6', 'M6-d14', 'M7-d10-alt']: weighted=23.85%
+Best weighted ensemble: models=['M6-d14', 'M2-d12-500']  weights=[np.float64(0.85), np.float64(0.15)]  exact=24.81%
+
+➜ Using weighted ensemble (better)
+
+Refining weights around best point...
+  Converged at iteration 1
+  Refined: exact=24.81%  weights=[np.float64(0.85), np.float64(0.15)]
+
+============================================================
+CALIBRATION
+============================================================
+Best temperature: 1.075 (log_loss=2.4179)
+
+============================================================
+FINAL RESULTS
+============================================================
+Data: 885497 matches
+Best single model: M6-d14  exact=24.76%
+Best subset ensemble: 24.76%
+Best weighted ensemble: 24.81%
+Calibrated ensemble:  exact=24.81%  1X2=64.06%
+Temperature: 1.075
+
+--- Individual Models ---
+  M1-d12: exact=21.55%  1X2=62.41%
+  M2-d12-500: exact=24.20%  1X2=63.64%
+  M3-d10: exact=20.95%  1X2=62.20%
+  M4-d8: exact=20.96%  1X2=62.54%
+  M5-d6: exact=18.78%  1X2=60.68%
+  M6-d14: exact=24.76%  1X2=64.06% ★ BEST
+  M7-d10-alt: exact=21.51%  1X2=62.75%
+
+V6 vs V3: 24.81% < 32.00% (diff=7.19%)
+Brier score: 0.0346
+
+============================================================
+SAVING...
+============================================================
+Model saved to models/ultimate_v6_ensemble.pkl (162 MB)
+Results saved to models/ultimate_v6_results.json
+
+Total time: 117.4 min
+============================================================
+V6 ULTIMATE TRAINING COMPLETE
+============================================================

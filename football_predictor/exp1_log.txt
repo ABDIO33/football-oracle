@@ -1,0 +1,8 @@
+======================================================================
+EXP1: LightGBM on 296 features, 885K matches
+======================================================================
+[1] Loading features_selected.npz...
+  (885495, 296) (3s)
+  Train: 796,945, Test: 88,550
+[2] Training LightGBM...
+Training until validation scores don't improve for 20 rounds

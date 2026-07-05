@@ -1,0 +1,21 @@
+XGBoost Background Training Started
+==================================================
+Train: 100,000 Val: 77,277 Test: 77,278 Feats: 120
+Training XGBoost M1 (depth=6, 300 trees)...
+  XGB-M1: exact=18.49% [180s]
+Training XGBoost M2 (depth=8, 200 trees)...
+  XGB-M2: exact=18.79% [347s]
+Training XGBoost M3 (depth=4, 400 trees)...
+  XGB-M3: exact=17.76% [525s]
+Loading V3 ensemble for blending...
+
+V3 LightGBM only: exact=31.05%
+XGBoost only:     exact=18.56%
+V3+XGB Hybrid:    exact=27.40%
+---
+Improvement: -3.65pp
+V3+XGB 1X2: 64.87%
+
+SAVED! Total time: 12.1 min
+Final exact: 27.40%
+Final 1X2: 64.87%

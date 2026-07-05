@@ -1,0 +1,34 @@
+============================================================
+ULTIMATE ENSEMBLE BUILDER — يجمع كل النماذج
+============================================================
+Test data: 77,277 matches
+
+Loading models...
+  V3 ensemble: 3 models loaded
+  V6 ensemble: 2 models loaded
+  Total models: 5
+
+Computing predictions...
+  V3-M1: OK
+  V3-M2: OK
+  V3-M3: OK
+  V6-M1: OK
+  V6-M2: OK
+5 models working
+
+Searching best ensemble combination...
+Best naive ensemble (avg(2)): 32.05%
+  Models: ['V3-M2', 'V3-M3']
+
+Weighted search...
+Weighted best (random search): 29.72%
+
+=== FINAL RESULTS ===
+Naive ensemble: 32.05%
+Weighted ensemble: 29.72%
+Calibrated ensemble (T=1.050): 29.54%
+1X2 accuracy: 66.27%
+
+V3 was 32.00%
+
+SAVED! Time: 14.8 min

@@ -1,0 +1,63 @@
+[22:52:14] ============================================================
+[22:52:14] [🔥] GMAIL PLUS TRICK — AUTO REGISTRATION
+[22:52:14] [🔥] BASE: elbazamine27@gmail.com
+[22:52:14] ============================================================
+[22:52:14] 
+[*] Gmail Plus Trick يولد إيميلات وهمية من:
+[22:52:14]     elbazamine27+TAG@gmail.com
+[22:52:14]     كل الإيميلات تروح لـ elbazamine27@gmail.com
+
+[22:52:15] 
+[⚽] football-data.org ← elbazamine27+footballdata@gmail.com
+[22:52:22]     ✅ Registration successful!
+[22:52:22]   💾 SAVED: football-data.org → elbazamine27+footballdata@gmail.com [REGISTERED]
+[22:52:24] 
+[🌤️] WeatherAPI ← elbazamine27+weatherapi@gmail.com
+[22:52:36]     ⚠️ Could not automate, needs manual
+[22:52:36]   💾 SAVED: WeatherAPI → elbazamine27+weatherapi@gmail.com [MANUAL_NEEDED]
+[22:52:38] 
+[📰] NewsAPI ← elbazamine27+newsapi@gmail.com
+[22:52:48]     ✅ Submitted!
+[22:52:48]   💾 SAVED: NewsAPI → elbazamine27+newsapi@gmail.com [SUBMITTED]
+[22:52:49] 
+[🏅] TheSportsDB ← elbazamine27+sportsdb@gmail.com
+[22:52:53]     ⚠️ TheSportsDB free tier: 404 - File or directory not found.
+[22:52:53]   💾 SAVED: TheSportsDB → elbazamine27+sportsdb@gmail.com [VISITED]
+[22:52:55] 
+[⚽] football-data.org ← elbazamine27+footballdata2@gmail.com
+[22:53:02]     ✅ Registration successful!
+[22:53:02]   💾 SAVED: football-data.org → elbazamine27+footballdata2@gmail.com [REGISTERED]
+[22:53:03] 
+[⚽] football-data.org ← elbazamine27+footballdata3@gmail.com
+[22:53:10]     ✅ Registration successful!
+[22:53:10]   💾 SAVED: football-data.org → elbazamine27+footballdata3@gmail.com [REGISTERED]
+[22:53:11] 
+[⚽] football-data.org ← elbazamine27+footballdata4@gmail.com
+[22:53:17]     ✅ Registration successful!
+[22:53:17]   💾 SAVED: football-data.org → elbazamine27+footballdata4@gmail.com [REGISTERED]
+[22:53:19] 
+[⚽] football-data.org ← elbazamine27+footballdata5@gmail.com
+[22:53:27]     ✅ Registration successful!
+[22:53:27]   💾 SAVED: football-data.org → elbazamine27+footballdata5@gmail.com [REGISTERED]
+[22:53:30] 
+============================================================
+[22:53:30] [🏆] REGISTRATION COMPLETE!
+[22:53:30] ============================================================
+[22:53:30] 
+✅ تم التسجيل في:
+[22:53:30]   • football-data.org: elbazamine27+footballdata@gmail.com [REGISTERED]
+[22:53:30]   • WeatherAPI: elbazamine27+weatherapi@gmail.com [MANUAL_NEEDED]
+[22:53:30]   • NewsAPI: elbazamine27+newsapi@gmail.com [SUBMITTED]
+[22:53:30]   • TheSportsDB: elbazamine27+sportsdb@gmail.com [VISITED]
+[22:53:30]   • football-data.org: elbazamine27+footballdata2@gmail.com [REGISTERED]
+[22:53:30]   • football-data.org: elbazamine27+footballdata3@gmail.com [REGISTERED]
+[22:53:30]   • football-data.org: elbazamine27+footballdata4@gmail.com [REGISTERED]
+[22:53:30]   • football-data.org: elbazamine27+footballdata5@gmail.com [REGISTERED]
+[22:53:30] 
+📧 التحقق: إفتح Gmail حقك:
+[22:53:30]     https://mail.google.com
+[22:53:30]     وابحث عن رسائل التفعيل
+[22:53:30] 
+🔑 API keys: راح توصلك عالبريد
+[22:53:30] 
+[✅] FINISHED!

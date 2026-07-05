@@ -1,15 +1,9 @@
 """Edge WebDriver scraper for Flashscore — unlimited team + match data"""
 import time, re, os, json, sqlite3, threading
-from selenium import webdriver
-from selenium.webdriver.edge.options import Options
+from curl_cffi import requests
 from bs4 import BeautifulSoup
 
-EDGE_PATH = r'C:\Program Files (x86)\Microsoft\EdgeCore\149.0.4022.62\msedge.exe'
 SCRAPE_DB = os.path.join(os.path.dirname(__file__), 'scrape_cache.db')
-
-_driver = None
-_last_use = 0
-_driver_lock = threading.Lock()
 
 FLASH_ID = {
     'England': 'j9N9ZNFA', 'Spain': 'bLyo6mco', 'Brazil': 'I9l9aqLq',
@@ -37,58 +31,18 @@ def _init_db():
 
 _init_db()
 
-def _driver_get():
-    global _driver, _last_use
-    with _driver_lock:
-        now = time.time()
-        if _driver is None or (now - _last_use) > 120:
-            if _driver:
-                try: _driver.quit()
-                except: pass
-            opts = Options()
-            opts.binary_location = EDGE_PATH
-            opts.add_argument('--headless=new')
-            opts.add_argument('--no-sandbox')
-            opts.add_argument('--disable-gpu')
-            opts.add_argument('--window-size=1920,1080')
-            opts.add_argument('--disable-blink-features=AutomationControlled')
-            opts.add_experimental_option('excludeSwitches', ['enable-automation'])
-            opts.add_experimental_option('useAutomationExtension', False)
-            _driver = webdriver.Edge(options=opts)
-        _last_use = now
-        return _driver
-
-def _cache_get(url, max_age=3600):
-    try:
-        conn = sqlite3.connect(SCRAPE_DB, timeout=3)
-        cur = conn.execute('SELECT data, updated FROM cache WHERE url = ?', (url,))
-        row = cur.fetchone()
-        conn.close()
-        if row and (time.time() - row[1]) < max_age:
-            return json.loads(row[0])
-    except: pass
-    return None
-
-def _cache_set(url, data):
-    try:
-        conn = sqlite3.connect(SCRAPE_DB, timeout=3)
-        conn.execute('INSERT OR REPLACE INTO cache VALUES (?, ?, ?)',
-                     (url, json.dumps(data, default=str), time.time()))
-        conn.commit()
-        conn.close()
-    except: pass
-
 def _page(url, cache_min=60):
     c = _cache_get(url, cache_min * 60)
     if c: return c
     try:
-        d = _driver_get()
-        d.get(url)
-        time.sleep(4)
-        h = d.page_source
+        response = requests.get(url, impersonate="chrome120", timeout=10)
+        response.raise_for_status()
+        h = response.text
         _cache_set(url, h)
         return h
-    except: return None
+    except Exception as e:
+        print(f"Error fetching page {url}: {e}")
+        return None
 
 SOFASCORE_SLUGS = {
     'England': 'england', 'Spain': 'spain', 'Brazil': 'brazil', 'Argentina': 'argentina',
@@ -127,7 +81,6 @@ def _sofascore_via_edge(path):
         if row and (time.time() - row[1]) < 3600:
             return json.loads(row[0])
     except: pass
-    d = _driver_get()
     try:
         # Extract API path from the full path
         api_path = path
@@ -148,9 +101,9 @@ def _sofascore_via_edge(path):
         elif '/search/' in path:
             q = path.split('q=')[-1] if 'q=' in path else ''
             page_url = f'https://www.sofascore.com/search?q={q}'
-        d.get(page_url)
-        time.sleep(5)
-        html = d.page_source
+        response = requests.get(page_url, impersonate="chrome120", timeout=10)
+        response.raise_for_status()
+        html = response.text
         # Extract __NEXT_DATA__ (Next.js embedded JSON)
         match = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, re.DOTALL)
         if match:
@@ -244,13 +197,25 @@ def get_sofascore_team_form(team_name):
     except:
         return None
 
-def close():
-    global _driver
-    with _driver_lock:
-        if _driver:
-            try: _driver.quit()
-            except: pass
-            _driver = None
+def _cache_get(url, max_age=3600):
+    try:
+        conn = sqlite3.connect(SCRAPE_DB, timeout=3)
+        cur = conn.execute('SELECT data, updated FROM cache WHERE url = ?', (url,))
+        row = cur.fetchone()
+        conn.close()
+        if row and (time.time() - row[1]) < max_age:
+            return json.loads(row[0])
+    except: pass
+    return None
+
+def _cache_set(url, data):
+    try:
+        conn = sqlite3.connect(SCRAPE_DB, timeout=3)
+        conn.execute('INSERT OR REPLACE INTO cache VALUES (?, ?, ?)',
+                     (url, json.dumps(data, default=str), time.time()))
+        conn.commit()
+        conn.close()
+    except: pass
 
 def _id(team):
     """Get Flashscore team ID"""

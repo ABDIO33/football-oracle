@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pi Web UI - AI Chat</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Tajawal:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-animation"></div>
+<div class="grid-overlay"></div>
+
+<div class="app-container">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">Pi<span class="logo-accent">Web</span></div>
+      <div class="model-badge" id="modelBadge">جارٍ التحميل...</div>
+    </div>
+    
+    <div class="sidebar-actions">
+      <button class="sidebar-btn" onclick="newSession()" title="جلسة جديدة">
+        <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M8 2a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 8 2z"/></svg>
+        جلسة جديدة
+      </button>
+      <button class="sidebar-btn" onclick="toggleSidebar()" title="إغلاق">
+        <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 1 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06z"/></svg>
+      </button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">معلومات</div>
+      <div class="sidebar-info">
+        <div class="info-row">
+          <span class="info-label">الحالة:</span>
+          <span class="info-value" id="statusBadge"><span class="status-dot offline"></span>غير متصل</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">الجلسة:</span>
+          <span class="info-value" id="sessionId">—</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">الرسائل:</span>
+          <span class="info-value" id="msgCount">0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">الأوامر السريعة</div>
+      <div class="quick-commands">
+        <button class="cmd-btn" onclick="sendMsg('/settings')">⚙️ /settings</button>
+        <button class="cmd-btn" onclick="sendMsg('/model')">🤖 /model</button>
+        <button class="cmd-btn" onclick="sendMsg('/compact')">📦 /compact</button>
+        <button class="cmd-btn" onclick="sendMsg('/session')">📊 /session</button>
+        <button class="cmd-btn" onclick="sendMsg('/hotkeys')">⌨️ /hotkeys</button>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="https://pi.dev" target="_blank" class="pi-link">⚡ pi.dev</a>
+    </div>
+  </aside>
+
+  <!-- Main Chat Area -->
+  <main class="main-content">
+    <!-- Header -->
+    <header class="chat-header">
+      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+      <div class="header-title">
+        <span id="headerModel">Pi Web UI</span>
+        <span class="header-subtitle" id="headerSubtitle">واجهة رسومية للذكاء الاصطناعي</span>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" onclick="newSession()" title="جلسة جديدة">📄</button>
+        <button class="icon-btn" onclick="getState()" title="حالة الجلسة">🔄</button>
+      </div>
+    </header>
+
+    <!-- Messages -->
+    <div class="messages-container" id="messages">
+      <div class="welcome-message">
+        <div class="welcome-icon">🤖</div>
+        <h2>مرحباً بك في Pi Web UI!</h2>
+        <p>واجهة رسومية كاملة لـ <strong>Pi Coding Agent</strong></p>
+        <p class="welcome-hint">جميع مزايا pi متوفرة — tools, skills, extensions — بدون فقدان أي شيء</p>
+        <div class="welcome-cmds">
+          <code>ask any question</code>
+          <code>!command</code>
+          <code>/command</code>
+          <code>@file</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thinking Indicator -->
+    <div class="thinking-indicator" id="thinkingIndicator">
+      <div class="thinking-dots">
+        <span></span><span></span><span></span>
+      </div>
+      <span id="thinkingText">Pi is thinking...</span>
+      <button class="stop-btn" onclick="abort()">■ إيقاف</button>
+    </div>
+
+    <!-- Input Area -->
+    <div class="input-container">
+      <div class="input-wrapper" id="inputWrapper">
+        <textarea
+          id="messageInput"
+          class="message-input"
+          placeholder="اكتب رسالتك هنا... (! لأوامر bash، / لأوامر pi)"
+          rows="1"
+          dir="auto"
+        ></textarea>
+        <div class="input-tools">
+          <button class="input-btn" onclick="document.getElementById('fileInput').click()" title="إرفاق ملف">📎</button>
+          <input type="file" id="fileInput" style="display:none" multiple onchange="handleFiles(this.files)">
+          <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+            <svg width="20" height="20" viewBox="0 0 20 20"><path fill="currentColor" d="M2.724 2.052a.75.75 0 0 1 .783.054l15 10.5a.75.75 0 0 1-.045 1.258l-15 9.75A.75.75 0 0 1 2.25 22.5V3a.75.75 0 0 1 .474-.948zM3.75 4.906v6.344h7.5a.75.75 0 0 1 0 1.5h-7.5v6.344L16.02 12 3.75 4.906z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/14.0.0/marked.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

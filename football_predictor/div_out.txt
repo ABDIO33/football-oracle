@@ -1,0 +1,51 @@
+DIVERSE ENSEMBLE TRAINING
+==================================================
+Data: Train=656855 Val=38638 Test=77278
+
+1. Time-weighted model...
+Training until validation scores don't improve for 20 rounds
+Early stopping, best iteration is:
+[107]	valid_0's multi_logloss: 2.23111
+  Time-weighted: 20.89% [384s]
+
+2. High LR shallow...
+Training until validation scores don't improve for 20 rounds
+Did not meet early stopping. Best iteration is:
+[150]	valid_0's multi_logloss: 2.36522
+  High LR: 18.25% [221s]
+
+3. Deep with subsample...
+Training until validation scores don't improve for 20 rounds
+Did not meet early stopping. Best iteration is:
+[400]	valid_0's multi_logloss: 1.61886
+  Deep subsample: 32.12% [1058s]
+
+4. Conservative...
+Training until validation scores don't improve for 20 rounds
+Did not meet early stopping. Best iteration is:
+[200]	valid_0's multi_logloss: 2.20235
+  Conservative: 19.73% [566s]
+
+5. Extra deep...
+Training until validation scores don't improve for 20 rounds
+Did not meet early stopping. Best iteration is:
+[200]	valid_0's multi_logloss: 1.36976
+  Extra deep: 36.35% [935s]
+
+=== ENSEMBLE ===
+All 5 avg: 32.92%
+Best subset: 36.42% models=['deep_sub', 'extra_deep']
+Weighted: 35.56%
+
+=== ADDING V3 ===
+  V3 weight=0.1: 33.16%
+  V3 weight=0.2: 33.19%
+  V3 weight=0.3: 33.19%
+  V3 weight=0.4: 33.01%
+  V3 weight=0.5: 32.79%
+  V3 weight=0.6: 32.45%
+  V3 weight=0.7: 32.17%
+  V3 weight=0.8: 31.76%
+  V3 weight=0.9: 31.41%
+
+Done! 71.0 min

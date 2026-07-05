@@ -1,0 +1,42 @@
+CHAMPION MODEL RETRAINING
+==================================================
+Data: Train=656855 Val=38638 Test=77278
+
+=== M5: Extra Deep (depth=20) ===
+Training until validation scores don't improve for 20 rounds
+Did not meet early stopping. Best iteration is:
+[200]	valid_0's multi_logloss: 1.89822
+M5-extra_deep: exact=25.14% 1X2=63.48%
+  Time: 1323s
+  Saved: models/M5_extra_deep.pkl
+
+=== M3: Deep Subsample (depth=15, 70% data) ===
+Training until validation scores don't improve for 20 rounds
+Did not meet early stopping. Best iteration is:
+[400]	valid_0's multi_logloss: 1.89253
+M3-deep_sub: exact=25.90% 1X2=64.83%
+  Time: 1163s
+  Saved: models/M3_deep_sub.pkl
+
+=== ENSEMBLE ===
+M3+M5 avg: 25.98%
+  w3=0.1 w5=0.9: 25.35%
+  w3=0.2 w5=0.8: 25.60%
+  w3=0.3 w5=0.7: 25.75%
+  w3=0.4 w5=0.6: 25.94%
+  w3=0.5 w5=0.5: 25.98%
+  w3=0.6 w5=0.4: 26.01%
+  w3=0.7 w5=0.3: 26.00%
+  w3=0.8 w5=0.2: 26.02%
+  w3=0.9 w5=0.1: 25.96%
+Best: w3=0.78 w5=0.22: 26.05%
+
+=== WITH V3 ===
+M5+V3: w=0.05: 30.96%
+M3+M5+V3: w=0.1/0.1/0.8: 30.70%
+
+==================================================
+   FINAL WORLD RECORD: 30.96%
+==================================================
+
+Saved! Time: 53.4 min

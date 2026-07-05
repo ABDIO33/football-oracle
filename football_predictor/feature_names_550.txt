@@ -1,0 +1,550 @@
+  0: home_elo
+  1: away_elo
+  2: elo_diff
+  3: home_xg_for
+  4: home_xg_against
+  5: away_xg_for
+  6: away_xg_against
+  7: home_form
+  8: away_form
+  9: home_matches_played
+ 10: away_matches_played
+ 11: home_shots_for
+ 12: away_shots_for
+ 13: home_shots_against
+ 14: away_shots_against
+ 15: home_xg_diff
+ 16: away_xg_diff
+ 17: home_shot_diff
+ 18: away_shot_diff
+ 19: home_days_rest
+ 20: away_days_rest
+ 21: forebet_prob_h
+ 22: forebet_prob_d
+ 23: forebet_prob_a
+ 24: forebet_available
+ 25: home_glicko
+ 26: away_glicko
+ 27: home_glicko_rd
+ 28: away_glicko_rd
+ 29: stat_h_xg
+ 30: stat_a_xg
+ 31: stat_h_shots
+ 32: stat_a_shots
+ 33: stat_h_sot
+ 34: stat_a_sot
+ 35: stat_h_possession
+ 36: stat_a_possession
+ 37: stat_h_corners
+ 38: stat_a_corners
+ 39: stat_h_fouls
+ 40: stat_a_fouls
+ 41: home_formation_def
+ 42: away_formation_def
+ 43: formation_diff
+ 44: has_lineups
+ 45: home_missing_core
+ 46: away_missing_core
+ 47: home_att_loss
+ 48: away_att_loss
+ 49: home_def_loss
+ 50: away_def_loss
+ 51: odds_b365h
+ 52: odds_b365d
+ 53: odds_b365a
+ 54: odds_avgh
+ 55: odds_avgd
+ 56: odds_avga
+ 57: elo_form_home
+ 58: elo_form_away
+ 59: elo_xg_home
+ 60: elo_xg_away
+ 61: form_xg_home
+ 62: form_xg_away
+ 63: elo_diff_form_diff
+ 64: fatigue_home
+ 65: fatigue_away
+ 66: xg_ratio
+ 67: shots_ratio
+ 68: form_ratio
+ 69: xgf_xga_ratio_home
+ 70: xgf_xga_ratio_away
+ 71: shot_eff_home
+ 72: shot_eff_away
+ 73: elo_diff_sq
+ 74: xg_diff_sq
+ 75: form_diff_sq
+ 76: month
+ 77: day_of_week
+ 78: season_progress
+ 79: is_weekend
+ 80: home_temp
+ 81: home_precip
+ 82: home_wind
+ 83: home_humidity
+ 84: travel_distance
+ 85: poisson_p0_0
+ 86: poisson_p0_1
+ 87: poisson_p0_2
+ 88: poisson_p0_3
+ 89: poisson_p0_4
+ 90: poisson_p1_0
+ 91: poisson_p1_1
+ 92: poisson_p1_2
+ 93: poisson_p1_3
+ 94: poisson_p1_4
+ 95: poisson_p2_0
+ 96: poisson_p2_1
+ 97: poisson_p2_2
+ 98: poisson_p2_3
+ 99: poisson_p2_4
+100: poisson_p3_0
+101: poisson_p3_1
+102: poisson_p3_2
+103: poisson_p3_3
+104: poisson_p3_4
+105: poisson_p4_0
+106: poisson_p4_1
+107: poisson_p4_2
+108: poisson_p4_3
+109: poisson_p4_4
+110: league_strength
+111: tournament_importance
+112: league_strength_diff
+113: importance_x_strength
+114: match_importance_index
+115: is_group_stage
+116: is_knockout
+117: is_promotion_battle
+118: is_relegation_battle
+119: tournament_round_depth
+120: h2h_home_avg
+121: h2h_away_avg
+122: h2h_confidence
+123: h2h_recency_home
+124: h2h_recency_away
+125: h2h_recency_draw
+126: h2h_recency_strength
+127: h2h_total_goals_avg
+128: h2h_home_win_pct
+129: h2h_draw_pct
+130: h2h_away_win_pct
+131: h2h_goal_diff_avg
+132: ref_avg_yellow
+133: ref_avg_red
+134: ref_card_rate
+135: ref_home_win_bias
+136: ref_foul_rate_proxy
+137: ref_experience
+138: ref_strictness
+139: ref_matches_count
+140: temp_min
+141: temp_max
+142: temp_range
+143: temp_avg
+144: precip
+145: wind_speed
+146: humidity
+147: weather_extreme_precip
+148: weather_extreme_wind
+149: weather_comfort
+150: home_att_impact
+151: home_def_impact
+152: home_tracked_players
+153: home_high_att
+154: home_high_def
+155: home_att_def_diff
+156: home_core_size
+157: home_avg_start_rate
+158: home_core_gk
+159: home_core_def
+160: home_core_mid
+161: home_core_fwd
+162: home_core_balance
+163: home_core_att_impact
+164: att_impact_diff
+165: home_win_streak
+166: away_win_streak
+167: home_loss_streak
+168: away_loss_streak
+169: home_unbeaten_streak
+170: away_unbeaten_streak
+171: home_momentum_3
+172: away_momentum_3
+173: home_momentum_5
+174: away_momentum_5
+175: home_momentum_trend
+176: away_momentum_trend
+177: home_form_direction
+178: away_form_direction
+179: home_xg_volatility
+180: away_xg_volatility
+181: home_draw_rate_recent
+182: away_draw_rate_recent
+183: home_win_rate_recent
+184: away_win_rate_recent
+185: sb_total_shots
+186: sb_goals
+187: sb_saved
+188: sb_off_target
+189: sb_blocked
+190: sb_shot_conversion
+191: sb_avg_xg_per_shot
+192: sb_total_xg
+193: sb_avg_shot_x
+194: sb_avg_shot_y
+195: sb_xg_overperformance
+196: sb_passes
+197: sb_duels
+198: sb_duel_win_rate
+199: sb_dribbles
+200: sb_dribble_success
+201: sb_fouls_committed
+202: sb_fouls_won
+203: sb_interceptions
+204: sb_clearances
+205: sb_shots_diff
+206: sb_goals_diff
+207: sb_xg_diff
+208: sb_conversion_diff
+209: sb_match_shots
+210: elo_glicko_home
+211: elo_glicko_away
+212: elo_glicko_diff
+213: glicko_rd_combined
+214: glicko_vol_combined
+215: elo_uncertainty_home
+216: elo_uncertainty_away
+217: glicko_below_elo_home
+218: glicko_below_elo_away
+219: team_strength_rating
+220: home_xg_per_shot
+221: away_xg_per_shot
+222: home_goal_per_xg
+223: away_goal_per_xg
+224: home_sot_rate
+225: away_sot_rate
+226: home_goal_conversion
+227: away_goal_conversion
+228: goal_efficiency_diff
+229: home_xg_consistency
+230: away_xg_consistency
+231: xg_consistency_diff
+232: home_form_efficiency
+233: away_form_efficiency
+234: strength_x_efficiency
+235: elo_diff_cubed
+236: elo_diff_sqrt
+237: elo_diff_logabs
+238: home_elo_sq
+239: away_elo_sq
+240: elo_diff_cuberoot
+241: xg_ratio_sq
+242: xg_ratio_sqrt
+243: xg_ratio_log
+244: home_xg_sq
+245: away_xg_sq
+246: home_xg_log
+247: away_xg_log
+248: form_ratio_sq
+249: form_ratio_sqrt
+250: home_form_sq
+251: away_form_sq
+252: form_diff_cubed
+253: shots_ratio_sq
+254: shots_ratio_sqrt
+255: home_shot_sq
+256: away_shot_sq
+257: rest_diff_sq
+258: rest_diff_sqrt
+259: home_rest_sq
+260: away_rest_sq
+261: elo_xg_home_sq
+262: elo_xg_away_sq
+263: form_xg_home_sq
+264: form_xg_away_sq
+265: possession_diff_sq
+266: possession_diff_sqrt
+267: home_poss_sq
+268: away_poss_sq
+269: possession_logit_home
+270: possession_logit_away
+271: travel_distance_sq
+272: travel_distance_sqrt
+273: travel_distance_log
+274: xg_product
+275: xg_product_sqrt
+276: elo_product
+277: elo_product_sqrt
+278: form_product
+279: form_product_sqrt
+280: odds_implied_h
+281: odds_implied_d
+282: odds_implied_a
+283: implied_margin
+284: odds_ratio_hd
+285: elo_x_home_xg
+286: elo_x_away_xg
+287: elo_x_home_form
+288: elo_x_away_form
+289: elo_x_home_rest
+290: elo_x_away_rest
+291: elo_x_league_str
+292: elo_x_importance
+293: elo_x_travel
+294: elo_x_ref_exp
+295: home_elo_x_home_xg
+296: away_elo_x_away_xg
+297: home_elo_x_home_form
+298: away_elo_x_away_form
+299: home_elo_x_poss
+300: away_elo_x_poss
+301: home_elo_x_league
+302: away_elo_x_league
+303: elo_x_home_mom5
+304: elo_x_away_mom5
+305: elo_x_home_att_imp
+306: elo_x_away_def_imp_proxy
+307: home_elo_x_glicko
+308: away_elo_x_glicko
+309: elo_x_home_shot_eff
+310: elo_x_away_shot_eff
+311: elo_x_home_goal_conv
+312: elo_x_away_goal_conv
+313: home_elo_x_sot_rate
+314: away_elo_x_sot_rate
+315: xg_diff_x_home_form
+316: xg_diff_x_away_form
+317: xg_diff_x_league
+318: xg_diff_x_importance
+319: xg_diff_x_travel
+320: xg_diff_x_ref_foul
+321: home_xg_x_rest
+322: away_xg_x_rest
+323: home_xg_x_mom5
+324: away_xg_x_mom5
+325: home_xg_x_att_imp
+326: away_xg_x_def_imp_proxy
+327: xg_ratio_x_form_home
+328: xg_ratio_x_form_away
+329: xg_ratio_x_league
+330: xg_ratio_x_importance
+331: home_xg_x_poss
+332: away_xg_x_poss
+333: home_xg_x_sot_rate
+334: away_xg_x_sot_rate
+335: home_xg_x_goal_conv
+336: away_xg_x_goal_conv
+337: xg_diff_x_win_streak_h
+338: xg_diff_x_win_streak_a
+339: home_xg_x_form_att
+340: away_xg_x_form_att
+341: xg_ratio_x_shot_eff_h
+342: xg_ratio_x_shot_eff_a
+343: home_xg_x_core_size
+344: away_xg_x_core_size
+345: form_diff_x_league
+346: form_diff_x_importance
+347: form_diff_x_travel
+348: form_diff_x_comfort
+349: home_form_x_rest
+350: away_form_x_rest
+351: home_form_x_mom5
+352: away_form_x_mom5
+353: home_form_x_poss
+354: away_form_x_poss
+355: home_form_x_sot_rate
+356: away_form_x_sot_rate
+357: home_form_x_core
+358: away_form_x_core
+359: form_ratio_x_league
+360: form_ratio_x_importance
+361: home_form_x_att_imp
+362: away_form_x_def_imp_proxy
+363: home_form_x_win_streak
+364: away_form_x_win_streak
+365: home_form_x_glicko
+366: away_form_x_glicko
+367: form_diff_x_mom_trend_h
+368: form_diff_x_mom_trend_a
+369: form_diff_x_form_eff
+370: rest_diff_x_league
+371: rest_diff_x_importance
+372: rest_diff_x_travel
+373: rest_diff_x_form_home
+374: rest_diff_x_form_away
+375: rest_diff_x_mom5_home
+376: rest_diff_x_mom5_away
+377: home_rest_x_matches
+378: away_rest_x_matches
+379: home_rest_x_density
+380: away_rest_x_density
+381: rest_diff_x_win_streak_h
+382: rest_diff_x_win_streak_a
+383: home_rest_x_glicko_rd
+384: away_rest_x_glicko_rd
+385: temp_x_poss_home
+386: temp_x_poss_away
+387: precip_x_form_home
+388: precip_x_form_away
+389: wind_x_shot_eff_h
+390: wind_x_shot_eff_a
+391: humidity_x_goal_h
+392: humidity_x_goal_a
+393: temp_range_x_elo_h
+394: temp_range_x_elo_a
+395: comfort_x_form_home
+396: comfort_x_form_away
+397: temp_x_league
+398: precip_x_league
+399: wind_x_importance
+400: extreme_x_form_home
+401: extreme_x_form_away
+402: temp_x_travel
+403: precip_x_travel
+404: wind_x_elo_diff
+405: league_avg_h_goals
+406: league_avg_a_goals
+407: league_avg_total
+408: league_h_win_pct
+409: league_draw_pct
+410: league_a_win_pct
+411: league_goal_var
+412: league_lambda_h
+413: league_lambda_a
+414: home_better_att_vs_league
+415: away_better_att_vs_league
+416: home_better_def_vs_league
+417: away_better_def_vs_league
+418: league_strength_pair
+419: league_tier_pair
+420: tourn_familiarity_home
+421: tourn_familiarity_away
+422: home_goal_diff_vs_league
+423: away_goal_diff_vs_league
+424: is_top5
+425: is_cup
+426: is_international
+427: is_derby_proxy
+428: same_country
+429: is_league_match
+430: is_cup_match
+431: season_games_remaining
+432: season_phase_start
+433: season_phase_mid
+434: season_phase_end
+435: days_since_season_start
+436: match_density_7days
+437: match_density_3days
+438: match_density_14days
+439: home_midweek
+440: away_midweek
+441: month_sin
+442: month_cos
+443: dayofweek_sin
+444: dayofweek_cos
+445: is_early_season
+446: is_late_season
+447: season_year
+448: rest_advantage
+449: total_density
+450: home_total_home
+451: home_home_wins
+452: home_home_draws
+453: home_home_losses
+454: home_home_gd
+455: home_total_away
+456: home_away_wins
+457: home_away_losses
+458: home_away_gd
+459: home_strength
+460: home_gd_per_game
+461: away_total_home
+462: away_away_wins
+463: away_away_draws
+464: away_away_losses
+465: away_away_gd
+466: away_away_win_rate
+467: away_strength
+468: away_gd_per_game
+469: strength_diff
+470: home_streak_type
+471: away_streak_type
+472: home_curr_streak_len
+473: away_curr_streak_len
+474: home_max_win_streak
+475: away_max_win_streak
+476: home_max_loss_streak
+477: away_max_loss_streak
+478: home_last5_wins
+479: away_last5_wins
+480: implied_h_prob
+481: implied_d_prob
+482: implied_a_prob
+483: book_margin
+484: norm_h_prob
+485: norm_d_prob
+486: norm_a_prob
+487: odds_hd_ratio
+488: odds_ha_ratio
+489: odds_da_ratio
+490: max_vs_avg_h
+491: max_vs_avg_d
+492: max_vs_avg_a
+493: odds_home_adv
+494: odds_exp_goals
+495: home_cs_prob
+496: away_cs_prob
+497: home_btsp
+498: away_btsp
+499: poisson_diag_inflation
+500: poisson_under_over
+501: home_late_goal_ratio
+502: away_late_goal_ratio
+503: home_early_goal_ratio
+504: away_early_goal_ratio
+505: home_def_solidity
+506: away_def_solidity
+507: home_off_fluidity
+508: away_off_fluidity
+509: match_openness
+510: exp_cards
+511: style_diff
+512: home_form_att
+513: away_form_att
+514: form_att_power_diff
+515: elo_form_home_norm
+516: elo_form_away_norm
+517: momentum_elo_home
+518: momentum_elo_away
+519: fatigue_index_home
+520: fatigue_index_away
+521: team_value_diff
+522: stability_diff
+523: home_att_loss_rate
+524: away_att_loss_rate
+525: home_def_loss_rate
+526: away_def_loss_rate
+527: core_missing_home
+528: core_missing_away
+529: home_adv_composite
+530: away_adv_composite
+531: match_symmetry
+532: form_wins_home
+533: form_draws_home
+534: form_losses_home
+535: form_wins_away
+536: form_draws_away
+537: form_losses_away
+538: form_pts_home
+539: form_pts_away
+540: form_str_home
+541: form_str_away
+542: h2h_recency_trend
+543: form_elo_interact_home
+544: form_elo_interact_away
+545: xg_form_combined_home
+546: xg_form_combined_away
+547: poisson_both_cs
+548: poisson_btts
+549: h2h_strength_rating

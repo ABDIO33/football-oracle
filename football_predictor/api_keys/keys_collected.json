@@ -1,0 +1,50 @@
+[
+  {
+    "service": "football-data.org",
+    "email": "elbazamine27+footballdata@gmail.com",
+    "status": "REGISTERED",
+    "timestamp": "2026-06-30T22:52:22.815724"
+  },
+  {
+    "service": "WeatherAPI",
+    "email": "elbazamine27+weatherapi@gmail.com",
+    "status": "MANUAL_NEEDED",
+    "timestamp": "2026-06-30T22:52:36.360924"
+  },
+  {
+    "service": "NewsAPI",
+    "email": "elbazamine27+newsapi@gmail.com",
+    "status": "SUBMITTED",
+    "timestamp": "2026-06-30T22:52:48.699018"
+  },
+  {
+    "service": "TheSportsDB",
+    "email": "elbazamine27+sportsdb@gmail.com",
+    "status": "VISITED",
+    "timestamp": "2026-06-30T22:52:53.715849"
+  },
+  {
+    "service": "football-data.org",
+    "email": "elbazamine27+footballdata2@gmail.com",
+    "status": "REGISTERED",
+    "timestamp": "2026-06-30T22:53:02.258191"
+  },
+  {
+    "service": "football-data.org",
+    "email": "elbazamine27+footballdata3@gmail.com",
+    "status": "REGISTERED",
+    "timestamp": "2026-06-30T22:53:10.131494"
+  },
+  {
+    "service": "football-data.org",
+    "email": "elbazamine27+footballdata4@gmail.com",
+    "status": "REGISTERED",
+    "timestamp": "2026-06-30T22:53:17.712884"
+  },
+  {
+    "service": "football-data.org",
+    "email": "elbazamine27+footballdata5@gmail.com",
+    "status": "REGISTERED",
+    "timestamp": "2026-06-30T22:53:27.728839"
+  }
+]

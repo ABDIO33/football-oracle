@@ -1,0 +1,302 @@
+[
+  {
+    "player": "Bukayo Saka",
+    "injury": "Back Spasms",
+    "return_date": "Day-to-day",
+    "team": "Arsenal",
+    "league": "Premier League",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124677"
+  },
+  {
+    "player": "Kevin De Bruyne",
+    "injury": "Back Spasms",
+    "return_date": "Day-to-day",
+    "team": "Chelsea",
+    "league": "Premier League",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124692"
+  },
+  {
+    "player": "Mohamed Salah",
+    "injury": "Back Spasms",
+    "return_date": "Day-to-day",
+    "team": "Liverpool",
+    "league": "Premier League",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124696"
+  },
+  {
+    "player": "Marcus Rashford",
+    "injury": "Shoulder Injury",
+    "return_date": "Expected back in 3-4 weeks",
+    "team": "Manchester City",
+    "league": "Premier League",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124698"
+  },
+  {
+    "player": "Mason Mount",
+    "injury": "Ankle Sprain",
+    "return_date": "Expected back in 1-2 weeks",
+    "team": "Manchester United",
+    "league": "Premier League",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124700"
+  },
+  {
+    "player": "Jack Grealish",
+    "injury": "Hamstring Injury",
+    "return_date": "Expected back in 2-3 weeks",
+    "team": "Tottenham",
+    "league": "Premier League",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124703"
+  },
+  {
+    "player": "James Maddison",
+    "injury": "Hamstring Injury",
+    "return_date": "Expected back in 2-3 weeks",
+    "team": "Aston Villa",
+    "league": "Premier League",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124705"
+  },
+  {
+    "player": "Callum Wilson",
+    "injury": "Hamstring Injury",
+    "return_date": "Expected back in 2-3 weeks",
+    "team": "Newcastle",
+    "league": "Premier League",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124707"
+  },
+  {
+    "player": "Julio Enciso",
+    "injury": "Knee Injury",
+    "return_date": "Expected back in 4-6 weeks",
+    "team": "West Ham",
+    "league": "Premier League",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124709"
+  },
+  {
+    "player": "Trent Alexander-Arnold",
+    "injury": "Ankle Sprain",
+    "return_date": "Expected back in 1-2 weeks",
+    "team": "Brighton",
+    "league": "Premier League",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124711"
+  },
+  {
+    "player": "Vinicius Jr",
+    "injury": "Calf Strain",
+    "return_date": "Expected back in 1 week",
+    "team": "Real Madrid",
+    "league": "La Liga",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124714"
+  },
+  {
+    "player": "Pedri",
+    "injury": "Shoulder Injury",
+    "return_date": "Expected back in 3-4 weeks",
+    "team": "Barcelona",
+    "league": "La Liga",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124716"
+  },
+  {
+    "player": "Frenkie de Jong",
+    "injury": "ACL Recovery",
+    "return_date": "Expected back in 6-9 months",
+    "team": "Atletico Madrid",
+    "league": "La Liga",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124719"
+  },
+  {
+    "player": "Antoine Griezmann",
+    "injury": "Thigh Muscle Strain",
+    "return_date": "Expected back in 2 weeks",
+    "team": "Sevilla",
+    "league": "La Liga",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124721"
+  },
+  {
+    "player": "Luka Modric",
+    "injury": "Groin Strain",
+    "return_date": "Day-to-day",
+    "team": "Real Sociedad",
+    "league": "La Liga",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124723"
+  },
+  {
+    "player": "Paulo Dybala",
+    "injury": "Groin Strain",
+    "return_date": "Day-to-day",
+    "team": "Juventus",
+    "league": "Serie A",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124725"
+  },
+  {
+    "player": "Federico Chiesa",
+    "injury": "Thigh Muscle Strain",
+    "return_date": "Expected back in 2 weeks",
+    "team": "AC Milan",
+    "league": "Serie A",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124727"
+  },
+  {
+    "player": "Tammy Abraham",
+    "injury": "ACL Recovery",
+    "return_date": "Expected back in 6-9 months",
+    "team": "Inter Milan",
+    "league": "Serie A",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124729"
+  },
+  {
+    "player": "Lorenzo Insigne",
+    "injury": "Calf Strain",
+    "return_date": "Expected back in 1 week",
+    "team": "Napoli",
+    "league": "Serie A",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124731"
+  },
+  {
+    "player": "Zlatan Ibrahimovic",
+    "injury": "Calf Strain",
+    "return_date": "Expected back in 1 week",
+    "team": "Roma",
+    "league": "Serie A",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124734"
+  },
+  {
+    "player": "Jamal Musiala",
+    "injury": "Thigh Muscle Strain",
+    "return_date": "Expected back in 2 weeks",
+    "team": "Bayern Munich",
+    "league": "Bundesliga",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124742"
+  },
+  {
+    "player": "Manuel Neuer",
+    "injury": "Concussion",
+    "return_date": "In protocol",
+    "team": "Borussia Dortmund",
+    "league": "Bundesliga",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124744"
+  },
+  {
+    "player": "Marco Reus",
+    "injury": "Thigh Muscle Strain",
+    "return_date": "Expected back in 2 weeks",
+    "team": "RB Leipzig",
+    "league": "Bundesliga",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124746"
+  },
+  {
+    "player": "Christopher Nkunku",
+    "injury": "Calf Strain",
+    "return_date": "Expected back in 1 week",
+    "team": "Bayer Leverkusen",
+    "league": "Bundesliga",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124748"
+  },
+  {
+    "player": "Serge Gnabry",
+    "injury": "Knee Injury",
+    "return_date": "Expected back in 4-6 weeks",
+    "team": "Bayern Munich",
+    "league": "Bundesliga",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124750"
+  },
+  {
+    "player": "Kylian Mbappe",
+    "injury": "Shoulder Injury",
+    "return_date": "Expected back in 3-4 weeks",
+    "team": "PSG",
+    "league": "Ligue 1",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124752"
+  },
+  {
+    "player": "Neymar",
+    "injury": "Hamstring Injury",
+    "return_date": "Expected back in 2-3 weeks",
+    "team": "Marseille",
+    "league": "Ligue 1",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124755"
+  },
+  {
+    "player": "Marco Asensio",
+    "injury": "Shoulder Injury",
+    "return_date": "Expected back in 3-4 weeks",
+    "team": "Monaco",
+    "league": "Ligue 1",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124757"
+  },
+  {
+    "player": "Alexandre Lacazette",
+    "injury": "Ankle Sprain",
+    "return_date": "Expected back in 1-2 weeks",
+    "team": "Lyon",
+    "league": "Ligue 1",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124758"
+  },
+  {
+    "player": "Presnel Kimpembe",
+    "injury": "Groin Strain",
+    "return_date": "Day-to-day",
+    "team": "PSG",
+    "league": "Ligue 1",
+    "status": "Unknown",
+    "source": "generated_fallback",
+    "scraped_at": "2026-06-30T18:39:22.124760"
+  }
+]

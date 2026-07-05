@@ -1,0 +1,10 @@
+CHAMPION MODEL RETRAINING
+==================================================
+Data: Train=656855 Val=38638 Test=77278
+
+=== M5: Extra Deep (depth=20) ===
+M5-extra_deep: exact=25.14% 1X2=63.48%
+  Time: 556s
+  Saved: models/M5_extra_deep.pkl
+
+=== M3: Deep Subsample (depth=15, 70% data) ===

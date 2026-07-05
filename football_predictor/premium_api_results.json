@@ -1,0 +1,102 @@
+{
+  "timestamp": "2026-06-29T19:30:00",
+  "total_rows": 9927137,
+  "tables": {
+    "sofa_historical_results": {
+      "count": 887041,
+      "desc": "Primary match results (SofaScore)"
+    },
+    "statsbomb_events": {
+      "count": 6746069,
+      "desc": "StatsBomb shot-level events"
+    },
+    "statsbomb_matches": {
+      "count": 1923,
+      "desc": "StatsBomb match metadata"
+    },
+    "statsbomb_lineups": {
+      "count": 71306,
+      "desc": "StatsBomb lineup data"
+    },
+    "walkforward_state": {
+      "count": 1101520,
+      "desc": "Engineered features (81 cols, 1.1M rows)"
+    },
+    "source_football_data_uk": {
+      "count": 89346,
+      "desc": "football-data.co.uk raw CSVs"
+    },
+    "football_data_matches": {
+      "count": 31365,
+      "desc": "Parsed football-data matches"
+    },
+    "source_pinnacle": {
+      "count": 201,
+      "desc": "Pinnacle odds data"
+    },
+    "source_api_football": {
+      "count": 12043,
+      "desc": "API-Football data"
+    },
+    "source_understat": {
+      "count": 13005,
+      "desc": "Understat xG data"
+    },
+    "source_transfermarkt": {
+      "count": 1375,
+      "desc": "Transfermarkt data"
+    },
+    "sofa_lineups": {
+      "count": 87699,
+      "desc": "SofaScore lineup data"
+    },
+    "sofa_match_stats": {
+      "count": 116689,
+      "desc": "SofaScore match statistics"
+    },
+    "player_impact": {
+      "count": 40084,
+      "desc": "Player impact scores (Core 11)"
+    },
+    "team_core": {
+      "count": 40084,
+      "desc": "Core team data"
+    },
+    "glicko_state": {
+      "count": 487393,
+      "desc": "Glicko-2 ratings"
+    },
+    "source_11v11": {
+      "count": 380,
+      "desc": "11v11 historical data"
+    },
+    "venue_weather": {
+      "count": 192666,
+      "desc": "Weather data for venues"
+    },
+    "oddsportal_matches": {
+      "count": 12,
+      "desc": "OddsPortal match data"
+    },
+    "odds_upcoming": {
+      "count": 129,
+      "desc": "Upcoming match odds"
+    },
+    "forebet_predictions": {
+      "count": 85,
+      "desc": "Forebet predictions"
+    },
+    "source_soccerway": {
+      "count": 51,
+      "desc": "Soccerway data"
+    },
+    "source_livescore": {
+      "count": 51,
+      "desc": "Livescore data"
+    },
+    "source_sofascore_extended": {
+      "count": 6620,
+      "desc": "Extended SofaScore stats"
+    }
+  }
+}

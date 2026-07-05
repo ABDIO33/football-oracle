@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pi Chat — بطل العالم</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Tajawal:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   Pi Chat v2 — Masterpiece UI
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  --neon-blue: #00d4ff;
+  --neon-green: #00ff88;
+  --neon-purple: #8b5cf6;
+  --neon-gold: #ffc800;
+  --neon-red: #ff4466;
+  --neon-white: #f0f0f0;
+  --neon-gray: #888;
+  --neon-dim: #555;
+  --dark-bg: #0a0a0f;
+  --dark-surface: #111118;
+  --dark-card: #16161e;
+  --dark-border: #1e1e30;
+  --dark-hover: #1a1a2e;
+  --font-arabic: 'Tajawal', sans-serif;
+  --font-english: 'Orbitron', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-arabic);
+  background: var(--dark-bg);
+  color: var(--neon-white);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Background ──────────────────────────────────────────── */
+.bg {
+  position: fixed; inset: 0; z-index: -1;
+  background: radial-gradient(ellipse at 20% 20%, rgba(0,212,255,0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 80%, rgba(139,92,246,0.1) 0%, transparent 50%);
+}
+
+/* ─── Header ──────────────────────────────────────────────── */
+header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 24px;
+  background: var(--dark-surface);
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.logo {
+  font-family: var(--font-english);
+  font-size: 1.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--neon-white), var(--neon-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.logo span { color: var(--neon-blue); -webkit-text-fill-color: var(--neon-blue); }
+
+.model-info {
+  font-size: 0.75rem;
+  color: var(--neon-dim);
+  font-family: var(--font-mono);
+  background: var(--dark-card);
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--dark-border);
+}
+
+.header-actions { display: flex; gap: 8px; }
+
+.btn-icon {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: 8px;
+  color: var(--neon-gray);
+  cursor: pointer;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+.btn-icon:hover { border-color: var(--neon-blue); color: var(--neon-white); }
+
+/* ─── Messages ────────────────────────────────────────────── */
+.chat-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  scroll-behavior: smooth;
+}
+.chat-container::-webkit-scrollbar { width: 6px; }
+.chat-container::-webkit-scrollbar-track { background: transparent; }
+.chat-container::-webkit-scrollbar-thumb { background: var(--dark-border); border-radius: 3px; }
+
+.msg {
+  max-width: 85%;
+  margin-bottom: 20px;
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.msg.user { margin-right: auto; }
+.msg.assistant { margin-left: auto; }
+
+.msg-bubble {
+  padding: 14px 18px;
+  border-radius: 16px;
+  line-height: 1.7;
+  font-size: 0.92rem;
+  word-wrap: break-word;
+}
+
+.msg.user .msg-bubble {
+  background: linear-gradient(135deg, rgba(0,212,255,0.12), rgba(139,92,246,0.08));
+  border: 1px solid rgba(0,212,255,0.25);
+  border-bottom-right-radius: 4px;
+}
+
+.msg.assistant .msg-bubble {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-bottom-left-radius: 4px;
+}
+
+.msg-time {
+  font-size: 0.7rem;
+  color: var(--neon-dim);
+  margin-top: 4px;
+  padding: 0 6px;
+}
+.msg.assistant .msg-time { text-align: left; }
+.msg.user .msg-time { text-align: right; }
+
+/* Markdown */
+.msg-bubble h1, .msg-bubble h2, .msg-bubble h3 {
+  font-family: var(--font-english);
+  color: var(--neon-blue);
+  margin: 12px 0 8px;
+}
+.msg-bubble h1 { font-size: 1.3rem; border-bottom: 1px solid var(--dark-border); padding-bottom: 6px; }
+.msg-bubble h2 { font-size: 1.1rem; }
+.msg-bubble h3 { font-size: 1rem; }
+.msg-bubble p { margin: 8px 0; }
+.msg-bubble ul, .msg-bubble ol { margin: 8px 0; padding-right: 20px; }
+.msg-bubble li { margin: 4px 0; }
+.msg-bubble strong { color: var(--neon-white); }
+.msg-bubble a { color: var(--neon-blue); text-decoration: none; border-bottom: 1px dashed rgba(0,212,255,0.3); }
+.msg-bubble a:hover { border-bottom-color: var(--neon-blue); }
+.msg-bubble blockquote {
+  border-right: 3px solid var(--neon-purple);
+  padding-right: 12px;
+  color: var(--neon-gray);
+  margin: 8px 0;
+}
+.msg-bubble code {
+  background: rgba(0,0,0,0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--neon-green);
+}
+.msg-bubble pre {
+  background: #0d0d14;
+  border: 1px solid var(--dark-border);
+  border-radius: 8px;
+  padding: 14px;
+  margin: 8px 0;
+  overflow-x: auto;
+  direction: ltr;
+  text-align: left;
+}
+.msg-bubble pre code { background: none; padding: 0; }
+.msg-bubble hr { border: none; border-top: 1px solid var(--dark-border); margin: 12px 0; }
+.thinking-indicator { margin-bottom: 8px; }
+
+/* ─── Welcome ─────────────────────────────────────────────── */
+.welcome {
+  text-align: center;
+  padding: 80px 20px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.welcome-icon { font-size: 4rem; margin-bottom: 16px; }
+.welcome h1 {
+  font-family: var(--font-english);
+  font-size: 2rem;
+  background: linear-gradient(135deg, var(--neon-white), var(--neon-blue), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+}
+.welcome p { color: var(--neon-gray); font-size: 1rem; margin-bottom: 8px; }
+.welcome-hint { color: var(--neon-dim) !important; font-size: 0.85rem !important; }
+.welcome-cmds {
+  display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 24px;
+}
+.welcome-cmds code {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--neon-purple);
+}
+
+/* ─── Status Bar ──────────────────────────────────────────── */
+.status-bar {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+  background: var(--dark-surface);
+  border-top: 1px solid var(--dark-border);
+  font-size: 0.85rem;
+  color: var(--neon-gray);
+}
+.status-bar.active { display: flex; }
+
+.dot-pulse {
+  display: flex; gap: 4px;
+}
+.dot-pulse span {
+  width: 8px; height: 8px;
+  background: var(--neon-purple);
+  border-radius: 50%;
+  animation: bounce 1.4s ease-in-out infinite;
+}
+.dot-pulse span:nth-child(2) { animation-delay: 0.2s; }
+.dot-pulse span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+.btn-stop {
+  margin-right: auto;
+  padding: 6px 16px;
+  background: rgba(255,68,102,0.12);
+  border: 1px solid rgba(255,68,102,0.25);
+  border-radius: 6px;
+  color: var(--neon-red);
+  cursor: pointer;
+  font-family: var(--font-arabic);
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+.btn-stop:hover { background: rgba(255,68,102,0.2); }
+
+/* ─── Input ───────────────────────────────────────────────── */
+.input-area {
+  padding: 12px 24px 16px;
+  background: var(--dark-surface);
+  border-top: 1px solid var(--dark-border);
+}
+
+.input-wrap {
+  display: flex; align-items: flex-end; gap: 8px;
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: 14px;
+  padding: 10px 14px;
+  transition: all 0.2s;
+}
+.input-wrap:focus-within {
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 20px rgba(0,212,255,0.2);
+}
+
+textarea {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--neon-white);
+  font-family: var(--font-arabic);
+  font-size: 0.95rem;
+  resize: none;
+  outline: none;
+  line-height: 1.5;
+  max-height: 200px;
+  min-height: 26px;
+}
+textarea::placeholder { color: var(--neon-dim); }
+
+.btn-send {
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  padding: 10px 14px;
+  display: flex;
+  transition: all 0.2s;
+}
+.btn-send:hover { box-shadow: 0 0 20px rgba(0,212,255,0.4); transform: scale(1.05); }
+.btn-send:disabled { opacity: 0.3; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* ─── Error ───────────────────────────────────────────────── */
+.error-toast {
+  position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%);
+  background: rgba(255,68,102,0.9); color: white;
+  padding: 10px 24px; border-radius: 10px;
+  font-size: 0.85rem; z-index: 200;
+  animation: toastIn 0.3s ease;
+}
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ─── Responsive ──────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .msg { max-width: 95%; }
+  header { padding: 10px 16px; }
+  .chat-container { padding: 16px; }
+  .input-area { padding: 8px 16px 12px; }
+}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+
+<!-- Header -->
+<header>
+  <div class="logo">Pi<span>Chat</span> 🏆</div>
+  <div class="model-info" id="modelInfo">deepseek-v4-flash-free</div>
+  <div class="header-actions">
+    <button class="btn-icon" onclick="clearChat()" title="محادثة جديدة">📄</button>
+  </div>
+</header>
+
+<!-- Messages -->
+<div class="chat-container" id="chatContainer">
+  <div class="welcome" id="welcome">
+    <div class="welcome-icon">🏆</div>
+    <h1>Pi Chat — بطل العالم</h1>
+    <p>أنا هنا لأساعدك في بناء <strong>أفضل نظام توقع كرة قدم</strong> في العالم</p>
+    <p class="welcome-hint">كأس العالم 2026 • 887,041 مباراة • XGBoost + DeepNN Ensemble</p>
+    <div class="welcome-cmds">
+      <code>🌍 توقع مباراة</code>
+      <code>📊 تدريب نموذج</code>
+      <code>🔧 تحسين pipeline</code>
+      <code>⚡ أي سؤال</code>
+    </div>
+  </div>
+</div>
+
+<!-- Status Bar -->
+<div class="status-bar" id="statusBar">
+  <div class="dot-pulse"><span></span><span></span><span></span></div>
+  <span id="statusText">Pi يفكر...</span>
+  <button class="btn-stop" onclick="stopGeneration()" id="stopBtn">■ إيقاف</button>
+</div>
+
+<!-- Input -->
+<div class="input-area">
+  <div class="input-wrap">
+    <textarea id="msgInput" rows="1" placeholder="اسألني أي شيء..." dir="auto"></textarea>
+    <button class="btn-send" id="sendBtn" onclick="send()">
+      <svg width="18" height="18" viewBox="0 0 20 20"><path fill="currentColor" d="M2.724 2.052a.75.75 0 0 1 .783.054l15 10.5a.75.75 0 0 1-.045 1.258l-15 9.75A.75.75 0 0 1 2.25 22.5V3a.75.75 0 0 1 .474-.948zM3.75 4.906v6.344h7.5a.75.75 0 0 1 0 1.5h-7.5v6.344L16.02 12 3.75 4.906z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// Pi Chat v2 — Client
+// ═══════════════════════════════════════════════════════════════
+
+const state = {
+  history: [],
+  streaming: false,
+};
+
+const $ = s => document.querySelector(s);
+const chat = $("#chatContainer");
+const input = $("#msgInput");
+const sendBtn = $("#sendBtn");
+const statusBar = $("#statusBar");
+const statusText = $("#statusText");
+const stopBtn = $("#stopBtn");
+const welcome = $("#welcome");
+
+// ─── Send ──────────────────────────────────────────────────
+async function send() {
+  const text = input.value.trim();
+  if (!text || state.streaming) return;
+
+  input.value = "";
+  input.style.height = "auto";
+  addMessage(text, "user");
+  welcome?.remove();
+
+  state.streaming = true;
+  statusBar.classList.add("active");
+  statusText.textContent = "Pi يكتب...";
+  stopBtn.style.display = "block";
+  sendBtn.disabled = true;
+
+  const msgDiv = document.createElement("div");
+  msgDiv.className = "msg assistant";
+  msgDiv.innerHTML = `<div class="msg-bubble"><div class="msg-content" id="streamContent"></div><div style="font-size:0.75rem;color:var(--neon-dim);margin-top:4px">⏳ جاري التحميل...</div></div>`;
+  chat.appendChild(msgDiv);
+
+  const contentDiv = msgDiv.querySelector(".msg-content");
+
+  try {
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: text,
+        history: state.history,
+      }),
+    });
+
+    const data = await res.json();
+    
+    if (data.error) {
+      throw new Error(data.error);
+    }
+    
+    const fullContent = data.content || "";
+    contentDiv.innerHTML = renderMarkdown(fullContent);
+    highlightCode();
+    
+    // حفظ في التاريخ
+    state.history.push({ role: "user", content: text });
+    state.history.push({ role: "assistant", content: fullContent });
+    
+  } catch (err) {
+    showError(err.message || "حدث خطأ");
+    contentDiv.innerHTML = `<span style="color:var(--neon-red)">⚠️ خطأ: ${err.message}</span>`;
+  }
+
+  state.streaming = false;
+  statusBar.classList.remove("active");
+  stopBtn.style.display = "none";
+  sendBtn.disabled = false;
+  input.focus();
+  scrollBottom();
+}
+
+function stopGeneration() {
+  // Non-streaming mode - can't abort easily
+  showError("لا يمكن إيقاف الطلب حالياً، انتظر قليلاً");
+}
+
+// ─── Markdown ──────────────────────────────────────────────
+function renderMarkdown(text) {
+  if (!text) return "";
+  let html = text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+  
+  // Code blocks
+  html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => {
+    const langClass = lang ? ` class="language-${lang}"` : "";
+    return `<pre><code${langClass}>${escapeHtml(code.trim())}</code></pre>`;
+  });
+  
+  // Inline code
+  html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
+  
+  // Headers
+  html = html.replace(/^### (.+)$/gm, "<h3>$1</h3>");
+  html = html.replace(/^## (.+)$/gm, "<h2>$1</h2>");
+  html = html.replace(/^# (.+)$/gm, "<h1>$1</h1>");
+  
+  // Bold & italic
+  html = html.replace(/\*\*\*(.+?)\*\*\*/g, "<strong><em>$1</em></strong>");
+  html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  html = html.replace(/\*(.+?)\*/g, "<em>$1</em>");
+  
+  // Links
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+  
+  // Lists
+  html = html.replace(/^- (.+)$/gm, "<li>$1</li>");
+  html = html.replace(/(<li>.*<\/li>\n?)+/g, "<ul>$&</ul>");
+  
+  // Horizontal rules
+  html = html.replace(/^---$/gm, "<hr>");
+  
+  // Blockquotes
+  html = html.replace(/^> (.+)$/gm, "<blockquote>$1</blockquote>");
+  
+  // Paragraphs (double newlines)
+  html = html.replace(/\n\n/g, "</p><p>");
+  html = "<p>" + html + "</p>";
+  
+  // Fix nested paragraphs
+  html = html.replace(/<p><\/p>/g, "");
+  html = html.replace(/<\/?p>(<h[123]>)/g, "$1");
+  html = html.replace(/(<\/h[123]>)<p>/g, "$1");
+  html = html.replace(/<p>(<(?:ul|ol|pre|blockquote|hr))/g, "$1");
+  html = html.replace(/(<\/(?:ul|ol|pre|blockquote|hr)>)<p>/g, "$1");
+  html = html.replace(/<p><li>/g, "<li>");
+  html = html.replace(/<\/li><\/p>/g, "</li>");
+  
+  return html;
+}
+
+function escapeHtml(text) {
+  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function highlightCode() {
+  document.querySelectorAll("pre code").forEach(block => {
+    if (window.hljs) hljs.highlightElement(block);
+  });
+}
+
+// ─── UI Helpers ────────────────────────────────────────────
+function addMessage(text, role) {
+  const div = document.createElement("div");
+  div.className = `msg ${role}`;
+  const bubble = role === "user" ? escapeHtml(text) : renderMarkdown(text);
+  div.innerHTML = `<div class="msg-bubble">${bubble}</div>
+    <div class="msg-time">${new Date().toLocaleTimeString("ar-SA", { hour: "2-digit", minute: "2-digit" })}</div>`;
+  chat.appendChild(div);
+  highlightCode();
+  scrollBottom();
+}
+
+function scrollBottom() {
+  setTimeout(() => { chat.scrollTop = chat.scrollHeight; }, 50);
+}
+
+function showError(msg) {
+  const toast = document.createElement("div");
+  toast.className = "error-toast";
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 4000);
+}
+
+function clearChat() {
+  if (state.streaming) stopGeneration();
+  state.history = [];
+  chat.innerHTML = `<div class="welcome" id="welcome">
+    <div class="welcome-icon">🏆</div>
+    <h1>Pi Chat — بطل العالم</h1>
+    <p>أنا هنا لأساعدك في بناء <strong>أفضل نظام توقع كرة قدم</strong> في العالم</p>
+    <p class="welcome-hint">كأس العالم 2026 • 887,041 مباراة • XGBoost + DeepNN Ensemble</p>
+    <div class="welcome-cmds">
+      <code>🌍 توقع مباراة</code>
+      <code>📊 تدريب نموذج</code>
+      <code>🔧 تحسين pipeline</code>
+      <code>⚡ أي سؤال</code>
+    </div>
+  </div>`;
+}
+
+// ─── Events ────────────────────────────────────────────────
+input.addEventListener("input", () => {
+  input.style.height = "auto";
+  input.style.height = Math.min(input.scrollHeight, 200) + "px";
+});
+
+input.addEventListener("keydown", e => {
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }
+});
+
+document.addEventListener("DOMContentLoaded", () => input.focus());
+
+// ─── Init message ──────────────────────────────────────────
+// رسالة ترحيب مني
+setTimeout(() => {
+  addMessage("مرحباً بك يا بطل! 🏆 أنا جاهز لمساعدتك في بناء أفضل نظام توقع كرة قدم في العالم. كأس العالم 2026 انطلق ونحتاج للتحرك بسرعة.\n\n**جاهز لأي سؤال أو أمر — فقط اكتب!**", "assistant");
+}, 500);
+</script>
+</body>
+</html>

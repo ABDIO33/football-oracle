@@ -1,0 +1,11 @@
+V5 Full Training Started
+==================================================
+Data: Train=656857 Val=38638 Test=77278
+M1: depth=8 ne=300 lr=0.060
+  M1: exact=20.34% [678s]
+M2: depth=12 ne=200 lr=0.050
+  M2: exact=21.30% [650s]
+M3: depth=6 ne=200 lr=0.080
+  M3: exact=18.84% [432s]
+V5 Ensemble: exact=20.64%  1X2=67.54%
+Weighted: exact=16.20%  weights=[0.33, 0.2, 0.4699999999999999]

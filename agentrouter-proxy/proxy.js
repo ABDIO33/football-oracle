@@ -1,0 +1,72 @@
+const express = require("express");
+const cors = require("cors");
+const OpenAI = require("openai");
+
+const app = express();
+app.use(cors());
+app.use(express.json({ limit: "50mb" }));
+
+const client = new OpenAI({
+  apiKey: "sk-j22yAVjq7BcKpL4bgwRpqTGMcCWB74gE8ZEiGA8zyDN3AIVw",
+  baseURL: "https://agentrouter.org/v1",
+  defaultHeaders: {
+    "HTTP-Referer": "https://github.com/RooVetGit/Roo-Cline",
+    "X-Title": "Roo Code",
+    "User-Agent": "RooCode/3.54.0",
+    "X-Stainless-Arch": "x64",
+    "X-Stainless-Lang": "js",
+    "X-Stainless-OS": "Windows",
+    "X-Stainless-Package-Version": "5.12.2",
+    "X-Stainless-Retry-Count": "0",
+    "X-Stainless-Runtime": "node",
+    "X-Stainless-Runtime-Version": process.version
+  }
+});
+
+app.get("/", (req, res) => {
+  res.json({ status: "ok", message: "AgentRouter Proxy Running" });
+});
+
+app.get("/v1/models", (req, res) => {
+  res.json({ object: "list", data: [] });
+});
+
+app.post("/v1/chat/completions", async (req, res) => {
+  try {
+    if (!req.body || !req.body.messages) {
+      return res.status(400).json({
+        error: { message: "Invalid request body: missing messages", type: "invalid_request_error", code: 400 }
+      });
+    }
+
+    const body = { ...req.body, stream: true };
+    const stream = await client.chat.completions.create(body);
+
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+
+    for await (const chunk of stream) {
+      if (chunk) {
+        res.write(`data: ${JSON.stringify(chunk)}\n\n`);
+      }
+    }
+    res.write("data: [DONE]\n\n");
+    res.end();
+  } catch (err) {
+    console.error("Proxy Error:", err);
+    if (!res.headersSent) {
+      res.status(err.status || 500).json({
+        error: { message: err.message || "Internal proxy error", type: err.type || "proxy_error", code: err.status || 500 }
+      });
+    } else {
+      res.write(`data: ${JSON.stringify({ error: { message: err.message } })}\n\n`);
+      res.end();
+    }
+  }
+});
+
+const PORT = 4000;
+app.listen(PORT, () => {
+  console.log(`AgentRouter proxy running on http://127.0.0.1:${PORT}`);
+});

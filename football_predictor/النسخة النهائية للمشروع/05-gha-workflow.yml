@@ -1,0 +1,200 @@
+# 🔥 Score Exact 100 V7.0 FINAL — GitHub Actions Workflow
+# GitHub Pages VPS 24/7 — يجيب البيانات ويتوقع وينشر تلقائياً
+# الجدولة: كل 4 ساعات (6 مرات/يوم)
+# يستخدم: Agent 4 (Premium APIs) + Agent 2 (Final Predictor) + Agent 5 (Analysis)
+
+name: Score Exact 100 V7.0 FINAL — 24/7 Auto Pipeline
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'      # كل 4 ساعات = 6 مرات/يوم
+  workflow_dispatch:            # تشغيل يدوي من GitHub
+    inputs:
+      predict_wc:
+        description: 'توقع كأس العالم 2026'
+        type: boolean
+        default: false
+      train_model:
+        description: 'إعادة تدريب النموذج'
+        type: boolean
+        default: false
+
+env:
+  FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
+  API_SPORT_KEY: ${{ secrets.API_SPORT_KEY }}
+  ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+  BSD_API_KEY: ${{ secrets.BSD_API_KEY }}
+  SPORTMONKS_KEY: ${{ secrets.SPORTMONKS_KEY }}
+  AGENTROUTER_KEY: ${{ secrets.AGENTROUTER_KEY }}
+  GROQ_KEY: ${{ secrets.GROQ_KEY }}
+  PYTHONUNBUFFERED: 1
+
+jobs:
+  # ═══════════════════════════════════════════════════════
+  # JOB 1: جلب Premium Data (Agent 4)
+  # ═══════════════════════════════════════════════════════
+  agent4-data-collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install curl_cffi beautifulsoup4 lxml numpy pandas
+          pip install requests joblib scikit-learn
+      
+      - name: 🔥 Agent 4 — Collect Odds Data
+        run: |
+          python agent4_odds_scraper.py --workers 5 --limit 200
+        continue-on-error: true
+      
+      - name: 🔥 Agent 4 — Collect xG Data
+        run: |
+          python agent4_xg_scraper.py --workers 3 --sofascore-limit 200
+        continue-on-error: true
+      
+      - name: 🔥 Agent 4 — Unified Premium Data
+        run: |
+          python agent4_premium_data.py --phase all --limit 200
+        continue-on-error: true
+      
+      - name: Upload data cache
+        uses: actions/upload-artifact@v4
+        with:
+          name: scrape-cache-db
+          path: scrape_cache.db
+          retention-days: 7
+          compression-level: 3
+          overwrite: true
+
+  # ═══════════════════════════════════════════════════════
+  # JOB 2: إعادة تدريب (اختياري)
+  # ═══════════════════════════════════════════════════════
+  model-train:
+    needs: agent4-data-collect
+    if: ${{ github.event.inputs.train_model == 'true' || github.event.schedule }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 360  # 6 ساعات
+    
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      
+      - name: Install ML dependencies
+        run: |
+          pip install torch xgboost lightgbm scikit-learn numpy pandas
+      
+      - name: Download cached DB
+        uses: actions/download-artifact@v4
+        with:
+          name: scrape-cache-db
+      
+      - name: 🔄 Run Temporal Cross-Validation
+        run: |
+          python train_v62.py --temporal-cv --epochs 100
+        continue-on-error: true
+      
+      - name: 🔄 Run Stacking
+        run: |
+          python stacking_v2.py
+        continue-on-error: true
+      
+      - name: 🔄 Run Calibration
+        run: |
+          python calibration_v2.py
+        continue-on-error: true
+      
+      - name: Upload models
+        uses: actions/upload-artifact@v4
+        with:
+          name: trained-models
+          path: models/
+          retention-days: 14
+
+  # ═══════════════════════════════════════════════════════
+  # JOB 3: توقع كأس العالم 2026
+  # ═══════════════════════════════════════════════════════
+  world-cup-predict:
+    needs: [agent4-data-collect]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      
+      - name: Install deps
+        run: pip install numpy pandas requests scikit-learn joblib torch xgboost
+      
+      - name: Download cached DB
+        uses: actions/download-artifact@v4
+        with:
+          name: scrape-cache-db
+        continue-on-error: true
+      
+      - name: Download trained models
+        uses: actions/download-artifact@v4
+        with:
+          name: trained-models
+        continue-on-error: true
+      
+      - name: 🏆 Predict World Cup 2026
+        run: |
+          python wc2026_predictor.py
+      
+      - name: Deploy to GitHub Pages
+        if: ${{ success() }}
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output/
+          publish_branch: gh-pages
+          force_orphan: true
+          user_name: 'Score Exact 100 Bot'
+          user_email: 'bot@score-exact-100.ai'
+      
+      - name: Upload prediction results
+        uses: actions/upload-artifact@v4
+        with:
+          name: wc2026-predictions
+          path: output/
+          retention-days: 90
+
+  # ═══════════════════════════════════════════════════════
+  # JOB 4: إنشاء لوحة المعلومات
+  # ═══════════════════════════════════════════════════════
+  dashboard:
+    needs: [world-cup-predict]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      
+      - name: Generate Dashboard
+        run: |
+          python generate_dashboard.py
+        continue-on-error: true
+      
+      - name: Deploy Dashboard
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output/
+          keep_files: true

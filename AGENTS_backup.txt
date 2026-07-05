@@ -1,0 +1,61 @@
+﻿# Football Oracle — Context & Key Decisions
+
+## Project Goal
+Build the world's most accurate football exact-score prediction system (25-class: 0-0 to 4-4+) for value betting at World Cup 2026.
+
+## Current State (Jun 26, 2026)
+- **Database**: 887,041 matches, 1,101,520 walkforward states, 9,093 teams
+- **81 features per match**, date range 1983-2026
+- **V5 trained**: 18.51% exact (177K realistic test set, chronological split)
+- **V5 production model**: `v5_model.pkl` (105 MB) — loaded automatically by `predict_match()`
+- **V5 ensemble**: M5_deep=56%, M5_small=24%, xgb=12%, M5_medium=8%
+- **V5 betting @30%**: 21.1% accuracy (not profitable enough)
+- **V3 model (25.89%) superseded** — V5 uses 7x more data (887K vs 128K) on harder test set
+
+## Performance Evolution
+| Date | Model | Exact | 1X2 | RPS | Data | Notes |
+|------|-------|:----:|:---:|:---:|:----:|-------|
+| Jun 17 | Old baseline | 14.14% | 52.12% | — | ~100K | Random split |
+| Jun 22 | XGBoost | 20.93% | 67.45% | 0.0841 | 294K | Chronological split |
+| Jun 22 | M5 DeepNN | 24.36% | 73.33% | 0.0661 | 294K | Chronological split |
+| Jun 22 | 6-model ULTIMATE | 25.05% | 74.61% | 0.0620 | 294K | Cross-entropy, 60ep |
+| **Jun 23** | **V3 FOCAL** | **25.89%** | **78.12%** | **0.0559** | 128K | Focal gamma=2, 120ep |
+| Jun 24 | V5 FOCAL | 18.51% | 62.31% | 0.0880 | 887K | Realistic chrono split |
+
+## Key Files
+- `MASTER_PLAN.md`: 7-day plan to #1 in the world
+- `ai_team.py`: Agent team for MASTER_PLAN execution
+- `train_v5.py`: V5 trainer (887K matches, 5 architectures, focal loss)
+- `build_production_v5.py`: Builds `v5_model.pkl` from training artifacts
+- `direct_predictor.py`: `predict_match()` — multi-model ensemble prediction engine
+- `betting_pipeline.py`: Fetches upcoming matches → predicts → outputs value bets
+- `models/v5_model.pkl`: V5 production ensemble (105 MB)
+- `models/v5_results.json`: V5 training results (18.51%)
+- `models/v3_model.pkl`: Same as v5_model.pkl (auto-loaded by predict_match)
+- `models/v3_results.json`: V3 results archive (25.89% — smaller, easier test set)
+
+## MASTER PLAN (7 Days, 168 hours)
+See `MASTER_PLAN.md` for full details:
+- **Day 1**: Data maximalism — lineups, weather, referee, feature expansion
+- **Day 2**: Model architecture — Poisson/Dixon-Coles, stacking, calibration
+- **Day 3**: Train V6 — 200 epochs, cosine annealing, mixup
+- **Day 4**: Backtesting & betting
+- **Day 5**: World Cup model
+- **Day 6**: Optimization
+- **Day 7**: Deployment & first bets
+
+## Known Limitations
+- **Lineup coverage**: 8.9% (need 50%+ for +3-5% accuracy)
+- **Weather**: 7.5% coverage
+- **Referee**: 0% coverage
+- **No GPU**: PyTorch CPU-only (17s/epoch)
+- **XGBoost overfits**: 4.75x drop from random to time-split
+- **No live betting support**
+- **Model files >50MB**: May need Git LFS
+
+## Next Steps (Priority)
+1. **Execute MASTER_PLAN**: Start with Day 1 — data collection (lineups, weather, referee)
+2. **Run betting pipeline**: `python betting_pipeline.py` for current value bets
+3. **Add Poisson/Dixon-Coles base model**: Should add +2-3% accuracy
+4. **Stacking meta-learner**: Replace weighted average with learned blend
+5. **GPU training**: 200 epochs would add +1-2%

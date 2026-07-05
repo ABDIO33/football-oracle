@@ -1,0 +1,40 @@
+20:19:21 ============================================================
+20:19:21 V7 UNDERSTAT INTEGRATOR v3 — FAST DICT MODE
+20:19:21 ============================================================
+20:19:21 [1] Loading training_data_v3.npz...
+20:19:22   Shape: (772771, 120)
+20:19:22 [2] Loading sofa_historical_results into dict...
+20:19:23   Loaded 887041 matches
+20:19:25   Dict size: 1181159 entries
+20:19:25 [3] Building training data index...
+20:19:25   772771 entries
+20:19:25 [4] Loading Understat data...
+20:19:25   13005 rows
+20:19:25 [5] Fast matching...
+20:19:25   Matched: 7398/13005 = 56.9%
+20:19:25   Training coverage: 0.96%
+20:19:25 [6] Building & saving training_data_v7.npz...
+20:19:25   V7 features: 130 (+10)
+20:19:29   Saved: training_data_v7.npz (99 MB)
+20:19:29 
+============================================================
+21:30:05 ============================================================
+21:30:05 V7 UNDERSTAT INTEGRATOR v3 — FAST DICT MODE
+21:30:05 ============================================================
+21:30:05 [1] Loading training_data_v3.npz...
+21:30:06   Shape: (772771, 120)
+21:30:06 [2] Loading sofa_historical_results into dict...
+21:30:07   Loaded 887041 matches
+21:30:09   Dict size: 1181159 entries
+21:30:09 [3] Building training data index...
+21:30:09   772771 entries
+21:30:09 [4] Loading Understat data...
+21:30:10   26494 rows
+21:30:10 [5] Fast matching...
+21:30:10   Matched: 14006/26494 = 52.9%
+21:30:10   Training coverage: 1.81%
+21:30:10 [6] Building & saving training_data_v7.npz...
+21:30:10   V7 features: 130 (+10)
+21:30:14   Saved: training_data_v7.npz (99 MB)
+21:30:14 
+============================================================

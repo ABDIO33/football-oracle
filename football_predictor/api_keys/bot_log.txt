@@ -1,0 +1,50 @@
+[22:45:45] ============================================================
+[22:45:45] [🤖] PLAYWRIGHT AUTO REGISTRATION BOT
+[22:45:45] ============================================================
+[22:45:45]   📧 Email 1: fphkfgosie@1secmail.org
+[22:45:45]   📧 Email 2: buwlnemhbh@1secmail.com
+[22:45:45]   📧 Email 3: zxbylftnwl@1secmail.com
+[22:45:45]   📧 Email 4: npuxrhctph@1secmail.net
+[22:45:45]   📧 Email 5: qtxrfebeyf@1secmail.net
+[22:45:45] 
+[🤖] Automating football-data.org registration with fphkfgosie@1secmail.org
+[22:45:46]     Opening football-data.org registration...
+[22:46:04]     Page title: football-data.org - Registration
+[22:46:04]     Page content length: 21642
+[22:46:04]     Found email input: input[type="email"]
+[22:46:07]     Clicked submit: button[type="submit"]
+[22:46:10]     ✅ Registration submitted successfully!
+[22:46:12] 
+[🤖] Automating football-data.org registration with buwlnemhbh@1secmail.com
+[22:46:13]     Opening football-data.org registration...
+[22:46:19]     Page title: football-data.org - Registration
+[22:46:19]     Page content length: 21642
+[22:46:19]     Found email input: input[type="email"]
+[22:46:22]     Clicked submit: button[type="submit"]
+[22:46:25]     ✅ Registration submitted successfully!
+[22:46:27] 
+[🤖] Automating football-data.org registration with zxbylftnwl@1secmail.com
+[22:46:28]     Opening football-data.org registration...
+[22:46:33]     Page title: football-data.org - Registration
+[22:46:33]     Page content length: 21642
+[22:46:33]     Found email input: input[type="email"]
+[22:46:36]     Clicked submit: button[type="submit"]
+[22:46:40]     ✅ Registration submitted successfully!
+[22:46:42] 
+[🤖] Automating football-data.org registration with npuxrhctph@1secmail.net
+[22:46:42]     Opening football-data.org registration...
+[22:46:53]     Page title: football-data.org - Registration
+[22:46:53]     Page content length: 21642
+[22:46:53]     Found email input: input[type="email"]
+[22:46:56]     Clicked submit: button[type="submit"]
+[22:46:59]     ✅ Registration submitted successfully!
+[22:47:02] 
+[🤖] Automating football-data.org registration with qtxrfebeyf@1secmail.net
+[22:47:02]     Opening football-data.org registration...
+[22:47:08]     Page title: football-data.org - Registration
+[22:47:08]     Page content length: 21642
+[22:47:08]     Found email input: input[type="email"]
+[22:47:11]     Clicked submit: button[type="submit"]
+[22:47:14]     ✅ Registration submitted successfully!
+[22:47:16] 
+[*] Checking inbox for API keys...

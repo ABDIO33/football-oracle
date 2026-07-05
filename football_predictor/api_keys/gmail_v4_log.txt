@@ -1,0 +1,16 @@
+[00:19:00] ============================================================
+[00:19:00] GMAIL LOGIN v4 - WAITS FOREVER FOR YOU!
+[00:19:00] ============================================================
+[00:19:01] [1] Navigating to Gmail...
+[00:19:04]     URL: https://accounts.google.com/v3/signin/identifier?continue=https://mail
+[00:19:04] [2] Filling email...
+[00:19:07] [3] Filling password...
+[00:19:09] 
+============================================================
+[00:19:09] CHROME WINDOW IS ON YOUR SCREEN!
+[00:19:09] Email: elbazamine27@gmail.com
+[00:19:09] Password: ABDO1122334455
+[00:19:09] FINISH THE LOGIN AND I WILL EXTRACT KEYS!
+[00:19:09] ============================================================
+[00:20:04]   Waiting... (60s) | Regs: 365
+[00:21:04]   Waiting... (120s) | Regs: 386

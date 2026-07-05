@@ -1,0 +1,165 @@
+{
+  "total_historical_matches": 887041,
+  "lineup_events": 87699,
+  "lineup_pct": 9.89,
+  "stats_events": 116689,
+  "stats_pct": 13.15,
+  "weather_rows": 192666,
+  "weather_locations": 112,
+  "referees": 152,
+  "referee_assignments": 180,
+  "odds_upcoming": 129,
+  "forebet_predictions": 85,
+  "odds_cached": 14,
+  "impact_teams": 1929,
+  "impact_players": 57126,
+  "walkforward_rows": 1101520,
+  "walkforward_teams": 9093,
+  "walkforward_date_range": "1993-07-23 to 2026-06-14",
+  "understat_entries": 1,
+  "empty_tables": [
+    "team_map",
+    "model_params",
+    "backtest_results",
+    "fbref_cache",
+    "sofa_team_cache",
+    "sofa_match_cache",
+    "agent5_oddsportal_cache",
+    "agent5_heist_leagues",
+    "agent5_heist_matches",
+    "agent5_heist_odds_movements",
+    "agent5_betexplorer_cache",
+    "agent5_heist_h2h_matches",
+    "agent5_heist_h2h_stats",
+    "agent5_transfermarkt_cache",
+    "agent5_heist_injuries",
+    "agent5_heist_market_values",
+    "agent5_sofascore_cache",
+    "agent5_heist_lineups",
+    "agent5_heist_player_stats",
+    "agent5_heist_shotmaps",
+    "agent5_heist_team_injuries",
+    "agent5_heist_team_squads",
+    "fotmob_match_cache",
+    "fotmob_player_cache",
+    "heist_files",
+    "agent4_teams",
+    "agent4_injuries",
+    "agent4_lineups",
+    "agent4_shotmaps",
+    "agent4_competition_seasons"
+  ],
+  "total_empty_tables": 30,
+  "top_missing_lineups": [
+    [
+      "Premier League",
+      11809,
+      820
+    ],
+    [
+      "Primera Division",
+      7590,
+      286
+    ],
+    [
+      "Serie B",
+      4492,
+      259
+    ],
+    [
+      "National League",
+      4211,
+      0
+    ],
+    [
+      "League Two",
+      4079,
+      120
+    ],
+    [
+      "Championship",
+      4239,
+      312
+    ],
+    [
+      "League One",
+      4074,
+      236
+    ],
+    [
+      "USL Championship",
+      4002,
+      212
+    ],
+    [
+      "Serie A",
+      4099,
+      347
+    ],
+    [
+      "Ligue 1",
+      3943,
+      379
+    ]
+  ],
+  "api_analysis": {
+    "sofascore": {
+      "status": "AVAILABLE",
+      "api_key_required": false,
+      "coverage": "87K lineups, 116K stats from 887K matches",
+      "unused_endpoints": [
+        "/event/{id} (referee, venue, weather in response)",
+        "/event/{id}/incidents (goals, cards, substitutions)",
+        "/event/{id}/lineups (bulk fetch for 203K recent matches)",
+        "/event/{id}/statistics (bulk fetch for 202K recent matches)",
+        "/unique-tournament/{id}/season/{season_id}/standings"
+      ],
+      "potential_impact": "HIGH - can add lineups for 203K+ matches, referee for all matches"
+    },
+    "open_meteo": {
+      "status": "AVAILABLE",
+      "api_key_required": false,
+      "coverage": "43.2% of venue-date combos filled",
+      "unused_potential": "Can fill remaining 10,365 venue-date combos",
+      "potential_impact": "MEDIUM - weather gives small but measurable improvement"
+    },
+    "understat": {
+      "status": "UNDERUSED",
+      "api_key_required": false,
+      "coverage": "Only EPL 2025 (1 entry)",
+      "unused_potential": "Can fetch 5 leagues x 11 seasons = 55+ entries",
+      "potential_impact": "MEDIUM - xG data for top leagues"
+    },
+    "the_odds_api": {
+      "status": "BLOCKED",
+      "api_key_required": true,
+      "coverage": "0 historical odds (API key not set)",
+      "unused_potential": "500 requests/month free tier",
+      "potential_impact": "HIGH - odds are already a feature in the model"
+    },
+    "fbref": {
+      "status": "NOT_IMPLEMENTED",
+      "api_key_required": false,
+      "coverage": "0 rows cached",
+      "unused_potential": "Advanced stats, player data, passing data",
+      "potential_impact": "MEDIUM - complex parsing required"
+    }
+  },
+  "data_quality": {
+    "negative_scores": 2,
+    "null_tournament_ids": "88.49% missing (784,957/887,041)",
+    "null_status_types": 1544,
+    "team_mapping_coverage": "1,054 mappings for 9,093 walkforward teams (11.6%)",
+    "venue_coverage": "308 venues for ~9K teams (incomplete)"
+  },
+  "recommendations": [
+    "IMMEDIATE: Build bulk lineup scraper for 2024+ matches (203K events) via SofaScore",
+    "IMMEDIATE: Fetch match details (/event/{id}) for all recent matches to get referee data",
+    "IMMEDIATE: Configure ODDS_API_KEY environment variable",
+    "HIGH: Fill remaining weather gaps (10,365 venue-date combos via Open-Meteo)",
+    "HIGH: Expand Understat to all 5 major leagues + historical seasons",
+    "MEDIUM: Build team venue database (match team_venue to more stadiums)",
+    "MEDIUM: Implement FBref scraper for advanced stats",
+    "LOW: Build injury scraper from SofaScore incidents data"
+  ]
+}

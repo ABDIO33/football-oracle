@@ -736,14 +736,111 @@ def _build_m5(input_dim, arch='128-256-128'):
     return _M5()
 
 def load_real_model():
-    """Load real_model.pkl or improved_model.pkl. Returns None if not found."""
+    """Load v3_model.pkl → improved_model.pkl → real_model.pkl. Returns None if not found."""
+    import joblib, torch
+    # Try V3/V5 model first
+    v3_path = os.path.join(os.path.dirname(__file__), 'models', 'v3_model.pkl')
+    if os.path.exists(v3_path):
+        try:
+            import __main__
+            import torch.nn as _nn
+
+            class _M5Variant_Patch(_nn.Module):
+                def __init__(self, input_dim, num_classes, layers, dr=0.25):
+                    super().__init__()
+                    modules = []; prev = input_dim
+                    for i, sz in enumerate(layers):
+                        modules += [_nn.Linear(prev, sz)]
+                        if sz >= 64: modules += [_nn.BatchNorm1d(sz)]
+                        modules += [_nn.ELU(), _nn.Dropout(dr * (0.5 if i == len(layers)-1 else 1.0))]
+                        prev = sz
+                    modules += [_nn.Linear(prev, num_classes)]
+                    self.net = _nn.Sequential(*modules)
+                def forward(self, x): return self.net(x)
+
+            class _V5Ensemble_Patch:
+                def __init__(self, models, weights, imp, scaler):
+                    self.models = models
+                    self.weights = weights
+                    self.imp = imp
+                    self.scaler = scaler
+                    self.num_classes = 25
+                def predict_proba(self, X):
+                    X_imp = self.imp.transform(X)
+                    X_s = self.scaler.transform(X_imp)
+                    ep = np.zeros((X_s.shape[0], 25))
+                    for name, m in self.models.items():
+                        w = self.weights.get(name, 0)
+                        if w == 0: continue
+                        if name == 'xgb_v5':
+                            proba = m.predict_proba(X_s)
+                        else:
+                            with torch.no_grad():
+                                proba = torch.softmax(m(torch.tensor(X_s, dtype=torch.float32)), dim=1).numpy()
+                        ep += w * proba
+                    return ep
+
+            class _TorchWrapper_Patch:
+                def __init__(self, input_dim, num_classes, layers, state_dict):
+                    self.input_dim = input_dim; self.num_classes = num_classes; self.layers = layers
+                    self.state_dict = {k: (v.cpu().numpy() if isinstance(v, torch.Tensor) else v) for k, v in state_dict.items()}
+                    self._model = None
+                def _build(self):
+                    if self._model is None:
+                        self._model = _M5Variant_Patch(self.input_dim, self.num_classes, self.layers)
+                        self._model.load_state_dict({k: torch.tensor(v) for k, v in self.state_dict.items()})
+                        self._model.eval()
+                    return self._model
+                def predict_proba(self, X):
+                    m = self._build()
+                    with torch.no_grad(): return torch.softmax(m(torch.tensor(X, dtype=torch.float32)), dim=1).numpy()
+                def predict(self, X): return np.argmax(self.predict_proba(X), axis=1)
+
+            class V3EnsemblePredictor_Patch:
+                def __init__(self, model_dir):
+                    import joblib as _jl
+                    res = json.load(open(os.path.join(model_dir, 'v3_results.json')))
+                    ARCHS3 = {'M5_small_v3': [128,256,128], 'M5_medium_v3': [256,512,256],
+                              'M5_big_v3': [512,1024,512], 'M5_wide_v3': [1024,512,256],
+                              'M5_deep_v3': [256,512,256,128]}
+                    self.weights = res['weights']; self.models = {}
+                    for name in res['model_names']:
+                        if name == 'xgb_v3':
+                            self.models[name] = _jl.load(os.path.join(model_dir, 'xgb_v3.pkl'))
+                        else:
+                            sd = torch.load(os.path.join(model_dir, f'{name}.pt'), map_location='cpu')
+                            self.models[name] = _TorchWrapper_Patch(85, 25, ARCHS3[name], sd)
+                    self.imputer = _jl.load(os.path.join(model_dir, 'checkpoint_imputer.pkl'))
+                    self.scaler = _jl.load(os.path.join(model_dir, 'checkpoint_scaler.pkl'))
+                def predict_proba(self, X):
+                    X_s = self.scaler.transform(self.imputer.transform(X))
+                    ep = None
+                    for name, p in self.models.items():
+                        p_ = p.predict_proba(X_s); w = self.weights.get(name, 0)
+                        ep = p_ * w if ep is None else ep + p_ * w
+                    return ep
+                def predict(self, X): return np.argmax(self.predict_proba(X), axis=1)
+
+            __main__.M5Variant = _M5Variant_Patch
+            __main__.V5Ensemble = _V5Ensemble_Patch
+            __main__.M5_Variant = _M5Variant_Patch
+            __main__.TorchWrapper = _TorchWrapper_Patch
+            __main__.V3EnsemblePredictor = V3EnsemblePredictor_Patch
+
+            model = joblib.load(v3_path)
+            if hasattr(model, 'predict_proba'):
+                print('[load_real_model] Using v3_model.pkl (18.51% exact)')
+                return model
+        except Exception as e:
+            print(f'[load_real_model] v3_model.pkl error: {e}')
+    
+    # Fall back to improved_model.pkl
     path = os.path.join(os.path.dirname(__file__), 'models', 'improved_model.pkl')
     if not os.path.exists(path):
         path = os.path.join(os.path.dirname(__file__), 'models', 'real_model.pkl')
     if not os.path.exists(path):
         return None
     try:
-        import joblib, torch
         data = joblib.load(path)
         input_dim = len(data['features'])
         arch = data.get('architecture', '128-256-128')
@@ -823,17 +920,6 @@ def build_feature_vector(home_team, away_team, match_date, odds_b365=None, odds_
         if not h or not a:
             return None
 
-        # Glicko-2 features
-        h_glicko, a_glicko = 1500.0, 1500.0
-        h_glicko_rd, a_glicko_rd = 350.0, 350.0
-        try:
-            cur.execute('SELECT glicko_rating, glicko_rd FROM glicko_state WHERE team_name=? AND date<=? ORDER BY date DESC LIMIT 1', (home_r, match_date))
-            g = cur.fetchone()
-            if g: h_glicko, h_glicko_rd = g[0], g[1]
-            cur.execute('SELECT glicko_rating, glicko_rd FROM glicko_state WHERE team_name=? AND date<=? ORDER BY date DESC LIMIT 1', (away_r, match_date))
-            g = cur.fetchone()
-            if g: a_glicko, a_glicko_rd = g[0], g[1]
-        except: pass
     finally:
         conn.close()
 
@@ -1039,7 +1125,6 @@ def build_feature_vector(home_team, away_team, match_date, odds_b365=None, odds_
         h_xg_diff, a_xg_diff, h_shot_diff, a_shot_diff,
         hdr, adr,
         fp_h, fp_d, fp_a, fp_avail,
-        h_glicko, a_glicko, h_glicko_rd, a_glicko_rd,
         st_h_xg, st_a_xg,
         st_h_shots, st_a_shots,
         st_h_sot, st_a_sot,

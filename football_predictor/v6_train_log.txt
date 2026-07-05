@@ -1,0 +1,44 @@
+V6 ULTIMATE TRAINING STARTED
+==================================================
+Data: Train=752672 Val=44274 Test=88551 (0.9M total)
+Training M1-d12...
+Training until validation scores don't improve for 20 rounds
+Did not meet early stopping. Best iteration is:
+[400]	valid_0's multi_logloss: 1.60946
+  M1-d12: exact=21.55%  [1343 s]
+Training M2-d12-500...
+Training until validation scores don't improve for 20 rounds
+Did not meet early stopping. Best iteration is:
+[500]	valid_0's multi_logloss: 1.38972
+  M2-d12-500: exact=24.20%  [1330 s]
+Training M3-d10...
+Training until validation scores don't improve for 20 rounds
+Did not meet early stopping. Best iteration is:
+[300]	valid_0's multi_logloss: 1.65832
+  M3-d10: exact=20.95%  [693 s]
+Training M4-d8...
+Training until validation scores don't improve for 20 rounds
+Did not meet early stopping. Best iteration is:
+[300]	valid_0's multi_logloss: 1.64517
+  M4-d8: exact=20.96%  [725 s]
+Training M5-d6...
+Training until validation scores don't improve for 20 rounds
+Did not meet early stopping. Best iteration is:
+[200]	valid_0's multi_logloss: 1.98079
+  M5-d6: exact=18.78%  [388 s]
+
+=== ENSEMBLE ===
+Naive ensemble (5 models): 21.64%
+Best ensemble (models (1,)): 24.20%
+Weighted best: 20.30%  weights=[np.float64(0.1), np.float64(0.8), np.float64(0.09999999999999998)]
+
+=== CALIBRATION ===
+Best temperature: 1.050 (log_loss=2.4707)
+
+=== FINAL RESULTS ===
+V6 Final: exact=21.64%  1X2=62.25%
+Best ensemble: 24.20%  Weighted: 20.30%
+Temperature: 1.050
+V6 vs V3: 21.64% < 32.00% (diff=10.36%)
+
+SAVED! Total time: 79.7 min

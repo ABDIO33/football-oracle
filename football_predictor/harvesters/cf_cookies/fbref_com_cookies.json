@@ -1,0 +1,126 @@
+{
+  "domain": "fbref.com",
+  "saved_at": 1782765081.6417305,
+  "expires_at": 1783024281.641731,
+  "cookies": [
+    {
+      "domain": ".fbref.com",
+      "httpOnly": false,
+      "name": "__hssrc",
+      "path": "/",
+      "sameSite": "Lax",
+      "secure": false,
+      "value": "1"
+    },
+    {
+      "domain": ".fbref.com",
+      "expiry": 1798317077,
+      "httpOnly": false,
+      "name": "hubspotutk",
+      "path": "/",
+      "sameSite": "Lax",
+      "secure": false,
+      "value": "ba952f90856a6898e1941cd00edaaae7"
+    },
+    {
+      "domain": ".fbref.com",
+      "expiry": 1782766874,
+      "httpOnly": true,
+      "name": "__cf_bm",
+      "path": "/",
+      "sameSite": "None",
+      "secure": true,
+      "value": "BMdKK1raFpcAiBHioprdwP1esR_kBkKfAFMlK7wfSDc-1782765075.7945037-1.0.1.1-U_FXi67YaQyJd6yVfnvFCDjy9SE5L3kf3qr22.tFUITbXd40UUn3_OwWzDEppv7xYWmrIHm20h6GrUcVAqaXiE9P9mXqczZrYLKDdEh37rgf88bls2iAKKGD0lBVLFwQ"
+    },
+    {
+      "domain": ".fbref.com",
+      "expiry": 1814301074,
+      "httpOnly": true,
+      "name": "cf_clearance",
+      "path": "/",
+      "sameSite": "None",
+      "secure": true,
+      "value": "KoaJqU1AGZorA6e1rgFJSlbUCCFZVP8lz2oVkJxoyjo-1782765075-1.2.1.1-9_krI35dDvYjNzeIJnH3hBCR5JcOHYykl_KBpFaaIhwJ_noMbI9PkWM9tBcGOev9P3vdSwDJms9fQOYLAZ_bM2sjRPZKWEXbePOzSgocbX7L_hWLQKuxgNAbmAm9tq5JJ9UgRKu6wvSXhaYjszNvsyZ9nAWqNgY5BQFDMqy1NJZUd0MAiW_MDqbVwmXNC1zgfXhl87NCbpuA_wI8JKci2ZKZLNXzr8sNVtaj84ibiVNFwEfSetUACUG1cVGGBuTdnOSPKZ5FXhRDM6E7GpdXnjVjd3GPD43Wqqj_TgDZc3wFuZrtqYkUQL1vJYQc44wWBIpgMh9yXz4dXXvZ2Xkq1s8kTJUd8mvzsmgwvVACuBM5DKeZjMhWlHYfpiZMv4FensQ9XmgXC7JXKmQR_EZLA.H57E59OWwUcN_6MyolPzDOBImaQQnMOZPTNtaj7kdTjHcJLpKzR790hr5M1dQTf5yjxAUG3CvB6c6N5o7pQvgKvPu.lM3iZG10gSDixIe6"
+    },
+    {
+      "domain": "fbref.com",
+      "expiry": 1782808276,
+      "httpOnly": false,
+      "name": "srcssfull",
+      "path": "/",
+      "sameSite": "Lax",
+      "secure": false,
+      "value": "yes"
+    },
+    {
+      "domain": ".fbref.com",
+      "expiry": 1814301076,
+      "httpOnly": false,
+      "name": "osano_consentmanager_uuid",
+      "path": "/",
+      "sameSite": "Lax",
+      "secure": true,
+      "value": "6817f428-5674-4562-92e9-fc18639c4683"
+    },
+    {
+      "domain": ".fbref.com",
+      "expiry": 1798317077,
+      "httpOnly": false,
+      "name": "__hstc",
+      "path": "/",
+      "sameSite": "Lax",
+      "secure": false,
+      "value": "218152582.ba952f90856a6898e1941cd00edaaae7.1782765077245.1782765077245.1782765077245.1"
+    },
+    {
+      "domain": "fbref.com",
+      "httpOnly": false,
+      "name": "is_live",
+      "path": "/",
+      "sameSite": "Lax",
+      "secure": false,
+      "value": "true"
+    },
+    {
+      "domain": ".fbref.com",
+      "expiry": 1817325077,
+      "httpOnly": false,
+      "name": "_ga_80FRT7VJ60",
+      "path": "/",
+      "sameSite": "Lax",
+      "secure": false,
+      "value": "GS2.1.s1782765077$o1$g0$t1782765077$j60$l0$h0"
+    },
+    {
+      "domain": ".fbref.com",
+      "expiry": 1817325077,
+      "httpOnly": false,
+      "name": "_ga",
+      "path": "/",
+      "sameSite": "Lax",
+      "secure": false,
+      "value": "GA1.1.1696062659.1782765078"
+    },
+    {
+      "domain": ".fbref.com",
+      "expiry": 1817325077,
+      "httpOnly": false,
+      "name": "_ga_T897NZ0GWZ",
+      "path": "/",
+      "sameSite": "Lax",
+      "secure": false,
+      "value": "GS2.1.s1782765077$o1$g0$t1782765077$j60$l0$h0"
+    },
+    {
+      "domain": ".fbref.com",
+      "expiry": 1782766877,
+      "httpOnly": false,
+      "name": "__hssc",
+      "path": "/",
+      "sameSite": "Lax",
+      "secure": false,
+      "value": "218152582.1.1782765077245"
+    }
+  ],
+  "version": 2
+}

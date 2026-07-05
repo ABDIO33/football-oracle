@@ -1,0 +1,15 @@
+{
+  "total_sources_defined": 30,
+  "sources_with_data": 20,
+  "sources_without_data": 10,
+  "total_raw_rows": 1196138,
+  "total_unified_rows": 332824,
+  "total_feature_rows": 131659,
+  "overall_coverage_pct": 66.7,
+  "quality_distribution": {
+    "high_quality_0.7+": 8634,
+    "medium_quality_0.4_0.7": 49758,
+    "low_quality_below_0.4": 73267
+  },
+  "avg_sources_per_match": 1.75
+}

@@ -1,0 +1,17 @@
+{
+  "name": "pi-web-ui",
+  "version": "1.0.0",
+  "description": "Pi Web UI - Beautiful graphical interface for Pi coding agent",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@earendil-works/pi-coding-agent": "^0.80.2",
+    "express": "^4.21.0",
+    "ws": "^8.18.0",
+    "marked": "^14.0.0",
+    "highlight.js": "^11.10.0"
+  }
+}

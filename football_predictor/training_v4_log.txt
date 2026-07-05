@@ -1,0 +1,10 @@
+Train:618,216 Val:77,277 Test:77,278 Feats:220
+M1: exact=24.00% [881s]
+M2: exact=26.20% [1624s]
+M3: exact=23.23% [2201s]
+Ensemble: exact=25.59%  1X2=68.50%
+Weighted: exact=17.79%  weights=[0.2, 0.2, 0.6000000000000001]
+  conf>=0.20: cover=68.4%  exact=30.76%
+  conf>=0.25: cover=44.4%  exact=37.91%
+  conf>=0.30: cover=30.6%  exact=45.72%
+SAVED! Total: 37.8 min

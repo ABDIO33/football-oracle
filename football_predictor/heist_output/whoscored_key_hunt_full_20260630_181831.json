@@ -1,0 +1,76 @@
+{
+  "code_results": [],
+  "commit_results": [],
+  "issue_results": [],
+  "repo_scans": [
+    {
+      "repo": "probberechts/soccerdata",
+      "files_with_key_patterns": [],
+      "commits_with_keys": [],
+      "env_files": []
+    },
+    {
+      "repo": "valensantarone/whoscraped",
+      "files_with_key_patterns": [],
+      "commits_with_keys": [],
+      "env_files": []
+    },
+    {
+      "repo": "Ali-Hasan-Khan/Scrape-Whoscored-Event-Data",
+      "files_with_key_patterns": [],
+      "commits_with_keys": [],
+      "env_files": []
+    },
+    {
+      "repo": "marinoalfonso/whoscored_auto_scraper",
+      "files_with_key_patterns": [],
+      "commits_with_keys": [],
+      "env_files": []
+    },
+    {
+      "repo": "keithxm23/whoscoredpy",
+      "files_with_key_patterns": [],
+      "commits_with_keys": [],
+      "env_files": []
+    },
+    {
+      "repo": "levent91/whoscored-player-information-scraper",
+      "files_with_key_patterns": [],
+      "commits_with_keys": [],
+      "env_files": []
+    },
+    {
+      "repo": "MHuussein311/whoscored-data-scraper",
+      "files_with_key_patterns": [],
+      "commits_with_keys": [],
+      "env_files": []
+    },
+    {
+      "repo": "nikcub/rsoccer",
+      "files_with_key_patterns": [],
+      "commits_with_keys": [],
+      "env_files": []
+    },
+    {
+      "repo": "shufinskiy/sport_analytics_tools",
+      "files_with_key_patterns": [],
+      "commits_with_keys": [],
+      "env_files": []
+    },
+    {
+      "repo": "MateoGiuffra/DesApp-grupo-J",
+      "files_with_key_patterns": [],
+      "commits_with_keys": [],
+      "env_files": []
+    }
+  ],
+  "potential_leaks": [],
+  "stats": {
+    "total_code_results": 0,
+    "total_commit_results": 0,
+    "total_issue_results": 0,
+    "total_repos_scanned": 10,
+    "unique_repos_found": 0,
+    "potential_leaks_found": 0
+  }
+}

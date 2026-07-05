@@ -1,0 +1,40 @@
+
+===============================================================
+  BETFAIR APP KEY REGISTRATION GUIDE
+===============================================================
+
+Step 1: Create a Betfair Developer Account
+  -> Go to https://developer.betfair.com
+  -> Click "Register" (top right)
+  -> Fill in details (use same email as your Betfair account)
+  -> Verify email
+
+Step 2: Create a New Application
+  -> Log in at developer.betfair.com
+  -> Go to "My Account" -> "Applications"
+  -> Click "Create New Application"
+  -> Application Name: "FootballOracle_ScorePredictor"
+  -> Description: "Football exact score prediction system"
+  -> Platform: "Other"
+  -> Redirect URL: https://localhost (for desktop apps)
+
+Step 3: Get Your App Key
+  -> After creating the app, you'll see "Application Key"
+  -> Copy this key -> paste into betfair_config.json as "app_key"
+
+Step 4: Set Up SSL Certificate (ACTIVITY)
+  -> Go to "My Account" -> "Certificates"
+  -> Click "Add Certificate"
+  -> Paste the contents of betfair_client.crt (the .crt file)
+  -> Name: "FootballOracle-Cert"
+
+Step 5: Enable API Access
+  -> Go to "My Account" -> "API Access"
+  -> Ensure your app is set to "Enabled"
+  -> Set access level to "ACTIVITY" (required for trading)
+
+Step 6: Test Connection
+  -> Run: python agent5_betfair_test.py
+  -> You should see: "[OK] Connected to Betfair API successfully"
+
+===============================================================

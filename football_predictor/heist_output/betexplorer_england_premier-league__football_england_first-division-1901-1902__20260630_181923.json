@@ -1,0 +1,16 @@
+{
+  "source": "betexplorer.com",
+  "scraper": "SeleniumBase UC v4.49",
+  "league": "england/premier-league",
+  "season": "/football/england/first-division-1901-1902/",
+  "timestamp": "20260630_181923",
+  "match_count": 0,
+  "session_stats": {
+    "requests": 16,
+    "success": 16,
+    "failed": 0,
+    "retries": 0,
+    "start_time": "2026-06-30T18:17:28.647934"
+  },
+  "matches": []
+}

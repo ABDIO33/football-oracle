@@ -1,0 +1,353 @@
+{
+  "generated_at": "2026-06-30 03:12:00",
+  "database": "C:\\Users\\zake.exe\\Desktop\\Score Exact 100\\football_predictor\\scrape_cache.db",
+  "total_unified_rows": 332824,
+  "total_feature_rows": 131659,
+  "sources": [
+    {
+      "id": "football_data_uk",
+      "name": "football-data.co.uk",
+      "type": "results",
+      "tier": 1,
+      "table": "source_football_data_uk",
+      "table_exists": true,
+      "raw_rows": 163507,
+      "unified_rows": 100031,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "understat",
+      "name": "Understat",
+      "type": "xG",
+      "tier": 1,
+      "table": "source_understat",
+      "table_exists": true,
+      "raw_rows": 26494,
+      "unified_rows": 26494,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "sofascore",
+      "name": "SofaScore",
+      "type": "results",
+      "tier": 1,
+      "table": "sofa_historical_results",
+      "table_exists": true,
+      "raw_rows": 887041,
+      "unified_rows": 91680,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "sofascore_extended",
+      "name": "SofaScore Extended",
+      "type": "extended",
+      "tier": 1,
+      "table": "source_sofascore_extended",
+      "table_exists": true,
+      "raw_rows": 8248,
+      "unified_rows": 8248,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "api_football",
+      "name": "API-Football",
+      "type": "results",
+      "tier": 1,
+      "table": "source_api_football",
+      "table_exists": true,
+      "raw_rows": 12043,
+      "unified_rows": 9652,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "fotmob",
+      "name": "FotMob",
+      "type": "results",
+      "tier": 1,
+      "table": "fotmob_match_cache",
+      "table_exists": true,
+      "raw_rows": 0,
+      "unified_rows": 0,
+      "status": "[EMPTY]"
+    },
+    {
+      "id": "flashscore",
+      "name": "Flashscore/SofaScore",
+      "type": "results",
+      "tier": 1,
+      "table": "flashscore_matches",
+      "table_exists": true,
+      "raw_rows": 3942,
+      "unified_rows": 3942,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "fbref",
+      "name": "FBref",
+      "type": "advanced_stats",
+      "tier": 2,
+      "table": "source_fbref",
+      "table_exists": true,
+      "raw_rows": 0,
+      "unified_rows": 0,
+      "status": "[EMPTY]"
+    },
+    {
+      "id": "fbref_matches",
+      "name": "FBref Matches",
+      "type": "advanced_stats",
+      "tier": 2,
+      "table": "source_fbref_matches",
+      "table_exists": true,
+      "raw_rows": 0,
+      "unified_rows": 0,
+      "status": "[EMPTY]"
+    },
+    {
+      "id": "statsbomb",
+      "name": "StatsBomb",
+      "type": "event_data",
+      "tier": 2,
+      "table": "statsbomb_matches",
+      "table_exists": true,
+      "raw_rows": 1923,
+      "unified_rows": 1923,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "statsbomb_enhanced",
+      "name": "StatsBomb Enhanced",
+      "type": "event_data",
+      "tier": 2,
+      "table": "source_statsbomb_enhanced",
+      "table_exists": true,
+      "raw_rows": 1923,
+      "unified_rows": 1923,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "whoscored",
+      "name": "WhoScored",
+      "type": "advanced_stats",
+      "tier": 2,
+      "table": "source_whoscored",
+      "table_exists": true,
+      "raw_rows": 0,
+      "unified_rows": 0,
+      "status": "[EMPTY]"
+    },
+    {
+      "id": "soccerway",
+      "name": "Soccerway",
+      "type": "results",
+      "tier": 2,
+      "table": "source_soccerway",
+      "table_exists": true,
+      "raw_rows": 10051,
+      "unified_rows": 9474,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "11v11",
+      "name": "11v11",
+      "type": "historical",
+      "tier": 2,
+      "table": "source_11v11",
+      "table_exists": true,
+      "raw_rows": 28618,
+      "unified_rows": 28591,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "betfair",
+      "name": "Betfair Exchange",
+      "type": "odds",
+      "tier": 3,
+      "table": "source_betfair",
+      "table_exists": true,
+      "raw_rows": 0,
+      "unified_rows": 0,
+      "status": "[EMPTY]"
+    },
+    {
+      "id": "oddsportal",
+      "name": "OddsPortal",
+      "type": "odds",
+      "tier": 3,
+      "table": "source_oddsportal",
+      "table_exists": true,
+      "raw_rows": 0,
+      "unified_rows": 0,
+      "status": "[EMPTY]"
+    },
+    {
+      "id": "pinnacle",
+      "name": "Pinnacle",
+      "type": "odds",
+      "tier": 3,
+      "table": "source_pinnacle",
+      "table_exists": true,
+      "raw_rows": 201,
+      "unified_rows": 201,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "odds_api",
+      "name": "The Odds API",
+      "type": "odds",
+      "tier": 3,
+      "table": "source_odds_api",
+      "table_exists": true,
+      "raw_rows": 0,
+      "unified_rows": 0,
+      "status": "[EMPTY]"
+    },
+    {
+      "id": "football_data_org",
+      "name": "Football-Data.org",
+      "type": "results",
+      "tier": 3,
+      "table": "source_football_data_org",
+      "table_exists": true,
+      "raw_rows": 4032,
+      "unified_rows": 4032,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "betexplorer",
+      "name": "BetExplorer",
+      "type": "odds",
+      "tier": 3,
+      "table": "source_betexplorer",
+      "table_exists": true,
+      "raw_rows": 0,
+      "unified_rows": 0,
+      "status": "[EMPTY]"
+    },
+    {
+      "id": "oddsportal_matches",
+      "name": "OddsPortal Matches",
+      "type": "odds",
+      "tier": 3,
+      "table": "oddsportal_matches",
+      "table_exists": true,
+      "raw_rows": 22,
+      "unified_rows": 22,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "weather",
+      "name": "Weather (OpenWeatherMap)",
+      "type": "weather",
+      "tier": 4,
+      "table": "source_weather",
+      "table_exists": true,
+      "raw_rows": 5000,
+      "unified_rows": 5000,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "transfermarkt",
+      "name": "Transfermarkt",
+      "type": "squad",
+      "tier": 4,
+      "table": "source_transfermarkt",
+      "table_exists": true,
+      "raw_rows": 1375,
+      "unified_rows": 1375,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "clubelo",
+      "name": "ClubElo",
+      "type": "rating",
+      "tier": 4,
+      "table": "source_clubelo_enhanced",
+      "table_exists": true,
+      "raw_rows": 3804,
+      "unified_rows": 3804,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "eloratings",
+      "name": "EloRatings.net",
+      "type": "rating",
+      "tier": 4,
+      "table": "source_eloratings",
+      "table_exists": true,
+      "raw_rows": 0,
+      "unified_rows": 0,
+      "status": "[EMPTY]"
+    },
+    {
+      "id": "footystats",
+      "name": "FootyStats",
+      "type": "stats",
+      "tier": 4,
+      "table": "source_footystats",
+      "table_exists": true,
+      "raw_rows": 6284,
+      "unified_rows": 4999,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "infogol",
+      "name": "InfoGoal",
+      "type": "prediction",
+      "tier": 4,
+      "table": "source_infogol",
+      "table_exists": true,
+      "raw_rows": 26494,
+      "unified_rows": 26494,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "kaggle",
+      "name": "Kaggle Datasets",
+      "type": "results",
+      "tier": 4,
+      "table": "source_kaggle",
+      "table_exists": true,
+      "raw_rows": 0,
+      "unified_rows": 0,
+      "status": "[EMPTY]"
+    },
+    {
+      "id": "forebet",
+      "name": "Forebet",
+      "type": "prediction",
+      "tier": 4,
+      "table": "forebet_predictions",
+      "table_exists": true,
+      "raw_rows": 85,
+      "unified_rows": 85,
+      "status": "[ACTIVE]"
+    },
+    {
+      "id": "livescore",
+      "name": "Livescore",
+      "type": "results",
+      "tier": 4,
+      "table": "source_livescore",
+      "table_exists": true,
+      "raw_rows": 5051,
+      "unified_rows": 4854,
+      "status": "[ACTIVE]"
+    }
+  ],
+  "summary": {
+    "total_sources_defined": 30,
+    "sources_with_data": 20,
+    "sources_without_data": 10,
+    "total_raw_rows": 1196138,
+    "total_unified_rows": 332824,
+    "total_feature_rows": 131659,
+    "overall_coverage_pct": 66.7,
+    "quality_distribution": {
+      "high_quality_0.7+": 8634,
+      "medium_quality_0.4_0.7": 49758,
+      "low_quality_below_0.4": 73267
+    },
+    "avg_sources_per_match": 1.75
+  }
+}

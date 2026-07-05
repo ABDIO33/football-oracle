@@ -1,0 +1,97 @@
+{
+  "analysisTimestamp": "2026-06-29T19:06:00Z",
+  "dataSources": {
+    "source_understat": {
+      "totalRows": 13005,
+      "columns": 22,
+      "columnsDetail": ["id","league","season","match_date","home_team","away_team","home_goals","away_goals","home_xg","away_xg","home_npxg","away_npxg","home_deep","away_deep","home_ppda_att","home_ppda_def","away_ppda_att","away_ppda_def","home_xga","away_xga","result","hash"],
+      "leagues": {"EPL":2804,"La_liga":2704,"Serie_A":2696,"Ligue_1":2625,"Bundesliga":2176},
+      "seasons": {"2020":2210,"2021":2238,"2022":2274,"2023":2048,"2024":2088,"2025":2147},
+      "dateRange": "2020-08-21 to 2026-05-24",
+      "xgStats": {"home_mean":1.60,"away_mean":1.29,"home_range":[0.0,6.88],"away_range":[0.0,7.11]},
+      "metrics": {"xg_direction_accuracy":57.9,"xg_vs_npxg_correlation":0.94,"deep_entries_home_avg":6.96,"ppda_def_home_avg":22.69},
+      "overlapWithSofa": 9510,
+      "overlapPct": 73.1,
+      "newMatchesNotInSofa": 5971,
+      "newMatchesPct": 45.9
+    },
+    "source_fbref_teams": {
+      "totalRows": 20,
+      "columns": 42,
+      "leagues": "EPL 2024-25 only",
+      "assessment": "Limited value. Season aggregates only, not match-level. Useful for team calibration but not for direct feature addition."
+    },
+    "trainingData": {
+      "v3": {"samples":772771,"features":120,"effective":76,"zeros":38.8,"constant":64,"fileSizeMB":101.4},
+      "v4": {"samples":772771,"features":220,"effective":182,"zeros":25.2,"constant":58,"fileSizeMB":266.2},
+      "v5": {"samples":772773,"features":136,"effective":92,"zeros":35.6,"constant":44,"fileSizeMB":128.9},
+      "v6": {"samples":885497,"features":120,"effective":80,"zeros":36.7,"constant":62,"fileSizeMB":118.2},
+      "v62": {"samples":3864,"features":194,"note":"experimental only, not production ready"},
+      "classDistribution25": {
+        "0-0":59961,"0-1":60495,"0-2":35849,"0-3":16716,"0-4+":9972,
+        "1-0":80879,"1-1":92013,"1-2":52422,"1-3":20379,"1-4+":9999,
+        "2-0":57157,"2-1":68871,"2-2":38844,"2-3":14777,"2-4+":5917,
+        "3-0":31194,"3-1":31452,"3-2":19616,"3-3":7354,"3-4+":3091,
+        "4+-0":21824,"4+-1":18999,"4+-2":9700,"4+-3":3718,"4+-4+":1572
+      },
+      "classImbalanceRatio": "1-1 (92013) is 58x larger than 4+-4+ (1572) = severe imbalance"
+    },
+    "walkforwardState": {
+      "totalRows": 1101520,
+      "columns": 10,
+      "uniqueTeams": 9093,
+      "dateRange": "1993-07-23 to 2026-06-14",
+      "keyProblem": "All xG features are rolling averages only. No match-level xG anywhere."
+    },
+    "currentBestModel": {
+      "exactScore": 17.60,
+      "bestValExactFromTrainingDB": 26.81,
+      "bestTestExactFromTrainingDB": 19.89,
+      "best1X2FromTrainingDB": 62.19,
+      "modelsTested": 624,
+      "archiveDate": "2026-06-29"
+    }
+  },
+  "liftAnalysis": {
+    "currentXGFeatures": "Rolling averages from walkforward (smoothed, no match variance)",
+    "proposedUnderstatFeatures": "15 new features including match-level xG, npxG, deep, PPDA, xGA",
+    "expectedLiftConservative": "+0.5%",
+    "expectedLiftModerate": "+0.8%",
+    "expectedLiftOptimistic": "+1.2%",
+    "reasoning": "Understat xG direction accuracy is 57.9% (8% better than coin flip). Features are orthogonal to rolling averages. PPDA and deep entries are completely new signal dimensions not present anywhere in current 81-feature set."
+  },
+  "strategicPlan": {
+    "phase1": "Fix v7 preprocessor SQL queries and merge pipeline",
+    "phase2": "Generate training_data_v7.npz with ~135 features",
+    "phase3": "Train LightGBM + DeepNN ensemble with 885K samples",
+    "phase4": "Weighted ensemble optimization and seed averaging",
+    "phase5": "Evaluation on 2025-2026 season data",
+    "criticalBugsFound": [
+      "v7 preprocessor queries non-existent columns (home_shot_count, away_shot_count)",
+      "v7 preprocessor falls back to np.random.uniform when data missing (adds noise)",
+      "v7 preprocessor uses synthetic team names (Team_0, Team_1) making merge impossible",
+      "v7 preprocessor ignores npxG, deep, PPDA, xGA features"
+    ],
+    "recommendedNewFeatures": [
+      "home_understat_xg", "away_understat_xg",
+      "home_understat_npxg", "away_understat_npxg",
+      "home_understat_deep", "away_understat_deep",
+      "home_understat_ppda_def", "away_understat_ppda_def",
+      "home_understat_xga", "away_understat_xga",
+      "xg_diff", "xg_ratio", "deep_diff", "ppda_ratio", "penalty_xg_effect"
+    ],
+    "modelArchitecture": [
+      "XGBoost (5% weight) — proven stabilizer",
+      "M5_deep: 128-256-128 with dropout 0.25 + Understat features",
+      "M2_deep: 512-1024-512 with dropout 0.20 + Understat features",
+      "M7: 256-512-256 with BatchNorm + 0.25 dropout (new)",
+      "Weighted ensemble: learned via Bayesian optimization"
+    ]
+  },
+  "residualRisks": [
+    "Team name mismatch between Understat and sofa data may reduce merge success below expected 9097 matches. Mitigation: use team_name_mapping table (2548 rows).",
+    "Understat only covers 2020-2026 top-5 leagues. ~50% of training data (pre-2020, non-top-5) will have 0 for Understat features. Mitigation: use 0 fillna and let model learn xG is unavailable for those matches.",
+    "v7 preprocessor log shows 64+ constant columns that consume memory. Mitigation: VarianceThreshold with threshold=0.0 to remove them before training.",
+    "Training time will increase ~2x with added features and 885K samples. Budget ~4-6 hours for ensemble training."
+  ]
+}

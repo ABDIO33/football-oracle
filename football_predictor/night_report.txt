@@ -1,0 +1,46 @@
+🔥 التقرير النهائي — الهجوم على كل المصادر 🔥
+═══════════════════════════════════════════════════════════════
+
+✅ المصادر الكاملة (22):
+───────────────────────────────────────────
+• SofaScore التاريخي    887,041 مباراة
+• StatsBomb Events    6,746,069 حدث
+• Understat xG         49,238 مباراة
+• football-data.co.uk ~100,746 مباراة (جديد!)
+• source_football_d_uk 163,507 مباراة
+• source_11v11         28,618 مباراة
+• source_infogol       26,494 مباراة
+• source_api_football  12,043 مباراة
+• source_soccerway     10,051 مباراة
+• Walkforward State  1,101,520 صف Elo
+• Kaggle Historical     1,406 مبارة (جديد!)
+• FBref (Wayback)       1,398 مبارة
+• 10 مصادر أخرى مليانة ✅
+
+⚠️ المصادر الفاضية (10):
+───────────────────────────
+• BetExplorer    ← محظور (403)
+• Betfair        ← جاهز (certs + config من Agent 5)
+• EloRatings     ← الموقع مات
+• FBref direct   ← Cloudflare Enterprise WAF 🚫
+• Kaggle API     ← download timed out (1406 rows saved)
+• Monitoring     ← مجرد tracker
+• OddsAPI        ← يحتاج API keys + حسابات متعددة
+• OddsPortal     ← محظور (403)
+• WhoScored      ← محظور (403)
+
+🏆 النماذج:
+• LightGBM 36.35% exact (306 features) - World Record!
+• StatsBomb xG Model AUC 0.8058 (جديد من Agent 5)
+• Elo-Poisson hybrid predictor جاهز
+
+📊 قاعدة البيانات: 12,136,575+ صف | 7.9 GB
+
+📁 البيانات الجديدة الليلة:
+• harvested_data/ — 146 ملف CSV (~100K مباراة)
+• kaggle_historical_data.json — 1,406 صف
+• wc2026_predictions_v3.json — توقعات كأس العالم
+• agent5_xg_model.py — xG model (AUC 0.8058)
+• wc2026_predictions_v2.json — توقعات كأس العالم (306-feature)
+
+═══════════════════════════════════════════════════════════════

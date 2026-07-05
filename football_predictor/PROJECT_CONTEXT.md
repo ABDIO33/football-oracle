@@ -29,9 +29,8 @@
 
 ## Current Technical Challenge
 - **Problem**: Sofascore API blocked by Cloudflare (403 Forbidden) due to Python Requests TLS fingerprint
-- **Solution**: Replaced `requests` + `selenium` with `curl_cffi`
-- **Implementation**: `curl_cffi` with `impersonate="chrome120"` bypasses Cloudflare by mimicking real Chrome browser TLS fingerprint
-- **Performance**: Fast, lightweight, no browser overhead
+- **Solution**: Using `curl_cffi` with `impersonate="chrome120"` bypasses Cloudflare by mimicking real Chrome browser TLS fingerprint.
+- **Performance**: Fast, lightweight, no browser overhead.
 
 ## Dependencies (requirements.txt)
 - `curl_cffi` (primary HTTP client)

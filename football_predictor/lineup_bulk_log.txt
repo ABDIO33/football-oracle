@@ -1,0 +1,10 @@
+[15:39:48] === LINEUP BULK COLLECTOR ===
+[15:39:49] Missing events (2024+): 500
+[15:41:09] 
+=== COLLECTION RESULTS ===
+[15:41:09] Tried: 100
+[15:41:09] Success: 0
+[15:41:09] No formation: 2
+[15:41:09] Failed: 98
+[15:41:09] Success rate: 0%
+[15:41:10] Total coverage: 86896/887041 = 9.8%

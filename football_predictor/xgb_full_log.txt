@@ -1,0 +1,20 @@
+XGBoost Full Training Started
+==================================================
+Data: Train=656855 Val=38638 Test=77278
+Training XGBoost (full data)...
+XGBoost full: exact=22.91% [1952s]
+  1X2=63.31%
+Saved XGBoost model
+
+=== Blending with V3 ensemble ===
+  XGB weight=0.02: exact=31.00%
+  XGB weight=0.05: exact=30.90%
+  XGB weight=0.10: exact=30.69%
+  XGB weight=0.15: exact=30.46%
+  XGB weight=0.20: exact=30.26%
+  XGB weight=0.30: exact=29.73%
+Best XGB weight: 0.01 (exact=31.04%)
+V3 alone: 29%%+ (on subset)
+New ensemble: 31.04%
+
+Done! Total: 36.5 min

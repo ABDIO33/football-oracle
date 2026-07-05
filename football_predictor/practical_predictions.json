@@ -1,0 +1,36 @@
+[
+  {
+    "home": "VfL Osnabrück",
+    "away": "Bayern Munich",
+    "date": "2026-09-01",
+    "league": "DFB-Pokal",
+    "predicted_score": "0-0",
+    "confidence": 0.5625329048157057,
+    "home_win": 0.10104460826227604,
+    "draw": 0.7208561720860112,
+    "away_win": 0.17809921965171296
+  },
+  {
+    "home": "Wehen Wiesbaden",
+    "away": "Bayer Leverkusen",
+    "date": "2026-08-21",
+    "league": "DFB-Pokal",
+    "predicted_score": "0-0",
+    "confidence": 0.558880867453877,
+    "home_win": 0.06524247873832456,
+    "draw": 0.7178680500193635,
+    "away_win": 0.21688947124231178
+  },
+  {
+    "home": "Platense",
+    "away": "Coquimbo Unido",
+    "date": "2026-08-12",
+    "league": "Copa Libertadores",
+    "predicted_score": "0-0",
+    "confidence": 0.3902364708274466,
+    "home_win": 0.04844226080477592,
+    "draw": 0.6521194067333993,
+    "away_win": 0.29943833246182444
+  },
+  {
+    "home": 

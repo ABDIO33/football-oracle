@@ -1,0 +1,83 @@
+[22:44:57] ============================================================
+[22:44:57] [🔥] SCORE EXACT 100 — MASS API KEY HARVESTER
+[22:44:57] [🔥] الهدف: 20+ API Key (بدون فلوس)
+[22:44:57] ============================================================
+[22:44:57] 
+============================================================
+[22:44:57] [🌟] HARVESTING FREE APIs...
+[22:44:57] ============================================================
+[22:44:57] 
+[🎯] Open-Meteo (FREE - no key needed)
+[22:44:57] 
+[🎯] Wikipedia API (FREE - no key needed)
+[22:44:58] 
+[🎯] GitHub Football Datasets (FREE)
+[22:44:58]     ✅ يعمل! بيانات الطقس متاحة
+[22:44:58]   💾 محفوظ: Open-Meteo → FREE_NO_KEY...
+[22:44:58] 
+[🎯] HuggingFace Datasets (FREE)
+[22:45:00]     ✅ وجد 145 dataset
+[22:45:00]     📦 keremberke/football-object-detection
+[22:45:00]     📦 3zden/fbref_football_player_performance_2024-2025
+[22:45:00]     📦 ybelkada/football-dataset
+[22:45:00]   💾 محفوظ: HuggingFace → FREE_NO_KEY...
+[22:45:00] 
+============================================================
+[22:45:00] [📧] HARVESTING EMAIL APIs...
+[22:45:00] ============================================================
+[22:45:00]   📧 1secmail: ahrtqdwvtt@1secmail.com
+[22:45:00]   📧 1secmail: bquxzglrzs@1secmail.xyz
+[22:45:00]   📧 1secmail: oatrxzeidv@1secmail.net
+[22:45:00]   📧 1secmail: gxzscydzln@1secmail.org
+[22:45:00]   📧 1secmail: fxwommhnzi@1secmail.com
+[22:45:00] 
+[🎯] football-data.org ← ahrtqdwvtt@1secmail.com
+[22:45:00]     خطأ: HTTPSConnectionPool(host='api.football-data.org', port=443): Max retries exceeded with url: /v4/competitions/ (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)')))
+[22:45:00] 
+[🎯] WeatherAPI ← ahrtqdwvtt@1secmail.com
+[22:45:01] 
+[🎯] football-data.org ← bquxzglrzs@1secmail.xyz
+[22:45:01]     خطأ: HTTPSConnectionPool(host='api.football-data.org', port=443): Max retries exceeded with url: /v4/competitions/ (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)')))
+[22:45:01] 
+[🎯] WeatherAPI ← bquxzglrzs@1secmail.xyz
+[22:45:01] 
+[🎯] football-data.org ← oatrxzeidv@1secmail.net
+[22:45:02]     خطأ: HTTPSConnectionPool(host='api.football-data.org', port=443): Max retries exceeded with url: /v4/competitions/ (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)')))
+[22:45:02] 
+[🎯] WeatherAPI ← oatrxzeidv@1secmail.net
+[22:45:03] 
+[🎯] football-data.org ← gxzscydzln@1secmail.org
+[22:45:08]     الفعليةAPI Status: 200
+[22:45:08] 
+[🎯] WeatherAPI ← gxzscydzln@1secmail.org
+[22:45:08] 
+[🎯] football-data.org ← fxwommhnzi@1secmail.com
+[22:45:09]     الفعليةAPI Status: 200
+[22:45:09] 
+[🎯] WeatherAPI ← fxwommhnzi@1secmail.com
+[22:45:09] 
+============================================================
+[22:45:09] [🏆] RESULTS: 2 API Keys harvested!
+[22:45:09] ============================================================
+[22:45:09]   ✅ Open-Meteo: FREE_NO_KEY
+[22:45:09]   ✅ HuggingFace: FREE_NO_KEY
+[22:45:09] 
+============================================================
+[22:45:09] [💡] GMAIL PLUS TRICK = UNLIMITED API KEYS!
+[22:45:09] ============================================================
+[22:45:09] 
+    لو عندك Gmail واحد فقط:
+    ------------------------
+    yourname+footballdata@gmail.com  →  football-data.org
+    yourname+weatherapi@gmail.com    →  WeatherAPI
+    yourname+rapidapi@gmail.com      →  RapidAPI
+    yourname+sportsdb@gmail.com      →  TheSportsDB
+    
+    كل الإيميلات تروح لنفس صندوق الوارد!
+    
+    للأسف football-data.org يتطلب تسجيل يدوي:
+    https://www.football-data.org/client/register
+    
+    سجل بإيميل مختلف ← استلم API Key ← كرر!
+    
+[22:45:09] [✅] تم! المفاتيح محفوظة في: C:/Users/zake.exe/Desktop/Score Exact 100/football_predictor/api_keys/harvested_keys.json

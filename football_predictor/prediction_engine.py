@@ -519,6 +519,22 @@ GROQ_BASE = 'https://api.groq.com/openai/v1'
 OPENROUTER_KEY = os.environ.get('OPENROUTER_KEY', '')
 OPENROUTER_BASE = 'https://openrouter.ai/api/v1'
 
+# ── OpenCode Zen (Free models: DeepSeek V4 Flash Free, Big Pickle, Nemotron 3 Ultra Free) ──
+OPENCODE_ZEN_KEY = os.environ.get('OPENCODE_ZEN_KEY', '')
+OPENCODE_ZEN_BASE = 'https://opencode.ai/zen/v1'
+
+# ── NVIDIA API (nvapi- key from env) ──
+NVIDIA_API_KEY = os.environ.get('OPENAI_API_KEY', '')
+if NVIDIA_API_KEY.startswith('nvapi-'):
+    NVIDIA_BASE = 'https://integrate.api.nvidia.com/v1'
+else:
+    NVIDIA_API_KEY = ''
+    NVIDIA_BASE = ''
+
+# ── Cloudflare AI Gateway ──
+CF_API_KEY = os.environ.get('CF_API_KEY', '')
+CF_AI_BASE = 'https://api.cloudflare.com/client/v4/ai'
+
 # Compat keys for old env vars
 BSD_API_KEY = os.environ.get('BSD_API_KEY', '')
 SPORTMONKS_KEY = os.environ.get('SPORTMONKS_KEY', '')
@@ -540,6 +556,7 @@ def _init_cache_db():
     try:
         conn = sqlite3.connect(_CACHE_DB, timeout=5)
         conn.execute('CREATE TABLE IF NOT EXISTS cache (url TEXT PRIMARY KEY, data TEXT, updated REAL)')
+        conn.execute('CREATE TABLE IF NOT EXISTS ai_cache (cache_key TEXT PRIMARY KEY, response TEXT, model TEXT, created REAL)')
         conn.commit()
         conn.close()
     except:
@@ -1425,35 +1442,188 @@ def dixon_coles_predict(home_goals_avg, away_goals_avg, rho=None, max_goals=MAX_
 # ═══════════════════════════════════════════════════════════════
 # AI ENSEMBLE (AgentRouter or Groq)
 # ═══════════════════════════════════════════════════════════════
+def _get_ai_cache_key(messages, model):
+    """Generate a deterministic cache key from messages + model."""
+    import hashlib
+    raw = json.dumps(messages, sort_keys=True) + '|' + model
+    return hashlib.sha256(raw.encode()).hexdigest()
+
+
+def _get_cached_ai_response(messages, model, max_age_hours=168):
+    """Check ai_cache table for a cached response. 168h = 7 days TTL."""
+    key = _get_ai_cache_key(messages, model)
+    try:
+        now = time.time()
+        conn = sqlite3.connect(_CACHE_DB, timeout=3)
+        row = conn.execute(
+            'SELECT response FROM ai_cache WHERE cache_key=? AND created>?',
+            (key, now - max_age_hours * 3600)
+        ).fetchone()
+        conn.close()
+        if row:
+            return row[0]
+    except:
+        pass
+    return None
+
+
+def _save_ai_cache(messages, model, response):
+    """Save AI response to cache."""
+    key = _get_ai_cache_key(messages, model)
+    try:
+        conn = sqlite3.connect(_CACHE_DB, timeout=3)
+        conn.execute(
+            'REPLACE INTO ai_cache VALUES (?,?,?,?)',
+            (key, response, model, time.time())
+        )
+        conn.commit()
+        conn.close()
+    except:
+        pass
+
+
+def _extract_json(text):
+    """Extract JSON object from text (handles reasoning models)."""
+    if not text:
+        return None
+    text = text.strip()
+    # Try direct parse first
+    try:
+        return json.loads(text)
+    except:
+        pass
+    # Try to find { ... } block
+    import re
+    brace_depth = 0
+    start = -1
+    for i, ch in enumerate(text):
+        if ch == '{':
+            if start == -1:
+                start = i
+            brace_depth += 1
+        elif ch == '}':
+            brace_depth -= 1
+            if brace_depth == 0 and start != -1:
+                try:
+                    return json.loads(text[start:i+1])
+                except:
+                    start = -1
+        elif ch == '{' and start == -1:
+            pass
+    return None
+
+
 def _ai_chat_completion(url, headers, model, messages, temperature=0.1, max_tokens=200, timeout=15):
+    # Check cache first
+    cached = _get_cached_ai_response(messages, model)
+    if cached is not None:
+        return cached
+    
     try:
         resp = requests.post(url, headers=headers,
             json={"model": model, "messages": messages, "temperature": temperature, "max_tokens": max_tokens},
             timeout=timeout)
         if resp.status_code == 200:
-            return resp.json()['choices'][0]['message']['content']
+            content = resp.json()['choices'][0]['message']['content']
+            _save_ai_cache(messages, model, content)
+            return content
         print(f"[AI] ⚠️ {model} returned {resp.status_code}")
     except Exception as e:
         print(f"[AI] ⚠️ {model} failed: {e}")
     return None
 
+
+def _ai_chat_completion_curl(url, headers, model, messages, temperature=0.1, max_tokens=500, timeout=30):
+    """curl_cffi version for Cloudflare-protected APIs (OpenCode Zen)."""
+    # Check cache first
+    cached = _get_cached_ai_response(messages, model)
+    if cached is not None:
+        return cached
+    
+    try:
+        from curl_cffi import requests as curl_requests
+        payload = {
+            'model': model,
+            'messages': messages,
+            'temperature': temperature,
+            'max_tokens': max_tokens,
+        }
+        resp = curl_requests.post(url, json=payload, headers=headers,
+                                   impersonate='chrome120', timeout=timeout)
+        if resp.status_code == 200:
+            data = resp.json()
+            msg = data['choices'][0]['message']
+            # Try content first, then reasoning_content for reasoning models
+            content = msg.get('content', '') or msg.get('reasoning_content', '')
+            if content:
+                _save_ai_cache(messages, model, content)
+            return content
+        print(f"[AI:CURL] ⚠️ {model} returned {resp.status_code}")
+    except Exception as e:
+        print(f"[AI:CURL] ⚠️ {model} failed: {e}")
+    return None
+
+
+def _ai_chat_any(messages, temperature=0.1, max_tokens=500):
+    """Try ALL available providers in order. Returns (content, provider_name, model)."""
+    providers = _pick_ai_provider()
+    for prov_name, base_url, headers, model, use_curl in providers:
+        if use_curl:
+            content = _ai_chat_completion_curl(f"{base_url}/chat/completions", headers, model, messages, temperature, max_tokens)
+        else:
+            content = _ai_chat_completion(f"{base_url}/chat/completions", headers, model, messages, temperature, max_tokens)
+        if content:
+            return content, prov_name, model
+    return None, None, None
+
 def _pick_ai_provider():
+    """Return list of (name, base_url, headers, model, use_curl). Ordered by priority."""
     providers = []
+    
+    # ═══ TIER 1: OpenCode Zen Free Models (curl_cffi needed) ═══
+    if os.environ.get('OPENCODE_ZEN_KEY', ''):
+        h = lambda: {
+            'Authorization': f'Bearer {os.environ.get("OPENCODE_ZEN_KEY", "")}',
+            'Content-Type': 'application/json',
+        }
+        # Primary: DeepSeek V4 Flash Free (reasoning, best quality)
+        providers.append(('opencode', OPENCODE_ZEN_BASE, h(), 'deepseek-v4-flash-free', True))
+        # Fallback 1: Big Pickle (routed to deepseek-v4-flash)
+        providers.append(('opencode', OPENCODE_ZEN_BASE, h(), 'big-pickle', True))
+        # Fallback 2: Nemotron 3 Ultra Free (fast, no reasoning overhead)
+        providers.append(('opencode', OPENCODE_ZEN_BASE, h(), 'nemotron-3-ultra-free', True))
+    
+    # ═══ TIER 2: NVIDIA API (nvapi key) ═══
+    if NVIDIA_API_KEY:
+        h = lambda: {
+            'Authorization': f'Bearer {NVIDIA_API_KEY}',
+            'Content-Type': 'application/json',
+        }
+        providers.append(('nvidia', NVIDIA_BASE, h(), 'nvidia/nemotron-3-ultra-550b-a55b-20260604', False))
+    
+    # ═══ TIER 3: Cloudflare AI Gateway ═══
+    if os.environ.get('CF_API_KEY', ''):
+        h = lambda: {
+            'Authorization': f'Bearer {os.environ.get("CF_API_KEY", "")}',
+            'Content-Type': 'application/json',
+        }
+        providers.append(('cloudflare', CF_AI_BASE + '/v1', h(), '@cf/meta/llama-3.3-70b-instruct-fp8-fast', False))
+    
+    # ═══ TIER 4: Legacy providers (if keys are set) ═══
     if os.environ.get('AGENTROUTER_KEY', ''):
-        providers.append(('agentrouter', AGENTROUTER_BASE, headers_agentrouter(), 'deepseek-v4-flash'))
-        providers.append(('agentrouter', AGENTROUTER_BASE, headers_agentrouter(), 'claude-opus-4-6'))
+        providers.append(('agentrouter', AGENTROUTER_BASE, headers_agentrouter(), 'deepseek-v4-flash', False))
+        providers.append(('agentrouter', AGENTROUTER_BASE, headers_agentrouter(), 'claude-opus-4-6', False))
     if os.environ.get('GROQ_KEY', ''):
-        providers.append(('groq', GROQ_BASE, headers_groq(), 'llama-3.3-70b-versatile'))
+        providers.append(('groq', GROQ_BASE, headers_groq(), 'llama-3.3-70b-versatile', False))
     if os.environ.get('OPENROUTER_KEY', ''):
-        providers.append(('openrouter', OPENROUTER_BASE, headers_openrouter(), 'mistralai/mistral-7b-instruct'))
-        providers.append(('openrouter', OPENROUTER_BASE, headers_openrouter(), 'cognitivecomputations/dolphin-mixtral-8x7b'))
-        providers.append(('openrouter', OPENROUTER_BASE, headers_openrouter(), 'google/gemini-2.0-flash-exp:free'))
+        providers.append(('openrouter', OPENROUTER_BASE, headers_openrouter(), 'mistralai/mistral-7b-instruct', False))
+        providers.append(('openrouter', OPENROUTER_BASE, headers_openrouter(), 'google/gemini-2.0-flash-exp:free', False))
     return providers
 
 def ai_ensemble(features, prediction, home_team='', away_team=''):
-    providers = _pick_ai_provider()
-    if not providers:
+    if not _pick_ai_provider():
         return prediction
+    
     # ── مرحلـة 1: Devil's Advocate ──
     da_system = ("You are a strict Devil's Advocate for football predictions. "
                  "Your job is to DESTROY predictions. Find 3 reasons the prediction FAILS. "
@@ -1470,27 +1640,21 @@ def ai_ensemble(features, prediction, home_team='', away_team=''):
         {"role": "system", "content": da_system},
         {"role": "user", "content": da_user}
     ]
-    da_result = None
-    for prov_name, base_url, headers, model in providers:
-        content = _ai_chat_completion(f"{base_url}/chat/completions", headers, model, da_messages, 0.1, 250)
-        if content:
-            try:
-                da_result = json.loads(content)
-                if isinstance(da_result, dict):
-                    break
-            except:
-                continue
-    if da_result and isinstance(da_result, dict):
-        prediction['devils_advocate'] = {
-            'risk_factors': da_result.get('risk_factors', []),
-            'risk_score': da_result.get('risk_score', 0.0),
-            'auto_reject': da_result.get('auto_reject', False)
-        }
-        if da_result.get('auto_reject'):
-            prediction['auto_rejected'] = True
-            prediction['rejection_reasons'] = da_result.get('risk_factors', [])
-            return prediction
+    da_content, da_prov, da_model = _ai_chat_any(da_messages, 0.1, 300)
+    if da_content:
+        da_result = _extract_json(da_content)
+        if isinstance(da_result, dict):
+            prediction['devils_advocate'] = {
+                'risk_factors': da_result.get('risk_factors', []),
+                'risk_score': da_result.get('risk_score', 0.0),
+                'auto_reject': da_result.get('auto_reject', False)
+            }
+            if da_result.get('auto_reject'):
+                prediction['auto_rejected'] = True
+                prediction['rejection_reasons'] = da_result.get('risk_factors', [])
+                return prediction
     prediction['auto_rejected'] = False
+    
     # ── مرحلـة 2: التعديل الأساسي (إن لم يُرفض) ──
     prompt = (
         "You are a football match analysis AI. Given the following match features as JSON, "
@@ -1507,15 +1671,11 @@ def ai_ensemble(features, prediction, home_team='', away_team=''):
         {"role": "system", "content": "You are a football prediction expert. Return JSON only."},
         {"role": "user", "content": prompt}
     ]
-    for prov_name, base_url, headers, model in providers:
-        content = _ai_chat_completion(f"{base_url}/chat/completions", headers, model, messages, 0.1, 200)
-        if content:
-            try:
-                adjustment = json.loads(content)
-                if isinstance(adjustment, dict):
-                    return _apply_ai_adjustment(prediction, adjustment)
-            except:
-                continue
+    adj_content, adj_prov, adj_model = _ai_chat_any(messages, 0.1, 500)
+    if adj_content:
+        adjustment = _extract_json(adj_content)
+        if isinstance(adjustment, dict):
+            return _apply_ai_adjustment(prediction, adjustment)
     return prediction
 
 def _apply_ai_adjustment(prediction, adjustment):

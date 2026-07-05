@@ -1,0 +1,32 @@
+{
+  "timestamp": "20260630_181831",
+  "stats": {
+    "total_code_results": 0,
+    "total_commit_results": 0,
+    "total_issue_results": 0,
+    "total_repos_scanned": 10,
+    "unique_repos_found": 0,
+    "potential_leaks_found": 0
+  },
+  "potential_leak_count": 0,
+  "leaks_by_severity": {
+    "env_file_exposed": 0,
+    "code_key_pattern": 0,
+    "repo_scan_key": 0,
+    "commit_red_flag": 0
+  },
+  "top_leaks": [],
+  "repos_scanned": [
+    "probberechts/soccerdata",
+    "valensantarone/whoscraped",
+    "Ali-Hasan-Khan/Scrape-Whoscored-Event-Data",
+    "marinoalfonso/whoscored_auto_scraper",
+    "keithxm23/whoscoredpy",
+    "levent91/whoscored-player-information-scraper",
+    "MHuussein311/whoscored-data-scraper",
+    "nikcub/rsoccer",
+    "shufinskiy/sport_analytics_tools",
+    "MateoGiuffra/DesApp-grupo-J"
+  ],
+  "unique_repos_discovered": []
+}
