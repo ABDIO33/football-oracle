@@ -116,7 +116,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.41,
+        "analysis_time": 10.34,
         "home_elo": 1600,
         "away_elo": 1600,
         "home_stats": {
