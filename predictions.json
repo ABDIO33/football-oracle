@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: PSV win",
         "best_bet": "PSV Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.31,
+        "analysis_time": 9.45,
         "home_elo": 1830,
         "away_elo": 1640,
         "home_stats": {
@@ -315,7 +315,7 @@
         "recommendation": "Moderate recommendation: Go Ahead Eagles win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.35,
+        "analysis_time": 9.63,
         "home_elo": 1660,
         "away_elo": 1630,
         "home_stats": {
@@ -503,7 +503,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 11.09,
+        "analysis_time": 10.15,
         "home_elo": 1600,
         "away_elo": 1600,
         "home_stats": {
@@ -691,7 +691,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.75,
+        "analysis_time": 10.1,
         "home_elo": 1600,
         "away_elo": 1600,
         "home_stats": {
