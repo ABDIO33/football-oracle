@@ -7,7 +7,7 @@
       "competition": "Eredivisie",
       "date": "2026-08-08",
       "time": "2026-08-08T18:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home_crest": "",
       "away_crest": ""
     },
@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: PSV win",
         "best_bet": "PSV Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.45,
+        "analysis_time": 9.39,
         "home_elo": 1830,
         "away_elo": 1640,
         "home_stats": {
@@ -206,7 +206,7 @@
       "competition": "Eredivisie",
       "date": "2026-08-08",
       "time": "2026-08-08T16:45:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home_crest": "",
       "away_crest": ""
     },
@@ -315,7 +315,7 @@
         "recommendation": "Moderate recommendation: Go Ahead Eagles win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.63,
+        "analysis_time": 10.79,
         "home_elo": 1660,
         "away_elo": 1630,
         "home_stats": {
@@ -394,7 +394,7 @@
       "competition": "Eredivisie",
       "date": "2026-08-08",
       "time": "2026-08-08T14:30:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home_crest": "",
       "away_crest": ""
     },
@@ -503,7 +503,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.15,
+        "analysis_time": 13.81,
         "home_elo": 1600,
         "away_elo": 1600,
         "home_stats": {
@@ -582,7 +582,7 @@
       "competition": "Eredivisie",
       "date": "2026-08-08",
       "time": "2026-08-08T19:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home_crest": "",
       "away_crest": ""
     },
@@ -691,7 +691,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.1,
+        "analysis_time": 13.83,
         "home_elo": 1600,
         "away_elo": 1600,
         "home_stats": {
