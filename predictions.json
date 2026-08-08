@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: PSV win",
         "best_bet": "PSV Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.39,
+        "analysis_time": 9.06,
         "home_elo": 1830,
         "away_elo": 1640,
         "home_stats": {
@@ -197,194 +197,6 @@
     "confidence": "HIGH",
     "home_win_prob": 89.4,
     "away_win_prob": 2.65
-  },
-  {
-    "match": {
-      "fixture_id": 558216,
-      "home_team": "Go Ahead Eagles",
-      "away_team": "Willem II Tilburg",
-      "competition": "Eredivisie",
-      "date": "2026-08-08",
-      "time": "2026-08-08T16:45:00Z",
-      "status": "TIMED",
-      "home_crest": "",
-      "away_crest": ""
-    },
-    "prediction": {
-      "home_win_prob": 54.77,
-      "draw_prob": 26.4,
-      "away_win_prob": 18.83,
-      "most_likely_score": "1-0",
-      "exact_score_prob": 12.87,
-      "under_0_5": 0.09255159392372286,
-      "under_1_5": 0.284903588394141,
-      "under_2_5": 55.1,
-      "under_3_5": 0.763510221895205,
-      "under_4_5": 0.8948695853750848,
-      "under_5_5": 0.9598186354587943,
-      "over_2_5": 44.9,
-      "over_3_5": 0.236489778104795,
-      "over_4_5": 0.10513041462491524,
-      "btts_yes": 46.79,
-      "btts_no": 53.21,
-      "asian_handicap": {
-        "ah_0": 0.5477,
-        "ah_m025": 0.6797,
-        "ah_05": 0.5477,
-        "ah_m075": 0.424,
-        "ah_10": 0.424
-      },
-      "probs": "[[9.25515939e-02 6.36764292e-02 3.05637196e-02 8.67022682e-03\n  1.84465849e-03 3.13972405e-04 4.45333880e-05 5.41418641e-06\n  5.75955228e-07 5.44617664e-08]\n [1.28675565e-01 1.24594797e-01 4.95486288e-02 1.40558105e-02\n  2.99048349e-03 5.08998981e-04 7.21956732e-05 8.77725343e-06\n  9.33714619e-07 8.82911466e-08]\n [1.10908813e-01 9.43868660e-02 4.01630863e-02 1.13933472e-02\n  2.42402362e-03 4.12583971e-04 5.85203087e-05 7.11465878e-06\n  7.56849619e-07 7.15669642e-08]\n [5.99335824e-02 5.10053515e-02 2.17035740e-02 6.15680658e-03\n  1.30990870e-03 2.22954648e-04 3.16235621e-05 3.84466280e-06\n  4.08991023e-07 3.86737935e-08]\n [2.42904567e-02 2.06719377e-02 8.79623249e-03 2.49528958e-03\n  5.30892352e-04 9.03611964e-05 1.28167003e-05 1.55820179e-06\n  1.65759802e-07 1.56740857e-08]\n [7.87573527e-03 6.70249683e-03 2.85201713e-03 8.09051900e-04\n  1.72132112e-04 2.92979614e-05 4.15558011e-06 5.05218363e-07\n  5.37445768e-08 5.08203493e-09]\n [2.12796898e-03 1.81096810e-03 7.70595223e-04 2.18600205e-04\n  4.65089015e-05 7.91610572e-06 1.12280889e-06 1.36506493e-07\n  1.45214115e-08 1.37313055e-09]\n [4.92824950e-04 4.19409433e-04 1.78465267e-04 5.06265064e-05\n  1.07711848e-05 1.83332297e-06 2.60035856e-07 3.16140914e-08\n  3.36307246e-09 3.18008862e-10]\n [9.98684095e-05 8.49911374e-05 3.61650569e-05 1.02591979e-05\n  2.18272450e-06 3.71513351e-07 5.26949120e-08 6.40643097e-09\n  6.81509120e-10 6.44428398e-11]\n [1.79891672e-05 1.53093434e-05 6.51436484e-06 1.84797602e-06\n  3.93171335e-07 6.69202185e-08 9.49186620e-09 1.15398211e-09\n  1.22759354e-10 1.16080052e-11]]",
-      "expected_goals_home": 1.62,
-      "expected_goals_away": 0.85,
-      "top_scores": [
-        {
-          "score": "1-0",
-          "prob": 12.87,
-          "rank": 1,
-          "type": "home_win"
-        },
-        {
-          "score": "1-1",
-          "prob": 12.46,
-          "rank": 2,
-          "type": "draw"
-        },
-        {
-          "score": "2-0",
-          "prob": 11.09,
-          "rank": 3,
-          "type": "home_win"
-        },
-        {
-          "score": "2-1",
-          "prob": 9.44,
-          "rank": 4,
-          "type": "home_win"
-        },
-        {
-          "score": "0-0",
-          "prob": 9.26,
-          "rank": 5,
-          "type": "draw"
-        },
-        {
-          "score": "0-1",
-          "prob": 6.37,
-          "rank": 6,
-          "type": "away_win"
-        },
-        {
-          "score": "3-0",
-          "prob": 5.99,
-          "rank": 7,
-          "type": "home_win"
-        },
-        {
-          "score": "3-1",
-          "prob": 5.1,
-          "rank": 8,
-          "type": "home_win"
-        }
-      ],
-      "top_3": [
-        {
-          "score": "1-0",
-          "prob": 12.87,
-          "rank": 1,
-          "type": "home_win"
-        },
-        {
-          "score": "1-1",
-          "prob": 12.46,
-          "rank": 2,
-          "type": "draw"
-        },
-        {
-          "score": "2-0",
-          "prob": 11.09,
-          "rank": 3,
-          "type": "home_win"
-        }
-      ],
-      "auto_rejected": false,
-      "analysis": {
-        "home_form_rating": 47,
-        "away_form_rating": 38,
-        "confidence": "MEDIUM",
-        "recommendation": "Moderate recommendation: Go Ahead Eagles win or draw",
-        "best_bet": "Over 1.5 Goals",
-        "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.79,
-        "home_elo": 1660,
-        "away_elo": 1630,
-        "home_stats": {
-          "attack": 1.2,
-          "defense": 1.5
-        },
-        "away_stats": {
-          "attack": 1.0,
-          "defense": 1.8
-        },
-        "data_source": "database",
-        "key_factors": [
-          "Evenly matched teams"
-        ],
-        "all_bets": [
-          {
-            "bet": "Over 1.5 Goals",
-            "confidence": 70,
-            "type": "over15"
-          }
-        ],
-        "sources": {
-          "stats_home": "database",
-          "stats_away": "database",
-          "h2h": "api"
-        }
-      },
-      "market_data_used": false,
-      "h2h": {
-        "matches_played": 0,
-        "home_wins": 0,
-        "away_wins": 0,
-        "draws": 0,
-        "home_goals": 0,
-        "away_goals": 0,
-        "home_wins_pct": 33.3,
-        "away_wins_pct": 33.3,
-        "draws_pct": 33.3,
-        "last_meetings": []
-      },
-      "kelly_home_win": 0.0028,
-      "kelly_draw": 0.0002,
-      "kelly_away_win": 0.0,
-      "best_bet_info": {
-        "primary": "Over 1.5 Goals",
-        "primary_confidence": 70,
-        "secondary": "",
-        "all_bets": [
-          {
-            "bet": "Over 1.5 Goals",
-            "confidence": 70,
-            "type": "over15"
-          }
-        ]
-      },
-      "home_trend": "stable",
-      "away_trend": "stable",
-      "friendly_warning": false,
-      "competition_type": "Eredivisie",
-      "match_extra": {},
-      "lambda_home": 1.6212,
-      "lambda_away": 0.851,
-      "lambda_model_applied": false
-    },
-    "rating_score": 22.2,
-    "predicted_score": "1-0",
-    "confidence": "MEDIUM",
-    "home_win_prob": 54.77,
-    "away_win_prob": 18.83
   },
   {
     "match": {
@@ -503,7 +315,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 13.81,
+        "analysis_time": 9.69,
         "home_elo": 1600,
         "away_elo": 1600,
         "home_stats": {
@@ -691,7 +503,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 13.83,
+        "analysis_time": 9.31,
         "home_elo": 1600,
         "away_elo": 1600,
         "home_stats": {
