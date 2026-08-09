@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: Ajax win",
         "best_bet": "Ajax Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.65,
+        "analysis_time": 9.25,
         "home_elo": 1640,
         "away_elo": 1820,
         "home_stats": {
@@ -305,7 +305,7 @@
         "recommendation": "Strong recommendation: Feyenoord win",
         "best_bet": "Feyenoord Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.85,
+        "analysis_time": 14.51,
         "home_elo": 1650,
         "away_elo": 1810,
         "home_stats": {
@@ -494,7 +494,7 @@
         "recommendation": "Moderate recommendation: FC Twente win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.6,
+        "analysis_time": 9.49,
         "home_elo": 1670,
         "away_elo": 1730,
         "home_stats": {
@@ -682,7 +682,7 @@
         "recommendation": "Moderate recommendation: FC Utrecht win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.37,
+        "analysis_time": 9.11,
         "home_elo": 1630,
         "away_elo": 1700,
         "home_stats": {
