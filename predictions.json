@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: PSV win",
         "best_bet": "PSV Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 7.69,
+        "analysis_time": 8.79,
         "home_elo": 1600,
         "away_elo": 1830,
         "home_stats": {
@@ -305,7 +305,7 @@
         "recommendation": "Strong recommendation: Sevilla win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.38,
+        "analysis_time": 11.79,
         "home_elo": 1750,
         "away_elo": 1690,
         "home_stats": {
@@ -375,194 +375,6 @@
     "confidence": "HIGH",
     "home_win_prob": 56.83,
     "away_win_prob": 18.29
-  },
-  {
-    "match": {
-      "fixture_id": 561762,
-      "home_team": "Bolton Wanderers FC",
-      "away_team": "Preston North End FC",
-      "competition": "English Championship",
-      "date": "2026-08-15",
-      "time": "2026-08-15T11:30:00Z",
-      "status": "TIMED",
-      "home_crest": "",
-      "away_crest": ""
-    },
-    "prediction": {
-      "home_win_prob": 51.21,
-      "draw_prob": 27.43,
-      "away_win_prob": 21.36,
-      "most_likely_score": "1-1",
-      "exact_score_prob": 12.95,
-      "under_0_5": 0.0956066176972176,
-      "under_1_5": 0.2912916870773937,
-      "under_2_5": 55.92,
-      "under_3_5": 0.7702565933005807,
-      "under_4_5": 0.8990110651400451,
-      "under_5_5": 0.9618516507728992,
-      "over_2_5": 44.08,
-      "over_3_5": 0.22974340669941928,
-      "over_4_5": 0.10098893485995486,
-      "btts_yes": 47.56,
-      "btts_no": 52.44,
-      "asian_handicap": {
-        "ah_0": 0.5121,
-        "ah_m025": 0.6493,
-        "ah_05": 0.5121,
-        "ah_m075": 0.3909,
-        "ah_10": 0.3909
-      },
-      "probs": "[[9.56066177e-02 7.03580879e-02 3.56608364e-02 1.07544960e-02\n  2.43248327e-03 4.40148928e-04 6.63694456e-05 8.57807702e-06\n  9.70107240e-07 9.75207489e-08]\n [1.25326981e-01 1.29527535e-01 5.47605902e-02 1.65145467e-02\n  3.73530833e-03 6.75890347e-04 1.01916567e-04 1.31724493e-05\n  1.48969150e-06 1.49752342e-07]\n [1.02731856e-01 9.29447629e-02 4.20450351e-02 1.26798249e-02\n  2.86795978e-03 5.18946806e-04 7.82512681e-05 1.01137715e-05\n  1.14378116e-06 1.14979449e-07]\n [5.25848298e-02 4.75751607e-02 2.15213772e-02 6.49035716e-03\n  1.46800791e-03 2.65630649e-04 4.00540767e-05 5.17688451e-06\n  5.85461418e-07 5.88539428e-08]\n [2.01872461e-02 1.82640408e-02 8.26202802e-03 2.49163946e-03\n  5.63566281e-04 1.01975252e-04 1.53767066e-05 1.98739906e-06\n  2.24757858e-07 2.25939502e-08]\n [6.19988548e-03 5.60923272e-03 2.53742523e-03 7.65229653e-04\n  1.73081875e-04 3.13185306e-05 4.72247774e-06 6.10367879e-07\n  6.90273936e-08 6.93902987e-09]\n [1.58675184e-03 1.43558464e-03 6.49409443e-04 1.95847096e-04\n  4.42972673e-05 8.01542810e-06 1.20863527e-06 1.56212943e-07\n  1.76663496e-08 1.77592288e-09]\n [3.48086810e-04 3.14925160e-04 1.42461382e-04 4.29631080e-05\n  9.71752107e-06 1.75834981e-06 2.65139125e-07 3.42685375e-08\n  3.87547888e-09 3.89585385e-10]\n [6.68150311e-05 6.04496745e-05 2.73453674e-05 8.24673993e-06\n  1.86527169e-06 3.37514073e-07 5.08932783e-08 6.57782293e-09\n  7.43895588e-10 7.47806550e-11]\n [1.14000895e-05 1.03140220e-05 4.66571114e-06 1.40707221e-06\n  3.18255696e-07 5.75872012e-08 8.68349408e-09 1.12231887e-09\n  1.26924677e-10 1.27591972e-11]]",
-      "expected_goals_home": 1.54,
-      "expected_goals_away": 0.9,
-      "top_scores": [
-        {
-          "score": "1-1",
-          "prob": 12.95,
-          "rank": 1,
-          "type": "draw"
-        },
-        {
-          "score": "1-0",
-          "prob": 12.53,
-          "rank": 2,
-          "type": "home_win"
-        },
-        {
-          "score": "2-0",
-          "prob": 10.27,
-          "rank": 3,
-          "type": "home_win"
-        },
-        {
-          "score": "0-0",
-          "prob": 9.56,
-          "rank": 4,
-          "type": "draw"
-        },
-        {
-          "score": "2-1",
-          "prob": 9.29,
-          "rank": 5,
-          "type": "home_win"
-        },
-        {
-          "score": "0-1",
-          "prob": 7.04,
-          "rank": 6,
-          "type": "away_win"
-        },
-        {
-          "score": "1-2",
-          "prob": 5.48,
-          "rank": 7,
-          "type": "away_win"
-        },
-        {
-          "score": "3-0",
-          "prob": 5.26,
-          "rank": 8,
-          "type": "home_win"
-        }
-      ],
-      "top_3": [
-        {
-          "score": "1-1",
-          "prob": 12.95,
-          "rank": 1,
-          "type": "draw"
-        },
-        {
-          "score": "1-0",
-          "prob": 12.53,
-          "rank": 2,
-          "type": "home_win"
-        },
-        {
-          "score": "2-0",
-          "prob": 10.27,
-          "rank": 3,
-          "type": "home_win"
-        }
-      ],
-      "auto_rejected": false,
-      "analysis": {
-        "home_form_rating": 50,
-        "away_form_rating": 42,
-        "confidence": "MEDIUM",
-        "recommendation": "Moderate recommendation: Bolton Wanderers win or draw",
-        "best_bet": "Over 1.5 Goals",
-        "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.47,
-        "home_elo": 1600,
-        "away_elo": 1630,
-        "home_stats": {
-          "attack": 1.3,
-          "defense": 1.4
-        },
-        "away_stats": {
-          "attack": 1.1,
-          "defense": 1.6
-        },
-        "data_source": "database",
-        "key_factors": [
-          "Evenly matched teams"
-        ],
-        "all_bets": [
-          {
-            "bet": "Over 1.5 Goals",
-            "confidence": 70,
-            "type": "over15"
-          }
-        ],
-        "sources": {
-          "stats_home": "database",
-          "stats_away": "database",
-          "h2h": "api"
-        }
-      },
-      "market_data_used": false,
-      "h2h": {
-        "matches_played": 0,
-        "home_wins": 0,
-        "away_wins": 0,
-        "draws": 0,
-        "home_goals": 0,
-        "away_goals": 0,
-        "home_wins_pct": 33.3,
-        "away_wins_pct": 33.3,
-        "draws_pct": 33.3,
-        "last_meetings": []
-      },
-      "kelly_home_win": 0.0,
-      "kelly_draw": 0.0005,
-      "kelly_away_win": 0.0,
-      "best_bet_info": {
-        "primary": "Over 1.5 Goals",
-        "primary_confidence": 70,
-        "secondary": "",
-        "all_bets": [
-          {
-            "bet": "Over 1.5 Goals",
-            "confidence": 70,
-            "type": "over15"
-          }
-        ]
-      },
-      "home_trend": "stable",
-      "away_trend": "stable",
-      "friendly_warning": false,
-      "competition_type": "English Championship",
-      "match_extra": {},
-      "lambda_home": 1.5356,
-      "lambda_away": 0.9047,
-      "lambda_model_applied": false
-    },
-    "rating_score": 21.0,
-    "predicted_score": "1-1",
-    "confidence": "MEDIUM",
-    "home_win_prob": 51.21,
-    "away_win_prob": 21.36
   },
   {
     "match": {
@@ -681,7 +493,7 @@
         "recommendation": "Moderate recommendation: FC Utrecht win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.32,
+        "analysis_time": 11.04,
         "home_elo": 1700,
         "away_elo": 1600,
         "home_stats": {
@@ -861,14 +673,15 @@
           "type": "away_win"
         }
       ],
+      "auto_rejected": false,
       "analysis": {
         "home_form_rating": 40,
         "away_form_rating": 42,
         "confidence": "MEDIUM",
         "recommendation": "Moderate recommendation: Queens Park Rangers win or draw",
         "best_bet": "Over 1.5 Goals",
-        "best_bet_type": "model",
-        "analysis_time": 4.58,
+        "best_bet_type": "ai_ensemble",
+        "analysis_time": 9.32,
         "home_elo": 1620,
         "away_elo": 1630,
         "home_stats": {
@@ -1070,7 +883,7 @@
         "recommendation": "Moderate recommendation: Sheffield United win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "model",
-        "analysis_time": 5.72,
+        "analysis_time": 6.28,
         "home_elo": 1700,
         "away_elo": 1600,
         "home_stats": {
@@ -1258,7 +1071,7 @@
         "recommendation": "Moderate recommendation: Charlton Athletic win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.22,
+        "analysis_time": 9.51,
         "home_elo": 1600,
         "away_elo": 1630,
         "home_stats": {
@@ -1461,7 +1274,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.6,
+        "analysis_time": 10.44,
         "home_elo": 1600,
         "away_elo": 1680,
         "home_stats": {
@@ -1649,7 +1462,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.07,
+        "analysis_time": 13.02,
         "home_elo": 1660,
         "away_elo": 1640,
         "home_stats": {
@@ -1837,7 +1650,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.34,
+        "analysis_time": 10.23,
         "home_elo": 1630,
         "away_elo": 1600,
         "home_stats": {
@@ -2025,7 +1838,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.09,
+        "analysis_time": 9.23,
         "home_elo": 1680,
         "away_elo": 1600,
         "home_stats": {
@@ -2213,7 +2026,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.35,
+        "analysis_time": 8.59,
         "home_elo": 1670,
         "away_elo": 1690,
         "home_stats": {
@@ -2401,7 +2214,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 7.41,
+        "analysis_time": 9.29,
         "home_elo": 1640,
         "away_elo": 1600,
         "home_stats": {
@@ -2589,7 +2402,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.4,
+        "analysis_time": 11.99,
         "home_elo": 1650,
         "away_elo": 1650,
         "home_stats": {
