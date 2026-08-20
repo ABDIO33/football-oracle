@@ -1,1 +1,205 @@
-[]
+[
+  {
+    "match": {
+      "fixture_id": 564638,
+      "home_team": "Rayo Vallecano de Madrid",
+      "away_team": "Deportivo Alavés",
+      "competition": "La Liga",
+      "date": "2026-08-20",
+      "time": "2026-08-20T19:00:00Z",
+      "status": "TIMED",
+      "home_crest": "",
+      "away_crest": ""
+    },
+    "prediction": {
+      "home_win_prob": 31.38,
+      "draw_prob": 27.62,
+      "away_win_prob": 41.0,
+      "most_likely_score": "1-1",
+      "exact_score_prob": 13.17,
+      "under_0_5": 0.07880022484518172,
+      "under_1_5": 0.248023848233,
+      "under_2_5": 50.43,
+      "under_3_5": 0.7236324652825393,
+      "under_4_5": 0.8692972008355679,
+      "under_5_5": 0.9466926137723068,
+      "over_2_5": 49.57,
+      "over_3_5": 0.27636753471746067,
+      "over_4_5": 0.13070279916443206,
+      "btts_yes": 54.61,
+      "btts_no": 45.39,
+      "asian_handicap": {
+        "ah_0": 0.3138,
+        "ah_m025": 0.4519,
+        "ah_05": 0.3138,
+        "ah_m075": 0.2247,
+        "ah_10": 0.2247
+      },
+      "probs": "[[7.88002248e-02 9.18974305e-02 7.19733322e-02 3.43581624e-02\n  1.23012575e-02 3.52337669e-03 8.40983352e-04 1.72055647e-04\n  3.08005531e-05 4.90112274e-06]\n [7.73261929e-02 1.31694418e-01 8.81319070e-02 4.20718380e-02\n  1.50629858e-02 4.31440225e-03 1.02979068e-03 2.10683482e-04\n  3.77155177e-05 6.00146305e-06]\n [5.26181507e-02 7.53555342e-02 5.39591040e-02 2.57586470e-02\n  9.22237183e-03 2.64150962e-03 6.30493361e-04 1.28991784e-04\n  2.30914729e-05 3.67441917e-06]\n [2.14771121e-02 3.07578133e-02 2.20244480e-02 1.05138881e-02\n  3.76428876e-03 1.07818305e-03 2.57348014e-04 5.26504822e-05\n  9.42522960e-06 1.49978498e-06]\n [6.57472284e-03 9.41579560e-03 6.74227712e-03 3.21858451e-03\n  1.15235024e-03 3.30060889e-04 7.87811629e-05 1.61177316e-05\n  2.88531680e-06 4.59124605e-07]\n [1.61015989e-03 2.30594304e-03 1.65119419e-03 7.88236370e-04\n  2.82212373e-04 8.08324270e-05 1.92936298e-05 3.94725763e-06\n  7.06618589e-07 1.12440332e-07]\n [3.28608891e-04 4.70607542e-04 3.36983362e-04 1.60866931e-04\n  5.75952089e-05 1.64966563e-05 3.93753337e-06 8.05574629e-07\n  1.44209996e-07 2.29473441e-08]\n [5.74834503e-05 8.23232297e-05 5.89483939e-05 2.81404018e-05\n  1.00751118e-05 2.88575491e-06 6.88791478e-07 1.40918917e-07\n  2.52266094e-08 4.01417171e-09]\n [8.79861670e-06 1.26006797e-05 9.02284605e-06 4.30726771e-06\n  1.54213163e-06 4.41703676e-07 1.05428818e-07 2.15695392e-08\n  3.86127251e-09 6.14423073e-10]\n [1.19710831e-06 1.71440340e-06 1.22761616e-06 5.86031436e-07\n  2.09816913e-07 6.00966221e-08 1.43442678e-08 2.93467435e-09\n  5.25350925e-10 8.35962054e-11]]",
+      "expected_goals_home": 1.22,
+      "expected_goals_away": 1.43,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 13.17,
+          "rank": 1,
+          "type": "draw"
+        },
+        {
+          "score": "0-1",
+          "prob": 9.19,
+          "rank": 2,
+          "type": "away_win"
+        },
+        {
+          "score": "1-2",
+          "prob": 8.81,
+          "rank": 3,
+          "type": "away_win"
+        },
+        {
+          "score": "0-0",
+          "prob": 7.88,
+          "rank": 4,
+          "type": "draw"
+        },
+        {
+          "score": "1-0",
+          "prob": 7.73,
+          "rank": 5,
+          "type": "home_win"
+        },
+        {
+          "score": "2-1",
+          "prob": 7.54,
+          "rank": 6,
+          "type": "home_win"
+        },
+        {
+          "score": "0-2",
+          "prob": 7.2,
+          "rank": 7,
+          "type": "away_win"
+        },
+        {
+          "score": "2-2",
+          "prob": 5.4,
+          "rank": 8,
+          "type": "draw"
+        }
+      ],
+      "top_3": [
+        {
+          "score": "1-1",
+          "prob": 13.17,
+          "rank": 1,
+          "type": "draw"
+        },
+        {
+          "score": "0-1",
+          "prob": 9.19,
+          "rank": 2,
+          "type": "away_win"
+        },
+        {
+          "score": "1-2",
+          "prob": 8.81,
+          "rank": 3,
+          "type": "away_win"
+        }
+      ],
+      "auto_rejected": false,
+      "analysis": {
+        "home_form_rating": 47,
+        "away_form_rating": 50,
+        "confidence": "LOW",
+        "recommendation": "Uncertain match, avoid heavy betting",
+        "best_bet": "Over 1.5 Goals",
+        "best_bet_type": "ai_ensemble",
+        "analysis_time": 13.53,
+        "home_elo": 1690,
+        "away_elo": 1600,
+        "home_stats": {
+          "attack": 1.14,
+          "defense": 1.5
+        },
+        "away_stats": {
+          "attack": 1.66,
+          "defense": 1.4
+        },
+        "data_source": "database",
+        "key_factors": [
+          "Evenly matched teams"
+        ],
+        "all_bets": [
+          {
+            "bet": "Over 1.5 Goals",
+            "confidence": 70,
+            "type": "over15"
+          }
+        ],
+        "sources": {
+          "stats_home": "database",
+          "stats_away": "database",
+          "h2h": "api"
+        }
+      },
+      "market_data_used": false,
+      "h2h": {
+        "matches_played": 2,
+        "home_wins": 0,
+        "away_wins": 2,
+        "draws": 0,
+        "home_goals": 2,
+        "away_goals": 5,
+        "home_wins_pct": 33.3,
+        "away_wins_pct": 33.3,
+        "draws_pct": 33.3,
+        "last_meetings": [
+          {
+            "date": "2022-03-26",
+            "home": "Deportivo Alavés",
+            "away": "Rayo Vallecano",
+            "home_goals": 3,
+            "away_goals": 1
+          },
+          {
+            "date": "2021-09-12",
+            "home": "Rayo Vallecano",
+            "away": "Deportivo Alavés",
+            "home_goals": 1,
+            "away_goals": 2
+          }
+        ]
+      },
+      "kelly_home_win": 0.0005,
+      "kelly_draw": 0.0,
+      "kelly_away_win": 0.0003,
+      "best_bet_info": {
+        "primary": "Over 1.5 Goals",
+        "primary_confidence": 70,
+        "secondary": "",
+        "all_bets": [
+          {
+            "bet": "Over 1.5 Goals",
+            "confidence": 70,
+            "type": "over15"
+          }
+        ]
+      },
+      "home_trend": "stable",
+      "away_trend": "stable",
+      "friendly_warning": false,
+      "competition_type": "La Liga",
+      "match_extra": {},
+      "lambda_home": 1.2245,
+      "lambda_away": 1.4321,
+      "lambda_model_applied": false
+    },
+    "rating_score": 1.9,
+    "predicted_score": "1-1",
+    "confidence": "LOW",
+    "home_win_prob": 31.38,
+    "away_win_prob": 41.0
+  }
+]
