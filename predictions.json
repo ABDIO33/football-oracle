@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: Arsenal win",
         "best_bet": "Arsenal Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 14.34,
+        "analysis_time": 9.78,
         "home_elo": 1880,
         "away_elo": 1680,
         "home_stats": {
@@ -315,7 +315,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 29.72,
+        "analysis_time": 9.38,
         "home_elo": 1740,
         "away_elo": 1770,
         "home_stats": {
@@ -404,8 +404,8 @@
       "away_win_prob": 29.29,
       "most_likely_score": "1-1",
       "exact_score_prob": 13.49,
-      "under_0_5": 0.08885377254425933,
-      "under_1_5": 0.27330991971603513,
+      "under_0_5": 0.08885377254425934,
+      "under_1_5": 0.2733099197160352,
       "under_2_5": 53.73,
       "under_3_5": 0.7521439157630104,
       "under_4_5": 0.887766725062227,
@@ -503,7 +503,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 24.71,
+        "analysis_time": 9.28,
         "home_elo": 1600,
         "away_elo": 1700,
         "home_stats": {
