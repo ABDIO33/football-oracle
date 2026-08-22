@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: Real Madrid win",
         "best_bet": "Real Madrid Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.55,
+        "analysis_time": 9.13,
         "home_elo": 1600,
         "away_elo": 1900,
         "home_stats": {
@@ -304,7 +304,7 @@
         "recommendation": "Strong recommendation: Napoli win",
         "best_bet": "Napoli Win",
         "best_bet_type": "model",
-        "analysis_time": 5.65,
+        "analysis_time": 4.68,
         "home_elo": 1690,
         "away_elo": 1850,
         "home_stats": {
@@ -493,7 +493,7 @@
         "recommendation": "Strong recommendation: Manchester United win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.61,
+        "analysis_time": 10.27,
         "home_elo": 1640,
         "away_elo": 1810,
         "home_stats": {
@@ -681,7 +681,7 @@
         "recommendation": "Strong recommendation: SC Heerenveen win",
         "best_bet": "Over 2.5 Goals",
         "best_bet_type": "model",
-        "analysis_time": 6.62,
+        "analysis_time": 4.81,
         "home_elo": 1670,
         "away_elo": 1640,
         "home_stats": {
@@ -893,7 +893,7 @@
         "recommendation": "Strong recommendation: Udinese win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "model",
-        "analysis_time": 5.73,
+        "analysis_time": 4.62,
         "home_elo": 1700,
         "away_elo": 1650,
         "home_stats": {
@@ -1081,7 +1081,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "BTTS Yes",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.25,
+        "analysis_time": 8.57,
         "home_elo": 1740,
         "away_elo": 1800,
         "home_stats": {
@@ -1279,7 +1279,7 @@
         "recommendation": "Moderate recommendation: Athletic Bilbao win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.54,
+        "analysis_time": 8.29,
         "home_elo": 1780,
         "away_elo": 1750,
         "home_stats": {
@@ -1466,7 +1466,7 @@
         "recommendation": "Moderate recommendation: Lyon win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "model",
-        "analysis_time": 6.14,
+        "analysis_time": 5.68,
         "home_elo": 1690,
         "away_elo": 1780,
         "home_stats": {
@@ -1654,7 +1654,7 @@
         "recommendation": "Moderate recommendation: Nice win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.68,
+        "analysis_time": 8.76,
         "home_elo": 1760,
         "away_elo": 1730,
         "home_stats": {
@@ -1841,7 +1841,7 @@
         "recommendation": "Moderate recommendation: Lincoln City win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "model",
-        "analysis_time": 7.34,
+        "analysis_time": 5.04,
         "home_elo": 1600,
         "away_elo": 1620,
         "home_stats": {
@@ -2028,7 +2028,7 @@
         "recommendation": "Moderate recommendation: Internacional win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "model",
-        "analysis_time": 6.38,
+        "analysis_time": 5.12,
         "home_elo": 1710,
         "away_elo": 1680,
         "home_stats": {
@@ -2215,7 +2215,7 @@
         "recommendation": "Moderate recommendation: West Ham United win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "model",
-        "analysis_time": 6.15,
+        "analysis_time": 5.04,
         "home_elo": 1760,
         "away_elo": 1600,
         "home_stats": {
@@ -2403,7 +2403,7 @@
         "recommendation": "Moderate recommendation: Lens Féminin win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.83,
+        "analysis_time": 8.61,
         "home_elo": 1600,
         "away_elo": 1670,
         "home_stats": {
@@ -2591,7 +2591,7 @@
         "recommendation": "Moderate recommendation: Valencia win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.19,
+        "analysis_time": 8.53,
         "home_elo": 1730,
         "away_elo": 1710,
         "home_stats": {
@@ -2778,7 +2778,7 @@
         "recommendation": "Moderate recommendation: Birmingham City win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "model",
-        "analysis_time": 6.37,
+        "analysis_time": 5.0,
         "home_elo": 1600,
         "away_elo": 1660,
         "home_stats": {
@@ -2965,7 +2965,7 @@
         "recommendation": "Moderate recommendation: Wrexham Afc win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "model",
-        "analysis_time": 4.71,
+        "analysis_time": 4.45,
         "home_elo": 1600,
         "away_elo": 1660,
         "home_stats": {
@@ -3152,7 +3152,7 @@
         "recommendation": "Moderate recommendation: FC Utrecht win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "model",
-        "analysis_time": 6.0,
+        "analysis_time": 4.43,
         "home_elo": 1650,
         "away_elo": 1700,
         "home_stats": {
@@ -3340,7 +3340,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.68,
+        "analysis_time": 9.35,
         "home_elo": 1710,
         "away_elo": 1710,
         "home_stats": {
@@ -3527,7 +3527,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "model",
-        "analysis_time": 5.92,
+        "analysis_time": 4.43,
         "home_elo": 1680,
         "away_elo": 1650,
         "home_stats": {
@@ -3715,7 +3715,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.47,
+        "analysis_time": 10.36,
         "home_elo": 1600,
         "away_elo": 1600,
         "home_stats": {
