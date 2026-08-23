@@ -17,7 +17,7 @@
       "away_win_prob": 2.25,
       "most_likely_score": "3-0",
       "exact_score_prob": 13.52,
-      "under_0_5": 0.022600633001874454,
+      "under_0_5": 0.02260063300187445,
       "under_1_5": 0.0970107219225855,
       "under_2_5": 25.36,
       "under_3_5": 0.4542199361610718,
@@ -115,7 +115,7 @@
         "recommendation": "Strong recommendation: PSV win",
         "best_bet": "PSV Win",
         "best_bet_type": "model",
-        "analysis_time": 4.36,
+        "analysis_time": 6.39,
         "home_elo": 1830,
         "away_elo": 1630,
         "home_stats": {
@@ -314,7 +314,7 @@
         "recommendation": "Strong recommendation: Paris Saint Germain win",
         "best_bet": "Paris Saint Germain Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 7.81,
+        "analysis_time": 8.61,
         "home_elo": 1890,
         "away_elo": 1600,
         "home_stats": {
@@ -513,7 +513,7 @@
         "recommendation": "Strong recommendation: Manchester City win",
         "best_bet": "Manchester City Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.48,
+        "analysis_time": 12.54,
         "home_elo": 1900,
         "away_elo": 1730,
         "home_stats": {
@@ -613,15 +613,15 @@
       "away_win_prob": 8.85,
       "most_likely_score": "2-0",
       "exact_score_prob": 11.67,
-      "under_0_5": 0.04141528870837268,
-      "under_1_5": 0.15189957244397603,
+      "under_0_5": 0.041415288708372695,
+      "under_1_5": 0.15189957244397606,
       "under_2_5": 35.67,
-      "under_3_5": 0.5774011389933298,
-      "under_4_5": 0.7602490292818217,
+      "under_3_5": 0.5774011389933299,
+      "under_4_5": 0.7602490292818218,
       "under_5_5": 0.8814445358280859,
       "over_2_5": 64.33,
-      "over_3_5": 0.4225988610066702,
-      "over_4_5": 0.2397509707181783,
+      "over_3_5": 0.4225988610066701,
+      "over_4_5": 0.2397509707181782,
       "btts_yes": 50.4,
       "btts_no": 49.6,
       "asian_handicap": {
@@ -712,7 +712,7 @@
         "recommendation": "Strong recommendation: Atalanta win",
         "best_bet": "Atalanta Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.77,
+        "analysis_time": 11.61,
         "home_elo": 1820,
         "away_elo": 1600,
         "home_stats": {
@@ -901,7 +901,7 @@
         "recommendation": "Strong recommendation: Monaco win",
         "best_bet": "Monaco Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.72,
+        "analysis_time": 9.65,
         "home_elo": 1650,
         "away_elo": 1800,
         "home_stats": {
@@ -1090,7 +1090,7 @@
         "recommendation": "Strong recommendation: Barcelona win",
         "best_bet": "Barcelona Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.76,
+        "analysis_time": 10.58,
         "home_elo": 1600,
         "away_elo": 1880,
         "home_stats": {
@@ -1279,7 +1279,7 @@
         "recommendation": "Strong recommendation: Juventus win",
         "best_bet": "Juventus Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 7.48,
+        "analysis_time": 8.51,
         "home_elo": 1600,
         "away_elo": 1860,
         "home_stats": {
@@ -1468,7 +1468,7 @@
         "recommendation": "Strong recommendation: Atletico Madrid win",
         "best_bet": "Atletico Madrid Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.55,
+        "analysis_time": 10.26,
         "home_elo": 1850,
         "away_elo": 1760,
         "home_stats": {
@@ -1655,7 +1655,7 @@
         "recommendation": "Strong recommendation: AC Milan win",
         "best_bet": "AC Milan Win",
         "best_bet_type": "model",
-        "analysis_time": 4.44,
+        "analysis_time": 6.37,
         "home_elo": 1650,
         "away_elo": 1830,
         "home_stats": {
@@ -1843,7 +1843,7 @@
         "recommendation": "Strong recommendation: Feyenoord win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "model",
-        "analysis_time": 3.92,
+        "analysis_time": 5.16,
         "home_elo": 1600,
         "away_elo": 1810,
         "home_stats": {
@@ -2032,7 +2032,7 @@
         "recommendation": "Strong recommendation: Lille win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.6,
+        "analysis_time": 10.08,
         "home_elo": 1650,
         "away_elo": 1770,
         "home_stats": {
@@ -2220,7 +2220,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "BTTS Yes",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.43,
+        "analysis_time": 11.6,
         "home_elo": 1830,
         "away_elo": 1870,
         "home_stats": {
@@ -2419,7 +2419,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "BTTS Yes",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.61,
+        "analysis_time": 10.37,
         "home_elo": 1780,
         "away_elo": 1800,
         "home_stats": {
@@ -2622,7 +2622,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "model",
-        "analysis_time": 4.45,
+        "analysis_time": 6.47,
         "home_elo": 1660,
         "away_elo": 1600,
         "home_stats": {
@@ -2810,7 +2810,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.66,
+        "analysis_time": 11.87,
         "home_elo": 1680,
         "away_elo": 1600,
         "home_stats": {
@@ -2997,7 +2997,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "model",
-        "analysis_time": 4.36,
+        "analysis_time": 6.53,
         "home_elo": 1690,
         "away_elo": 1720,
         "home_stats": {
@@ -3185,7 +3185,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.39,
+        "analysis_time": 11.17,
         "home_elo": 1640,
         "away_elo": 1670,
         "home_stats": {
