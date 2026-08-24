@@ -116,7 +116,7 @@
         "recommendation": "Moderate recommendation: Chelsea win or draw",
         "best_bet": "BTTS Yes",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 13.5,
+        "analysis_time": 10.83,
         "home_elo": 1730,
         "away_elo": 1820,
         "home_stats": {
@@ -304,7 +304,7 @@
         "recommendation": "Moderate recommendation: Roma win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.63,
+        "analysis_time": 8.36,
         "home_elo": 1780,
         "away_elo": 1760,
         "home_stats": {
@@ -492,7 +492,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.92,
+        "analysis_time": 8.54,
         "home_elo": 1750,
         "away_elo": 1780,
         "home_stats": {
@@ -680,7 +680,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.99,
+        "analysis_time": 8.74,
         "home_elo": 1700,
         "away_elo": 1600,
         "home_stats": {
@@ -868,7 +868,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.41,
+        "analysis_time": 8.82,
         "home_elo": 1600,
         "away_elo": 1600,
         "home_stats": {
