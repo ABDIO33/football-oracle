@@ -1,1 +1,394 @@
-[]
+[
+  {
+    "match": {
+      "fixture_id": 564630,
+      "home_team": "FC Barcelona",
+      "away_team": "Athletic Club",
+      "competition": "La Liga",
+      "date": "2026-08-27",
+      "time": "2026-08-27T19:00:00Z",
+      "status": "TIMED",
+      "home_crest": "",
+      "away_crest": ""
+    },
+    "prediction": {
+      "home_win_prob": 68.45,
+      "draw_prob": 18.92,
+      "away_win_prob": 12.63,
+      "most_likely_score": "2-0",
+      "exact_score_prob": 10.47,
+      "under_0_5": 0.04389492019677433,
+      "under_1_5": 0.15688207208853389,
+      "under_2_5": 36.61,
+      "under_3_5": 0.5876854693570488,
+      "under_4_5": 0.7686695600031933,
+      "under_5_5": 0.886932982582424,
+      "over_2_5": 63.39,
+      "over_3_5": 0.4123145306429512,
+      "over_4_5": 0.2313304399968067,
+      "btts_yes": 55.09,
+      "btts_no": 44.91,
+      "asian_handicap": {
+        "ah_0": 0.6845,
+        "ah_m025": 0.7791,
+        "ah_05": 0.6845,
+        "ah_m075": 0.5734,
+        "ah_10": 0.5734
+      },
+      "probs": "[[4.38949202e-02 2.94404080e-02 1.62685352e-02 5.01014961e-03\n  1.15721539e-03 2.13829537e-04 3.29260735e-05 4.34575663e-06\n  5.01878871e-07 5.15204801e-08]\n [8.35467439e-02 8.83025472e-02 3.81226390e-02 1.17404623e-02\n  2.71174412e-03 5.01074383e-04 7.71568428e-05 1.01835666e-05\n  1.17607067e-06 1.20729779e-07]\n [1.04657526e-01 9.66927615e-02 4.46670701e-02 1.37559222e-02\n  3.17726337e-03 5.87092740e-04 9.04021913e-05 1.19317574e-05\n  1.37796418e-06 1.41455200e-07]\n [8.17492385e-02 7.55278660e-02 3.48899797e-02 1.07449144e-02\n  2.48179821e-03 4.58585122e-04 7.06142268e-05 9.32003764e-06\n  1.07634421e-06 1.10492339e-07]\n [4.78914768e-02 4.42467858e-02 2.04397336e-02 6.29473532e-03\n  1.45392157e-03 2.68654720e-04 4.13682093e-05 5.45999419e-06\n  6.30558946e-07 6.47301600e-08]\n [2.24451613e-02 2.07370144e-02 9.57943139e-03 2.95013558e-03\n  6.81405260e-04 1.25909638e-04 1.93879202e-05 2.55891984e-06\n  2.95522255e-07 3.03368987e-08]\n [8.76609122e-03 8.09896428e-03 3.74130390e-03 1.15219299e-03\n  2.66126876e-04 4.91747579e-05 7.57206752e-06 9.99401360e-07\n  1.15417974e-07 1.18482562e-08]\n [2.93455633e-03 2.71122742e-03 1.25244727e-03 3.85710707e-04\n  8.90892292e-05 1.64618521e-05 2.53484228e-06 3.34561838e-07\n  3.86375796e-08 3.96634878e-09]\n [8.59581320e-04 7.94164495e-04 3.66863048e-04 1.12981208e-04\n  2.60957462e-05 4.82195567e-06 7.42498296e-07 9.79988365e-08\n  1.13176023e-08 1.16181083e-09]\n [2.23809731e-04 2.06777111e-04 9.55203632e-05 2.94169884e-05\n  6.79456591e-06 1.25549564e-06 1.93324750e-07 2.55160189e-08\n  2.94677127e-09 3.02501418e-10]]",
+      "expected_goals_home": 2.34,
+      "expected_goals_away": 0.92,
+      "top_scores": [
+        {
+          "score": "2-0",
+          "prob": 10.47,
+          "rank": 1,
+          "type": "home_win"
+        },
+        {
+          "score": "2-1",
+          "prob": 9.67,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "1-1",
+          "prob": 8.83,
+          "rank": 3,
+          "type": "draw"
+        },
+        {
+          "score": "1-0",
+          "prob": 8.35,
+          "rank": 4,
+          "type": "home_win"
+        },
+        {
+          "score": "3-0",
+          "prob": 8.17,
+          "rank": 5,
+          "type": "home_win"
+        },
+        {
+          "score": "3-1",
+          "prob": 7.55,
+          "rank": 6,
+          "type": "home_win"
+        },
+        {
+          "score": "4-0",
+          "prob": 4.79,
+          "rank": 7,
+          "type": "home_win"
+        },
+        {
+          "score": "2-2",
+          "prob": 4.47,
+          "rank": 8,
+          "type": "draw"
+        }
+      ],
+      "top_3": [
+        {
+          "score": "2-0",
+          "prob": 10.47,
+          "rank": 1,
+          "type": "home_win"
+        },
+        {
+          "score": "2-1",
+          "prob": 9.67,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "1-1",
+          "prob": 8.83,
+          "rank": 3,
+          "type": "draw"
+        }
+      ],
+      "auto_rejected": false,
+      "analysis": {
+        "home_form_rating": 82,
+        "away_form_rating": 68,
+        "confidence": "HIGH",
+        "recommendation": "Strong recommendation: Barcelona win",
+        "best_bet": "Barcelona Win",
+        "best_bet_type": "ai_ensemble",
+        "analysis_time": 8.85,
+        "home_elo": 1880,
+        "away_elo": 1780,
+        "home_stats": {
+          "attack": 2.3,
+          "defense": 0.9
+        },
+        "away_stats": {
+          "attack": 1.7,
+          "defense": 1.2
+        },
+        "data_source": "database",
+        "key_factors": [
+          "Barcelona in excellent form",
+          "Athletic Bilbao in excellent form"
+        ],
+        "all_bets": [
+          {
+            "bet": "Barcelona Win",
+            "confidence": 68.45,
+            "type": "home_win"
+          }
+        ],
+        "sources": {
+          "stats_home": "database",
+          "stats_away": "database",
+          "h2h": "api"
+        }
+      },
+      "market_data_used": false,
+      "h2h": {
+        "matches_played": 0,
+        "home_wins": 0,
+        "away_wins": 0,
+        "draws": 0,
+        "home_goals": 0,
+        "away_goals": 0,
+        "home_wins_pct": 33.3,
+        "away_wins_pct": 33.3,
+        "draws_pct": 33.3,
+        "last_meetings": []
+      },
+      "kelly_home_win": 0.0,
+      "kelly_draw": 0.0002,
+      "kelly_away_win": 0.0,
+      "best_bet_info": {
+        "primary": "Barcelona Win",
+        "primary_confidence": 68.5,
+        "secondary": "",
+        "all_bets": [
+          {
+            "bet": "Barcelona Win",
+            "confidence": 68.45,
+            "type": "home_win"
+          }
+        ]
+      },
+      "home_trend": "ascending",
+      "away_trend": "stable",
+      "friendly_warning": false,
+      "competition_type": "La Liga",
+      "match_extra": {},
+      "lambda_home": 2.3433,
+      "lambda_away": 0.9239,
+      "lambda_model_applied": false
+    },
+    "rating_score": 76.2,
+    "predicted_score": "2-0",
+    "confidence": "HIGH",
+    "home_win_prob": 68.45,
+    "away_win_prob": 12.63
+  },
+  {
+    "match": {
+      "fixture_id": 564636,
+      "home_team": "RC Celta de Vigo",
+      "away_team": "CA Osasuna",
+      "competition": "La Liga",
+      "date": "2026-08-27",
+      "time": "2026-08-27T18:30:00Z",
+      "status": "TIMED",
+      "home_crest": "",
+      "away_crest": ""
+    },
+    "prediction": {
+      "home_win_prob": 45.09,
+      "draw_prob": 25.24,
+      "away_win_prob": 29.67,
+      "most_likely_score": "1-1",
+      "exact_score_prob": 11.66,
+      "under_0_5": 0.055431465741198796,
+      "under_1_5": 0.18552426918131604,
+      "under_2_5": 41.41,
+      "under_3_5": 0.6381226572413099,
+      "under_4_5": 0.8083893518001184,
+      "under_5_5": 0.9119353558476861,
+      "over_2_5": 58.59,
+      "over_3_5": 0.3618773427586901,
+      "over_4_5": 0.1916106481998816,
+      "btts_yes": 61.13,
+      "btts_no": 38.87,
+      "asian_handicap": {
+        "ah_0": 0.4509,
+        "ah_m025": 0.5771,
+        "ah_05": 0.4509,
+        "ah_m075": 0.3466,
+        "ah_10": 0.3466
+      },
+      "probs": "[[5.54314657e-02 5.65762753e-02 4.31192201e-02 1.93053154e-02\n  6.48252454e-03 1.74141156e-03 3.89831952e-04 7.48008704e-05\n  1.25586779e-05 1.87425498e-06]\n [7.35165282e-02 1.16621317e-01 7.31966871e-02 3.27715837e-02\n  1.10043577e-02 2.95611927e-03 6.61756111e-04 1.26977619e-04\n  2.13188833e-05 3.18162655e-06]\n [6.88743377e-02 9.25091509e-02 6.21272253e-02 2.78155699e-02\n  9.34017966e-03 2.50906831e-03 5.61679396e-04 1.07774921e-04\n  1.80948499e-05 2.70047234e-06]\n [3.89723603e-02 5.23460563e-02 3.51545248e-02 1.57393661e-02\n  5.28511575e-03 1.41974961e-03 3.17824789e-04 6.09841515e-05\n  1.02389226e-05 1.52805507e-06]\n [1.65393046e-02 2.22149073e-02 1.49190706e-02 6.67955873e-03\n  2.24292649e-03 6.02521148e-04 1.34880232e-04 2.58807896e-05\n  4.34525027e-06 6.48484417e-07]\n [5.61523285e-03 7.54214763e-03 5.06514978e-03 2.26776630e-03\n  7.61492384e-04 2.04560991e-04 4.57929717e-05 8.78674548e-06\n  1.47524897e-06 2.20165907e-07]\n [1.58868227e-03 2.13385206e-03 1.43305075e-03 6.41604756e-04\n  2.15444218e-04 5.78751456e-05 1.29559155e-05 2.48597825e-06\n  4.17382847e-07 6.22901456e-08]\n [3.85264982e-04 5.17471928e-04 3.47523405e-04 1.55593003e-04\n  5.22465154e-05 1.40350701e-05 3.14188724e-06 6.02864641e-07\n  1.01217845e-07 1.51057341e-08]\n [8.17504360e-05 1.09803791e-04 7.37419470e-05 3.30157072e-05\n  1.10863318e-05 2.97814011e-06 6.66685693e-07 1.27923506e-07\n  2.14776928e-08 3.20532725e-09]\n [1.54194221e-05 2.07107275e-05 1.39088947e-05 6.22728329e-06\n  2.09105709e-06 5.61724214e-07 1.25747440e-07 2.41283916e-08\n  4.05103173e-09 6.04575292e-10]]",
+      "expected_goals_home": 1.7,
+      "expected_goals_away": 1.34,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 11.66,
+          "rank": 1,
+          "type": "draw"
+        },
+        {
+          "score": "2-1",
+          "prob": 9.25,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "1-0",
+          "prob": 7.35,
+          "rank": 3,
+          "type": "home_win"
+        },
+        {
+          "score": "1-2",
+          "prob": 7.32,
+          "rank": 4,
+          "type": "away_win"
+        },
+        {
+          "score": "2-0",
+          "prob": 6.89,
+          "rank": 5,
+          "type": "home_win"
+        },
+        {
+          "score": "2-2",
+          "prob": 6.21,
+          "rank": 6,
+          "type": "draw"
+        },
+        {
+          "score": "0-1",
+          "prob": 5.66,
+          "rank": 7,
+          "type": "away_win"
+        },
+        {
+          "score": "0-0",
+          "prob": 5.54,
+          "rank": 8,
+          "type": "draw"
+        }
+      ],
+      "top_3": [
+        {
+          "score": "1-1",
+          "prob": 11.66,
+          "rank": 1,
+          "type": "draw"
+        },
+        {
+          "score": "2-1",
+          "prob": 9.25,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "1-0",
+          "prob": 7.35,
+          "rank": 3,
+          "type": "home_win"
+        }
+      ],
+      "auto_rejected": false,
+      "analysis": {
+        "home_form_rating": 50,
+        "away_form_rating": 50,
+        "confidence": "MEDIUM",
+        "recommendation": "Moderate recommendation: Celta Vigo win or draw",
+        "best_bet": "BTTS Yes",
+        "best_bet_type": "ai_ensemble",
+        "analysis_time": 10.73,
+        "home_elo": 1710,
+        "away_elo": 1700,
+        "home_stats": {
+          "attack": 1.51,
+          "defense": 1.5
+        },
+        "away_stats": {
+          "attack": 1.51,
+          "defense": 1.5
+        },
+        "data_source": "database",
+        "key_factors": [
+          "Evenly matched teams"
+        ],
+        "all_bets": [
+          {
+            "bet": "BTTS Yes",
+            "confidence": 61.13,
+            "type": "btts"
+          }
+        ],
+        "sources": {
+          "stats_home": "database",
+          "stats_away": "database",
+          "h2h": "api"
+        }
+      },
+      "market_data_used": false,
+      "h2h": {
+        "matches_played": 2,
+        "home_wins": 1,
+        "away_wins": 1,
+        "draws": 0,
+        "home_goals": 4,
+        "away_goals": 4,
+        "home_wins_pct": 33.3,
+        "away_wins_pct": 33.3,
+        "draws_pct": 33.3,
+        "last_meetings": [
+          {
+            "date": "2026-02-06",
+            "home": "Celta Vigo",
+            "away": "Osasuna",
+            "home_goals": 1,
+            "away_goals": 2
+          },
+          {
+            "date": "2025-10-26",
+            "home": "Osasuna",
+            "away": "Celta Vigo",
+            "home_goals": 2,
+            "away_goals": 3
+          }
+        ]
+      },
+      "kelly_home_win": 0.0008,
+      "kelly_draw": 0.0,
+      "kelly_away_win": 0.0,
+      "best_bet_info": {
+        "primary": "BTTS Yes",
+        "primary_confidence": 61.1,
+        "secondary": "",
+        "all_bets": [
+          {
+            "bet": "BTTS Yes",
+            "confidence": 61.13,
+            "type": "btts"
+          }
+        ]
+      },
+      "home_trend": "stable",
+      "away_trend": "stable",
+      "friendly_warning": false,
+      "competition_type": "La Liga",
+      "match_extra": {},
+      "lambda_home": 1.6975,
+      "lambda_away": 1.3432,
+      "lambda_model_applied": false
+    },
+    "rating_score": 28.1,
+    "predicted_score": "1-1",
+    "confidence": "MEDIUM",
+    "home_win_prob": 45.09,
+    "away_win_prob": 29.67
+  }
+]
