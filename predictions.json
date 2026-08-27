@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: Barcelona win",
         "best_bet": "Barcelona Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.85,
+        "analysis_time": 10.02,
         "home_elo": 1880,
         "away_elo": 1780,
         "home_stats": {
@@ -305,7 +305,7 @@
         "recommendation": "Moderate recommendation: Celta Vigo win or draw",
         "best_bet": "BTTS Yes",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.73,
+        "analysis_time": 13.72,
         "home_elo": 1710,
         "away_elo": 1700,
         "home_stats": {
