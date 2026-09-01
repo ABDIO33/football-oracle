@@ -116,7 +116,7 @@
         "recommendation": "Moderate recommendation: Preston North End win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.51,
+        "analysis_time": 10.4,
         "home_elo": 1630,
         "away_elo": 1660,
         "home_stats": {
@@ -312,7 +312,7 @@
         "recommendation": "Moderate recommendation: Stoke City win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.63,
+        "analysis_time": 8.74,
         "home_elo": 1650,
         "away_elo": 1670,
         "home_stats": {
@@ -508,7 +508,7 @@
         "recommendation": "Moderate recommendation: West Ham United win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.54,
+        "analysis_time": 8.53,
         "home_elo": 1760,
         "away_elo": 1720,
         "home_stats": {
@@ -696,7 +696,7 @@
         "recommendation": "Moderate recommendation: Sheffield United win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.69,
+        "analysis_time": 8.63,
         "home_elo": 1700,
         "away_elo": 1600,
         "home_stats": {
@@ -884,7 +884,7 @@
         "recommendation": "Moderate recommendation: Birmingham City win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.63,
+        "analysis_time": 8.94,
         "home_elo": 1600,
         "away_elo": 1680,
         "home_stats": {
@@ -1072,7 +1072,7 @@
         "recommendation": "Moderate recommendation: Lincoln City win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.82,
+        "analysis_time": 8.85,
         "home_elo": 1600,
         "away_elo": 1660,
         "home_stats": {
@@ -1260,7 +1260,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 11.05,
+        "analysis_time": 8.53,
         "home_elo": 1620,
         "away_elo": 1630,
         "home_stats": {
@@ -1463,7 +1463,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.32,
+        "analysis_time": 8.46,
         "home_elo": 1650,
         "away_elo": 1660,
         "home_stats": {
