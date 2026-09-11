@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: Fiorentina win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.59,
+        "analysis_time": 10.67,
         "home_elo": 1640,
         "away_elo": 1760,
         "home_stats": {
@@ -209,11 +209,11 @@
       "under_1_5": 0.2714594722529459,
       "under_2_5": 53.36,
       "under_3_5": 0.7490210429637226,
-      "under_4_5": 0.885794033858448,
+      "under_4_5": 0.8857940338584479,
       "under_5_5": 0.9552723835330235,
       "over_2_5": 46.64,
       "over_3_5": 0.2509789570362774,
-      "over_4_5": 0.11420596614155198,
+      "over_4_5": 0.1142059661415521,
       "btts_yes": 46.51,
       "btts_no": 53.49,
       "asian_handicap": {
@@ -304,7 +304,7 @@
         "recommendation": "Strong recommendation: Azam win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.94,
+        "analysis_time": 10.86,
         "home_elo": 1600,
         "away_elo": 1630,
         "home_stats": {
@@ -492,7 +492,7 @@
         "recommendation": "Moderate recommendation: West Ham United win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.81,
+        "analysis_time": 10.49,
         "home_elo": 1760,
         "away_elo": 1600,
         "home_stats": {
@@ -680,7 +680,7 @@
         "recommendation": "Moderate recommendation: Union Berlin win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.84,
+        "analysis_time": 12.22,
         "home_elo": 1740,
         "away_elo": 1600,
         "home_stats": {
@@ -868,7 +868,7 @@
         "recommendation": "Moderate recommendation: Sevilla win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.64,
+        "analysis_time": 14.72,
         "home_elo": 1750,
         "away_elo": 1730,
         "home_stats": {
@@ -1056,7 +1056,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.22,
+        "analysis_time": 10.89,
         "home_elo": 1600,
         "away_elo": 1600,
         "home_stats": {
