@@ -1,1 +1,1340 @@
-[]
+[
+  {
+    "match": {
+      "fixture_id": 565804,
+      "home_team": "FC Bayern München",
+      "away_team": "1. FC Union Berlin",
+      "competition": "Bundesliga",
+      "date": "2026-09-18",
+      "time": "2026-09-18T18:30:00Z",
+      "status": "TIMED",
+      "home_crest": "",
+      "away_crest": ""
+    },
+    "prediction": {
+      "home_win_prob": 83.19,
+      "draw_prob": 11.82,
+      "away_win_prob": 4.99,
+      "most_likely_score": "2-0",
+      "exact_score_prob": 11.99,
+      "under_0_5": 0.03129915205829603,
+      "under_1_5": 0.12314230874059318,
+      "under_2_5": 30.48,
+      "under_3_5": 0.5178717155927486,
+      "under_4_5": 0.7090598266222906,
+      "under_5_5": 0.8463274529516241,
+      "over_2_5": 69.52,
+      "over_3_5": 0.4821282844072514,
+      "over_4_5": 0.2909401733777094,
+      "btts_yes": 45.36,
+      "btts_no": 54.64,
+      "asian_handicap": {
+        "ah_0": 0.8319,
+        "ah_m025": 0.891,
+        "ah_05": 0.8319,
+        "ah_m075": 0.7401,
+        "ah_10": 0.7401
+      },
+      "probs": "[[3.12991521e-02 1.41300798e-02 5.73408953e-03 1.23142758e-03\n  1.98341936e-04 2.55570196e-05 2.74425597e-06 2.52576092e-07\n  2.03407946e-08 1.45609955e-09]\n [7.77130769e-02 5.61028656e-02 1.68902833e-02 3.62728217e-03\n  5.84234248e-04 7.52805303e-05 8.08345605e-06 7.43985898e-07\n  5.99156643e-08 4.28907393e-09]\n [1.19861049e-01 7.72224783e-02 2.48759343e-02 5.34224510e-03\n  8.60457610e-04 1.10872831e-04 1.19052782e-05 1.09573913e-06\n  8.82435248e-08 6.31692906e-09]\n [1.17687214e-01 7.58219491e-02 2.44247772e-02 5.24535660e-03\n  8.44852102e-04 1.08862010e-04 1.16893607e-05 1.07586649e-06\n  8.66431147e-08 6.20236341e-09]\n [8.66646035e-02 5.58351152e-02 1.79863518e-02 3.86266897e-03\n  6.22147215e-04 8.01657425e-05 8.60801929e-06 7.92265699e-07\n  6.38037976e-08 4.56740667e-09]\n [5.10556975e-02 3.28934841e-02 1.05960877e-02 2.27556869e-03\n  3.66518264e-04 4.72271001e-05 5.07114106e-06 4.66738164e-07\n  3.75879801e-08 2.69074252e-09]\n [2.50648683e-02 1.61484592e-02 5.20195698e-03 1.11714916e-03\n  1.79935492e-04 2.31852879e-05 2.48958469e-06 2.29136633e-07\n  1.84531368e-08 1.32097122e-09]\n [1.05472648e-02 6.79525116e-03 2.18897691e-03 4.70094952e-04\n  7.57166269e-05 9.75633977e-06 1.04761408e-06 9.64204048e-08\n  7.76505660e-09 5.55863015e-10]\n [3.88349123e-03 2.50200395e-03 8.05978872e-04 1.73088440e-04\n  2.78787781e-05 3.59227349e-06 3.85730345e-07 3.55018862e-08\n  2.85908523e-09 2.04668146e-10]\n [1.27101970e-03 8.18875627e-04 2.63787135e-04 5.66497528e-05\n  9.12438685e-06 1.17570766e-06 1.26244876e-07 1.16193379e-08\n  9.35744013e-10 6.69854084e-11]]",
+      "expected_goals_home": 2.95,
+      "expected_goals_away": 0.64,
+      "top_scores": [
+        {
+          "score": "2-0",
+          "prob": 11.99,
+          "rank": 1,
+          "type": "home_win"
+        },
+        {
+          "score": "3-0",
+          "prob": 11.77,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "4-0",
+          "prob": 8.67,
+          "rank": 3,
+          "type": "home_win"
+        },
+        {
+          "score": "1-0",
+          "prob": 7.77,
+          "rank": 4,
+          "type": "home_win"
+        },
+        {
+          "score": "2-1",
+          "prob": 7.72,
+          "rank": 5,
+          "type": "home_win"
+        },
+        {
+          "score": "3-1",
+          "prob": 7.58,
+          "rank": 6,
+          "type": "home_win"
+        },
+        {
+          "score": "1-1",
+          "prob": 5.61,
+          "rank": 7,
+          "type": "draw"
+        },
+        {
+          "score": "4-1",
+          "prob": 5.58,
+          "rank": 8,
+          "type": "home_win"
+        }
+      ],
+      "top_3": [
+        {
+          "score": "2-0",
+          "prob": 11.99,
+          "rank": 1,
+          "type": "home_win"
+        },
+        {
+          "score": "3-0",
+          "prob": 11.77,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "4-0",
+          "prob": 8.67,
+          "rank": 3,
+          "type": "home_win"
+        }
+      ],
+      "auto_rejected": false,
+      "analysis": {
+        "home_form_rating": 85,
+        "away_form_rating": 57,
+        "confidence": "HIGH",
+        "recommendation": "Strong recommendation: Bayern Munich win",
+        "best_bet": "Bayern Munich Win",
+        "best_bet_type": "ai_ensemble",
+        "analysis_time": 8.5,
+        "home_elo": 1890,
+        "away_elo": 1740,
+        "home_stats": {
+          "attack": 2.6,
+          "defense": 0.8
+        },
+        "away_stats": {
+          "attack": 1.4,
+          "defense": 1.3
+        },
+        "data_source": "database",
+        "key_factors": [
+          "Bayern Munich in excellent form",
+          "Bayern Munich significantly higher rated"
+        ],
+        "all_bets": [
+          {
+            "bet": "Bayern Munich Win",
+            "confidence": 83.19,
+            "type": "home_win"
+          },
+          {
+            "bet": "Over 2.5 Goals",
+            "confidence": 69.52,
+            "type": "over25"
+          }
+        ],
+        "sources": {
+          "stats_home": "database",
+          "stats_away": "database",
+          "h2h": "api"
+        }
+      },
+      "market_data_used": false,
+      "h2h": {
+        "matches_played": 0,
+        "home_wins": 0,
+        "away_wins": 0,
+        "draws": 0,
+        "home_goals": 0,
+        "away_goals": 0,
+        "home_wins_pct": 33.3,
+        "away_wins_pct": 33.3,
+        "draws_pct": 33.3,
+        "last_meetings": []
+      },
+      "kelly_home_win": 0.0,
+      "kelly_draw": 0.0,
+      "kelly_away_win": 0.0,
+      "best_bet_info": {
+        "primary": "Bayern Munich Win",
+        "primary_confidence": 83.2,
+        "secondary": "Over 2.5 Goals",
+        "all_bets": [
+          {
+            "bet": "Bayern Munich Win",
+            "confidence": 83.19,
+            "type": "home_win"
+          },
+          {
+            "bet": "Over 2.5 Goals",
+            "confidence": 69.52,
+            "type": "over25"
+          }
+        ]
+      },
+      "home_trend": "ascending",
+      "away_trend": "stable",
+      "friendly_warning": false,
+      "competition_type": "Bundesliga",
+      "match_extra": {},
+      "lambda_home": 2.9456,
+      "lambda_away": 0.6443,
+      "lambda_model_applied": false
+    },
+    "rating_score": 95.6,
+    "predicted_score": "2-0",
+    "confidence": "HIGH",
+    "home_win_prob": 83.19,
+    "away_win_prob": 4.99
+  },
+  {
+    "match": {
+      "fixture_id": 559682,
+      "home_team": "AS Monaco FC",
+      "away_team": "Racing Club de Lens",
+      "competition": "Ligue 1",
+      "date": "2026-09-18",
+      "time": "2026-09-18T18:45:00Z",
+      "status": "TIMED",
+      "home_crest": "",
+      "away_crest": ""
+    },
+    "prediction": {
+      "home_win_prob": 72.49,
+      "draw_prob": 17.62,
+      "away_win_prob": 9.88,
+      "most_likely_score": "2-0",
+      "exact_score_prob": 11.9,
+      "under_0_5": 0.04693801184190276,
+      "under_1_5": 0.16797138802738554,
+      "under_2_5": 38.35,
+      "under_3_5": 0.6063931291509608,
+      "under_4_5": 0.7837626992777096,
+      "under_5_5": 0.896681512018931,
+      "over_2_5": 61.65,
+      "over_3_5": 0.3936068708490392,
+      "over_4_5": 0.21623730072229042,
+      "btts_yes": 50.08,
+      "btts_no": 49.92,
+      "asian_handicap": {
+        "ah_0": 0.7249,
+        "ah_m025": 0.8131,
+        "ah_05": 0.7249,
+        "ah_m075": 0.6139,
+        "ah_10": 0.6139
+      },
+      "probs": "[[4.69380118e-02 2.71710768e-02 1.28519362e-02 3.37299575e-03\n  6.63933055e-04 1.04549696e-04 1.37195546e-05 1.54315824e-06\n  1.51875935e-07 1.32866331e-08]\n [9.38622993e-02 8.36882158e-02 3.07906618e-02 8.08102142e-03\n  1.59065046e-03 2.50480106e-04 3.28693017e-05 3.69709768e-06\n  3.63864283e-07 3.18321085e-08]\n [1.18996041e-01 9.36916742e-02 3.68841256e-02 9.68025340e-03\n  1.90543976e-03 3.00050053e-04 3.93741277e-05 4.42875233e-06\n  4.35872927e-07 3.81316743e-08]\n [9.50302168e-02 7.48221544e-02 2.94556562e-02 7.73064865e-03\n  1.52168385e-03 2.39619919e-04 3.14441714e-05 3.53680082e-06\n  3.48088042e-07 3.04519483e-08]\n [5.69183357e-02 4.48147194e-02 1.76424613e-02 4.63027098e-03\n  9.11412341e-04 1.43520318e-04 1.88334823e-05 2.11836638e-06\n  2.08487287e-07 1.82391904e-08]\n [2.72729837e-02 2.14734162e-02 8.45355989e-03 2.21864015e-03\n  4.36712240e-04 6.87691804e-05 9.02424935e-06 1.01503621e-06\n  9.98987460e-08 8.73948851e-09]\n [1.08901000e-02 8.57433316e-03 3.37550571e-03 8.85902813e-04\n  1.74379159e-04 2.74595276e-05 3.60338196e-06 4.05303868e-07\n  3.98895604e-08 3.48967699e-09]\n [3.72721367e-03 2.93462612e-03 1.15529068e-03 3.03206498e-04\n  5.96824993e-05 9.39821738e-06 1.23328294e-06 1.38718113e-07\n  1.36524839e-08 1.19436661e-09]\n [1.11620706e-03 8.78846961e-04 3.45980600e-04 9.08027459e-05\n  1.78734125e-05 2.81453052e-06 3.69337326e-07 4.15425977e-08\n  4.08857672e-09 3.57682860e-10]\n [2.97134254e-04 2.33949009e-04 9.21000153e-05 2.41716856e-05\n  4.75790135e-06 7.49227859e-07 9.83175744e-08 1.10586370e-08\n  1.08837888e-09 9.52151563e-11]]",
+      "expected_goals_home": 2.4,
+      "expected_goals_away": 0.79,
+      "top_scores": [
+        {
+          "score": "2-0",
+          "prob": 11.9,
+          "rank": 1,
+          "type": "home_win"
+        },
+        {
+          "score": "3-0",
+          "prob": 9.5,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "1-0",
+          "prob": 9.39,
+          "rank": 3,
+          "type": "home_win"
+        },
+        {
+          "score": "2-1",
+          "prob": 9.37,
+          "rank": 4,
+          "type": "home_win"
+        },
+        {
+          "score": "1-1",
+          "prob": 8.37,
+          "rank": 5,
+          "type": "draw"
+        },
+        {
+          "score": "3-1",
+          "prob": 7.48,
+          "rank": 6,
+          "type": "home_win"
+        },
+        {
+          "score": "4-0",
+          "prob": 5.69,
+          "rank": 7,
+          "type": "home_win"
+        },
+        {
+          "score": "0-0",
+          "prob": 4.69,
+          "rank": 8,
+          "type": "draw"
+        }
+      ],
+      "top_3": [
+        {
+          "score": "2-0",
+          "prob": 11.9,
+          "rank": 1,
+          "type": "home_win"
+        },
+        {
+          "score": "3-0",
+          "prob": 9.5,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "1-0",
+          "prob": 9.39,
+          "rank": 3,
+          "type": "home_win"
+        }
+      ],
+      "auto_rejected": false,
+      "analysis": {
+        "home_form_rating": 72,
+        "away_form_rating": 50,
+        "confidence": "HIGH",
+        "recommendation": "Strong recommendation: Monaco win",
+        "best_bet": "Monaco Win",
+        "best_bet_type": "ai_ensemble",
+        "analysis_time": 8.71,
+        "home_elo": 1800,
+        "away_elo": 1600,
+        "home_stats": {
+          "attack": 2.0,
+          "defense": 1.1
+        },
+        "away_stats": {
+          "attack": 1.3,
+          "defense": 1.4
+        },
+        "data_source": "database",
+        "key_factors": [
+          "Monaco in excellent form",
+          "Monaco significantly higher rated"
+        ],
+        "all_bets": [
+          {
+            "bet": "Monaco Win",
+            "confidence": 72.49,
+            "type": "home_win"
+          }
+        ],
+        "sources": {
+          "stats_home": "database",
+          "stats_away": "database",
+          "h2h": "api"
+        }
+      },
+      "market_data_used": false,
+      "h2h": {
+        "matches_played": 0,
+        "home_wins": 0,
+        "away_wins": 0,
+        "draws": 0,
+        "home_goals": 0,
+        "away_goals": 0,
+        "home_wins_pct": 33.3,
+        "away_wins_pct": 33.3,
+        "draws_pct": 33.3,
+        "last_meetings": []
+      },
+      "kelly_home_win": 0.001,
+      "kelly_draw": 0.0002,
+      "kelly_away_win": 0.0,
+      "best_bet_info": {
+        "primary": "Monaco Win",
+        "primary_confidence": 72.5,
+        "secondary": "",
+        "all_bets": [
+          {
+            "bet": "Monaco Win",
+            "confidence": 72.49,
+            "type": "home_win"
+          }
+        ]
+      },
+      "home_trend": "ascending",
+      "away_trend": "stable",
+      "friendly_warning": false,
+      "competition_type": "Ligue 1",
+      "match_extra": {},
+      "lambda_home": 2.3958,
+      "lambda_away": 0.7874,
+      "lambda_model_applied": false
+    },
+    "rating_score": 77.5,
+    "predicted_score": "2-0",
+    "confidence": "HIGH",
+    "home_win_prob": 72.49,
+    "away_win_prob": 9.88
+  },
+  {
+    "match": {
+      "fixture_id": 560591,
+      "home_team": "Brentford FC",
+      "away_team": "Chelsea FC",
+      "competition": "Premier League",
+      "date": "2026-09-18",
+      "time": "2026-09-18T19:00:00Z",
+      "status": "TIMED",
+      "home_crest": "",
+      "away_crest": ""
+    },
+    "prediction": {
+      "home_win_prob": 29.15,
+      "draw_prob": 23.17,
+      "away_win_prob": 47.68,
+      "most_likely_score": "1-1",
+      "exact_score_prob": 9.9,
+      "under_0_5": 0.0379590540944991,
+      "under_1_5": 0.13388414492191206,
+      "under_2_5": 32.86,
+      "under_3_5": 0.5456663964889662,
+      "under_4_5": 0.7333134807254273,
+      "under_5_5": 0.8631039004285112,
+      "over_2_5": 67.14,
+      "over_3_5": 0.4543336035110338,
+      "over_4_5": 0.26668651927457265,
+      "btts_yes": 67.4,
+      "btts_no": 32.6,
+      "asian_handicap": {
+        "ah_0": 0.2915,
+        "ah_m025": 0.4073,
+        "ah_05": 0.2915,
+        "ah_m075": 0.2144,
+        "ah_10": 0.2144
+      },
+      "probs": "[[3.79590541e-02 5.50896465e-02 6.01983170e-02 3.92405764e-02\n  1.91843756e-02 7.50325917e-03 2.44551866e-03 6.83195855e-04\n  1.67004248e-04 3.62875203e-05]\n [4.08354444e-02 9.89981265e-02 9.04660203e-02 5.89707313e-02\n  2.88302763e-02 1.12758966e-02 3.67512501e-03 1.02670661e-03\n  2.50973955e-04 5.45328792e-05]\n [3.55502006e-02 6.95207324e-02 6.79761597e-02 4.43106024e-02\n  2.16630671e-02 8.47270770e-03 2.76148861e-03 7.71467259e-04\n  1.88581808e-04 4.09760007e-05]\n [1.78082784e-02 3.48252481e-02 3.40515203e-02 2.21966552e-02\n  1.08517512e-02 4.24426122e-03 1.38332153e-03 3.86453620e-04\n  9.44669027e-05 2.05262422e-05]\n [6.69056942e-03 1.30838442e-02 1.27931547e-02 8.33928237e-03\n  4.07700244e-03 1.59456875e-03 5.19713840e-04 1.45190608e-04\n  3.54912112e-05 7.71170831e-06]\n [2.01091731e-03 3.93247976e-03 3.84511013e-03 2.50645442e-03\n  1.22538371e-03 4.79263529e-04 1.56205174e-04 4.36384842e-05\n  1.06672372e-05 2.31783078e-06]\n [5.03667697e-04 9.84954982e-04 9.63071805e-04 6.27783210e-04\n  3.06917738e-04 1.20039525e-04 3.91241846e-05 1.09299844e-05\n  2.67178703e-06 5.80539282e-07]\n [1.08130247e-04 2.11455739e-04 2.06757734e-04 1.34776071e-04\n  6.58908460e-05 2.57707681e-05 8.39940253e-06 2.34651123e-06\n  5.73594441e-07 1.24633476e-07]\n [2.03122645e-05 3.97219560e-05 3.88394359e-05 2.53176820e-05\n  1.23775940e-05 4.84103822e-06 1.57782758e-06 4.40792084e-07\n  1.07749703e-07 2.34123957e-08]\n [3.39169639e-06 6.63268317e-06 6.48532194e-06 4.22748979e-06\n  2.06678290e-06 8.08345710e-07 2.63462113e-07 7.36024741e-08\n  1.79918039e-08 3.90934935e-09]]",
+      "expected_goals_home": 1.5,
+      "expected_goals_away": 1.96,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 9.9,
+          "rank": 1,
+          "type": "draw"
+        },
+        {
+          "score": "1-2",
+          "prob": 9.05,
+          "rank": 2,
+          "type": "away_win"
+        },
+        {
+          "score": "2-1",
+          "prob": 6.95,
+          "rank": 3,
+          "type": "home_win"
+        },
+        {
+          "score": "2-2",
+          "prob": 6.8,
+          "rank": 4,
+          "type": "draw"
+        },
+        {
+          "score": "0-2",
+          "prob": 6.02,
+          "rank": 5,
+          "type": "away_win"
+        },
+        {
+          "score": "1-3",
+          "prob": 5.9,
+          "rank": 6,
+          "type": "away_win"
+        },
+        {
+          "score": "0-1",
+          "prob": 5.51,
+          "rank": 7,
+          "type": "away_win"
+        },
+        {
+          "score": "2-3",
+          "prob": 4.43,
+          "rank": 8,
+          "type": "away_win"
+        }
+      ],
+      "top_3": [
+        {
+          "score": "1-1",
+          "prob": 9.9,
+          "rank": 1,
+          "type": "draw"
+        },
+        {
+          "score": "1-2",
+          "prob": 9.05,
+          "rank": 2,
+          "type": "away_win"
+        },
+        {
+          "score": "2-1",
+          "prob": 6.95,
+          "rank": 3,
+          "type": "home_win"
+        }
+      ],
+      "auto_rejected": false,
+      "analysis": {
+        "home_form_rating": 57,
+        "away_form_rating": 72,
+        "confidence": "MEDIUM",
+        "recommendation": "Moderate recommendation: Chelsea win or draw",
+        "best_bet": "BTTS Yes",
+        "best_bet_type": "ai_ensemble",
+        "analysis_time": 11.37,
+        "home_elo": 1740,
+        "away_elo": 1820,
+        "home_stats": {
+          "attack": 1.71,
+          "defense": 1.51
+        },
+        "away_stats": {
+          "attack": 1.98,
+          "defense": 1.19
+        },
+        "data_source": "database",
+        "key_factors": [
+          "Chelsea in excellent form"
+        ],
+        "all_bets": [
+          {
+            "bet": "BTTS Yes",
+            "confidence": 67.4,
+            "type": "btts"
+          },
+          {
+            "bet": "Over 2.5 Goals",
+            "confidence": 67.14,
+            "type": "over25"
+          }
+        ],
+        "sources": {
+          "stats_home": "database",
+          "stats_away": "database",
+          "h2h": "api"
+        }
+      },
+      "market_data_used": false,
+      "h2h": {
+        "matches_played": 0,
+        "home_wins": 0,
+        "away_wins": 0,
+        "draws": 0,
+        "home_goals": 0,
+        "away_goals": 0,
+        "home_wins_pct": 33.3,
+        "away_wins_pct": 33.3,
+        "draws_pct": 33.3,
+        "last_meetings": []
+      },
+      "kelly_home_win": 0.0,
+      "kelly_draw": 0.0003,
+      "kelly_away_win": 0.0012,
+      "best_bet_info": {
+        "primary": "BTTS Yes",
+        "primary_confidence": 67.4,
+        "secondary": "Over 2.5 Goals",
+        "all_bets": [
+          {
+            "bet": "BTTS Yes",
+            "confidence": 67.4,
+            "type": "btts"
+          },
+          {
+            "bet": "Over 2.5 Goals",
+            "confidence": 67.14,
+            "type": "over25"
+          }
+        ]
+      },
+      "home_trend": "stable",
+      "away_trend": "ascending",
+      "friendly_warning": false,
+      "competition_type": "Premier League",
+      "match_extra": {},
+      "lambda_home": 1.5028,
+      "lambda_away": 1.9556,
+      "lambda_model_applied": false
+    },
+    "rating_score": 53.7,
+    "predicted_score": "1-1",
+    "confidence": "MEDIUM",
+    "home_win_prob": 29.15,
+    "away_win_prob": 47.68
+  },
+  {
+    "match": {
+      "fixture_id": 564692,
+      "home_team": "RCD Espanyol de Barcelona",
+      "away_team": "Elche CF",
+      "competition": "La Liga",
+      "date": "2026-09-18",
+      "time": "2026-09-18T19:00:00Z",
+      "status": "TIMED",
+      "home_crest": "",
+      "away_crest": ""
+    },
+    "prediction": {
+      "home_win_prob": 42.19,
+      "draw_prob": 28.85,
+      "away_win_prob": 28.96,
+      "most_likely_score": "1-1",
+      "exact_score_prob": 13.7,
+      "under_0_5": 0.09592550119471997,
+      "under_1_5": 0.2903903612892419,
+      "under_2_5": 55.87,
+      "under_3_5": 0.7698446188960081,
+      "under_4_5": 0.8987582976899214,
+      "under_5_5": 0.9617266138090711,
+      "over_2_5": 44.13,
+      "over_3_5": 0.23015538110399192,
+      "over_4_5": 0.10124170231007856,
+      "btts_yes": 50.05,
+      "btts_no": 49.95,
+      "asian_handicap": {
+        "ah_0": 0.4219,
+        "ah_m025": 0.5661,
+        "ah_05": 0.4219,
+        "ah_m075": 0.3117,
+        "ah_10": 0.3117
+      },
+      "probs": "[[9.59255012e-02 8.52488348e-02 5.10307713e-02 1.84277785e-02\n  4.99085668e-03 1.08135228e-03 1.95244162e-04 3.02163584e-05\n  4.09179853e-06 4.92531305e-07]\n [1.09216025e-01 1.36987819e-01 6.93474161e-02 2.50421225e-02\n  6.78224151e-03 1.46948566e-03 2.65323800e-04 4.10620166e-05\n  5.56048142e-06 6.69317208e-07]\n [8.02979066e-02 8.69893988e-02 4.71192577e-02 1.70152875e-02\n  4.60830703e-03 9.98466523e-04 1.80278678e-04 2.79002716e-05\n  3.77816177e-06 4.54778732e-07]\n [3.63731673e-02 3.94042646e-02 2.13439766e-02 7.70754712e-03\n  2.08746068e-03 4.52283147e-04 8.16622349e-05 1.26382030e-05\n  1.71142332e-06 2.06004659e-07]\n [1.23571774e-02 1.33869421e-02 7.25126033e-03 2.61851067e-03\n  7.09179974e-04 1.53655661e-04 2.77433833e-05 4.29361884e-06\n  5.81427551e-07 6.99866496e-08]\n [3.35851605e-03 3.63839238e-03 1.97079587e-03 7.11676288e-04\n  1.92745661e-04 4.17615599e-05 7.54028166e-06 1.16694835e-06\n  1.58024256e-07 1.90214382e-08]\n [7.60666568e-04 8.24055448e-04 4.46363368e-04 1.61186772e-04\n  4.36547507e-05 9.45852931e-06 1.70779001e-06 2.64300836e-07\n  3.57907382e-08 4.30814441e-09]\n [1.47670736e-04 1.59976631e-04 8.66540085e-05 3.12917253e-05\n  8.47484226e-06 1.83621582e-06 3.31538968e-07 5.13096022e-08\n  6.94817530e-09 8.36354434e-10]\n [2.50843357e-05 2.71746971e-05 1.47196276e-05 5.31542107e-06\n  1.43959321e-06 3.11911861e-07 5.63174194e-08 8.71579110e-09\n  1.18026338e-09 1.42068740e-10]\n [3.78754889e-06 4.10317796e-06 2.22255473e-06 8.02589208e-07\n  2.17367910e-07 4.70963806e-08 8.50351316e-09 1.31601989e-09\n  1.78211027e-10 2.14513274e-11]]",
+      "expected_goals_home": 1.36,
+      "expected_goals_away": 1.08,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 13.7,
+          "rank": 1,
+          "type": "draw"
+        },
+        {
+          "score": "1-0",
+          "prob": 10.92,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "0-0",
+          "prob": 9.59,
+          "rank": 3,
+          "type": "draw"
+        },
+        {
+          "score": "2-1",
+          "prob": 8.7,
+          "rank": 4,
+          "type": "home_win"
+        },
+        {
+          "score": "0-1",
+          "prob": 8.52,
+          "rank": 5,
+          "type": "away_win"
+        },
+        {
+          "score": "2-0",
+          "prob": 8.03,
+          "rank": 6,
+          "type": "home_win"
+        },
+        {
+          "score": "1-2",
+          "prob": 6.93,
+          "rank": 7,
+          "type": "away_win"
+        },
+        {
+          "score": "0-2",
+          "prob": 5.1,
+          "rank": 8,
+          "type": "away_win"
+        }
+      ],
+      "top_3": [
+        {
+          "score": "1-1",
+          "prob": 13.7,
+          "rank": 1,
+          "type": "draw"
+        },
+        {
+          "score": "1-0",
+          "prob": 10.92,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "0-0",
+          "prob": 9.59,
+          "rank": 3,
+          "type": "draw"
+        }
+      ],
+      "auto_rejected": false,
+      "analysis": {
+        "home_form_rating": 50,
+        "away_form_rating": 50,
+        "confidence": "LOW",
+        "recommendation": "Uncertain match, avoid heavy betting",
+        "best_bet": "Over 1.5 Goals",
+        "best_bet_type": "ai_ensemble",
+        "analysis_time": 9.52,
+        "home_elo": 1600,
+        "away_elo": 1600,
+        "home_stats": {
+          "attack": 1.3,
+          "defense": 1.4
+        },
+        "away_stats": {
+          "attack": 1.3,
+          "defense": 1.4
+        },
+        "data_source": "database",
+        "key_factors": [
+          "Evenly matched teams"
+        ],
+        "all_bets": [
+          {
+            "bet": "Over 1.5 Goals",
+            "confidence": 70,
+            "type": "over15"
+          }
+        ],
+        "sources": {
+          "stats_home": "database",
+          "stats_away": "database",
+          "h2h": "api"
+        }
+      },
+      "market_data_used": false,
+      "h2h": {
+        "matches_played": 0,
+        "home_wins": 0,
+        "away_wins": 0,
+        "draws": 0,
+        "home_goals": 0,
+        "away_goals": 0,
+        "home_wins_pct": 33.3,
+        "away_wins_pct": 33.3,
+        "draws_pct": 33.3,
+        "last_meetings": []
+      },
+      "kelly_home_win": 0.0,
+      "kelly_draw": 0.0004,
+      "kelly_away_win": 0.0,
+      "best_bet_info": {
+        "primary": "Over 1.5 Goals",
+        "primary_confidence": 70,
+        "secondary": "",
+        "all_bets": [
+          {
+            "bet": "Over 1.5 Goals",
+            "confidence": 70,
+            "type": "over15"
+          }
+        ]
+      },
+      "home_trend": "stable",
+      "away_trend": "stable",
+      "friendly_warning": false,
+      "competition_type": "La Liga",
+      "match_extra": {},
+      "lambda_home": 1.3589,
+      "lambda_away": 1.0833,
+      "lambda_model_applied": false
+    },
+    "rating_score": 2.6,
+    "predicted_score": "1-1",
+    "confidence": "LOW",
+    "home_win_prob": 42.19,
+    "away_win_prob": 28.96
+  },
+  {
+    "match": {
+      "fixture_id": 561845,
+      "home_team": "Bristol City FC",
+      "away_team": "Watford FC",
+      "competition": "English Championship",
+      "date": "2026-09-18",
+      "time": "2026-09-18T19:00:00Z",
+      "status": "TIMED",
+      "home_crest": "",
+      "away_crest": ""
+    },
+    "prediction": {
+      "home_win_prob": 41.98,
+      "draw_prob": 29.14,
+      "away_win_prob": 28.88,
+      "most_likely_score": "1-1",
+      "exact_score_prob": 13.8,
+      "under_0_5": 0.09965976294238216,
+      "under_1_5": 0.29921129946529645,
+      "under_2_5": 56.95,
+      "under_3_5": 0.778528565250762,
+      "under_4_5": 0.9040155168916592,
+      "under_5_5": 0.9642727448366367,
+      "over_2_5": 43.05,
+      "over_3_5": 0.22147143474923803,
+      "over_4_5": 0.09598448310834085,
+      "btts_yes": 49.2,
+      "btts_no": 50.8,
+      "asian_handicap": {
+        "ah_0": 0.4198,
+        "ah_m025": 0.5655,
+        "ah_05": 0.4198,
+        "ah_m075": 0.3092,
+        "ah_10": 0.3092
+      },
+      "probs": "[[9.96597629e-02 8.74978653e-02 5.13992399e-02 1.82467302e-02\n  4.85819191e-03 1.03479488e-03 1.83676091e-04 2.79450052e-05\n  3.72017882e-06 4.40221160e-07]\n [1.12053671e-01 1.37976942e-01 6.86660950e-02 2.43764637e-02\n  6.49023347e-03 1.38241973e-03 2.45379502e-04 3.73327385e-05\n  4.96992081e-06 5.88107296e-07]\n [8.08776991e-02 8.61347496e-02 4.58667541e-02 1.62826977e-02\n  4.33526827e-03 9.23412141e-04 1.63905655e-04 2.49370747e-05\n  3.31974806e-06 3.92836854e-07]\n [3.60158099e-02 3.83568376e-02 2.04250160e-02 7.25088069e-03\n  1.93054698e-03 4.11206507e-04 7.29891551e-05 1.11047786e-05\n  1.47832365e-06 1.74934965e-07]\n [1.20287043e-02 1.28105700e-02 6.82162855e-03 2.42167814e-03\n  6.44771804e-04 1.37336394e-04 2.43772100e-05 3.70881837e-06\n  4.93736446e-07 5.84254794e-08]\n [3.21391581e-03 3.42282034e-03 1.82265183e-03 6.47041400e-04\n  1.72274773e-04 3.66945266e-05 6.51327847e-06 9.90948796e-07\n  1.31920059e-07 1.56105403e-08]\n [7.15597639e-04 7.62111486e-04 4.05824366e-04 1.44067650e-04\n  3.83580118e-05 8.17025652e-06 1.45022053e-06 2.20640695e-07\n  2.93727925e-08 3.47578045e-09]\n [1.36570378e-04 1.45447453e-04 7.74507687e-05 2.74950229e-05\n  7.32054984e-06 1.55927712e-06 2.76771688e-07 4.21088354e-08\n  5.60573871e-09 6.63345748e-10]\n [2.28061606e-05 2.42885611e-05 1.29336588e-05 4.59144886e-06\n  1.22247326e-06 2.60386804e-07 4.62186577e-08 7.03183864e-09\n  9.36113519e-10 1.10773433e-10]\n [3.38528566e-06 3.60532923e-06 1.91983782e-06 6.81542425e-07\n  1.81460671e-07 3.86511228e-08 6.86057430e-09 1.04378738e-09\n  1.38954194e-10 1.64429130e-11]]",
+      "expected_goals_home": 1.34,
+      "expected_goals_away": 1.06,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 13.8,
+          "rank": 1,
+          "type": "draw"
+        },
+        {
+          "score": "1-0",
+          "prob": 11.21,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "0-0",
+          "prob": 9.97,
+          "rank": 3,
+          "type": "draw"
+        },
+        {
+          "score": "0-1",
+          "prob": 8.75,
+          "rank": 4,
+          "type": "away_win"
+        },
+        {
+          "score": "2-1",
+          "prob": 8.61,
+          "rank": 5,
+          "type": "home_win"
+        },
+        {
+          "score": "2-0",
+          "prob": 8.09,
+          "rank": 6,
+          "type": "home_win"
+        },
+        {
+          "score": "1-2",
+          "prob": 6.87,
+          "rank": 7,
+          "type": "away_win"
+        },
+        {
+          "score": "0-2",
+          "prob": 5.14,
+          "rank": 8,
+          "type": "away_win"
+        }
+      ],
+      "top_3": [
+        {
+          "score": "1-1",
+          "prob": 13.8,
+          "rank": 1,
+          "type": "draw"
+        },
+        {
+          "score": "1-0",
+          "prob": 11.21,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "0-0",
+          "prob": 9.97,
+          "rank": 3,
+          "type": "draw"
+        }
+      ],
+      "auto_rejected": false,
+      "analysis": {
+        "home_form_rating": 47,
+        "away_form_rating": 47,
+        "confidence": "LOW",
+        "recommendation": "Uncertain match, avoid heavy betting",
+        "best_bet": "Over 1.5 Goals",
+        "best_bet_type": "ai_ensemble",
+        "analysis_time": 9.29,
+        "home_elo": 1660,
+        "away_elo": 1660,
+        "home_stats": {
+          "attack": 1.2,
+          "defense": 1.5
+        },
+        "away_stats": {
+          "attack": 1.2,
+          "defense": 1.5
+        },
+        "data_source": "database",
+        "key_factors": [
+          "Evenly matched teams"
+        ],
+        "all_bets": [
+          {
+            "bet": "Over 1.5 Goals",
+            "confidence": 70,
+            "type": "over15"
+          }
+        ],
+        "sources": {
+          "stats_home": "database",
+          "stats_away": "database",
+          "h2h": "api"
+        }
+      },
+      "market_data_used": false,
+      "h2h": {
+        "matches_played": 0,
+        "home_wins": 0,
+        "away_wins": 0,
+        "draws": 0,
+        "home_goals": 0,
+        "away_goals": 0,
+        "home_wins_pct": 33.3,
+        "away_wins_pct": 33.3,
+        "draws_pct": 33.3,
+        "last_meetings": []
+      },
+      "kelly_home_win": 0.0,
+      "kelly_draw": 0.0,
+      "kelly_away_win": 0.0,
+      "best_bet_info": {
+        "primary": "Over 1.5 Goals",
+        "primary_confidence": 70,
+        "secondary": "",
+        "all_bets": [
+          {
+            "bet": "Over 1.5 Goals",
+            "confidence": 70,
+            "type": "over15"
+          }
+        ]
+      },
+      "home_trend": "stable",
+      "away_trend": "stable",
+      "friendly_warning": false,
+      "competition_type": "English Championship",
+      "match_extra": {},
+      "lambda_home": 1.3359,
+      "lambda_away": 1.065,
+      "lambda_model_applied": false
+    },
+    "rating_score": 2.6,
+    "predicted_score": "1-1",
+    "confidence": "LOW",
+    "home_win_prob": 41.98,
+    "away_win_prob": 28.88
+  },
+  {
+    "match": {
+      "fixture_id": 558596,
+      "home_team": "AC Monza",
+      "away_team": "US Sassuolo Calcio",
+      "competition": "Serie A",
+      "date": "2026-09-18",
+      "time": "2026-09-18T18:45:00Z",
+      "status": "TIMED",
+      "home_crest": "",
+      "away_crest": ""
+    },
+    "prediction": {
+      "home_win_prob": 39.18,
+      "draw_prob": 29.3,
+      "away_win_prob": 31.52,
+      "most_likely_score": "1-1",
+      "exact_score_prob": 13.89,
+      "under_0_5": 0.09888921654778107,
+      "under_1_5": 0.29714389949444814,
+      "under_2_5": 56.71,
+      "under_3_5": 0.7765950635916786,
+      "under_4_5": 0.9028525952263099,
+      "under_5_5": 0.9637130855291495,
+      "over_2_5": 43.29,
+      "over_3_5": 0.22340493640832138,
+      "over_4_5": 0.0971474047736901,
+      "btts_yes": 49.77,
+      "btts_no": 50.23,
+      "asian_handicap": {
+        "ah_0": 0.3918,
+        "ah_m025": 0.5383,
+        "ah_05": 0.3918,
+        "ah_m075": 0.2856,
+        "ah_10": 0.2856
+      },
+      "probs": "[[9.88892165e-02 9.20157744e-02 5.69167432e-02 2.13607182e-02\n  6.01247002e-03 1.35387941e-03 2.54053859e-04 4.08624894e-05\n  5.75084811e-06 7.19426535e-07]\n [1.06238909e-01 1.38936517e-01 7.30970241e-02 2.74331391e-02\n  7.72169384e-03 1.73875999e-03 3.26276242e-04 5.24788700e-05\n  7.38569811e-06 9.23944972e-07]\n [7.40568479e-02 8.33800760e-02 4.69385160e-02 1.76159133e-02\n  4.95840774e-03 1.11652717e-03 2.09514995e-04 3.36987765e-05\n  4.74265148e-06 5.93301936e-07]\n [3.17032381e-02 3.56944494e-02 2.00940628e-02 7.54125392e-03\n  2.12266098e-03 4.77977767e-04 8.96919590e-05 1.44262194e-05\n  2.03029718e-06 2.53988565e-07]\n [1.01789571e-02 1.14604151e-02 6.45159977e-03 2.42127003e-03\n  6.81522659e-04 1.53464299e-04 2.87973930e-05 4.63182558e-06\n  6.51867417e-07 8.15480965e-08]\n [2.61452583e-03 2.94367595e-03 1.65713186e-03 6.21917643e-04\n  1.75053158e-04 3.94182200e-05 7.39678206e-06 1.18971201e-06\n  1.67436032e-07 2.09461147e-08]\n [5.59630454e-04 6.30083931e-04 3.54703499e-04 1.33119378e-04\n  3.74695393e-05 8.43733734e-06 1.58325631e-06 2.54653853e-07\n  3.58391192e-08 4.48344537e-09]\n [1.02674585e-04 1.15600581e-04 6.50769344e-05 2.44232186e-05\n  6.87448183e-06 1.54798600e-06 2.90477730e-07 4.67209716e-08\n  6.57535102e-09 8.22571194e-10]\n [1.64828620e-05 1.85579366e-05 1.04471241e-05 3.92078080e-06\n  1.10359478e-06 2.48505895e-07 4.66318353e-08 7.50035005e-09\n  1.05557382e-09 1.32051447e-10]\n [2.35206742e-06 2.64817591e-06 1.49078117e-06 5.59486624e-07\n  1.57480498e-07 3.54612337e-08 6.65425828e-09 1.07028312e-09\n  1.50628016e-10 1.88434452e-11]]",
+      "expected_goals_home": 1.28,
+      "expected_goals_away": 1.13,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 13.89,
+          "rank": 1,
+          "type": "draw"
+        },
+        {
+          "score": "1-0",
+          "prob": 10.62,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "0-0",
+          "prob": 9.89,
+          "rank": 3,
+          "type": "draw"
+        },
+        {
+          "score": "0-1",
+          "prob": 9.2,
+          "rank": 4,
+          "type": "away_win"
+        },
+        {
+          "score": "2-1",
+          "prob": 8.34,
+          "rank": 5,
+          "type": "home_win"
+        },
+        {
+          "score": "2-0",
+          "prob": 7.41,
+          "rank": 6,
+          "type": "home_win"
+        },
+        {
+          "score": "1-2",
+          "prob": 7.31,
+          "rank": 7,
+          "type": "away_win"
+        },
+        {
+          "score": "0-2",
+          "prob": 5.69,
+          "rank": 8,
+          "type": "away_win"
+        }
+      ],
+      "top_3": [
+        {
+          "score": "1-1",
+          "prob": 13.89,
+          "rank": 1,
+          "type": "draw"
+        },
+        {
+          "score": "1-0",
+          "prob": 10.62,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "0-0",
+          "prob": 9.89,
+          "rank": 3,
+          "type": "draw"
+        }
+      ],
+      "auto_rejected": false,
+      "analysis": {
+        "home_form_rating": 47,
+        "away_form_rating": 50,
+        "confidence": "LOW",
+        "recommendation": "Uncertain match, avoid heavy betting",
+        "best_bet": "Over 1.5 Goals",
+        "best_bet_type": "ai_ensemble",
+        "analysis_time": 8.86,
+        "home_elo": 1680,
+        "away_elo": 1600,
+        "home_stats": {
+          "attack": 1.2,
+          "defense": 1.5
+        },
+        "away_stats": {
+          "attack": 1.3,
+          "defense": 1.4
+        },
+        "data_source": "database",
+        "key_factors": [
+          "Evenly matched teams"
+        ],
+        "all_bets": [
+          {
+            "bet": "Over 1.5 Goals",
+            "confidence": 70,
+            "type": "over15"
+          }
+        ],
+        "sources": {
+          "stats_home": "database",
+          "stats_away": "database",
+          "h2h": "api"
+        }
+      },
+      "market_data_used": false,
+      "h2h": {
+        "matches_played": 0,
+        "home_wins": 0,
+        "away_wins": 0,
+        "draws": 0,
+        "home_goals": 0,
+        "away_goals": 0,
+        "home_wins_pct": 33.3,
+        "away_wins_pct": 33.3,
+        "draws_pct": 33.3,
+        "last_meetings": []
+      },
+      "kelly_home_win": 0.0,
+      "kelly_draw": 0.0,
+      "kelly_away_win": 0.0,
+      "best_bet_info": {
+        "primary": "Over 1.5 Goals",
+        "primary_confidence": 70,
+        "secondary": "",
+        "all_bets": [
+          {
+            "bet": "Over 1.5 Goals",
+            "confidence": 70,
+            "type": "over15"
+          }
+        ]
+      },
+      "home_trend": "stable",
+      "away_trend": "stable",
+      "friendly_warning": false,
+      "competition_type": "Serie A",
+      "match_extra": {},
+      "lambda_home": 1.2843,
+      "lambda_away": 1.1259,
+      "lambda_model_applied": false
+    },
+    "rating_score": 1.5,
+    "predicted_score": "1-1",
+    "confidence": "LOW",
+    "home_win_prob": 39.18,
+    "away_win_prob": 31.52
+  },
+  {
+    "match": {
+      "fixture_id": 558888,
+      "home_team": "FC Groningen",
+      "away_team": "PEC Zwolle",
+      "competition": "Eredivisie",
+      "date": "2026-09-18",
+      "time": "2026-09-18T18:00:00Z",
+      "status": "TIMED",
+      "home_crest": "",
+      "away_crest": ""
+    },
+    "prediction": {
+      "home_win_prob": 38.35,
+      "draw_prob": 30.01,
+      "away_win_prob": 31.65,
+      "most_likely_score": "1-1",
+      "exact_score_prob": 14.11,
+      "under_0_5": 0.10778827900750161,
+      "under_1_5": 0.3177040878249824,
+      "under_2_5": 59.15,
+      "under_3_5": 0.7958641024316748,
+      "under_4_5": 0.9142395677257649,
+      "under_5_5": 0.96909691311473,
+      "over_2_5": 40.85,
+      "over_3_5": 0.20413589756832518,
+      "over_4_5": 0.08576043227423513,
+      "btts_yes": 47.84,
+      "btts_no": 52.16,
+      "asian_handicap": {
+        "ah_0": 0.3835,
+        "ah_m025": 0.5335,
+        "ah_05": 0.3835,
+        "ah_m075": 0.2771,
+        "ah_10": 0.2771
+      },
+      "probs": "[[1.07788279e-01 9.82468942e-02 5.85984292e-02 2.12996477e-02\n  5.80657621e-03 1.26636187e-03 2.30151748e-04 3.58528709e-05\n  4.88699226e-06 5.92116063e-07]\n [1.11668915e-01 1.41061274e-01 7.18789506e-02 2.61269175e-02\n  7.12255618e-03 1.55336523e-03 2.82312450e-04 4.39784270e-05\n  5.99456129e-06 7.26310958e-07]\n [7.41484506e-02 8.08555399e-02 4.40846590e-02 1.60241105e-02\n  4.36839239e-03 9.52706960e-04 1.73147326e-04 2.69727638e-05\n  3.67657274e-06 4.45459632e-07]\n [3.03177229e-02 3.30601089e-02 1.80252786e-02 6.55191767e-03\n  1.78614265e-03 3.89541594e-04 7.07962554e-05 1.10285889e-05\n  1.50327232e-06 1.82138960e-07]\n [9.29720360e-03 1.01381810e-02 5.52761450e-03 2.00920474e-03\n  5.47736778e-04 1.19456449e-04 2.17103113e-05 3.38201641e-06\n  4.60992038e-07 5.58545575e-08]\n [2.28085717e-03 2.48717184e-03 1.35607434e-03 4.92912626e-04\n  1.34374745e-04 2.93059193e-05 5.32613045e-06 8.29700707e-07\n  1.13093898e-07 1.37026437e-08]\n [4.66296971e-04 5.08475808e-04 2.77234963e-04 1.00770740e-04\n  2.74714862e-05 5.99128325e-06 1.08887068e-06 1.69623478e-07\n  2.31208437e-08 2.80135965e-09]\n [8.17109591e-05 8.91021141e-05 4.85809176e-05 1.76584329e-05\n  4.81393109e-06 1.04987493e-06 1.90806874e-07 2.97237553e-08\n  4.05155175e-09 4.90892709e-10]\n [1.25287019e-05 1.36619841e-05 7.44888862e-06 2.70755898e-06\n  7.38117727e-07 1.60976816e-07 2.92563257e-08 4.55752903e-09\n  6.21222472e-10 7.52683418e-11]\n [1.70757316e-06 1.86203148e-06 1.01523066e-06 3.69021076e-07\n  1.00600208e-07 2.19399976e-08 3.98742959e-09 6.21158865e-10\n  8.46682145e-11 1.02585409e-11]]",
+      "expected_goals_home": 1.23,
+      "expected_goals_away": 1.09,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 14.11,
+          "rank": 1,
+          "type": "draw"
+        },
+        {
+          "score": "1-0",
+          "prob": 11.17,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "0-0",
+          "prob": 10.78,
+          "rank": 3,
+          "type": "draw"
+        },
+        {
+          "score": "0-1",
+          "prob": 9.82,
+          "rank": 4,
+          "type": "away_win"
+        },
+        {
+          "score": "2-1",
+          "prob": 8.09,
+          "rank": 5,
+          "type": "home_win"
+        },
+        {
+          "score": "2-0",
+          "prob": 7.41,
+          "rank": 6,
+          "type": "home_win"
+        },
+        {
+          "score": "1-2",
+          "prob": 7.19,
+          "rank": 7,
+          "type": "away_win"
+        },
+        {
+          "score": "0-2",
+          "prob": 5.86,
+          "rank": 8,
+          "type": "away_win"
+        }
+      ],
+      "top_3": [
+        {
+          "score": "1-1",
+          "prob": 14.11,
+          "rank": 1,
+          "type": "draw"
+        },
+        {
+          "score": "1-0",
+          "prob": 11.17,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "0-0",
+          "prob": 10.78,
+          "rank": 3,
+          "type": "draw"
+        }
+      ],
+      "auto_rejected": false,
+      "analysis": {
+        "home_form_rating": 40,
+        "away_form_rating": 42,
+        "confidence": "LOW",
+        "recommendation": "Uncertain match, avoid heavy betting",
+        "best_bet": "Over 1.5 Goals",
+        "best_bet_type": "ai_ensemble",
+        "analysis_time": 8.58,
+        "home_elo": 1630,
+        "away_elo": 1640,
+        "home_stats": {
+          "attack": 1.0,
+          "defense": 1.7
+        },
+        "away_stats": {
+          "attack": 1.1,
+          "defense": 1.7
+        },
+        "data_source": "database",
+        "key_factors": [
+          "Evenly matched teams"
+        ],
+        "all_bets": [
+          {
+            "bet": "Over 1.5 Goals",
+            "confidence": 70,
+            "type": "over15"
+          }
+        ],
+        "sources": {
+          "stats_home": "database",
+          "stats_away": "database",
+          "h2h": "api"
+        }
+      },
+      "market_data_used": false,
+      "h2h": {
+        "matches_played": 0,
+        "home_wins": 0,
+        "away_wins": 0,
+        "draws": 0,
+        "home_goals": 0,
+        "away_goals": 0,
+        "home_wins_pct": 33.3,
+        "away_wins_pct": 33.3,
+        "draws_pct": 33.3,
+        "last_meetings": []
+      },
+      "kelly_home_win": 0.0006,
+      "kelly_draw": 0.0,
+      "kelly_away_win": 0.0001,
+      "best_bet_info": {
+        "primary": "Over 1.5 Goals",
+        "primary_confidence": 70,
+        "secondary": "",
+        "all_bets": [
+          {
+            "bet": "Over 1.5 Goals",
+            "confidence": 70,
+            "type": "over15"
+          }
+        ]
+      },
+      "home_trend": "stable",
+      "away_trend": "stable",
+      "friendly_warning": false,
+      "competition_type": "Eredivisie",
+      "match_extra": {},
+      "lambda_home": 1.2266,
+      "lambda_away": 1.0905,
+      "lambda_model_applied": false
+    },
+    "rating_score": 1.3,
+    "predicted_score": "1-1",
+    "confidence": "LOW",
+    "home_win_prob": 38.35,
+    "away_win_prob": 31.65
+  }
+]
