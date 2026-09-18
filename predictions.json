@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: Bayern Munich win",
         "best_bet": "Bayern Munich Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.5,
+        "analysis_time": 8.68,
         "home_elo": 1890,
         "away_elo": 1740,
         "home_stats": {
@@ -315,7 +315,7 @@
         "recommendation": "Strong recommendation: Monaco win",
         "best_bet": "Monaco Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.71,
+        "analysis_time": 9.04,
         "home_elo": 1800,
         "away_elo": 1600,
         "home_stats": {
@@ -504,7 +504,7 @@
         "recommendation": "Moderate recommendation: Chelsea win or draw",
         "best_bet": "BTTS Yes",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 11.37,
+        "analysis_time": 11.3,
         "home_elo": 1740,
         "away_elo": 1820,
         "home_stats": {
@@ -702,7 +702,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.52,
+        "analysis_time": 9.87,
         "home_elo": 1600,
         "away_elo": 1600,
         "home_stats": {
@@ -796,7 +796,7 @@
       "under_2_5": 56.95,
       "under_3_5": 0.778528565250762,
       "under_4_5": 0.9040155168916592,
-      "under_5_5": 0.9642727448366367,
+      "under_5_5": 0.9642727448366368,
       "over_2_5": 43.05,
       "over_3_5": 0.22147143474923803,
       "over_4_5": 0.09598448310834085,
@@ -890,7 +890,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.29,
+        "analysis_time": 10.63,
         "home_elo": 1660,
         "away_elo": 1660,
         "home_stats": {
@@ -1078,7 +1078,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.86,
+        "analysis_time": 9.1,
         "home_elo": 1680,
         "away_elo": 1600,
         "home_stats": {
@@ -1167,8 +1167,8 @@
       "away_win_prob": 31.65,
       "most_likely_score": "1-1",
       "exact_score_prob": 14.11,
-      "under_0_5": 0.10778827900750161,
-      "under_1_5": 0.3177040878249824,
+      "under_0_5": 0.10778827900750163,
+      "under_1_5": 0.31770408782498244,
       "under_2_5": 59.15,
       "under_3_5": 0.7958641024316748,
       "under_4_5": 0.9142395677257649,
@@ -1266,7 +1266,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.58,
+        "analysis_time": 8.64,
         "home_elo": 1630,
         "away_elo": 1640,
         "home_stats": {
