@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: PSV win",
         "best_bet": "PSV Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.25,
+        "analysis_time": 10.5,
         "home_elo": 1830,
         "away_elo": 1670,
         "home_stats": {
@@ -315,7 +315,7 @@
         "recommendation": "Strong recommendation: Borussia Dortmund win",
         "best_bet": "Borussia Dortmund Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 10.16,
+        "analysis_time": 11.62,
         "home_elo": 1830,
         "away_elo": 1700,
         "home_stats": {
@@ -514,7 +514,7 @@
         "recommendation": "Strong recommendation: West Ham United win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.57,
+        "analysis_time": 8.74,
         "home_elo": 1760,
         "away_elo": 1630,
         "home_stats": {
@@ -702,7 +702,7 @@
         "recommendation": "Moderate recommendation: Lyon win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 11.12,
+        "analysis_time": 12.78,
         "home_elo": 1600,
         "away_elo": 1780,
         "home_stats": {
@@ -890,7 +890,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 11.69,
+        "analysis_time": 16.27,
         "home_elo": 1600,
         "away_elo": 1600,
         "home_stats": {
