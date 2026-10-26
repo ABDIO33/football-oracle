@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: Paris Saint Germain win",
         "best_bet": "Paris Saint Germain Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 5.45,
+        "analysis_time": 7.28,
         "home_elo": 1890,
         "away_elo": 1600,
         "home_stats": {
@@ -315,7 +315,7 @@
         "recommendation": "Moderate recommendation: Sevilla win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 7.85,
+        "analysis_time": 10.57,
         "home_elo": 1750,
         "away_elo": 1700,
         "home_stats": {
