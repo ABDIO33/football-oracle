@@ -1,1 +1,404 @@
-[]
+[
+  {
+    "match": {
+      "fixture_id": 559648,
+      "home_team": "Paris Saint-Germain FC",
+      "away_team": "Olympique Lyonnais",
+      "competition": "Ligue 1",
+      "date": "2026-10-26",
+      "time": "2026-10-26T19:30:00Z",
+      "status": "TIMED",
+      "home_crest": "",
+      "away_crest": ""
+    },
+    "prediction": {
+      "home_win_prob": 87.42,
+      "draw_prob": 9.31,
+      "away_win_prob": 3.27,
+      "most_likely_score": "3-0",
+      "exact_score_prob": 12.84,
+      "under_0_5": 0.026380158886671345,
+      "under_1_5": 0.10869531527289784,
+      "under_2_5": 27.7,
+      "under_3_5": 0.4839000572510471,
+      "under_4_5": 0.6780686688865539,
+      "under_5_5": 0.8238310659828024,
+      "over_2_5": 72.3,
+      "over_3_5": 0.5160999427489529,
+      "over_4_5": 0.3219313311134461,
+      "btts_yes": 40.97,
+      "btts_no": 59.03,
+      "asian_handicap": {
+        "ah_0": 0.8742,
+        "ah_m025": 0.9207,
+        "ah_05": 0.8742,
+        "ah_m075": 0.7935,
+        "ah_10": 0.7935
+      },
+      "probs": "[[2.63801589e-02 1.00498632e-02 3.57323475e-03 6.57149066e-04\n  9.06415876e-05 1.00018676e-05 9.19715382e-07 7.24901520e-08\n  4.99933943e-09 3.06474055e-10]\n [7.22652932e-02 4.43754163e-02 1.14406913e-02 2.10404301e-03\n  2.90213909e-04 3.20237229e-05 2.94472110e-06 2.32097108e-07\n  1.60067567e-08 9.81260764e-10]\n [1.20336059e-01 6.63925556e-02 1.83152559e-02 3.36833545e-03\n  4.64599722e-04 5.12663670e-05 4.71416622e-06 3.71561282e-07\n  2.56250113e-08 1.57088776e-09]\n [1.28429635e-01 7.08579935e-02 1.95471054e-02 3.59488334e-03\n  4.95847822e-04 5.47144460e-05 5.03123214e-06 3.96551792e-07\n  2.73485012e-08 1.67654271e-09]\n [1.02800678e-01 5.67178262e-02 1.56463551e-02 2.87750130e-03\n  3.96898207e-04 4.37958272e-05 4.02721748e-06 3.17417337e-07\n  2.18909323e-08 1.34197785e-09]\n [6.58289142e-02 3.63195361e-02 1.00192196e-02 1.84262196e-03\n  2.54155699e-04 2.80448711e-05 2.57884831e-06 2.03259737e-07\n  1.40179650e-08 8.59342049e-10]\n [3.51282213e-02 1.93811597e-02 5.34654671e-03 9.83276616e-04\n  1.35624865e-04 1.49655581e-05 1.37614839e-06 1.08465301e-07\n  7.48039343e-09 4.58569886e-10]\n [1.60675196e-02 8.86487139e-03 2.44549086e-03 4.49747119e-04\n  6.20343162e-05 6.84519139e-06 6.29445228e-07 4.96116311e-08\n  3.42150453e-09 2.09748184e-10]\n [6.43057149e-03 3.54791471e-03 9.78738734e-04 1.79998598e-04\n  2.48274852e-05 2.73959476e-06 2.51917697e-07 1.98556559e-08\n  1.36936067e-09 8.39457941e-11]\n [2.28769319e-03 1.26218025e-03 3.48188951e-04 6.40349878e-05\n  8.83244497e-06 9.74618243e-07 8.96204018e-08 7.06370326e-09\n  4.87153762e-10 2.98639432e-11]]",
+      "expected_goals_home": 3.2,
+      "expected_goals_away": 0.55,
+      "top_scores": [
+        {
+          "score": "3-0",
+          "prob": 12.84,
+          "rank": 1,
+          "type": "home_win"
+        },
+        {
+          "score": "2-0",
+          "prob": 12.03,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "4-0",
+          "prob": 10.28,
+          "rank": 3,
+          "type": "home_win"
+        },
+        {
+          "score": "1-0",
+          "prob": 7.23,
+          "rank": 4,
+          "type": "home_win"
+        },
+        {
+          "score": "3-1",
+          "prob": 7.09,
+          "rank": 5,
+          "type": "home_win"
+        },
+        {
+          "score": "2-1",
+          "prob": 6.64,
+          "rank": 6,
+          "type": "home_win"
+        },
+        {
+          "score": "5-0",
+          "prob": 6.58,
+          "rank": 7,
+          "type": "home_win"
+        },
+        {
+          "score": "4-1",
+          "prob": 5.67,
+          "rank": 8,
+          "type": "home_win"
+        }
+      ],
+      "top_3": [
+        {
+          "score": "3-0",
+          "prob": 12.84,
+          "rank": 1,
+          "type": "home_win"
+        },
+        {
+          "score": "2-0",
+          "prob": 12.03,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "4-0",
+          "prob": 10.28,
+          "rank": 3,
+          "type": "home_win"
+        }
+      ],
+      "auto_rejected": false,
+      "analysis": {
+        "home_form_rating": 85,
+        "away_form_rating": 50,
+        "confidence": "HIGH",
+        "recommendation": "Strong recommendation: Paris Saint Germain win",
+        "best_bet": "Paris Saint Germain Win",
+        "best_bet_type": "ai_ensemble",
+        "analysis_time": 5.45,
+        "home_elo": 1890,
+        "away_elo": 1600,
+        "home_stats": {
+          "attack": 2.5,
+          "defense": 0.8
+        },
+        "away_stats": {
+          "attack": 1.3,
+          "defense": 1.4
+        },
+        "data_source": "database",
+        "key_factors": [
+          "Paris Saint Germain in excellent form",
+          "Paris Saint Germain significantly higher rated"
+        ],
+        "all_bets": [
+          {
+            "bet": "Paris Saint Germain Win",
+            "confidence": 87.42,
+            "type": "home_win"
+          },
+          {
+            "bet": "Over 2.5 Goals",
+            "confidence": 72.3,
+            "type": "over25"
+          }
+        ],
+        "sources": {
+          "stats_home": "database",
+          "stats_away": "database",
+          "h2h": "api"
+        }
+      },
+      "market_data_used": false,
+      "h2h": {
+        "matches_played": 0,
+        "home_wins": 0,
+        "away_wins": 0,
+        "draws": 0,
+        "home_goals": 0,
+        "away_goals": 0,
+        "home_wins_pct": 33.3,
+        "away_wins_pct": 33.3,
+        "draws_pct": 33.3,
+        "last_meetings": []
+      },
+      "kelly_home_win": 0.0,
+      "kelly_draw": 0.0,
+      "kelly_away_win": 0.0,
+      "best_bet_info": {
+        "primary": "Paris Saint Germain Win",
+        "primary_confidence": 87.4,
+        "secondary": "Over 2.5 Goals",
+        "all_bets": [
+          {
+            "bet": "Paris Saint Germain Win",
+            "confidence": 87.42,
+            "type": "home_win"
+          },
+          {
+            "bet": "Over 2.5 Goals",
+            "confidence": 72.3,
+            "type": "over25"
+          }
+        ]
+      },
+      "home_trend": "ascending",
+      "away_trend": "stable",
+      "friendly_warning": false,
+      "competition_type": "Ligue 1",
+      "match_extra": {},
+      "lambda_home": 3.2018,
+      "lambda_away": 0.5517,
+      "lambda_model_applied": false
+    },
+    "rating_score": 96.8,
+    "predicted_score": "3-0",
+    "confidence": "HIGH",
+    "home_win_prob": 87.42,
+    "away_win_prob": 3.27
+  },
+  {
+    "match": {
+      "fixture_id": 564721,
+      "home_team": "Sevilla FC",
+      "away_team": "CA Osasuna",
+      "competition": "La Liga",
+      "date": "2026-10-26",
+      "time": "2026-10-26T20:00:00Z",
+      "status": "TIMED",
+      "home_crest": "",
+      "away_crest": ""
+    },
+    "prediction": {
+      "home_win_prob": 51.94,
+      "draw_prob": 26.95,
+      "away_win_prob": 21.12,
+      "most_likely_score": "1-1",
+      "exact_score_prob": 12.78,
+      "under_0_5": 0.09076824391144243,
+      "under_1_5": 0.27974666461237885,
+      "under_2_5": 54.48,
+      "under_3_5": 0.7584202694450652,
+      "under_4_5": 0.8917078530680295,
+      "under_5_5": 0.9582469373590665,
+      "over_2_5": 45.52,
+      "over_3_5": 0.24157973055493476,
+      "over_4_5": 0.10829214693197053,
+      "btts_yes": 48.52,
+      "btts_no": 51.48,
+      "asian_handicap": {
+        "ah_0": 0.5194,
+        "ah_m025": 0.6541,
+        "ah_05": 0.5194,
+        "ah_m075": 0.3986,
+        "ah_10": 0.3986
+      },
+      "probs": "[[9.07682439e-02 6.73535211e-02 3.47808863e-02 1.06516895e-02\n  2.44656985e-03 4.49559030e-04 6.88390052e-05 9.03515602e-06\n  1.03763540e-06 1.05925709e-07]\n [1.21624900e-01 1.27783470e-01 5.48605319e-02 1.68011059e-02\n  3.85901964e-03 7.09097730e-04 1.08581030e-04 1.42513178e-05\n  1.63668141e-06 1.67078571e-07]\n [1.02513524e-01 9.41846813e-02 4.32662632e-02 1.32503467e-02\n  3.04345134e-03 5.59236449e-04 8.56334280e-05 1.12394329e-05\n  1.29078385e-06 1.31768052e-07]\n [5.38988224e-02 4.95197436e-02 2.27482243e-02 6.96667191e-03\n  1.60016393e-03 2.94031313e-04 4.50237272e-05 5.90938812e-06\n  6.78659040e-07 6.92800575e-08]\n [2.12539011e-02 1.95271007e-02 8.97029820e-03 2.74716495e-03\n  6.30992004e-04 1.15945250e-04 1.77541883e-05 2.33024665e-06\n  2.67615348e-07 2.73191774e-08]\n [6.70483385e-03 6.16009104e-03 2.82980328e-03 8.66630764e-04\n  1.99055060e-04 3.65765153e-05 5.60080159e-06 7.35108185e-07\n  8.44229225e-08 8.61820823e-09]\n [1.76260963e-03 1.61940416e-03 7.43916797e-04 2.27825442e-04\n  5.23288680e-05 9.61546844e-06 1.47237457e-06 1.93249944e-07\n  2.21936382e-08 2.26560974e-09]\n [3.97170944e-04 3.64902282e-04 1.67627665e-04 5.13361802e-05\n  1.17913266e-05 2.16666504e-06 3.31771928e-07 4.35452419e-08\n  5.00091912e-09 5.10512561e-10]\n [7.83081297e-05 7.19458855e-05 3.30502750e-05 1.01216877e-05\n  2.32483456e-06 4.27190080e-07 6.54137458e-08 8.58558890e-09\n  9.86005218e-10 1.00655107e-10]\n [1.37240949e-05 1.26090632e-05 5.79231187e-06 1.77390269e-06\n  4.07444925e-07 7.48683081e-08 1.14642561e-08 1.50468971e-09\n  1.72804908e-10 1.76405725e-11]]",
+      "expected_goals_home": 1.58,
+      "expected_goals_away": 0.92,
+      "top_scores": [
+        {
+          "score": "1-1",
+          "prob": 12.78,
+          "rank": 1,
+          "type": "draw"
+        },
+        {
+          "score": "1-0",
+          "prob": 12.16,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "2-0",
+          "prob": 10.25,
+          "rank": 3,
+          "type": "home_win"
+        },
+        {
+          "score": "2-1",
+          "prob": 9.42,
+          "rank": 4,
+          "type": "home_win"
+        },
+        {
+          "score": "0-0",
+          "prob": 9.08,
+          "rank": 5,
+          "type": "draw"
+        },
+        {
+          "score": "0-1",
+          "prob": 6.74,
+          "rank": 6,
+          "type": "away_win"
+        },
+        {
+          "score": "1-2",
+          "prob": 5.49,
+          "rank": 7,
+          "type": "away_win"
+        },
+        {
+          "score": "3-0",
+          "prob": 5.39,
+          "rank": 8,
+          "type": "home_win"
+        }
+      ],
+      "top_3": [
+        {
+          "score": "1-1",
+          "prob": 12.78,
+          "rank": 1,
+          "type": "draw"
+        },
+        {
+          "score": "1-0",
+          "prob": 12.16,
+          "rank": 2,
+          "type": "home_win"
+        },
+        {
+          "score": "2-0",
+          "prob": 10.25,
+          "rank": 3,
+          "type": "home_win"
+        }
+      ],
+      "auto_rejected": false,
+      "analysis": {
+        "home_form_rating": 57,
+        "away_form_rating": 50,
+        "confidence": "MEDIUM",
+        "recommendation": "Moderate recommendation: Sevilla win or draw",
+        "best_bet": "Over 1.5 Goals",
+        "best_bet_type": "ai_ensemble",
+        "analysis_time": 7.85,
+        "home_elo": 1750,
+        "away_elo": 1700,
+        "home_stats": {
+          "attack": 1.35,
+          "defense": 1.3
+        },
+        "away_stats": {
+          "attack": 1.21,
+          "defense": 1.5
+        },
+        "data_source": "database",
+        "key_factors": [
+          "Evenly matched teams"
+        ],
+        "all_bets": [
+          {
+            "bet": "Over 1.5 Goals",
+            "confidence": 70,
+            "type": "over15"
+          }
+        ],
+        "sources": {
+          "stats_home": "database",
+          "stats_away": "database",
+          "h2h": "api"
+        }
+      },
+      "market_data_used": false,
+      "h2h": {
+        "matches_played": 2,
+        "home_wins": 1,
+        "away_wins": 1,
+        "draws": 0,
+        "home_goals": 2,
+        "away_goals": 2,
+        "home_wins_pct": 33.3,
+        "away_wins_pct": 33.3,
+        "draws_pct": 33.3,
+        "last_meetings": [
+          {
+            "date": "2026-04-26",
+            "home": "Osasuna",
+            "away": "Sevilla",
+            "home_goals": 2,
+            "away_goals": 1
+          },
+          {
+            "date": "2025-11-08",
+            "home": "Sevilla",
+            "away": "Osasuna",
+            "home_goals": 1,
+            "away_goals": 0
+          }
+        ]
+      },
+      "kelly_home_win": 0.0026,
+      "kelly_draw": 0.0,
+      "kelly_away_win": 0.0,
+      "best_bet_info": {
+        "primary": "Over 1.5 Goals",
+        "primary_confidence": 70,
+        "secondary": "",
+        "all_bets": [
+          {
+            "bet": "Over 1.5 Goals",
+            "confidence": 70,
+            "type": "over15"
+          }
+        ]
+      },
+      "home_trend": "stable",
+      "away_trend": "stable",
+      "friendly_warning": false,
+      "competition_type": "La Liga",
+      "match_extra": {},
+      "lambda_home": 1.5773,
+      "lambda_away": 0.9188,
+      "lambda_model_applied": false
+    },
+    "rating_score": 21.2,
+    "predicted_score": "1-1",
+    "confidence": "MEDIUM",
+    "home_win_prob": 51.94,
+    "away_win_prob": 21.12
+  }
+]
