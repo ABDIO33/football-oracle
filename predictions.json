@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: Juventus win",
         "best_bet": "Juventus Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 7.19,
+        "analysis_time": 6.6,
         "home_elo": 1690,
         "away_elo": 1860,
         "home_stats": {
@@ -305,7 +305,7 @@
         "recommendation": "Strong recommendation: Napoli win",
         "best_bet": "Napoli Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 7.2,
+        "analysis_time": 6.82,
         "home_elo": 1680,
         "away_elo": 1850,
         "home_stats": {
@@ -494,7 +494,7 @@
         "recommendation": "Strong recommendation: AC Milan win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.3,
+        "analysis_time": 9.46,
         "home_elo": 1830,
         "away_elo": 1750,
         "home_stats": {
@@ -682,7 +682,7 @@
         "recommendation": "Moderate recommendation: Internacional win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 7.62,
+        "analysis_time": 6.55,
         "home_elo": 1640,
         "away_elo": 1710,
         "home_stats": {
@@ -870,7 +870,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 7.18,
+        "analysis_time": 6.41,
         "home_elo": 1600,
         "away_elo": 1700,
         "home_stats": {
