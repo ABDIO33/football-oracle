@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: Paris Saint Germain win",
         "best_bet": "Paris Saint Germain Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 6.02,
+        "analysis_time": 6.51,
         "home_elo": 1650,
         "away_elo": 1890,
         "home_stats": {
@@ -315,7 +315,7 @@
         "recommendation": "Strong recommendation: Lille win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 5.99,
+        "analysis_time": 6.47,
         "home_elo": 1770,
         "away_elo": 1600,
         "home_stats": {
@@ -503,7 +503,7 @@
         "recommendation": "Strong recommendation: Villarreal win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.24,
+        "analysis_time": 9.8,
         "home_elo": 1760,
         "away_elo": 1600,
         "home_stats": {
@@ -691,7 +691,7 @@
         "recommendation": "Strong recommendation: Nice win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 6.12,
+        "analysis_time": 7.36,
         "home_elo": 1760,
         "away_elo": 1600,
         "home_stats": {
@@ -784,11 +784,11 @@
       "under_1_5": 0.2620335002258571,
       "under_2_5": 52.25,
       "under_3_5": 0.7395192486023067,
-      "under_4_5": 0.8797049628271809,
+      "under_4_5": 0.8797049628271807,
       "under_5_5": 0.9521481792317408,
       "over_2_5": 47.75,
       "over_3_5": 0.26048075139769333,
-      "over_4_5": 0.12029503717281909,
+      "over_4_5": 0.12029503717281931,
       "btts_yes": 51.73,
       "btts_no": 48.27,
       "asian_handicap": {
@@ -879,7 +879,7 @@
         "recommendation": "Moderate recommendation: Sheffield United win or draw",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 6.17,
+        "analysis_time": 6.57,
         "home_elo": 1700,
         "away_elo": 1600,
         "home_stats": {
@@ -968,8 +968,8 @@
       "away_win_prob": 29.29,
       "most_likely_score": "1-1",
       "exact_score_prob": 13.49,
-      "under_0_5": 0.08885377254425934,
-      "under_1_5": 0.2733099197160352,
+      "under_0_5": 0.08885377254425933,
+      "under_1_5": 0.27330991971603513,
       "under_2_5": 53.73,
       "under_3_5": 0.7521439157630104,
       "under_4_5": 0.887766725062227,
@@ -1067,7 +1067,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 6.4,
+        "analysis_time": 7.22,
         "home_elo": 1600,
         "away_elo": 1700,
         "home_stats": {
