@@ -116,7 +116,7 @@
         "recommendation": "Strong recommendation: Borussia Dortmund win",
         "best_bet": "Borussia Dortmund Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.65,
+        "analysis_time": 8.57,
         "home_elo": 1830,
         "away_elo": 1740,
         "home_stats": {
@@ -314,7 +314,7 @@
         "recommendation": "Strong recommendation: Real Madrid win",
         "best_bet": "Real Madrid Win",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.27,
+        "analysis_time": 8.95,
         "home_elo": 1600,
         "away_elo": 1900,
         "home_stats": {
@@ -503,7 +503,7 @@
         "recommendation": "Strong recommendation: PSV win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.65,
+        "analysis_time": 7.36,
         "home_elo": 1830,
         "away_elo": 1760,
         "home_stats": {
@@ -692,7 +692,7 @@
         "recommendation": "Moderate recommendation: Manchester City win or draw",
         "best_bet": "BTTS Yes",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.77,
+        "analysis_time": 8.27,
         "home_elo": 1820,
         "away_elo": 1900,
         "home_stats": {
@@ -881,7 +881,7 @@
         "recommendation": "Strong recommendation: Racing Club De Lens win",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.55,
+        "analysis_time": 7.45,
         "home_elo": 1600,
         "away_elo": 1650,
         "home_stats": {
@@ -1069,7 +1069,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "BTTS Yes",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.65,
+        "analysis_time": 7.85,
         "home_elo": 1830,
         "away_elo": 1850,
         "home_stats": {
@@ -1258,7 +1258,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "BTTS Yes",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.47,
+        "analysis_time": 7.99,
         "home_elo": 1800,
         "away_elo": 1870,
         "home_stats": {
@@ -1447,7 +1447,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.29,
+        "analysis_time": 7.58,
         "home_elo": 1750,
         "away_elo": 1880,
         "home_stats": {
@@ -1637,7 +1637,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.13,
+        "analysis_time": 7.42,
         "home_elo": 1650,
         "away_elo": 1760,
         "home_stats": {
@@ -1825,7 +1825,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.51,
+        "analysis_time": 7.61,
         "home_elo": 1650,
         "away_elo": 1600,
         "home_stats": {
@@ -2013,7 +2013,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 8.48,
+        "analysis_time": 7.4,
         "home_elo": 1600,
         "away_elo": 1680,
         "home_stats": {
@@ -2201,7 +2201,7 @@
         "recommendation": "Uncertain match, avoid heavy betting",
         "best_bet": "Over 1.5 Goals",
         "best_bet_type": "ai_ensemble",
-        "analysis_time": 9.06,
+        "analysis_time": 7.48,
         "home_elo": 1660,
         "away_elo": 1720,
         "home_stats": {
